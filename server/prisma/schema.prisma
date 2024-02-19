@@ -1,0 +1,92 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt DateTime @default(now())
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model Customer {
+  createdAt DateTime @default(now())
+  email     String?
+  files     File[]
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  phone     String?
+  updatedAt DateTime @updatedAt
+}
+
+model CondoUnit {
+  condoFee      String?
+  createdAt     DateTime      @default(now())
+  id            Int           @id @default(autoincrement())
+  lockerId      Locker?       @relation(fields: [id], references: [id])
+  id            String?       @unique
+  parkingSpotId ParkingSpot[]
+  propertyId    Property?     @relation(fields: [propertyIdId], references: [id])
+  propertyIdId  Int?          @unique
+  size          String
+  updatedAt     DateTime      @updatedAt
+}
+
+model Property {
+  address      String
+  condoUnits   CondoUnit?
+  createdAt    DateTime     @default(now())
+  id           Int          @id @default(autoincrement())
+  lockerCount  Int?
+  Lockers      Locker?
+  parkingCount Int
+  ParkingSpots ParkingSpot?
+  unitCount    Int
+  updatedAt    DateTime     @updatedAt
+}
+
+model ParkingSpot {
+  condoUnit    CondoUnit? @relation(fields: [condoUnitId], references: [id])
+  condoUnitId  Int?
+  createdAt    DateTime   @default(now())
+  id           Int        @id @default(autoincrement())
+  propertyId   Property?  @relation(fields: [propertyIdId], references: [id])
+  propertyIdId Int?       @unique
+  updatedAt    DateTime   @updatedAt
+}
+
+model Locker {
+  condoUnits   CondoUnit?
+  createdAt    DateTime   @default(now())
+  id           String     @id @default(cuid())
+  propertyId   Property?  @relation(fields: [propertyIdId], references: [id])
+  propertyIdId Int?       @unique
+  updatedAt    DateTime   @updatedAt
+}
+
+model Company {
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  name      String
+  updatedAt DateTime? @updatedAt
+}
+
+model File {
+  bucket    String
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  name      String
+  updatedAt DateTime  @updatedAt
+  userId    Customer? @relation(fields: [id], references: [id])
+  id        String?
+}
