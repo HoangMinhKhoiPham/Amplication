@@ -28,6 +28,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+  redis:
+    container_name: ${REDIS_HOST}
+    image: redis:7
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - redis:/data
   db:
     image: postgres:12
     ports:
@@ -45,14 +52,7 @@ services:
       timeout: 45s
       interval: 10s
       retries: 10
-  redis:
-    container_name: ${REDIS_HOST}
-    image: redis:7
-    ports:
-      - ${REDIS_PORT}:6379
-    volumes:
-      - redis:/data
 volumes:
-  postgres: ~
   redis:
     driver: local
+  postgres: ~

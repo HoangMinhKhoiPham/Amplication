@@ -14,8 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Customer, // @ts-ignore
-  Order, // @ts-ignore
-  Address,
+  File,
 } from "@prisma/client";
 
 export class CustomerServiceBase {
@@ -53,22 +52,14 @@ export class CustomerServiceBase {
     return this.prisma.customer.delete(args);
   }
 
-  async findOrders(
+  async findFiles(
     parentId: string,
-    args: Prisma.OrderFindManyArgs
-  ): Promise<Order[]> {
+    args: Prisma.FileFindManyArgs
+  ): Promise<File[]> {
     return this.prisma.customer
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .orders(args);
-  }
-
-  async getAddress(parentId: string): Promise<Address | null> {
-    return this.prisma.customer
-      .findUnique({
-        where: { id: parentId },
-      })
-      .address();
+      .files(args);
   }
 }

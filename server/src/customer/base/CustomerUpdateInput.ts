@@ -11,25 +11,12 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { IsString, IsOptional, ValidateNested } from "class-validator";
+import { FileUpdateManyWithoutCustomersInput } from "./FileUpdateManyWithoutCustomersInput";
 import { Type } from "class-transformer";
-import { OrderUpdateManyWithoutCustomersInput } from "./OrderUpdateManyWithoutCustomersInput";
 
 @InputType()
 class CustomerUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: () => AddressWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => AddressWhereUniqueInput)
-  @IsOptional()
-  @Field(() => AddressWhereUniqueInput, {
-    nullable: true,
-  })
-  address?: AddressWhereUniqueInput | null;
-
   @ApiProperty({
     required: false,
     type: String,
@@ -40,6 +27,18 @@ class CustomerUpdateInput {
     nullable: true,
   })
   email?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileUpdateManyWithoutCustomersInput,
+  })
+  @ValidateNested()
+  @Type(() => FileUpdateManyWithoutCustomersInput)
+  @IsOptional()
+  @Field(() => FileUpdateManyWithoutCustomersInput, {
+    nullable: true,
+  })
+  files?: FileUpdateManyWithoutCustomersInput;
 
   @ApiProperty({
     required: false,
@@ -62,18 +61,6 @@ class CustomerUpdateInput {
     nullable: true,
   })
   lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrderUpdateManyWithoutCustomersInput,
-  })
-  @ValidateNested()
-  @Type(() => OrderUpdateManyWithoutCustomersInput)
-  @IsOptional()
-  @Field(() => OrderUpdateManyWithoutCustomersInput, {
-    nullable: true,
-  })
-  orders?: OrderUpdateManyWithoutCustomersInput;
 
   @ApiProperty({
     required: false,

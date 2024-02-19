@@ -26,9 +26,9 @@ import { Customer } from "./Customer";
 import { CustomerFindManyArgs } from "./CustomerFindManyArgs";
 import { CustomerWhereUniqueInput } from "./CustomerWhereUniqueInput";
 import { CustomerUpdateInput } from "./CustomerUpdateInput";
-import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
-import { Order } from "../../order/base/Order";
-import { OrderWhereUniqueInput } from "../../order/base/OrderWhereUniqueInput";
+import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
+import { File } from "../../file/base/File";
+import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -52,22 +52,8 @@ export class CustomerControllerBase {
     @common.Body() data: CustomerCreateInput
   ): Promise<Customer> {
     return await this.service.createCustomer({
-      data: {
-        ...data,
-
-        address: data.address
-          ? {
-              connect: data.address,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
-        address: {
-          select: {
-            id: true,
-          },
-        },
-
         createdAt: true,
         email: true,
         firstName: true,
@@ -96,12 +82,6 @@ export class CustomerControllerBase {
     return this.service.customers({
       ...args,
       select: {
-        address: {
-          select: {
-            id: true,
-          },
-        },
-
         createdAt: true,
         email: true,
         firstName: true,
@@ -131,12 +111,6 @@ export class CustomerControllerBase {
     const result = await this.service.customer({
       where: params,
       select: {
-        address: {
-          select: {
-            id: true,
-          },
-        },
-
         createdAt: true,
         email: true,
         firstName: true,
@@ -173,22 +147,8 @@ export class CustomerControllerBase {
     try {
       return await this.service.updateCustomer({
         where: params,
-        data: {
-          ...data,
-
-          address: data.address
-            ? {
-                connect: data.address,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
-          address: {
-            select: {
-              id: true,
-            },
-          },
-
           createdAt: true,
           email: true,
           firstName: true,
@@ -226,12 +186,6 @@ export class CustomerControllerBase {
       return await this.service.deleteCustomer({
         where: params,
         select: {
-          address: {
-            select: {
-              id: true,
-            },
-          },
-
           createdAt: true,
           email: true,
           firstName: true,
@@ -252,41 +206,32 @@ export class CustomerControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/orders")
-  @ApiNestedQuery(OrderFindManyArgs)
+  @common.Get("/:id/files")
+  @ApiNestedQuery(FileFindManyArgs)
   @nestAccessControl.UseRoles({
-    resource: "Order",
+    resource: "File",
     action: "read",
     possession: "any",
   })
-  async findOrders(
+  async findFiles(
     @common.Req() request: Request,
     @common.Param() params: CustomerWhereUniqueInput
-  ): Promise<Order[]> {
-    const query = plainToClass(OrderFindManyArgs, request.query);
-    const results = await this.service.findOrders(params.id, {
+  ): Promise<File[]> {
+    const query = plainToClass(FileFindManyArgs, request.query);
+    const results = await this.service.findFiles(params.id, {
       ...query,
       select: {
+        bucket: true,
         createdAt: true,
-
-        customer: {
-          select: {
-            id: true,
-          },
-        },
-
-        discount: true,
         id: true,
+        name: true,
+        updatedAt: true,
 
-        product: {
+        userId: {
           select: {
             id: true,
           },
         },
-
-        quantity: true,
-        totalPrice: true,
-        updatedAt: true,
       },
     });
     if (results === null) {
@@ -297,18 +242,18 @@ export class CustomerControllerBase {
     return results;
   }
 
-  @common.Post("/:id/orders")
+  @common.Post("/:id/files")
   @nestAccessControl.UseRoles({
     resource: "Customer",
     action: "update",
     possession: "any",
   })
-  async connectOrders(
+  async connectFiles(
     @common.Param() params: CustomerWhereUniqueInput,
-    @common.Body() body: OrderWhereUniqueInput[]
+    @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      orders: {
+      files: {
         connect: body,
       },
     };
@@ -319,18 +264,18 @@ export class CustomerControllerBase {
     });
   }
 
-  @common.Patch("/:id/orders")
+  @common.Patch("/:id/files")
   @nestAccessControl.UseRoles({
     resource: "Customer",
     action: "update",
     possession: "any",
   })
-  async updateOrders(
+  async updateFiles(
     @common.Param() params: CustomerWhereUniqueInput,
-    @common.Body() body: OrderWhereUniqueInput[]
+    @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      orders: {
+      files: {
         set: body,
       },
     };
@@ -341,18 +286,18 @@ export class CustomerControllerBase {
     });
   }
 
-  @common.Delete("/:id/orders")
+  @common.Delete("/:id/files")
   @nestAccessControl.UseRoles({
     resource: "Customer",
     action: "update",
     possession: "any",
   })
-  async disconnectOrders(
+  async disconnectFiles(
     @common.Param() params: CustomerWhereUniqueInput,
-    @common.Body() body: OrderWhereUniqueInput[]
+    @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      orders: {
+      files: {
         disconnect: body,
       },
     };

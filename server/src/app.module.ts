@@ -2,10 +2,13 @@ import { Module } from "@nestjs/common";
 import { CacheModule } from "@nestjs/cache-manager";
 import { redisStore } from "cache-manager-ioredis-yet";
 import { UserModule } from "./user/user.module";
-import { OrderModule } from "./order/order.module";
 import { CustomerModule } from "./customer/customer.module";
-import { AddressModule } from "./address/address.module";
-import { ProductModule } from "./product/product.module";
+import { CondoUnitModule } from "./condoUnit/condoUnit.module";
+import { PropertyModule } from "./property/property.module";
+import { ParkingSpotModule } from "./parkingSpot/parkingSpot.module";
+import { LockerModule } from "./locker/locker.module";
+import { CompanyModule } from "./company/company.module";
+import { FileModule } from "./file/file.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -22,10 +25,13 @@ import { AuthModule } from "./auth/auth.module";
     ACLModule,
     AuthModule,
     UserModule,
-    OrderModule,
     CustomerModule,
-    AddressModule,
-    ProductModule,
+    CondoUnitModule,
+    PropertyModule,
+    ParkingSpotModule,
+    LockerModule,
+    CompanyModule,
+    FileModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
