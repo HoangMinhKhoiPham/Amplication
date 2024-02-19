@@ -33,8 +33,8 @@ model CondoUnit {
   condoFee      String?
   createdAt     DateTime      @default(now())
   id            Int           @id @default(autoincrement())
-  lockerId      Locker?       @relation(fields: [id], references: [id])
-  id            String?       @unique
+  lockerId      Locker?       @relation(fields: [lockerIdId], references: [id])
+  lockerIdId    String?       @unique
   parkingSpotId ParkingSpot[]
   propertyId    Property?     @relation(fields: [propertyIdId], references: [id])
   propertyIdId  Int?          @unique
@@ -87,6 +87,6 @@ model File {
   id        String    @id @default(cuid())
   name      String
   updatedAt DateTime  @updatedAt
-  userId    Customer? @relation(fields: [id], references: [id])
-  id        String?
+  userId    Customer? @relation(fields: [userIdId], references: [id])
+  userIdId  String?
 }

@@ -83,7 +83,7 @@ class FileOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  id?: SortOrder;
+  userIdId?: SortOrder;
 }
 
 export { FileOrderByInput as FileOrderByInput };
