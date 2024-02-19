@@ -90,3 +90,9 @@ model File {
   userId    Customer? @relation(fields: [userIdId], references: [id])
   userIdId  String?
 }
+
+model Test {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
