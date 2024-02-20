@@ -18,14 +18,14 @@ import { CondoUnitService } from "../condoUnit.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  condoFee: "exampleCondoFee",
+  condoFee: 42.424242424,
   createdAt: new Date(),
   id: 42,
   size: "exampleSize",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
-  condoFee: "exampleCondoFee",
+  condoFee: 42.424242424,
   createdAt: new Date(),
   id: 42,
   size: "exampleSize",
@@ -33,7 +33,7 @@ const CREATE_RESULT = {
 };
 const FIND_MANY_RESULT = [
   {
-    condoFee: "exampleCondoFee",
+    condoFee: 42.424242424,
     createdAt: new Date(),
     id: 42,
     size: "exampleSize",
@@ -41,7 +41,7 @@ const FIND_MANY_RESULT = [
   },
 ];
 const FIND_ONE_RESULT = {
-  condoFee: "exampleCondoFee",
+  condoFee: 42.424242424,
   createdAt: new Date(),
   id: 42,
   size: "exampleSize",

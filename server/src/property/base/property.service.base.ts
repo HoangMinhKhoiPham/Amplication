@@ -15,6 +15,7 @@ import {
   Prisma,
   Property, // @ts-ignore
   CondoUnit, // @ts-ignore
+  File, // @ts-ignore
   Locker, // @ts-ignore
   ParkingSpot,
 } from "@prisma/client";
@@ -54,27 +55,47 @@ export class PropertyServiceBase {
     return this.prisma.property.delete(args);
   }
 
-  async getCondoUnits(parentId: number): Promise<CondoUnit | null> {
+  async findCondoUnits(
+    parentId: number,
+    args: Prisma.CondoUnitFindManyArgs
+  ): Promise<CondoUnit[]> {
     return this.prisma.property
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .condoUnits();
+      .condoUnits(args);
   }
 
-  async getLockers(parentId: number): Promise<Locker | null> {
+  async findFiles(
+    parentId: number,
+    args: Prisma.FileFindManyArgs
+  ): Promise<File[]> {
     return this.prisma.property
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .Lockers();
+      .files(args);
   }
 
-  async getParkingSpots(parentId: number): Promise<ParkingSpot | null> {
+  async findLockers(
+    parentId: number,
+    args: Prisma.LockerFindManyArgs
+  ): Promise<Locker[]> {
     return this.prisma.property
-      .findUnique({
+      .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .ParkingSpots();
+      .Lockers(args);
+  }
+
+  async findParkingSpots(
+    parentId: number,
+    args: Prisma.ParkingSpotFindManyArgs
+  ): Promise<ParkingSpot[]> {
+    return this.prisma.property
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .ParkingSpots(args);
   }
 }

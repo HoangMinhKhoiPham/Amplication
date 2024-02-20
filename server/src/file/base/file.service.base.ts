@@ -14,7 +14,10 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   File, // @ts-ignore
-  Customer,
+  Company, // @ts-ignore
+  CondoUnit, // @ts-ignore
+  Property, // @ts-ignore
+  User,
 } from "@prisma/client";
 
 export class FileServiceBase {
@@ -52,11 +55,35 @@ export class FileServiceBase {
     return this.prisma.file.delete(args);
   }
 
-  async getUserId(parentId: string): Promise<Customer | null> {
+  async getCompany(parentId: number): Promise<Company | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
       })
-      .userId();
+      .company();
+  }
+
+  async getCondoUnit(parentId: number): Promise<CondoUnit | null> {
+    return this.prisma.file
+      .findUnique({
+        where: { id: parentId },
+      })
+      .condoUnit();
+  }
+
+  async getProperty(parentId: number): Promise<Property | null> {
+    return this.prisma.file
+      .findUnique({
+        where: { id: parentId },
+      })
+      .property();
+  }
+
+  async getUser(parentId: number): Promise<User | null> {
+    return this.prisma.file
+      .findUnique({
+        where: { id: parentId },
+      })
+      .user();
   }
 }

@@ -19,16 +19,22 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CondoUnitService } from "../condoUnit.service";
-import { Public } from "../../decorators/public.decorator";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CondoUnitCreateInput } from "./CondoUnitCreateInput";
 import { CondoUnit } from "./CondoUnit";
 import { CondoUnitFindManyArgs } from "./CondoUnitFindManyArgs";
 import { CondoUnitWhereUniqueInput } from "./CondoUnitWhereUniqueInput";
 import { CondoUnitUpdateInput } from "./CondoUnitUpdateInput";
+import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
+import { File } from "../../file/base/File";
+import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { ParkingSpotFindManyArgs } from "../../parkingSpot/base/ParkingSpotFindManyArgs";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { UserCondoFindManyArgs } from "../../userCondo/base/UserCondoFindManyArgs";
+import { UserCondo } from "../../userCondo/base/UserCondo";
+import { UserCondoWhereUniqueInput } from "../../userCondo/base/UserCondoWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -37,9 +43,14 @@ export class CondoUnitControllerBase {
     protected readonly service: CondoUnitService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CondoUnit })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "create",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -50,15 +61,21 @@ export class CondoUnitControllerBase {
       data: {
         ...data,
 
-        lockerId: data.lockerId
+        locker: data.locker
           ? {
-              connect: data.lockerId,
+              connect: data.locker,
             }
           : undefined,
 
-        propertyId: data.propertyId
+        propertyID: data.propertyID
           ? {
-              connect: data.propertyId,
+              connect: data.propertyID,
+            }
+          : undefined,
+
+        registrationKeys: data.registrationKeys
+          ? {
+              connect: data.registrationKeys,
             }
           : undefined,
       },
@@ -67,13 +84,19 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerId: {
+        locker: {
           select: {
             id: true,
           },
         },
 
-        propertyId: {
+        propertyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        registrationKeys: {
           select: {
             id: true,
           },
@@ -85,10 +108,15 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
   @swagger.ApiOkResponse({ type: [CondoUnit] })
   @ApiNestedQuery(CondoUnitFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "read",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -101,13 +129,19 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerId: {
+        locker: {
           select: {
             id: true,
           },
         },
 
-        propertyId: {
+        propertyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        registrationKeys: {
           select: {
             id: true,
           },
@@ -119,10 +153,15 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: CondoUnit })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "read",
+    possession: "own",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -136,13 +175,19 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerId: {
+        locker: {
           select: {
             id: true,
           },
         },
 
-        propertyId: {
+        propertyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        registrationKeys: {
           select: {
             id: true,
           },
@@ -160,10 +205,15 @@ export class CondoUnitControllerBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CondoUnit })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -177,15 +227,21 @@ export class CondoUnitControllerBase {
         data: {
           ...data,
 
-          lockerId: data.lockerId
+          locker: data.locker
             ? {
-                connect: data.lockerId,
+                connect: data.locker,
               }
             : undefined,
 
-          propertyId: data.propertyId
+          propertyID: data.propertyID
             ? {
-                connect: data.propertyId,
+                connect: data.propertyID,
+              }
+            : undefined,
+
+          registrationKeys: data.registrationKeys
+            ? {
+                connect: data.registrationKeys,
               }
             : undefined,
         },
@@ -194,13 +250,19 @@ export class CondoUnitControllerBase {
           createdAt: true,
           id: true,
 
-          lockerId: {
+          locker: {
             select: {
               id: true,
             },
           },
 
-          propertyId: {
+          propertyID: {
+            select: {
+              id: true,
+            },
+          },
+
+          registrationKeys: {
             select: {
               id: true,
             },
@@ -220,10 +282,14 @@ export class CondoUnitControllerBase {
     }
   }
 
-  @Public()
   @common.Delete("/:id")
   @swagger.ApiOkResponse({ type: CondoUnit })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "delete",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -238,13 +304,19 @@ export class CondoUnitControllerBase {
           createdAt: true,
           id: true,
 
-          lockerId: {
+          locker: {
             select: {
               id: true,
             },
           },
 
-          propertyId: {
+          propertyID: {
+            select: {
+              id: true,
+            },
+          },
+
+          registrationKeys: {
             select: {
               id: true,
             },
@@ -265,19 +337,142 @@ export class CondoUnitControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/parkingSpotId")
+  @common.Get("/:id/file")
+  @ApiNestedQuery(FileFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "File",
+    action: "read",
+    possession: "any",
+  })
+  async findFile(
+    @common.Req() request: Request,
+    @common.Param() params: CondoUnitWhereUniqueInput
+  ): Promise<File[]> {
+    const query = plainToClass(FileFindManyArgs, request.query);
+    const results = await this.service.findFile(params.id, {
+      ...query,
+      select: {
+        bucket: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        name: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async connectFile(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      file: {
+        connect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async updateFile(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      file: {
+        set: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectFile(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      file: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/parkingSpot")
   @ApiNestedQuery(ParkingSpotFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "ParkingSpot",
     action: "read",
     possession: "any",
   })
-  async findParkingSpotId(
+  async findParkingSpot(
     @common.Req() request: Request,
     @common.Param() params: CondoUnitWhereUniqueInput
   ): Promise<ParkingSpot[]> {
     const query = plainToClass(ParkingSpotFindManyArgs, request.query);
-    const results = await this.service.findParkingSpotId(params.id, {
+    const results = await this.service.findParkingSpot(params.id, {
       ...query,
       select: {
         condoUnit: {
@@ -306,14 +501,18 @@ export class CondoUnitControllerBase {
     return results;
   }
 
-  @Public()
-  @common.Post("/:id/parkingSpotId")
-  async connectParkingSpotId(
+  @common.Post("/:id/parkingSpot")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async connectParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotId: {
+      parkingSpot: {
         connect: body,
       },
     };
@@ -324,14 +523,18 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
-  @common.Patch("/:id/parkingSpotId")
-  async updateParkingSpotId(
+  @common.Patch("/:id/parkingSpot")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async updateParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotId: {
+      parkingSpot: {
         set: body,
       },
     };
@@ -342,14 +545,125 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
-  @common.Delete("/:id/parkingSpotId")
-  async disconnectParkingSpotId(
+  @common.Delete("/:id/parkingSpot")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotId: {
+      parkingSpot: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/userCondos")
+  @ApiNestedQuery(UserCondoFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "UserCondo",
+    action: "read",
+    possession: "any",
+  })
+  async findUserCondos(
+    @common.Req() request: Request,
+    @common.Param() params: CondoUnitWhereUniqueInput
+  ): Promise<UserCondo[]> {
+    const query = plainToClass(UserCondoFindManyArgs, request.query);
+    const results = await this.service.findUserCondos(params.id, {
+      ...query,
+      select: {
+        condo: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async connectUserCondos(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: UserCondoWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userCondos: {
+        connect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async updateUserCondos(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: UserCondoWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userCondos: {
+        set: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectUserCondos(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: UserCondoWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userCondos: {
         disconnect: body,
       },
     };

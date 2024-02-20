@@ -11,23 +11,50 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
+import { CompanyEmployeeListRelationFilter } from "../../companyEmployee/base/CompanyEmployeeListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
+import { IntFilter } from "../../util/IntFilter";
+import { StringFilter } from "../../util/StringFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 @InputType()
 class CompanyWhereInput {
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: () => CompanyEmployeeListRelationFilter,
   })
-  @Type(() => StringFilter)
+  @ValidateNested()
+  @Type(() => CompanyEmployeeListRelationFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => CompanyEmployeeListRelationFilter, {
     nullable: true,
   })
-  id?: StringFilter;
+  companyEmployees?: CompanyEmployeeListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => FileListRelationFilter)
+  @IsOptional()
+  @Field(() => FileListRelationFilter, {
+    nullable: true,
+  })
+  file?: FileListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntFilter,
+  })
+  @Type(() => IntFilter)
+  @IsOptional()
+  @Field(() => IntFilter, {
+    nullable: true,
+  })
+  id?: IntFilter;
 
   @ApiProperty({
     required: false,

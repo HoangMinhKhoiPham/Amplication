@@ -61,7 +61,7 @@ class CondoUnitOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  lockerIdId?: SortOrder;
+  lockerID?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -72,7 +72,18 @@ class CondoUnitOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  propertyIdId?: SortOrder;
+  propertyIDId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  registrationKeysId?: SortOrder;
 
   @ApiProperty({
     required: false,
