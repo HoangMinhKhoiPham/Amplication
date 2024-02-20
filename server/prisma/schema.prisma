@@ -59,8 +59,8 @@ model ParkingSpot {
   condoUnitId Int?
   createdAt   DateTime   @default(now())
   id          Int        @id @default(autoincrement())
-  propertyId  Property?  @relation(fields: [propertyId], references: [id])
-  propertyId  Int?
+  property    Property?  @relation(fields: [propertyID], references: [id])
+  propertyID  Int?
   updatedAt   DateTime   @updatedAt
 }
 
@@ -99,8 +99,8 @@ model File {
 }
 
 model RegistrationKey {
-  condoUnitId CondoUnit @relation(fields: [condoUnitId], references: [id])
-  condoUnitId Int       @unique
+  condoUnit   CondoUnit @relation(fields: [condoUnitID], references: [id])
+  condoUnitID Int       @unique
   createdAt   DateTime  @default(now())
   id          Int       @id @default(autoincrement())
   updatedAt   DateTime  @updatedAt

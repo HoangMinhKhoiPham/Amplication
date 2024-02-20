@@ -52,12 +52,12 @@ export class RegistrationKeyControllerBase {
       data: {
         ...data,
 
-        condoUnitId: {
-          connect: data.condoUnitId,
+        condoUnit: {
+          connect: data.condoUnit,
         },
       },
       select: {
-        condoUnitId: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -89,7 +89,7 @@ export class RegistrationKeyControllerBase {
     return this.service.registrationKeys({
       ...args,
       select: {
-        condoUnitId: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -120,7 +120,7 @@ export class RegistrationKeyControllerBase {
     const result = await this.service.registrationKey({
       where: params,
       select: {
-        condoUnitId: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -161,12 +161,12 @@ export class RegistrationKeyControllerBase {
         data: {
           ...data,
 
-          condoUnitId: {
-            connect: data.condoUnitId,
+          condoUnit: {
+            connect: data.condoUnit,
           },
         },
         select: {
-          condoUnitId: {
+          condoUnit: {
             select: {
               id: true,
             },
@@ -205,7 +205,7 @@ export class RegistrationKeyControllerBase {
       return await this.service.deleteRegistrationKey({
         where: params,
         select: {
-          condoUnitId: {
+          condoUnit: {
             select: {
               id: true,
             },

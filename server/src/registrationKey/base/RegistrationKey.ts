@@ -23,7 +23,7 @@ class RegistrationKey {
   })
   @ValidateNested()
   @Type(() => CondoUnit)
-  condoUnitId?: CondoUnit;
+  condoUnit?: CondoUnit;
 
   @ApiProperty({
     required: true,

@@ -24,7 +24,7 @@ class RegistrationKeyCreateInput {
   @ValidateNested()
   @Type(() => CondoUnitWhereUniqueInput)
   @Field(() => CondoUnitWhereUniqueInput)
-  condoUnitId!: CondoUnitWhereUniqueInput;
+  condoUnit!: CondoUnitWhereUniqueInput;
 
   @ApiProperty({
     required: true,

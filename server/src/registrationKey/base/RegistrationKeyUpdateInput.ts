@@ -27,7 +27,7 @@ class RegistrationKeyUpdateInput {
   @Field(() => CondoUnitWhereUniqueInput, {
     nullable: true,
   })
-  condoUnitId?: CondoUnitWhereUniqueInput;
+  condoUnit?: CondoUnitWhereUniqueInput;
 
   @ApiProperty({
     required: false,

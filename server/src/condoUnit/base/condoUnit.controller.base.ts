@@ -484,7 +484,7 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },

@@ -58,9 +58,9 @@ export class ParkingSpotControllerBase {
             }
           : undefined,
 
-        propertyId: data.propertyId
+        property: data.property
           ? {
-              connect: data.propertyId,
+              connect: data.property,
             }
           : undefined,
       },
@@ -74,7 +74,7 @@ export class ParkingSpotControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -111,7 +111,7 @@ export class ParkingSpotControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -149,7 +149,7 @@ export class ParkingSpotControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -194,9 +194,9 @@ export class ParkingSpotControllerBase {
               }
             : undefined,
 
-          propertyId: data.propertyId
+          property: data.property
             ? {
-                connect: data.propertyId,
+                connect: data.property,
               }
             : undefined,
         },
@@ -210,7 +210,7 @@ export class ParkingSpotControllerBase {
           createdAt: true,
           id: true,
 
-          propertyId: {
+          property: {
             select: {
               id: true,
             },
@@ -256,7 +256,7 @@ export class ParkingSpotControllerBase {
           createdAt: true,
           id: true,
 
-          propertyId: {
+          property: {
             select: {
               id: true,
             },
