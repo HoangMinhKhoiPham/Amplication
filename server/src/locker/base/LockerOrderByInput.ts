@@ -61,7 +61,7 @@ class LockerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  propertyIdId?: SortOrder;
+  propertyID?: SortOrder;
 
   @ApiProperty({
     required: false,

@@ -61,7 +61,7 @@ class ParkingSpotOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  propertyIdId?: SortOrder;
+  propertyId?: SortOrder;
 
   @ApiProperty({
     required: false,

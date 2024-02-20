@@ -12,10 +12,11 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested, IsInt } from "class-validator";
-import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
+import { CondoUnitUpdateManyWithoutPropertiesInput } from "./CondoUnitUpdateManyWithoutPropertiesInput";
 import { Type } from "class-transformer";
-import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
-import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { FileUpdateManyWithoutPropertiesInput } from "./FileUpdateManyWithoutPropertiesInput";
+import { LockerUpdateManyWithoutPropertiesInput } from "./LockerUpdateManyWithoutPropertiesInput";
+import { ParkingSpotUpdateManyWithoutPropertiesInput } from "./ParkingSpotUpdateManyWithoutPropertiesInput";
 
 @InputType()
 class PropertyUpdateInput {
@@ -32,15 +33,27 @@ class PropertyUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => CondoUnitWhereUniqueInput,
+    type: () => CondoUnitUpdateManyWithoutPropertiesInput,
   })
   @ValidateNested()
-  @Type(() => CondoUnitWhereUniqueInput)
+  @Type(() => CondoUnitUpdateManyWithoutPropertiesInput)
   @IsOptional()
-  @Field(() => CondoUnitWhereUniqueInput, {
+  @Field(() => CondoUnitUpdateManyWithoutPropertiesInput, {
     nullable: true,
   })
-  condoUnits?: CondoUnitWhereUniqueInput | null;
+  condoUnits?: CondoUnitUpdateManyWithoutPropertiesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileUpdateManyWithoutPropertiesInput,
+  })
+  @ValidateNested()
+  @Type(() => FileUpdateManyWithoutPropertiesInput)
+  @IsOptional()
+  @Field(() => FileUpdateManyWithoutPropertiesInput, {
+    nullable: true,
+  })
+  files?: FileUpdateManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: false,
@@ -55,15 +68,26 @@ class PropertyUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => LockerWhereUniqueInput,
+    type: () => LockerUpdateManyWithoutPropertiesInput,
   })
   @ValidateNested()
-  @Type(() => LockerWhereUniqueInput)
+  @Type(() => LockerUpdateManyWithoutPropertiesInput)
   @IsOptional()
-  @Field(() => LockerWhereUniqueInput, {
+  @Field(() => LockerUpdateManyWithoutPropertiesInput, {
     nullable: true,
   })
-  Lockers?: LockerWhereUniqueInput | null;
+  Lockers?: LockerUpdateManyWithoutPropertiesInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name?: string;
 
   @ApiProperty({
     required: false,
@@ -78,15 +102,15 @@ class PropertyUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => ParkingSpotWhereUniqueInput,
+    type: () => ParkingSpotUpdateManyWithoutPropertiesInput,
   })
   @ValidateNested()
-  @Type(() => ParkingSpotWhereUniqueInput)
+  @Type(() => ParkingSpotUpdateManyWithoutPropertiesInput)
   @IsOptional()
-  @Field(() => ParkingSpotWhereUniqueInput, {
+  @Field(() => ParkingSpotUpdateManyWithoutPropertiesInput, {
     nullable: true,
   })
-  ParkingSpots?: ParkingSpotWhereUniqueInput | null;
+  ParkingSpots?: ParkingSpotUpdateManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: false,

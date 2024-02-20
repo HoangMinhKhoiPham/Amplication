@@ -50,20 +50,58 @@ export class FileControllerBase {
       data: {
         ...data,
 
-        userId: data.userId
+        company: data.company
           ? {
-              connect: data.userId,
+              connect: data.company,
+            }
+          : undefined,
+
+        condoUnit: data.condoUnit
+          ? {
+              connect: data.condoUnit,
+            }
+          : undefined,
+
+        property: data.property
+          ? {
+              connect: data.property,
+            }
+          : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
             }
           : undefined,
       },
       select: {
         bucket: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -90,12 +128,32 @@ export class FileControllerBase {
       ...args,
       select: {
         bucket: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -123,12 +181,32 @@ export class FileControllerBase {
       where: params,
       select: {
         bucket: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -165,20 +243,58 @@ export class FileControllerBase {
         data: {
           ...data,
 
-          userId: data.userId
+          company: data.company
             ? {
-                connect: data.userId,
+                connect: data.company,
+              }
+            : undefined,
+
+          condoUnit: data.condoUnit
+            ? {
+                connect: data.condoUnit,
+              }
+            : undefined,
+
+          property: data.property
+            ? {
+                connect: data.property,
+              }
+            : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
               }
             : undefined,
         },
         select: {
           bucket: true,
+
+          company: {
+            select: {
+              id: true,
+            },
+          },
+
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
           name: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
 
-          userId: {
+          user: {
             select: {
               id: true,
             },
@@ -214,12 +330,32 @@ export class FileControllerBase {
         where: params,
         select: {
           bucket: true,
+
+          company: {
+            select: {
+              id: true,
+            },
+          },
+
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
           name: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
 
-          userId: {
+          user: {
             select: {
               id: true,
             },

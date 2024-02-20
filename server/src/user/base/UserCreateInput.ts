@@ -11,13 +11,49 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { CompanyEmployeeCreateNestedManyWithoutUsersInput } from "./CompanyEmployeeCreateNestedManyWithoutUsersInput";
+import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { FileCreateNestedManyWithoutUsersInput } from "./FileCreateNestedManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { UserCondoCreateNestedManyWithoutUsersInput } from "./UserCondoCreateNestedManyWithoutUsersInput";
 
 @InputType()
 class UserCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CompanyEmployeeCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployeeCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CompanyEmployeeCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  companyEmployees?: CompanyEmployeeCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  email!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => FileCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => FileCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  files?: FileCreateNestedManyWithoutUsersInput;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -50,10 +86,30 @@ class UserCreateInput {
 
   @ApiProperty({
     required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  phoneNumber!: string;
+
+  @ApiProperty({
+    required: true,
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCondoCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCondoCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => UserCondoCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  userCondos?: UserCondoCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

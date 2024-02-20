@@ -40,7 +40,7 @@ class LockerUpdateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  property?: PropertyWhereUniqueInput | null;
 }
 
 export { LockerUpdateInput as LockerUpdateInput };

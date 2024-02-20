@@ -20,6 +20,7 @@ import {
 } from "class-validator";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { Type } from "class-transformer";
+import { File } from "../../file/base/File";
 import { Locker } from "../../locker/base/Locker";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 
@@ -35,12 +36,12 @@ class Property {
 
   @ApiProperty({
     required: false,
-    type: () => CondoUnit,
+    type: () => [CondoUnit],
   })
   @ValidateNested()
   @Type(() => CondoUnit)
   @IsOptional()
-  condoUnits?: CondoUnit | null;
+  condoUnits?: Array<CondoUnit>;
 
   @ApiProperty({
     required: true,
@@ -49,6 +50,15 @@ class Property {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [File],
+  })
+  @ValidateNested()
+  @Type(() => File)
+  @IsOptional()
+  files?: Array<File>;
 
   @ApiProperty({
     required: true,
@@ -71,12 +81,20 @@ class Property {
 
   @ApiProperty({
     required: false,
-    type: () => Locker,
+    type: () => [Locker],
   })
   @ValidateNested()
   @Type(() => Locker)
   @IsOptional()
-  Lockers?: Locker | null;
+  Lockers?: Array<Locker>;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  name!: string;
 
   @ApiProperty({
     required: true,
@@ -88,12 +106,12 @@ class Property {
 
   @ApiProperty({
     required: false,
-    type: () => ParkingSpot,
+    type: () => [ParkingSpot],
   })
   @ValidateNested()
   @Type(() => ParkingSpot)
   @IsOptional()
-  ParkingSpots?: ParkingSpot | null;
+  ParkingSpots?: Array<ParkingSpot>;
 
   @ApiProperty({
     required: true,

@@ -14,9 +14,12 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   CondoUnit, // @ts-ignore
+  File, // @ts-ignore
   ParkingSpot, // @ts-ignore
+  UserCondo, // @ts-ignore
   Locker, // @ts-ignore
-  Property,
+  Property, // @ts-ignore
+  RegistrationKey,
 } from "@prisma/client";
 
 export class CondoUnitServiceBase {
@@ -54,7 +57,18 @@ export class CondoUnitServiceBase {
     return this.prisma.condoUnit.delete(args);
   }
 
-  async findParkingSpotId(
+  async findFile(
+    parentId: number,
+    args: Prisma.FileFindManyArgs
+  ): Promise<File[]> {
+    return this.prisma.condoUnit
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .file(args);
+  }
+
+  async findParkingSpot(
     parentId: number,
     args: Prisma.ParkingSpotFindManyArgs
   ): Promise<ParkingSpot[]> {
@@ -62,15 +76,26 @@ export class CondoUnitServiceBase {
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .parkingSpotId(args);
+      .parkingSpot(args);
   }
 
-  async getLockerId(parentId: number): Promise<Locker | null> {
+  async findUserCondos(
+    parentId: number,
+    args: Prisma.UserCondoFindManyArgs
+  ): Promise<UserCondo[]> {
+    return this.prisma.condoUnit
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .userCondos(args);
+  }
+
+  async getLocker(parentId: number): Promise<Locker | null> {
     return this.prisma.condoUnit
       .findUnique({
         where: { id: parentId },
       })
-      .lockerId();
+      .locker();
   }
 
   async getPropertyId(parentId: number): Promise<Property | null> {
@@ -78,6 +103,14 @@ export class CondoUnitServiceBase {
       .findUnique({
         where: { id: parentId },
       })
-      .propertyId();
+      .propertyID();
+  }
+
+  async getRegistrationKeys(parentId: number): Promise<RegistrationKey | null> {
+    return this.prisma.condoUnit
+      .findUnique({
+        where: { id: parentId },
+      })
+      .registrationKeys();
   }
 }

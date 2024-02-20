@@ -9,32 +9,37 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ObjectType, Field, Float } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsString,
+  IsNumber,
   IsOptional,
   IsDate,
-  IsInt,
   ValidateNested,
+  IsInt,
+  IsString,
 } from "class-validator";
+import { Decimal } from "decimal.js";
 import { Type } from "class-transformer";
+import { File } from "../../file/base/File";
 import { Locker } from "../../locker/base/Locker";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { Property } from "../../property/base/Property";
+import { RegistrationKey } from "../../registrationKey/base/RegistrationKey";
+import { UserCondo } from "../../userCondo/base/UserCondo";
 
 @ObjectType()
 class CondoUnit {
   @ApiProperty({
     required: false,
-    type: String,
+    type: Number,
   })
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Float, {
     nullable: true,
   })
-  condoFee!: string | null;
+  condoFee!: Decimal | null;
 
   @ApiProperty({
     required: true,
@@ -43,6 +48,15 @@ class CondoUnit {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [File],
+  })
+  @ValidateNested()
+  @Type(() => File)
+  @IsOptional()
+  file?: Array<File>;
 
   @ApiProperty({
     required: true,
@@ -59,7 +73,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => Locker)
   @IsOptional()
-  lockerId?: Locker | null;
+  locker?: Locker | null;
 
   @ApiProperty({
     required: false,
@@ -68,7 +82,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => ParkingSpot)
   @IsOptional()
-  parkingSpotId?: Array<ParkingSpot>;
+  parkingSpot?: Array<ParkingSpot>;
 
   @ApiProperty({
     required: false,
@@ -77,7 +91,16 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => Property)
   @IsOptional()
-  propertyId?: Property | null;
+  propertyID?: Property | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RegistrationKey,
+  })
+  @ValidateNested()
+  @Type(() => RegistrationKey)
+  @IsOptional()
+  registrationKeys?: RegistrationKey | null;
 
   @ApiProperty({
     required: true,
@@ -94,6 +117,15 @@ class CondoUnit {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [UserCondo],
+  })
+  @ValidateNested()
+  @Type(() => UserCondo)
+  @IsOptional()
+  userCondos?: Array<UserCondo>;
 }
 
 export { CondoUnit as CondoUnit };

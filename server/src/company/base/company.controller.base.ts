@@ -19,13 +19,20 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CompanyService } from "../company.service";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { Company } from "./Company";
 import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
 import { CompanyWhereUniqueInput } from "./CompanyWhereUniqueInput";
 import { CompanyUpdateInput } from "./CompanyUpdateInput";
+import { CompanyEmployeeFindManyArgs } from "../../companyEmployee/base/CompanyEmployeeFindManyArgs";
+import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
+import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
+import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
+import { File } from "../../file/base/File";
+import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -34,14 +41,9 @@ export class CompanyControllerBase {
     protected readonly service: CompanyService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Company })
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "create",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -185,5 +187,233 @@ export class CompanyControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/companyEmployees")
+  @ApiNestedQuery(CompanyEmployeeFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "CompanyEmployee",
+    action: "read",
+    possession: "any",
+  })
+  async findCompanyEmployees(
+    @common.Req() request: Request,
+    @common.Param() params: CompanyWhereUniqueInput
+  ): Promise<CompanyEmployee[]> {
+    const query = plainToClass(CompanyEmployeeFindManyArgs, request.query);
+    const results = await this.service.findCompanyEmployees(params.id, {
+      ...query,
+      select: {
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/companyEmployees")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async connectCompanyEmployees(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: CompanyEmployeeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      companyEmployees: {
+        connect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/companyEmployees")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async updateCompanyEmployees(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: CompanyEmployeeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      companyEmployees: {
+        set: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/companyEmployees")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectCompanyEmployees(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: CompanyEmployeeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      companyEmployees: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/file")
+  @ApiNestedQuery(FileFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "File",
+    action: "read",
+    possession: "any",
+  })
+  async findFile(
+    @common.Req() request: Request,
+    @common.Param() params: CompanyWhereUniqueInput
+  ): Promise<File[]> {
+    const query = plainToClass(FileFindManyArgs, request.query);
+    const results = await this.service.findFile(params.id, {
+      ...query,
+      select: {
+        bucket: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        name: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async connectFile(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      file: {
+        connect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async updateFile(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      file: {
+        set: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectFile(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      file: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

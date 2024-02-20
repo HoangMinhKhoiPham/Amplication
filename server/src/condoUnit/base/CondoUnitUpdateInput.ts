@@ -9,26 +9,47 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { InputType, Field } from "@nestjs/graphql";
+import { InputType, Field, Float } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
+import {
+  IsNumber,
+  IsOptional,
+  ValidateNested,
+  IsString,
+} from "class-validator";
+import { Decimal } from "decimal.js";
+import { FileUpdateManyWithoutCondoUnitsInput } from "./FileUpdateManyWithoutCondoUnitsInput";
 import { Type } from "class-transformer";
+import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
 import { ParkingSpotUpdateManyWithoutCondoUnitsInput } from "./ParkingSpotUpdateManyWithoutCondoUnitsInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
+import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
+import { UserCondoUpdateManyWithoutCondoUnitsInput } from "./UserCondoUpdateManyWithoutCondoUnitsInput";
 
 @InputType()
 class CondoUnitUpdateInput {
   @ApiProperty({
     required: false,
-    type: String,
+    type: Number,
   })
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Float, {
     nullable: true,
   })
-  condoFee?: string | null;
+  condoFee?: Decimal | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileUpdateManyWithoutCondoUnitsInput,
+  })
+  @ValidateNested()
+  @Type(() => FileUpdateManyWithoutCondoUnitsInput)
+  @IsOptional()
+  @Field(() => FileUpdateManyWithoutCondoUnitsInput, {
+    nullable: true,
+  })
+  file?: FileUpdateManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,
@@ -40,7 +61,7 @@ class CondoUnitUpdateInput {
   @Field(() => LockerWhereUniqueInput, {
     nullable: true,
   })
-  lockerId?: LockerWhereUniqueInput | null;
+  locker?: LockerWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -52,7 +73,7 @@ class CondoUnitUpdateInput {
   @Field(() => ParkingSpotUpdateManyWithoutCondoUnitsInput, {
     nullable: true,
   })
-  parkingSpotId?: ParkingSpotUpdateManyWithoutCondoUnitsInput;
+  parkingSpot?: ParkingSpotUpdateManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,
@@ -64,7 +85,19 @@ class CondoUnitUpdateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  propertyID?: PropertyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RegistrationKeyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => RegistrationKeyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => RegistrationKeyWhereUniqueInput, {
+    nullable: true,
+  })
+  registrationKeys?: RegistrationKeyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -76,6 +109,18 @@ class CondoUnitUpdateInput {
     nullable: true,
   })
   size?: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCondoUpdateManyWithoutCondoUnitsInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCondoUpdateManyWithoutCondoUnitsInput)
+  @IsOptional()
+  @Field(() => UserCondoUpdateManyWithoutCondoUnitsInput, {
+    nullable: true,
+  })
+  userCondos?: UserCondoUpdateManyWithoutCondoUnitsInput;
 }
 
 export { CondoUnitUpdateInput as CondoUnitUpdateInput };
