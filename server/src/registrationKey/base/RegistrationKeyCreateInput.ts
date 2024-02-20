@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
-import { ValidateNested } from "class-validator";
+import { ValidateNested, IsString } from "class-validator";
 import { Type } from "class-transformer";
 
 @InputType()
@@ -25,6 +25,14 @@ class RegistrationKeyCreateInput {
   @Type(() => CondoUnitWhereUniqueInput)
   @Field(() => CondoUnitWhereUniqueInput)
   condoUnitId!: CondoUnitWhereUniqueInput;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  value!: string;
 }
 
 export { RegistrationKeyCreateInput as RegistrationKeyCreateInput };

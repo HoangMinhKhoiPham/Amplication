@@ -15,6 +15,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
+import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
@@ -42,6 +43,18 @@ class FileWhereInput {
     nullable: true,
   })
   companyID?: CompanyWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => CondoUnitWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CondoUnitWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CondoUnitWhereUniqueInput, {
+    nullable: true,
+  })
+  condoUnitID?: CondoUnitWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -15,14 +15,16 @@ import {
   IsString,
   IsOptional,
   IsDate,
-  IsInt,
   ValidateNested,
+  IsInt,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { File } from "../../file/base/File";
 import { Locker } from "../../locker/base/Locker";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { Property } from "../../property/base/Property";
 import { RegistrationKey } from "../../registrationKey/base/RegistrationKey";
+import { UserCondo } from "../../userCondo/base/UserCondo";
 
 @ObjectType()
 class CondoUnit {
@@ -46,6 +48,15 @@ class CondoUnit {
   createdAt!: Date;
 
   @ApiProperty({
+    required: false,
+    type: () => [File],
+  })
+  @ValidateNested()
+  @Type(() => File)
+  @IsOptional()
+  files?: Array<File>;
+
+  @ApiProperty({
     required: true,
     type: Number,
   })
@@ -60,7 +71,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => Locker)
   @IsOptional()
-  lockerId?: Locker | null;
+  lockerID?: Locker | null;
 
   @ApiProperty({
     required: false,
@@ -69,7 +80,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => ParkingSpot)
   @IsOptional()
-  parkingSpotId?: Array<ParkingSpot>;
+  parkingSpotID?: Array<ParkingSpot>;
 
   @ApiProperty({
     required: false,
@@ -78,7 +89,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => Property)
   @IsOptional()
-  propertyId?: Property | null;
+  propertyID?: Property | null;
 
   @ApiProperty({
     required: false,
@@ -104,6 +115,15 @@ class CondoUnit {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [UserCondo],
+  })
+  @ValidateNested()
+  @Type(() => UserCondo)
+  @IsOptional()
+  userCondos?: Array<UserCondo>;
 }
 
 export { CondoUnit as CondoUnit };

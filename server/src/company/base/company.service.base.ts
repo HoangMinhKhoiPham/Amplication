@@ -14,6 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Company, // @ts-ignore
+  CompanyEmployee, // @ts-ignore
   File,
 } from "@prisma/client";
 
@@ -52,8 +53,19 @@ export class CompanyServiceBase {
     return this.prisma.company.delete(args);
   }
 
+  async findCompanyEmployees(
+    parentId: number,
+    args: Prisma.CompanyEmployeeFindManyArgs
+  ): Promise<CompanyEmployee[]> {
+    return this.prisma.company
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .companyEmployees(args);
+  }
+
   async findFiles(
-    parentId: string,
+    parentId: number,
     args: Prisma.FileFindManyArgs
   ): Promise<File[]> {
     return this.prisma.company

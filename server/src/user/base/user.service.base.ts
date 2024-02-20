@@ -14,7 +14,9 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   User, // @ts-ignore
-  File,
+  CompanyEmployee, // @ts-ignore
+  File, // @ts-ignore
+  UserCondo,
 } from "@prisma/client";
 
 import { PasswordService } from "../../auth/password.service";
@@ -78,8 +80,19 @@ export class UserServiceBase {
     return this.prisma.user.delete(args);
   }
 
+  async findCompanyEmployees(
+    parentId: number,
+    args: Prisma.CompanyEmployeeFindManyArgs
+  ): Promise<CompanyEmployee[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .companyEmployees(args);
+  }
+
   async findFiles(
-    parentId: string,
+    parentId: number,
     args: Prisma.FileFindManyArgs
   ): Promise<File[]> {
     return this.prisma.user
@@ -87,5 +100,16 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .files(args);
+  }
+
+  async findUserCondos(
+    parentId: number,
+    args: Prisma.UserCondoFindManyArgs
+  ): Promise<UserCondo[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .userCondos(args);
   }
 }

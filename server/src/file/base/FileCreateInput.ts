@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, ValidateNested, IsOptional } from "class-validator";
 import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { Type } from "class-transformer";
+import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
@@ -38,6 +39,18 @@ class FileCreateInput {
     nullable: true,
   })
   companyID?: CompanyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CondoUnitWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CondoUnitWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CondoUnitWhereUniqueInput, {
+    nullable: true,
+  })
+  condoUnitID?: CondoUnitWhereUniqueInput | null;
 
   @ApiProperty({
     required: true,

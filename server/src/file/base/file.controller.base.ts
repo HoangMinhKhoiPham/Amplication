@@ -56,6 +56,12 @@ export class FileControllerBase {
             }
           : undefined,
 
+        condoUnitID: data.condoUnitID
+          ? {
+              connect: data.condoUnitID,
+            }
+          : undefined,
+
         propertyId: data.propertyId
           ? {
               connect: data.propertyId,
@@ -72,6 +78,12 @@ export class FileControllerBase {
         bucket: true,
 
         companyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnitID: {
           select: {
             id: true,
           },
@@ -123,6 +135,12 @@ export class FileControllerBase {
           },
         },
 
+        condoUnitID: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
@@ -165,6 +183,12 @@ export class FileControllerBase {
         bucket: true,
 
         companyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnitID: {
           select: {
             id: true,
           },
@@ -225,6 +249,12 @@ export class FileControllerBase {
               }
             : undefined,
 
+          condoUnitID: data.condoUnitID
+            ? {
+                connect: data.condoUnitID,
+              }
+            : undefined,
+
           propertyId: data.propertyId
             ? {
                 connect: data.propertyId,
@@ -241,6 +271,12 @@ export class FileControllerBase {
           bucket: true,
 
           companyID: {
+            select: {
+              id: true,
+            },
+          },
+
+          condoUnitID: {
             select: {
               id: true,
             },
@@ -296,6 +332,12 @@ export class FileControllerBase {
           bucket: true,
 
           companyID: {
+            select: {
+              id: true,
+            },
+          },
+
+          condoUnitID: {
             select: {
               id: true,
             },

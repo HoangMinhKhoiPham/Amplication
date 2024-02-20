@@ -12,11 +12,11 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, ValidateNested, IsOptional, IsInt } from "class-validator";
-import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
+import { CondoUnitCreateNestedManyWithoutPropertiesInput } from "./CondoUnitCreateNestedManyWithoutPropertiesInput";
 import { Type } from "class-transformer";
 import { FileCreateNestedManyWithoutPropertiesInput } from "./FileCreateNestedManyWithoutPropertiesInput";
-import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
-import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { LockerCreateNestedManyWithoutPropertiesInput } from "./LockerCreateNestedManyWithoutPropertiesInput";
+import { ParkingSpotCreateNestedManyWithoutPropertiesInput } from "./ParkingSpotCreateNestedManyWithoutPropertiesInput";
 
 @InputType()
 class PropertyCreateInput {
@@ -30,15 +30,15 @@ class PropertyCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => CondoUnitWhereUniqueInput,
+    type: () => CondoUnitCreateNestedManyWithoutPropertiesInput,
   })
   @ValidateNested()
-  @Type(() => CondoUnitWhereUniqueInput)
+  @Type(() => CondoUnitCreateNestedManyWithoutPropertiesInput)
   @IsOptional()
-  @Field(() => CondoUnitWhereUniqueInput, {
+  @Field(() => CondoUnitCreateNestedManyWithoutPropertiesInput, {
     nullable: true,
   })
-  condoUnits?: CondoUnitWhereUniqueInput | null;
+  condoUnits?: CondoUnitCreateNestedManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: false,
@@ -65,15 +65,15 @@ class PropertyCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => LockerWhereUniqueInput,
+    type: () => LockerCreateNestedManyWithoutPropertiesInput,
   })
   @ValidateNested()
-  @Type(() => LockerWhereUniqueInput)
+  @Type(() => LockerCreateNestedManyWithoutPropertiesInput)
   @IsOptional()
-  @Field(() => LockerWhereUniqueInput, {
+  @Field(() => LockerCreateNestedManyWithoutPropertiesInput, {
     nullable: true,
   })
-  Lockers?: LockerWhereUniqueInput | null;
+  Lockers?: LockerCreateNestedManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: true,
@@ -93,15 +93,15 @@ class PropertyCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => ParkingSpotWhereUniqueInput,
+    type: () => ParkingSpotCreateNestedManyWithoutPropertiesInput,
   })
   @ValidateNested()
-  @Type(() => ParkingSpotWhereUniqueInput)
+  @Type(() => ParkingSpotCreateNestedManyWithoutPropertiesInput)
   @IsOptional()
-  @Field(() => ParkingSpotWhereUniqueInput, {
+  @Field(() => ParkingSpotCreateNestedManyWithoutPropertiesInput, {
     nullable: true,
   })
-  ParkingSpots?: ParkingSpotWhereUniqueInput | null;
+  ParkingSpots?: ParkingSpotCreateNestedManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: true,

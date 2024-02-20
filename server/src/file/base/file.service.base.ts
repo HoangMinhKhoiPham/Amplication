@@ -15,6 +15,7 @@ import {
   Prisma,
   File, // @ts-ignore
   Company, // @ts-ignore
+  CondoUnit, // @ts-ignore
   Property, // @ts-ignore
   User,
 } from "@prisma/client";
@@ -60,6 +61,14 @@ export class FileServiceBase {
         where: { id: parentId },
       })
       .companyID();
+  }
+
+  async getCondoUnitId(parentId: string): Promise<CondoUnit | null> {
+    return this.prisma.file
+      .findUnique({
+        where: { id: parentId },
+      })
+      .condoUnitID();
   }
 
   async getPropertyId(parentId: string): Promise<Property | null> {

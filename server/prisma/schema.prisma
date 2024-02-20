@@ -8,15 +8,19 @@ generator client {
 }
 
 model User {
-  createdAt DateTime @default(now())
-  files     File[]
-  firstName String?
-  id        String   @id @default(cuid())
-  lastName  String?
-  password  String
-  roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  companyEmployees CompanyEmployee[]
+  createdAt        DateTime          @default(now())
+  email            String            @unique
+  files            File[]
+  firstName        String?
+  id               Int               @id @default(autoincrement())
+  lastName         String?
+  password         String
+  phoneNumber      String            @unique
+  roles            Json
+  updatedAt        DateTime          @updatedAt
+  userCondos       UserCondo[]
+  username         String            @unique
 }
 
 model Customer {
@@ -32,30 +36,32 @@ model Customer {
 model CondoUnit {
   condoFee         String?
   createdAt        DateTime         @default(now())
+  files            File[]
   id               Int              @id @default(autoincrement())
-  lockerId         Locker?          @relation(fields: [lockerIdId], references: [id])
-  lockerIdId       String?          @unique
-  parkingSpotId    ParkingSpot[]
-  propertyId       Property?        @relation(fields: [propertyIdId], references: [id])
-  propertyIdId     Int?             @unique
+  lockerID         Locker?          @relation(fields: [lockerIDId], references: [id])
+  lockerIDId       String?          @unique
+  parkingSpotID    ParkingSpot[]
+  propertyID       Property?        @relation(fields: [propertyIDId], references: [id])
+  propertyIDId     Int?
   registrationKeys RegistrationKey?
   size             String
   updatedAt        DateTime         @updatedAt
+  userCondos       UserCondo[]
 }
 
 model Property {
   address      String
-  condoUnits   CondoUnit?
-  createdAt    DateTime     @default(now())
+  condoUnits   CondoUnit[]
+  createdAt    DateTime      @default(now())
   files        File[]
-  id           Int          @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
   lockerCount  Int?
-  Lockers      Locker?
+  Lockers      Locker[]
   name         String
   parkingCount Int
-  ParkingSpots ParkingSpot?
+  ParkingSpots ParkingSpot[]
   unitCount    Int
-  updatedAt    DateTime     @updatedAt
+  updatedAt    DateTime      @updatedAt
 }
 
 model ParkingSpot {
@@ -64,7 +70,7 @@ model ParkingSpot {
   createdAt   DateTime   @default(now())
   id          Int        @id @default(autoincrement())
   propertyId  Property?  @relation(fields: [propertyId], references: [id])
-  propertyId  Int?       @unique
+  propertyId  Int?
   updatedAt   DateTime   @updatedAt
 }
 
@@ -73,36 +79,33 @@ model Locker {
   createdAt    DateTime   @default(now())
   id           String     @id @default(cuid())
   propertyId   Property?  @relation(fields: [propertyIdId], references: [id])
-  propertyIdId Int?       @unique
+  propertyIdId Int?
   updatedAt    DateTime   @updatedAt
 }
 
 model Company {
-  createdAt DateTime  @default(now())
-  files     File[]
-  id        String    @id @default(cuid())
-  name      String
-  updatedAt DateTime? @updatedAt
+  companyEmployees CompanyEmployee[]
+  createdAt        DateTime          @default(now())
+  files            File[]
+  id               Int               @id @default(autoincrement())
+  name             String
+  updatedAt        DateTime?         @updatedAt
 }
 
 model File {
   bucket      String
-  companyID   Company?  @relation(fields: [companyIDId], references: [id])
-  companyIDId String?
-  createdAt   DateTime  @default(now())
-  id          String    @id @default(cuid())
+  companyID   Company?   @relation(fields: [companyIDId], references: [id])
+  companyIDId Int?
+  condoUnitID CondoUnit? @relation(fields: [condoUnitID], references: [id])
+  condoUnitID Int?
+  createdAt   DateTime   @default(now())
+  id          String     @id @default(cuid())
   name        String
-  propertyId  Property? @relation(fields: [propertyID], references: [id])
+  propertyId  Property?  @relation(fields: [propertyID], references: [id])
   propertyID  Int?
-  updatedAt   DateTime  @updatedAt
-  userId      User?     @relation(fields: [userIdId], references: [id])
-  userIdId    String?
-}
-
-model Test {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+  updatedAt   DateTime   @updatedAt
+  userId      User?      @relation(fields: [userIdId], references: [id])
+  userIdId    Int?
 }
 
 model RegistrationKey {
@@ -111,9 +114,28 @@ model RegistrationKey {
   createdAt   DateTime  @default(now())
   id          String    @id @default(cuid())
   updatedAt   DateTime  @updatedAt
+  value       String
 }
 
 model Role {
   id   String  @id @default(cuid())
   name String?
+}
+
+model CompanyEmployee {
+  companyId   Company? @relation(fields: [companyIdId], references: [id])
+  companyIdId Int?
+  id          String   @id @default(cuid())
+  userId      User?    @relation(fields: [userIdId], references: [id])
+  userIdId    Int?
+}
+
+model UserCondo {
+  condoID   CondoUnit? @relation(fields: [condoID], references: [id])
+  condoID   Int?
+  createdAt DateTime   @default(now())
+  id        Int        @id @default(autoincrement())
+  updatedAt DateTime   @updatedAt
+  userID    User?      @relation(fields: [userID], references: [id])
+  userID    Int?
 }

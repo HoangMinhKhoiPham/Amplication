@@ -26,9 +26,15 @@ import { CondoUnit } from "./CondoUnit";
 import { CondoUnitFindManyArgs } from "./CondoUnitFindManyArgs";
 import { CondoUnitWhereUniqueInput } from "./CondoUnitWhereUniqueInput";
 import { CondoUnitUpdateInput } from "./CondoUnitUpdateInput";
+import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
+import { File } from "../../file/base/File";
+import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { ParkingSpotFindManyArgs } from "../../parkingSpot/base/ParkingSpotFindManyArgs";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { UserCondoFindManyArgs } from "../../userCondo/base/UserCondoFindManyArgs";
+import { UserCondo } from "../../userCondo/base/UserCondo";
+import { UserCondoWhereUniqueInput } from "../../userCondo/base/UserCondoWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -50,15 +56,15 @@ export class CondoUnitControllerBase {
       data: {
         ...data,
 
-        lockerId: data.lockerId
+        lockerID: data.lockerID
           ? {
-              connect: data.lockerId,
+              connect: data.lockerID,
             }
           : undefined,
 
-        propertyId: data.propertyId
+        propertyID: data.propertyID
           ? {
-              connect: data.propertyId,
+              connect: data.propertyID,
             }
           : undefined,
 
@@ -73,13 +79,13 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerId: {
+        lockerID: {
           select: {
             id: true,
           },
         },
 
-        propertyId: {
+        propertyID: {
           select: {
             id: true,
           },
@@ -113,13 +119,13 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerId: {
+        lockerID: {
           select: {
             id: true,
           },
         },
 
-        propertyId: {
+        propertyID: {
           select: {
             id: true,
           },
@@ -154,13 +160,13 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerId: {
+        lockerID: {
           select: {
             id: true,
           },
         },
 
-        propertyId: {
+        propertyID: {
           select: {
             id: true,
           },
@@ -201,15 +207,15 @@ export class CondoUnitControllerBase {
         data: {
           ...data,
 
-          lockerId: data.lockerId
+          lockerID: data.lockerID
             ? {
-                connect: data.lockerId,
+                connect: data.lockerID,
               }
             : undefined,
 
-          propertyId: data.propertyId
+          propertyID: data.propertyID
             ? {
-                connect: data.propertyId,
+                connect: data.propertyID,
               }
             : undefined,
 
@@ -224,13 +230,13 @@ export class CondoUnitControllerBase {
           createdAt: true,
           id: true,
 
-          lockerId: {
+          lockerID: {
             select: {
               id: true,
             },
           },
 
-          propertyId: {
+          propertyID: {
             select: {
               id: true,
             },
@@ -274,13 +280,13 @@ export class CondoUnitControllerBase {
           createdAt: true,
           id: true,
 
-          lockerId: {
+          lockerID: {
             select: {
               id: true,
             },
           },
 
-          propertyId: {
+          propertyID: {
             select: {
               id: true,
             },
@@ -307,7 +313,118 @@ export class CondoUnitControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/parkingSpotId")
+  @common.Get("/:id/files")
+  @ApiNestedQuery(FileFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "File",
+    action: "read",
+    possession: "any",
+  })
+  async findFiles(
+    @common.Req() request: Request,
+    @common.Param() params: CondoUnitWhereUniqueInput
+  ): Promise<File[]> {
+    const query = plainToClass(FileFindManyArgs, request.query);
+    const results = await this.service.findFiles(params.id, {
+      ...query,
+      select: {
+        bucket: true,
+
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnitID: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        name: true,
+
+        propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+
+        userId: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @Public()
+  @common.Post("/:id/files")
+  async connectFiles(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      files: {
+        connect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Patch("/:id/files")
+  async updateFiles(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      files: {
+        set: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Delete("/:id/files")
+  async disconnectFiles(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      files: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/parkingSpotID")
   @ApiNestedQuery(ParkingSpotFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "ParkingSpot",
@@ -349,13 +466,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Post("/:id/parkingSpotId")
+  @common.Post("/:id/parkingSpotID")
   async connectParkingSpotId(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotId: {
+      parkingSpotID: {
         connect: body,
       },
     };
@@ -367,13 +484,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Patch("/:id/parkingSpotId")
+  @common.Patch("/:id/parkingSpotID")
   async updateParkingSpotId(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotId: {
+      parkingSpotID: {
         set: body,
       },
     };
@@ -385,13 +502,108 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Delete("/:id/parkingSpotId")
+  @common.Delete("/:id/parkingSpotID")
   async disconnectParkingSpotId(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotId: {
+      parkingSpotID: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/userCondos")
+  @ApiNestedQuery(UserCondoFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "UserCondo",
+    action: "read",
+    possession: "any",
+  })
+  async findUserCondos(
+    @common.Req() request: Request,
+    @common.Param() params: CondoUnitWhereUniqueInput
+  ): Promise<UserCondo[]> {
+    const query = plainToClass(UserCondoFindManyArgs, request.query);
+    const results = await this.service.findUserCondos(params.id, {
+      ...query,
+      select: {
+        condoID: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        updatedAt: true,
+
+        userID: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @Public()
+  @common.Post("/:id/userCondos")
+  async connectUserCondos(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: UserCondoWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userCondos: {
+        connect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Patch("/:id/userCondos")
+  async updateUserCondos(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: UserCondoWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userCondos: {
+        set: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Delete("/:id/userCondos")
+  async disconnectUserCondos(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: UserCondoWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userCondos: {
         disconnect: body,
       },
     };

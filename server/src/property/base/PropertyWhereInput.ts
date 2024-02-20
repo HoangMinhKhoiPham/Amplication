@@ -14,12 +14,12 @@ import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
-import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
+import { CondoUnitListRelationFilter } from "../../condoUnit/base/CondoUnitListRelationFilter";
 import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
-import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
-import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { LockerListRelationFilter } from "../../locker/base/LockerListRelationFilter";
+import { ParkingSpotListRelationFilter } from "../../parkingSpot/base/ParkingSpotListRelationFilter";
 
 @InputType()
 class PropertyWhereInput {
@@ -36,15 +36,15 @@ class PropertyWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => CondoUnitWhereUniqueInput,
+    type: () => CondoUnitListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => CondoUnitWhereUniqueInput)
+  @Type(() => CondoUnitListRelationFilter)
   @IsOptional()
-  @Field(() => CondoUnitWhereUniqueInput, {
+  @Field(() => CondoUnitListRelationFilter, {
     nullable: true,
   })
-  condoUnits?: CondoUnitWhereUniqueInput;
+  condoUnits?: CondoUnitListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -82,15 +82,15 @@ class PropertyWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => LockerWhereUniqueInput,
+    type: () => LockerListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => LockerWhereUniqueInput)
+  @Type(() => LockerListRelationFilter)
   @IsOptional()
-  @Field(() => LockerWhereUniqueInput, {
+  @Field(() => LockerListRelationFilter, {
     nullable: true,
   })
-  Lockers?: LockerWhereUniqueInput;
+  Lockers?: LockerListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -116,15 +116,15 @@ class PropertyWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => ParkingSpotWhereUniqueInput,
+    type: () => ParkingSpotListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => ParkingSpotWhereUniqueInput)
+  @Type(() => ParkingSpotListRelationFilter)
   @IsOptional()
-  @Field(() => ParkingSpotWhereUniqueInput, {
+  @Field(() => ParkingSpotListRelationFilter, {
     nullable: true,
   })
-  ParkingSpots?: ParkingSpotWhereUniqueInput;
+  ParkingSpots?: ParkingSpotListRelationFilter;
 
   @ApiProperty({
     required: false,

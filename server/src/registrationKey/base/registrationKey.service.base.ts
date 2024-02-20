@@ -17,8 +17,14 @@ import {
   CondoUnit,
 } from "@prisma/client";
 
+import { PasswordService } from "../../auth/password.service";
+import { transformStringFieldUpdateInput } from "../../prisma.util";
+
 export class RegistrationKeyServiceBase {
-  constructor(protected readonly prisma: PrismaService) {}
+  constructor(
+    protected readonly prisma: PrismaService,
+    protected readonly passwordService: PasswordService
+  ) {}
 
   async count<T extends Prisma.RegistrationKeyCountArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyCountArgs>
@@ -39,12 +45,31 @@ export class RegistrationKeyServiceBase {
   async createRegistrationKey<T extends Prisma.RegistrationKeyCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyCreateArgs>
   ): Promise<RegistrationKey> {
-    return this.prisma.registrationKey.create<T>(args);
+    return this.prisma.registrationKey.create<T>({
+      ...args,
+
+      data: {
+        ...args.data,
+        value: await this.passwordService.hash(args.data.value),
+      },
+    });
   }
   async updateRegistrationKey<T extends Prisma.RegistrationKeyUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyUpdateArgs>
   ): Promise<RegistrationKey> {
-    return this.prisma.registrationKey.update<T>(args);
+    return this.prisma.registrationKey.update<T>({
+      ...args,
+
+      data: {
+        ...args.data,
+
+        value:
+          args.data.value &&
+          (await transformStringFieldUpdateInput(args.data.value, (password) =>
+            this.passwordService.hash(password)
+          )),
+      },
+    });
   }
   async deleteRegistrationKey<T extends Prisma.RegistrationKeyDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyDeleteArgs>

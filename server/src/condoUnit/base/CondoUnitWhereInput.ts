@@ -14,12 +14,14 @@ import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
+import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
 import { ParkingSpotListRelationFilter } from "../../parkingSpot/base/ParkingSpotListRelationFilter";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListRelationFilter";
 
 @InputType()
 class CondoUnitWhereInput {
@@ -33,6 +35,18 @@ class CondoUnitWhereInput {
     nullable: true,
   })
   condoFee?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => FileListRelationFilter)
+  @IsOptional()
+  @Field(() => FileListRelationFilter, {
+    nullable: true,
+  })
+  files?: FileListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -55,7 +69,7 @@ class CondoUnitWhereInput {
   @Field(() => LockerWhereUniqueInput, {
     nullable: true,
   })
-  lockerId?: LockerWhereUniqueInput;
+  lockerID?: LockerWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -67,7 +81,7 @@ class CondoUnitWhereInput {
   @Field(() => ParkingSpotListRelationFilter, {
     nullable: true,
   })
-  parkingSpotId?: ParkingSpotListRelationFilter;
+  parkingSpotID?: ParkingSpotListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -79,7 +93,7 @@ class CondoUnitWhereInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput;
+  propertyID?: PropertyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -103,6 +117,18 @@ class CondoUnitWhereInput {
     nullable: true,
   })
   size?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCondoListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => UserCondoListRelationFilter)
+  @IsOptional()
+  @Field(() => UserCondoListRelationFilter, {
+    nullable: true,
+  })
+  userCondos?: UserCondoListRelationFilter;
 }
 
 export { CondoUnitWhereInput as CondoUnitWhereInput };

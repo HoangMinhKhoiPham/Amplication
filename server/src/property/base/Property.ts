@@ -36,12 +36,12 @@ class Property {
 
   @ApiProperty({
     required: false,
-    type: () => CondoUnit,
+    type: () => [CondoUnit],
   })
   @ValidateNested()
   @Type(() => CondoUnit)
   @IsOptional()
-  condoUnits?: CondoUnit | null;
+  condoUnits?: Array<CondoUnit>;
 
   @ApiProperty({
     required: true,
@@ -81,12 +81,12 @@ class Property {
 
   @ApiProperty({
     required: false,
-    type: () => Locker,
+    type: () => [Locker],
   })
   @ValidateNested()
   @Type(() => Locker)
   @IsOptional()
-  Lockers?: Locker | null;
+  Lockers?: Array<Locker>;
 
   @ApiProperty({
     required: true,
@@ -106,12 +106,12 @@ class Property {
 
   @ApiProperty({
     required: false,
-    type: () => ParkingSpot,
+    type: () => [ParkingSpot],
   })
   @ValidateNested()
   @Type(() => ParkingSpot)
   @IsOptional()
-  ParkingSpots?: ParkingSpot | null;
+  ParkingSpots?: Array<ParkingSpot>;
 
   @ApiProperty({
     required: true,

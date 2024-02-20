@@ -12,11 +12,13 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
+import { FileCreateNestedManyWithoutCondoUnitsInput } from "./FileCreateNestedManyWithoutCondoUnitsInput";
 import { Type } from "class-transformer";
+import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
 import { ParkingSpotCreateNestedManyWithoutCondoUnitsInput } from "./ParkingSpotCreateNestedManyWithoutCondoUnitsInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
+import { UserCondoCreateNestedManyWithoutCondoUnitsInput } from "./UserCondoCreateNestedManyWithoutCondoUnitsInput";
 
 @InputType()
 class CondoUnitCreateInput {
@@ -33,6 +35,18 @@ class CondoUnitCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => FileCreateNestedManyWithoutCondoUnitsInput,
+  })
+  @ValidateNested()
+  @Type(() => FileCreateNestedManyWithoutCondoUnitsInput)
+  @IsOptional()
+  @Field(() => FileCreateNestedManyWithoutCondoUnitsInput, {
+    nullable: true,
+  })
+  files?: FileCreateNestedManyWithoutCondoUnitsInput;
+
+  @ApiProperty({
+    required: false,
     type: () => LockerWhereUniqueInput,
   })
   @ValidateNested()
@@ -41,7 +55,7 @@ class CondoUnitCreateInput {
   @Field(() => LockerWhereUniqueInput, {
     nullable: true,
   })
-  lockerId?: LockerWhereUniqueInput | null;
+  lockerID?: LockerWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -53,7 +67,7 @@ class CondoUnitCreateInput {
   @Field(() => ParkingSpotCreateNestedManyWithoutCondoUnitsInput, {
     nullable: true,
   })
-  parkingSpotId?: ParkingSpotCreateNestedManyWithoutCondoUnitsInput;
+  parkingSpotID?: ParkingSpotCreateNestedManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,
@@ -65,7 +79,7 @@ class CondoUnitCreateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  propertyID?: PropertyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -86,6 +100,18 @@ class CondoUnitCreateInput {
   @IsString()
   @Field(() => String)
   size!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCondoCreateNestedManyWithoutCondoUnitsInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCondoCreateNestedManyWithoutCondoUnitsInput)
+  @IsOptional()
+  @Field(() => UserCondoCreateNestedManyWithoutCondoUnitsInput, {
+    nullable: true,
+  })
+  userCondos?: UserCondoCreateNestedManyWithoutCondoUnitsInput;
 }
 
 export { CondoUnitCreateInput as CondoUnitCreateInput };

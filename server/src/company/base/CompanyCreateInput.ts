@@ -11,12 +11,25 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { FileCreateNestedManyWithoutCompaniesInput } from "./FileCreateNestedManyWithoutCompaniesInput";
+import { CompanyEmployeeCreateNestedManyWithoutCompaniesInput } from "./CompanyEmployeeCreateNestedManyWithoutCompaniesInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { FileCreateNestedManyWithoutCompaniesInput } from "./FileCreateNestedManyWithoutCompaniesInput";
 
 @InputType()
 class CompanyCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CompanyEmployeeCreateNestedManyWithoutCompaniesInput,
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployeeCreateNestedManyWithoutCompaniesInput)
+  @IsOptional()
+  @Field(() => CompanyEmployeeCreateNestedManyWithoutCompaniesInput, {
+    nullable: true,
+  })
+  companyEmployees?: CompanyEmployeeCreateNestedManyWithoutCompaniesInput;
+
   @ApiProperty({
     required: false,
     type: () => FileCreateNestedManyWithoutCompaniesInput,

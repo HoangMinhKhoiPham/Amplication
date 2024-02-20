@@ -11,15 +11,32 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, ValidateNested, IsOptional, IsString } from "class-validator";
+import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  IsInt,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { File } from "../../file/base/File";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { UserCondo } from "../../userCondo/base/UserCondo";
 
 @ObjectType()
 class User {
+  @ApiProperty({
+    required: false,
+    type: () => [CompanyEmployee],
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployee)
+  @IsOptional()
+  companyEmployees?: Array<CompanyEmployee>;
+
   @ApiProperty({
     required: true,
   })
@@ -27,6 +44,14 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  email!: string;
 
   @ApiProperty({
     required: false,
@@ -50,11 +75,11 @@ class User {
 
   @ApiProperty({
     required: true,
-    type: String,
+    type: Number,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsInt()
+  @Field(() => Number)
+  id!: number;
 
   @ApiProperty({
     required: false,
@@ -66,6 +91,14 @@ class User {
     nullable: true,
   })
   lastName!: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  phoneNumber!: string;
 
   @ApiProperty({
     required: true,
@@ -81,6 +114,15 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [UserCondo],
+  })
+  @ValidateNested()
+  @Type(() => UserCondo)
+  @IsOptional()
+  userCondos?: Array<UserCondo>;
 
   @ApiProperty({
     required: true,

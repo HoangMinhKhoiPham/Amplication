@@ -9,9 +9,10 @@ import { ParkingSpotModule } from "./parkingSpot/parkingSpot.module";
 import { LockerModule } from "./locker/locker.module";
 import { CompanyModule } from "./company/company.module";
 import { FileModule } from "./file/file.module";
-import { TestModule } from "./test/test.module";
 import { RegistrationKeyModule } from "./registrationKey/registrationKey.module";
 import { RoleModule } from "./role/role.module";
+import { CompanyEmployeeModule } from "./companyEmployee/companyEmployee.module";
+import { UserCondoModule } from "./userCondo/userCondo.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -35,9 +36,10 @@ import { AuthModule } from "./auth/auth.module";
     LockerModule,
     CompanyModule,
     FileModule,
-    TestModule,
     RegistrationKeyModule,
     RoleModule,
+    CompanyEmployeeModule,
+    UserCondoModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

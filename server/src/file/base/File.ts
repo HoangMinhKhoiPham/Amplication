@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, ValidateNested, IsOptional, IsDate } from "class-validator";
 import { Company } from "../../company/base/Company";
 import { Type } from "class-transformer";
+import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { Property } from "../../property/base/Property";
 import { User } from "../../user/base/User";
 
@@ -35,6 +36,15 @@ class File {
   @Type(() => Company)
   @IsOptional()
   companyID?: Company | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CondoUnit,
+  })
+  @ValidateNested()
+  @Type(() => CondoUnit)
+  @IsOptional()
+  condoUnitID?: CondoUnit | null;
 
   @ApiProperty({
     required: true,

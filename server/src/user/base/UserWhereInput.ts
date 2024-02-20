@@ -11,14 +11,40 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
+import { CompanyEmployeeListRelationFilter } from "../../companyEmployee/base/CompanyEmployeeListRelationFilter";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { IntFilter } from "../../util/IntFilter";
+import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListRelationFilter";
 
 @InputType()
 class UserWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => CompanyEmployeeListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployeeListRelationFilter)
+  @IsOptional()
+  @Field(() => CompanyEmployeeListRelationFilter, {
+    nullable: true,
+  })
+  companyEmployees?: CompanyEmployeeListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  email?: StringFilter;
+
   @ApiProperty({
     required: false,
     type: () => FileListRelationFilter,
@@ -44,14 +70,14 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: IntFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  id?: StringFilter;
+  id?: IntFilter;
 
   @ApiProperty({
     required: false,
@@ -63,6 +89,29 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  phoneNumber?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCondoListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => UserCondoListRelationFilter)
+  @IsOptional()
+  @Field(() => UserCondoListRelationFilter, {
+    nullable: true,
+  })
+  userCondos?: UserCondoListRelationFilter;
 
   @ApiProperty({
     required: false,

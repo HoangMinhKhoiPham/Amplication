@@ -11,15 +11,40 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { FileUpdateManyWithoutUsersInput } from "./FileUpdateManyWithoutUsersInput";
+import { CompanyEmployeeUpdateManyWithoutUsersInput } from "./CompanyEmployeeUpdateManyWithoutUsersInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { FileUpdateManyWithoutUsersInput } from "./FileUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { UserCondoUpdateManyWithoutUsersInput } from "./UserCondoUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CompanyEmployeeUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployeeUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CompanyEmployeeUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  companyEmployees?: CompanyEmployeeUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email?: string;
+
   @ApiProperty({
     required: false,
     type: () => FileUpdateManyWithoutUsersInput,
@@ -67,6 +92,17 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  phoneNumber?: string;
+
+  @ApiProperty({
+    required: false,
   })
   @IsJSONValue()
   @IsOptional()
@@ -74,6 +110,18 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserCondoUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => UserCondoUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => UserCondoUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  userCondos?: UserCondoUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
