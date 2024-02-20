@@ -19,7 +19,7 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CondoUnitService } from "../condoUnit.service";
-import { Public } from "../../decorators/public.decorator";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CondoUnitCreateInput } from "./CondoUnitCreateInput";
 import { CondoUnit } from "./CondoUnit";
@@ -43,9 +43,14 @@ export class CondoUnitControllerBase {
     protected readonly service: CondoUnitService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CondoUnit })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "create",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -103,10 +108,15 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
   @swagger.ApiOkResponse({ type: [CondoUnit] })
   @ApiNestedQuery(CondoUnitFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "read",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -143,10 +153,15 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: CondoUnit })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "read",
+    possession: "own",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -190,10 +205,15 @@ export class CondoUnitControllerBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CondoUnit })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -262,10 +282,14 @@ export class CondoUnitControllerBase {
     }
   }
 
-  @Public()
   @common.Delete("/:id")
   @swagger.ApiOkResponse({ type: CondoUnit })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "delete",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -369,8 +393,12 @@ export class CondoUnitControllerBase {
     return results;
   }
 
-  @Public()
   @common.Post("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async connectFile(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -387,8 +415,12 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
   @common.Patch("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async updateFile(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -405,8 +437,12 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
   @common.Delete("/:id/file")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async disconnectFile(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -465,8 +501,12 @@ export class CondoUnitControllerBase {
     return results;
   }
 
-  @Public()
   @common.Post("/:id/parkingSpot")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async connectParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
@@ -483,8 +523,12 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
   @common.Patch("/:id/parkingSpot")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async updateParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
@@ -501,8 +545,12 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
   @common.Delete("/:id/parkingSpot")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async disconnectParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
@@ -560,8 +608,12 @@ export class CondoUnitControllerBase {
     return results;
   }
 
-  @Public()
   @common.Post("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async connectUserCondos(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: UserCondoWhereUniqueInput[]
@@ -578,8 +630,12 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
   @common.Patch("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async updateUserCondos(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: UserCondoWhereUniqueInput[]
@@ -596,8 +652,12 @@ export class CondoUnitControllerBase {
     });
   }
 
-  @Public()
   @common.Delete("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
   async disconnectUserCondos(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: UserCondoWhereUniqueInput[]
