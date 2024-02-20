@@ -9,6 +9,7 @@ generator client {
 
 model User {
   createdAt DateTime @default(now())
+  files     File[]
   firstName String?
   id        String   @id @default(cuid())
   lastName  String?
@@ -21,7 +22,6 @@ model User {
 model Customer {
   createdAt DateTime @default(now())
   email     String?
-  files     File[]
   firstName String?
   id        String   @id @default(cuid())
   lastName  String?
@@ -47,9 +47,11 @@ model Property {
   address      String
   condoUnits   CondoUnit?
   createdAt    DateTime     @default(now())
+  files        File[]
   id           Int          @id @default(autoincrement())
   lockerCount  Int?
   Lockers      Locker?
+  name         String
   parkingCount Int
   ParkingSpots ParkingSpot?
   unitCount    Int
@@ -77,19 +79,24 @@ model Locker {
 
 model Company {
   createdAt DateTime  @default(now())
+  files     File[]
   id        String    @id @default(cuid())
   name      String
   updatedAt DateTime? @updatedAt
 }
 
 model File {
-  bucket    String
-  createdAt DateTime  @default(now())
-  id        String    @id @default(cuid())
-  name      String
-  updatedAt DateTime  @updatedAt
-  userId    Customer? @relation(fields: [userIdId], references: [id])
-  userIdId  String?
+  bucket      String
+  companyID   Company?  @relation(fields: [companyIDId], references: [id])
+  companyIDId String?
+  createdAt   DateTime  @default(now())
+  id          String    @id @default(cuid())
+  name        String
+  propertyId  Property? @relation(fields: [propertyID], references: [id])
+  propertyID  Int?
+  updatedAt   DateTime  @updatedAt
+  userId      User?     @relation(fields: [userIdId], references: [id])
+  userIdId    String?
 }
 
 model Test {
@@ -104,4 +111,9 @@ model RegistrationKey {
   createdAt   DateTime  @default(now())
   id          String    @id @default(cuid())
   updatedAt   DateTime  @updatedAt
+}
+
+model Role {
+  id   String  @id @default(cuid())
+  name String?
 }

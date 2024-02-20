@@ -50,6 +50,18 @@ export class FileControllerBase {
       data: {
         ...data,
 
+        companyID: data.companyID
+          ? {
+              connect: data.companyID,
+            }
+          : undefined,
+
+        propertyId: data.propertyId
+          ? {
+              connect: data.propertyId,
+            }
+          : undefined,
+
         userId: data.userId
           ? {
               connect: data.userId,
@@ -58,9 +70,23 @@ export class FileControllerBase {
       },
       select: {
         bucket: true,
+
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
+
+        propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
 
         userId: {
@@ -90,9 +116,23 @@ export class FileControllerBase {
       ...args,
       select: {
         bucket: true,
+
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
+
+        propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
 
         userId: {
@@ -123,9 +163,23 @@ export class FileControllerBase {
       where: params,
       select: {
         bucket: true,
+
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         name: true,
+
+        propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
 
         userId: {
@@ -165,6 +219,18 @@ export class FileControllerBase {
         data: {
           ...data,
 
+          companyID: data.companyID
+            ? {
+                connect: data.companyID,
+              }
+            : undefined,
+
+          propertyId: data.propertyId
+            ? {
+                connect: data.propertyId,
+              }
+            : undefined,
+
           userId: data.userId
             ? {
                 connect: data.userId,
@@ -173,9 +239,23 @@ export class FileControllerBase {
         },
         select: {
           bucket: true,
+
+          companyID: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
           name: true,
+
+          propertyId: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
 
           userId: {
@@ -214,9 +294,23 @@ export class FileControllerBase {
         where: params,
         select: {
           bucket: true,
+
+          companyID: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
           name: true,
+
+          propertyId: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
 
           userId: {

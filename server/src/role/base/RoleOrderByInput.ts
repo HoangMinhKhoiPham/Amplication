@@ -11,53 +11,35 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { IsOptional, IsEnum } from "class-validator";
+import { SortOrder } from "../../util/SortOrder";
 
-@InputType()
-class CustomerUpdateInput {
+@InputType({
+  isAbstract: true,
+  description: undefined,
+})
+class RoleOrderByInput {
   @ApiProperty({
     required: false,
-    type: String,
+    enum: ["asc", "desc"],
   })
-  @IsString()
   @IsOptional()
-  @Field(() => String, {
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
     nullable: true,
   })
-  email?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  firstName?: string | null;
+  id?: SortOrder;
 
   @ApiProperty({
     required: false,
-    type: String,
+    enum: ["asc", "desc"],
   })
-  @IsString()
   @IsOptional()
-  @Field(() => String, {
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
     nullable: true,
   })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  name?: SortOrder;
 }
 
-export { CustomerUpdateInput as CustomerUpdateInput };
+export { RoleOrderByInput as RoleOrderByInput };

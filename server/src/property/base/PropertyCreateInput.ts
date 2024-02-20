@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, ValidateNested, IsOptional, IsInt } from "class-validator";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
 import { Type } from "class-transformer";
+import { FileCreateNestedManyWithoutPropertiesInput } from "./FileCreateNestedManyWithoutPropertiesInput";
 import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
 import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
 
@@ -41,6 +42,18 @@ class PropertyCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => FileCreateNestedManyWithoutPropertiesInput,
+  })
+  @ValidateNested()
+  @Type(() => FileCreateNestedManyWithoutPropertiesInput)
+  @IsOptional()
+  @Field(() => FileCreateNestedManyWithoutPropertiesInput, {
+    nullable: true,
+  })
+  files?: FileCreateNestedManyWithoutPropertiesInput;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()
@@ -61,6 +74,14 @@ class PropertyCreateInput {
     nullable: true,
   })
   Lockers?: LockerWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  name!: string;
 
   @ApiProperty({
     required: true,

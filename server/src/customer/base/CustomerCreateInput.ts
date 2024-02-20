@@ -11,9 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { FileCreateNestedManyWithoutCustomersInput } from "./FileCreateNestedManyWithoutCustomersInput";
-import { Type } from "class-transformer";
+import { IsString, IsOptional } from "class-validator";
 
 @InputType()
 class CustomerCreateInput {
@@ -27,18 +25,6 @@ class CustomerCreateInput {
     nullable: true,
   })
   email?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => FileCreateNestedManyWithoutCustomersInput,
-  })
-  @ValidateNested()
-  @Type(() => FileCreateNestedManyWithoutCustomersInput)
-  @IsOptional()
-  @Field(() => FileCreateNestedManyWithoutCustomersInput, {
-    nullable: true,
-  })
-  files?: FileCreateNestedManyWithoutCustomersInput;
 
   @ApiProperty({
     required: false,

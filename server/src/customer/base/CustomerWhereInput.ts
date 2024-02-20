@@ -13,8 +13,7 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
-import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
+import { IsOptional } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
 
 @InputType()
@@ -29,18 +28,6 @@ class CustomerWhereInput {
     nullable: true,
   })
   email?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => FileListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => FileListRelationFilter)
-  @IsOptional()
-  @Field(() => FileListRelationFilter, {
-    nullable: true,
-  })
-  files?: FileListRelationFilter;
 
   @ApiProperty({
     required: false,

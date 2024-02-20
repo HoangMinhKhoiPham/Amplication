@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional } from "class-validator";
 
 @InputType()
-class CustomerUpdateInput {
+class RoleUpdateInput {
   @ApiProperty({
     required: false,
     type: String,
@@ -24,40 +24,7 @@ class CustomerUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  email?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  firstName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  name?: string | null;
 }
 
-export { CustomerUpdateInput as CustomerUpdateInput };
+export { RoleUpdateInput as RoleUpdateInput };

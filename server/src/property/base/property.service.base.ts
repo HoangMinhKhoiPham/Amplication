@@ -14,6 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Property, // @ts-ignore
+  File, // @ts-ignore
   CondoUnit, // @ts-ignore
   Locker, // @ts-ignore
   ParkingSpot,
@@ -52,6 +53,17 @@ export class PropertyServiceBase {
     args: Prisma.SelectSubset<T, Prisma.PropertyDeleteArgs>
   ): Promise<Property> {
     return this.prisma.property.delete(args);
+  }
+
+  async findFiles(
+    parentId: number,
+    args: Prisma.FileFindManyArgs
+  ): Promise<File[]> {
+    return this.prisma.property
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .files(args);
   }
 
   async getCondoUnits(parentId: number): Promise<CondoUnit | null> {

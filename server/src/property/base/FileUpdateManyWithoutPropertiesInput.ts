@@ -10,54 +10,37 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { InputType, Field } from "@nestjs/graphql";
+import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
 
 @InputType()
-class CustomerUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+class FileUpdateManyWithoutPropertiesInput {
+  @Field(() => [FileWhereUniqueInput], {
     nullable: true,
   })
-  email?: string | null;
+  @ApiProperty({
+    required: false,
+    type: () => [FileWhereUniqueInput],
+  })
+  connect?: Array<FileWhereUniqueInput>;
 
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+  @Field(() => [FileWhereUniqueInput], {
     nullable: true,
   })
-  firstName?: string | null;
+  @ApiProperty({
+    required: false,
+    type: () => [FileWhereUniqueInput],
+  })
+  disconnect?: Array<FileWhereUniqueInput>;
 
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+  @Field(() => [FileWhereUniqueInput], {
     nullable: true,
   })
-  lastName?: string | null;
-
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => [FileWhereUniqueInput],
   })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  set?: Array<FileWhereUniqueInput>;
 }
 
-export { CustomerUpdateInput as CustomerUpdateInput };
+export { FileUpdateManyWithoutPropertiesInput as FileUpdateManyWithoutPropertiesInput };

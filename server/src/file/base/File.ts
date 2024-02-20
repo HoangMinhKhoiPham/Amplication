@@ -11,9 +11,11 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate, ValidateNested, IsOptional } from "class-validator";
+import { IsString, ValidateNested, IsOptional, IsDate } from "class-validator";
+import { Company } from "../../company/base/Company";
 import { Type } from "class-transformer";
-import { Customer } from "../../customer/base/Customer";
+import { Property } from "../../property/base/Property";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class File {
@@ -24,6 +26,15 @@ class File {
   @IsString()
   @Field(() => String)
   bucket!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => Company,
+  })
+  @ValidateNested()
+  @Type(() => Company)
+  @IsOptional()
+  companyID?: Company | null;
 
   @ApiProperty({
     required: true,
@@ -50,6 +61,15 @@ class File {
   name!: string;
 
   @ApiProperty({
+    required: false,
+    type: () => Property,
+  })
+  @ValidateNested()
+  @Type(() => Property)
+  @IsOptional()
+  propertyId?: Property | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
@@ -59,12 +79,12 @@ class File {
 
   @ApiProperty({
     required: false,
-    type: () => Customer,
+    type: () => User,
   })
   @ValidateNested()
-  @Type(() => Customer)
+  @Type(() => User)
   @IsOptional()
-  userId?: Customer | null;
+  userId?: User | null;
 }
 
 export { File as File };

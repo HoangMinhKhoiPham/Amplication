@@ -11,53 +11,34 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
+import { Type } from "class-transformer";
+import { IsOptional } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 
 @InputType()
-class CustomerUpdateInput {
+class RoleWhereInput {
   @ApiProperty({
     required: false,
-    type: String,
+    type: StringFilter,
   })
-  @IsString()
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  email?: string | null;
+  id?: StringFilter;
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: StringNullableFilter,
   })
-  @IsString()
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  firstName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  phone?: string | null;
+  name?: StringNullableFilter;
 }
 
-export { CustomerUpdateInput as CustomerUpdateInput };
+export { RoleWhereInput as RoleWhereInput };

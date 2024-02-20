@@ -26,6 +26,9 @@ import { Property } from "./Property";
 import { PropertyFindManyArgs } from "./PropertyFindManyArgs";
 import { PropertyWhereUniqueInput } from "./PropertyWhereUniqueInput";
 import { PropertyUpdateInput } from "./PropertyUpdateInput";
+import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
+import { File } from "../../file/base/File";
+import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -89,6 +92,7 @@ export class PropertyControllerBase {
           },
         },
 
+        name: true,
         parkingCount: true,
 
         ParkingSpots: {
@@ -138,6 +142,7 @@ export class PropertyControllerBase {
           },
         },
 
+        name: true,
         parkingCount: true,
 
         ParkingSpots: {
@@ -188,6 +193,7 @@ export class PropertyControllerBase {
           },
         },
 
+        name: true,
         parkingCount: true,
 
         ParkingSpots: {
@@ -267,6 +273,7 @@ export class PropertyControllerBase {
             },
           },
 
+          name: true,
           parkingCount: true,
 
           ParkingSpots: {
@@ -325,6 +332,7 @@ export class PropertyControllerBase {
             },
           },
 
+          name: true,
           parkingCount: true,
 
           ParkingSpots: {
@@ -345,5 +353,122 @@ export class PropertyControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/files")
+  @ApiNestedQuery(FileFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "File",
+    action: "read",
+    possession: "any",
+  })
+  async findFiles(
+    @common.Req() request: Request,
+    @common.Param() params: PropertyWhereUniqueInput
+  ): Promise<File[]> {
+    const query = plainToClass(FileFindManyArgs, request.query);
+    const results = await this.service.findFiles(params.id, {
+      ...query,
+      select: {
+        bucket: true,
+
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        name: true,
+
+        propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+
+        userId: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/files")
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "update",
+    possession: "any",
+  })
+  async connectFiles(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      files: {
+        connect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/files")
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "update",
+    possession: "any",
+  })
+  async updateFiles(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      files: {
+        set: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/files")
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectFiles(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: FileWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      files: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

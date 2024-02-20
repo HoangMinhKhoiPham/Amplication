@@ -11,9 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
+import { IsDate, IsString, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { File } from "../../file/base/File";
 
 @ObjectType()
 class Customer {
@@ -35,15 +34,6 @@ class Customer {
     nullable: true,
   })
   email!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [File],
-  })
-  @ValidateNested()
-  @Type(() => File)
-  @IsOptional()
-  files?: Array<File>;
 
   @ApiProperty({
     required: false,

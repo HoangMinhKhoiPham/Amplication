@@ -11,58 +11,46 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
+import { RoleWhereInput } from "./RoleWhereInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { StringFilter } from "../../util/StringFilter";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 @InputType()
-class CompanyWhereInput {
+class RoleListRelationFilter {
   @ApiProperty({
     required: false,
-    type: () => FileListRelationFilter,
+    type: () => RoleWhereInput,
   })
   @ValidateNested()
-  @Type(() => FileListRelationFilter)
+  @Type(() => RoleWhereInput)
   @IsOptional()
-  @Field(() => FileListRelationFilter, {
+  @Field(() => RoleWhereInput, {
     nullable: true,
   })
-  files?: FileListRelationFilter;
+  every?: RoleWhereInput;
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: () => RoleWhereInput,
   })
-  @Type(() => StringFilter)
+  @ValidateNested()
+  @Type(() => RoleWhereInput)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => RoleWhereInput, {
     nullable: true,
   })
-  id?: StringFilter;
+  some?: RoleWhereInput;
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: () => RoleWhereInput,
   })
-  @Type(() => StringFilter)
+  @ValidateNested()
+  @Type(() => RoleWhereInput)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => RoleWhereInput, {
     nullable: true,
   })
-  name?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: DateTimeNullableFilter,
-  })
-  @Type(() => DateTimeNullableFilter)
-  @IsOptional()
-  @Field(() => DateTimeNullableFilter, {
-    nullable: true,
-  })
-  updatedAt?: DateTimeNullableFilter;
+  none?: RoleWhereInput;
 }
-
-export { CompanyWhereInput as CompanyWhereInput };
+export { RoleListRelationFilter as RoleListRelationFilter };

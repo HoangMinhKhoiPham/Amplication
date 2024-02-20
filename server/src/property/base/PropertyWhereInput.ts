@@ -15,6 +15,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
+import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
@@ -44,6 +45,18 @@ class PropertyWhereInput {
     nullable: true,
   })
   condoUnits?: CondoUnitWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => FileListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => FileListRelationFilter)
+  @IsOptional()
+  @Field(() => FileListRelationFilter, {
+    nullable: true,
+  })
+  files?: FileListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -78,6 +91,17 @@ class PropertyWhereInput {
     nullable: true,
   })
   Lockers?: LockerWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  name?: StringFilter;
 
   @ApiProperty({
     required: false,

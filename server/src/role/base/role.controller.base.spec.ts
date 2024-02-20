@@ -12,60 +12,36 @@ import { ACLModule } from "../../auth/acl.module";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { map } from "rxjs";
-import { PropertyController } from "../property.controller";
-import { PropertyService } from "../property.service";
+import { RoleController } from "../role.controller";
+import { RoleService } from "../role.service";
 
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  address: "exampleAddress",
-  createdAt: new Date(),
-  id: 42,
-  lockerCount: 42,
+  id: "exampleId",
   name: "exampleName",
-  parkingCount: 42,
-  unitCount: 42,
-  updatedAt: new Date(),
 };
 const CREATE_RESULT = {
-  address: "exampleAddress",
-  createdAt: new Date(),
-  id: 42,
-  lockerCount: 42,
+  id: "exampleId",
   name: "exampleName",
-  parkingCount: 42,
-  unitCount: 42,
-  updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
-    address: "exampleAddress",
-    createdAt: new Date(),
-    id: 42,
-    lockerCount: 42,
+    id: "exampleId",
     name: "exampleName",
-    parkingCount: 42,
-    unitCount: 42,
-    updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
-  address: "exampleAddress",
-  createdAt: new Date(),
-  id: 42,
-  lockerCount: 42,
+  id: "exampleId",
   name: "exampleName",
-  parkingCount: 42,
-  unitCount: 42,
-  updatedAt: new Date(),
 };
 
 const service = {
-  createProperty() {
+  createRole() {
     return CREATE_RESULT;
   },
-  properties: () => FIND_MANY_RESULT,
-  property: ({ where }: { where: { id: string } }) => {
+  roles: () => FIND_MANY_RESULT,
+  role: ({ where }: { where: { id: string } }) => {
     switch (where.id) {
       case existingId:
         return FIND_ONE_RESULT;
@@ -107,18 +83,18 @@ const aclValidateRequestInterceptor = {
   },
 };
 
-describe("Property", () => {
+describe("Role", () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         {
-          provide: PropertyService,
+          provide: RoleService,
           useValue: service,
         },
       ],
-      controllers: [PropertyController],
+      controllers: [RoleController],
       imports: [ACLModule],
     })
       .overrideGuard(DefaultAuthGuard)
@@ -135,34 +111,24 @@ describe("Property", () => {
     await app.init();
   });
 
-  test("POST /properties", async () => {
+  test("POST /roles", async () => {
     await request(app.getHttpServer())
-      .post("/properties")
+      .post("/roles")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
-      .expect({
-        ...CREATE_RESULT,
-        createdAt: CREATE_RESULT.createdAt.toISOString(),
-        updatedAt: CREATE_RESULT.updatedAt.toISOString(),
-      });
+      .expect(CREATE_RESULT);
   });
 
-  test("GET /properties", async () => {
+  test("GET /roles", async () => {
     await request(app.getHttpServer())
-      .get("/properties")
+      .get("/roles")
       .expect(HttpStatus.OK)
-      .expect([
-        {
-          ...FIND_MANY_RESULT[0],
-          createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
-          updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
-        },
-      ]);
+      .expect([FIND_MANY_RESULT[0]]);
   });
 
-  test("GET /properties/:id non existing", async () => {
+  test("GET /roles/:id non existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/properties"}/${nonExistingId}`)
+      .get(`${"/roles"}/${nonExistingId}`)
       .expect(HttpStatus.NOT_FOUND)
       .expect({
         statusCode: HttpStatus.NOT_FOUND,
@@ -171,31 +137,23 @@ describe("Property", () => {
       });
   });
 
-  test("GET /properties/:id existing", async () => {
+  test("GET /roles/:id existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/properties"}/${existingId}`)
+      .get(`${"/roles"}/${existingId}`)
       .expect(HttpStatus.OK)
-      .expect({
-        ...FIND_ONE_RESULT,
-        createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
-        updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
-      });
+      .expect(FIND_ONE_RESULT);
   });
 
-  test("POST /properties existing resource", async () => {
+  test("POST /roles existing resource", async () => {
     const agent = request(app.getHttpServer());
     await agent
-      .post("/properties")
+      .post("/roles")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
-      .expect({
-        ...CREATE_RESULT,
-        createdAt: CREATE_RESULT.createdAt.toISOString(),
-        updatedAt: CREATE_RESULT.updatedAt.toISOString(),
-      })
+      .expect(CREATE_RESULT)
       .then(function () {
         agent
-          .post("/properties")
+          .post("/roles")
           .send(CREATE_INPUT)
           .expect(HttpStatus.CONFLICT)
           .expect({

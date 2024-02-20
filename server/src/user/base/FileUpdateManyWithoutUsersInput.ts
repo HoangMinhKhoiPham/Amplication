@@ -14,7 +14,7 @@ import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { ApiProperty } from "@nestjs/swagger";
 
 @InputType()
-class FileUpdateManyWithoutCustomersInput {
+class FileUpdateManyWithoutUsersInput {
   @Field(() => [FileWhereUniqueInput], {
     nullable: true,
   })
@@ -43,4 +43,4 @@ class FileUpdateManyWithoutCustomersInput {
   set?: Array<FileWhereUniqueInput>;
 }
 
-export { FileUpdateManyWithoutCustomersInput as FileUpdateManyWithoutCustomersInput };
+export { FileUpdateManyWithoutUsersInput as FileUpdateManyWithoutUsersInput };

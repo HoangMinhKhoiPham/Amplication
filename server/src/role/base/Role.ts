@@ -9,20 +9,30 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { InputType, Field } from "@nestjs/graphql";
-import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsString, IsOptional } from "class-validator";
 
-@InputType()
-class FileCreateNestedManyWithoutCustomersInput {
-  @Field(() => [FileWhereUniqueInput], {
-    nullable: true,
+@ObjectType()
+class Role {
+  @ApiProperty({
+    required: true,
+    type: String,
   })
+  @IsString()
+  @Field(() => String)
+  id!: string;
+
   @ApiProperty({
     required: false,
-    type: () => [FileWhereUniqueInput],
+    type: String,
   })
-  connect?: Array<FileWhereUniqueInput>;
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name!: string | null;
 }
 
-export { FileCreateNestedManyWithoutCustomersInput as FileCreateNestedManyWithoutCustomersInput };
+export { Role as Role };
