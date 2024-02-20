@@ -591,7 +591,7 @@ export class PropertyControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },

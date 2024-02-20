@@ -40,7 +40,7 @@ class ParkingSpotCreateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  property?: PropertyWhereUniqueInput | null;
 }
 
 export { ParkingSpotCreateInput as ParkingSpotCreateInput };

@@ -28,7 +28,7 @@ class RegistrationKeyOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  condoUnitId?: SortOrder;
+  condoUnitID?: SortOrder;
 
   @ApiProperty({
     required: false,

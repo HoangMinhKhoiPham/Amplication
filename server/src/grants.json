@@ -1140,6 +1140,12 @@
     "attributes": "*"
   },
   {
+    "role": "financialManager",
+    "resource": "RegistrationKey",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "manager",
     "resource": "RegistrationKey",
     "action": "delete:any",
@@ -1154,12 +1160,6 @@
   {
     "role": "financialManager",
     "resource": "RegistrationKey",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "RegistrationKey",
     "action": "read:any",
     "attributes": "*"
   },
@@ -1638,6 +1638,12 @@
     "attributes": "*"
   },
   {
+    "role": "financialManager",
+    "resource": "UserCondo",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "manager",
     "resource": "UserCondo",
     "action": "create:any",
@@ -1645,12 +1651,6 @@
   },
   {
     "role": "Admin",
-    "resource": "UserCondo",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
     "resource": "UserCondo",
     "action": "create:any",
     "attributes": "*"
