@@ -18,7 +18,7 @@ import { SortOrder } from "../../util/SortOrder";
   isAbstract: true,
   description: undefined,
 })
-class ParkingSpotOrderByInput {
+class RegistrationKeyOrderByInput {
   @ApiProperty({
     required: false,
     enum: ["asc", "desc"],
@@ -61,18 +61,7 @@ class ParkingSpotOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  propertyId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   updatedAt?: SortOrder;
 }
 
-export { ParkingSpotOrderByInput as ParkingSpotOrderByInput };
+export { RegistrationKeyOrderByInput as RegistrationKeyOrderByInput };

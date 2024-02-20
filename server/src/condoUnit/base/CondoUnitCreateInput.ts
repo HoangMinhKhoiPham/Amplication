@@ -16,6 +16,7 @@ import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput
 import { Type } from "class-transformer";
 import { ParkingSpotCreateNestedManyWithoutCondoUnitsInput } from "./ParkingSpotCreateNestedManyWithoutCondoUnitsInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
+import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
 
 @InputType()
 class CondoUnitCreateInput {
@@ -65,6 +66,18 @@ class CondoUnitCreateInput {
     nullable: true,
   })
   propertyId?: PropertyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RegistrationKeyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => RegistrationKeyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => RegistrationKeyWhereUniqueInput, {
+    nullable: true,
+  })
+  registrationKeys?: RegistrationKeyWhereUniqueInput | null;
 
   @ApiProperty({
     required: true,

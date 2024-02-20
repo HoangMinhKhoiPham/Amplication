@@ -61,6 +61,12 @@ export class CondoUnitControllerBase {
               connect: data.propertyId,
             }
           : undefined,
+
+        registrationKeys: data.registrationKeys
+          ? {
+              connect: data.registrationKeys,
+            }
+          : undefined,
       },
       select: {
         condoFee: true,
@@ -74,6 +80,12 @@ export class CondoUnitControllerBase {
         },
 
         propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
+        registrationKeys: {
           select: {
             id: true,
           },
@@ -113,6 +125,12 @@ export class CondoUnitControllerBase {
           },
         },
 
+        registrationKeys: {
+          select: {
+            id: true,
+          },
+        },
+
         size: true,
         updatedAt: true,
       },
@@ -143,6 +161,12 @@ export class CondoUnitControllerBase {
         },
 
         propertyId: {
+          select: {
+            id: true,
+          },
+        },
+
+        registrationKeys: {
           select: {
             id: true,
           },
@@ -188,6 +212,12 @@ export class CondoUnitControllerBase {
                 connect: data.propertyId,
               }
             : undefined,
+
+          registrationKeys: data.registrationKeys
+            ? {
+                connect: data.registrationKeys,
+              }
+            : undefined,
         },
         select: {
           condoFee: true,
@@ -201,6 +231,12 @@ export class CondoUnitControllerBase {
           },
 
           propertyId: {
+            select: {
+              id: true,
+            },
+          },
+
+          registrationKeys: {
             select: {
               id: true,
             },
@@ -245,6 +281,12 @@ export class CondoUnitControllerBase {
           },
 
           propertyId: {
+            select: {
+              id: true,
+            },
+          },
+
+          registrationKeys: {
             select: {
               id: true,
             },

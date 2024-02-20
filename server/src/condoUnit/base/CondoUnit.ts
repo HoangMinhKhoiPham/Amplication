@@ -22,6 +22,7 @@ import { Type } from "class-transformer";
 import { Locker } from "../../locker/base/Locker";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { Property } from "../../property/base/Property";
+import { RegistrationKey } from "../../registrationKey/base/RegistrationKey";
 
 @ObjectType()
 class CondoUnit {
@@ -78,6 +79,15 @@ class CondoUnit {
   @Type(() => Property)
   @IsOptional()
   propertyId?: Property | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RegistrationKey,
+  })
+  @ValidateNested()
+  @Type(() => RegistrationKey)
+  @IsOptional()
+  registrationKeys?: RegistrationKey | null;
 
   @ApiProperty({
     required: true,

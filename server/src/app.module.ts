@@ -10,6 +10,7 @@ import { LockerModule } from "./locker/locker.module";
 import { CompanyModule } from "./company/company.module";
 import { FileModule } from "./file/file.module";
 import { TestModule } from "./test/test.module";
+import { RegistrationKeyModule } from "./registrationKey/registrationKey.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -34,6 +35,7 @@ import { AuthModule } from "./auth/auth.module";
     CompanyModule,
     FileModule,
     TestModule,
+    RegistrationKeyModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

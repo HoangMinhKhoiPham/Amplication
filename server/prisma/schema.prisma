@@ -30,16 +30,17 @@ model Customer {
 }
 
 model CondoUnit {
-  condoFee      String?
-  createdAt     DateTime      @default(now())
-  id            Int           @id @default(autoincrement())
-  lockerId      Locker?       @relation(fields: [lockerIdId], references: [id])
-  lockerIdId    String?       @unique
-  parkingSpotId ParkingSpot[]
-  propertyId    Property?     @relation(fields: [propertyIdId], references: [id])
-  propertyIdId  Int?          @unique
-  size          String
-  updatedAt     DateTime      @updatedAt
+  condoFee         String?
+  createdAt        DateTime         @default(now())
+  id               Int              @id @default(autoincrement())
+  lockerId         Locker?          @relation(fields: [lockerIdId], references: [id])
+  lockerIdId       String?          @unique
+  parkingSpotId    ParkingSpot[]
+  propertyId       Property?        @relation(fields: [propertyIdId], references: [id])
+  propertyIdId     Int?             @unique
+  registrationKeys RegistrationKey?
+  size             String
+  updatedAt        DateTime         @updatedAt
 }
 
 model Property {
@@ -56,13 +57,13 @@ model Property {
 }
 
 model ParkingSpot {
-  condoUnit    CondoUnit? @relation(fields: [condoUnitId], references: [id])
-  condoUnitId  Int?
-  createdAt    DateTime   @default(now())
-  id           Int        @id @default(autoincrement())
-  propertyId   Property?  @relation(fields: [propertyIdId], references: [id])
-  propertyIdId Int?       @unique
-  updatedAt    DateTime   @updatedAt
+  condoUnit   CondoUnit? @relation(fields: [condoUnitId], references: [id])
+  condoUnitId Int?
+  createdAt   DateTime   @default(now())
+  id          Int        @id @default(autoincrement())
+  propertyId  Property?  @relation(fields: [propertyId], references: [id])
+  propertyId  Int?       @unique
+  updatedAt   DateTime   @updatedAt
 }
 
 model Locker {
@@ -95,4 +96,12 @@ model Test {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+model RegistrationKey {
+  condoUnitId CondoUnit @relation(fields: [condoUnitId], references: [id])
+  condoUnitId Int       @unique
+  createdAt   DateTime  @default(now())
+  id          String    @id @default(cuid())
+  updatedAt   DateTime  @updatedAt
 }

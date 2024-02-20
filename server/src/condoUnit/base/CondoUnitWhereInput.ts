@@ -18,6 +18,7 @@ import { IntFilter } from "../../util/IntFilter";
 import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput";
 import { ParkingSpotListRelationFilter } from "../../parkingSpot/base/ParkingSpotListRelationFilter";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
+import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 
 @InputType()
@@ -79,6 +80,18 @@ class CondoUnitWhereInput {
     nullable: true,
   })
   propertyId?: PropertyWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RegistrationKeyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => RegistrationKeyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => RegistrationKeyWhereUniqueInput, {
+    nullable: true,
+  })
+  registrationKeys?: RegistrationKeyWhereUniqueInput;
 
   @ApiProperty({
     required: false,

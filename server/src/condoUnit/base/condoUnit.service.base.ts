@@ -16,7 +16,8 @@ import {
   CondoUnit, // @ts-ignore
   ParkingSpot, // @ts-ignore
   Locker, // @ts-ignore
-  Property,
+  Property, // @ts-ignore
+  RegistrationKey,
 } from "@prisma/client";
 
 export class CondoUnitServiceBase {
@@ -79,5 +80,13 @@ export class CondoUnitServiceBase {
         where: { id: parentId },
       })
       .propertyId();
+  }
+
+  async getRegistrationKeys(parentId: number): Promise<RegistrationKey | null> {
+    return this.prisma.condoUnit
+      .findUnique({
+        where: { id: parentId },
+      })
+      .registrationKeys();
   }
 }
