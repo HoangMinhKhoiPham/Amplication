@@ -102,7 +102,7 @@ model RegistrationKey {
   condoUnitId CondoUnit @relation(fields: [condoUnitId], references: [id])
   condoUnitId Int       @unique
   createdAt   DateTime  @default(now())
-  id          String    @id @default(cuid())
+  id          Int       @id @default(autoincrement())
   updatedAt   DateTime  @updatedAt
   value       String
 }

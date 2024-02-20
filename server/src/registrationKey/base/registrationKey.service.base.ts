@@ -77,7 +77,7 @@ export class RegistrationKeyServiceBase {
     return this.prisma.registrationKey.delete(args);
   }
 
-  async getCondoUnitId(parentId: string): Promise<CondoUnit | null> {
+  async getCondoUnitId(parentId: number): Promise<CondoUnit | null> {
     return this.prisma.registrationKey
       .findUnique({
         where: { id: parentId },
