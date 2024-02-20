@@ -9,15 +9,17 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ObjectType, Field, Float } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsString,
+  IsNumber,
   IsOptional,
   IsDate,
   ValidateNested,
   IsInt,
+  IsString,
 } from "class-validator";
+import { Decimal } from "decimal.js";
 import { Type } from "class-transformer";
 import { File } from "../../file/base/File";
 import { Locker } from "../../locker/base/Locker";
@@ -30,14 +32,14 @@ import { UserCondo } from "../../userCondo/base/UserCondo";
 class CondoUnit {
   @ApiProperty({
     required: false,
-    type: String,
+    type: Number,
   })
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Float, {
     nullable: true,
   })
-  condoFee!: string | null;
+  condoFee!: Decimal | null;
 
   @ApiProperty({
     required: true,

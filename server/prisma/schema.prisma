@@ -24,7 +24,7 @@ model User {
 }
 
 model CondoUnit {
-  condoFee         String?
+  condoFee         Decimal?
   createdAt        DateTime         @default(now())
   file             File[]
   id               Int              @id @default(autoincrement())

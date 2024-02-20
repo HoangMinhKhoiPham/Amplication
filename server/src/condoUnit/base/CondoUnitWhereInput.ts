@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
@@ -27,14 +27,14 @@ import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListR
 class CondoUnitWhereInput {
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: DecimalNullableFilter,
   })
-  @Type(() => StringNullableFilter)
+  @Type(() => DecimalNullableFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => DecimalNullableFilter, {
     nullable: true,
   })
-  condoFee?: StringNullableFilter;
+  condoFee?: DecimalNullableFilter;
 
   @ApiProperty({
     required: false,
