@@ -21,7 +21,6 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { PropertyService } from "../property.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Public } from "../../decorators/public.decorator";
 import { PropertyCreateInput } from "./PropertyCreateInput";
 import { Property } from "./Property";
 import { PropertyFindManyArgs } from "./PropertyFindManyArgs";
@@ -220,9 +219,14 @@ export class PropertyControllerBase {
     }
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id/condoUnits")
   @ApiNestedQuery(CondoUnitFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "read",
+    possession: "any",
+  })
   async findCondoUnits(
     @common.Req() request: Request,
     @common.Param() params: PropertyWhereUniqueInput
