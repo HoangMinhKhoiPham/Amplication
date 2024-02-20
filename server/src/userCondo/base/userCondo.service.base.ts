@@ -53,19 +53,19 @@ export class UserCondoServiceBase {
     return this.prisma.userCondo.delete(args);
   }
 
-  async getCondoId(parentId: number): Promise<CondoUnit | null> {
+  async getCondo(parentId: number): Promise<CondoUnit | null> {
     return this.prisma.userCondo
       .findUnique({
         where: { id: parentId },
       })
-      .condoID();
+      .condo();
   }
 
-  async getUserId(parentId: number): Promise<User | null> {
+  async getUser(parentId: number): Promise<User | null> {
     return this.prisma.userCondo
       .findUnique({
         where: { id: parentId },
       })
-      .userID();
+      .user();
   }
 }

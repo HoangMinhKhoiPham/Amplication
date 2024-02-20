@@ -48,7 +48,7 @@ class Company {
   @ValidateNested()
   @Type(() => File)
   @IsOptional()
-  files?: Array<File>;
+  file?: Array<File>;
 
   @ApiProperty({
     required: true,

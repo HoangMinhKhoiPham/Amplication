@@ -43,7 +43,7 @@ class FileWhereInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyID?: CompanyWhereUniqueInput;
+  company?: CompanyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -55,7 +55,7 @@ class FileWhereInput {
   @Field(() => CondoUnitWhereUniqueInput, {
     nullable: true,
   })
-  condoUnitID?: CondoUnitWhereUniqueInput;
+  condoUnit?: CondoUnitWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -89,7 +89,7 @@ class FileWhereInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput;
+  property?: PropertyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -101,7 +101,7 @@ class FileWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userId?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { FileWhereInput as FileWhereInput };

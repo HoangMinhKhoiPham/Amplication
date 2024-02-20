@@ -50,40 +50,40 @@ export class FileControllerBase {
       data: {
         ...data,
 
-        companyID: data.companyID
+        company: data.company
           ? {
-              connect: data.companyID,
+              connect: data.company,
             }
           : undefined,
 
-        condoUnitID: data.condoUnitID
+        condoUnit: data.condoUnit
           ? {
-              connect: data.condoUnitID,
+              connect: data.condoUnit,
             }
           : undefined,
 
-        propertyId: data.propertyId
+        property: data.property
           ? {
-              connect: data.propertyId,
+              connect: data.property,
             }
           : undefined,
 
-        userId: data.userId
+        user: data.user
           ? {
-              connect: data.userId,
+              connect: data.user,
             }
           : undefined,
       },
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -93,7 +93,7 @@ export class FileControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -101,7 +101,7 @@ export class FileControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -129,13 +129,13 @@ export class FileControllerBase {
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -145,7 +145,7 @@ export class FileControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -153,7 +153,7 @@ export class FileControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -182,13 +182,13 @@ export class FileControllerBase {
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -198,7 +198,7 @@ export class FileControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -206,7 +206,7 @@ export class FileControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -243,40 +243,40 @@ export class FileControllerBase {
         data: {
           ...data,
 
-          companyID: data.companyID
+          company: data.company
             ? {
-                connect: data.companyID,
+                connect: data.company,
               }
             : undefined,
 
-          condoUnitID: data.condoUnitID
+          condoUnit: data.condoUnit
             ? {
-                connect: data.condoUnitID,
+                connect: data.condoUnit,
               }
             : undefined,
 
-          propertyId: data.propertyId
+          property: data.property
             ? {
-                connect: data.propertyId,
+                connect: data.property,
               }
             : undefined,
 
-          userId: data.userId
+          user: data.user
             ? {
-                connect: data.userId,
+                connect: data.user,
               }
             : undefined,
         },
         select: {
           bucket: true,
 
-          companyID: {
+          company: {
             select: {
               id: true,
             },
           },
 
-          condoUnitID: {
+          condoUnit: {
             select: {
               id: true,
             },
@@ -286,7 +286,7 @@ export class FileControllerBase {
           id: true,
           name: true,
 
-          propertyId: {
+          property: {
             select: {
               id: true,
             },
@@ -294,7 +294,7 @@ export class FileControllerBase {
 
           updatedAt: true,
 
-          userId: {
+          user: {
             select: {
               id: true,
             },
@@ -331,13 +331,13 @@ export class FileControllerBase {
         select: {
           bucket: true,
 
-          companyID: {
+          company: {
             select: {
               id: true,
             },
           },
 
-          condoUnitID: {
+          condoUnit: {
             select: {
               id: true,
             },
@@ -347,7 +347,7 @@ export class FileControllerBase {
           id: true,
           name: true,
 
-          propertyId: {
+          property: {
             select: {
               id: true,
             },
@@ -355,7 +355,7 @@ export class FileControllerBase {
 
           updatedAt: true,
 
-          userId: {
+          user: {
             select: {
               id: true,
             },

@@ -43,7 +43,7 @@ class CompanyWhereInput {
   @Field(() => FileListRelationFilter, {
     nullable: true,
   })
-  files?: FileListRelationFilter;
+  file?: FileListRelationFilter;
 
   @ApiProperty({
     required: false,

@@ -29,7 +29,7 @@ class CompanyEmployeeWhereInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyID?: CompanyWhereUniqueInput;
+  company?: CompanyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -52,7 +52,7 @@ class CompanyEmployeeWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { CompanyEmployeeWhereInput as CompanyEmployeeWhereInput };

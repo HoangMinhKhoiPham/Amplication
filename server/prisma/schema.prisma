@@ -26,11 +26,11 @@ model User {
 model CondoUnit {
   condoFee         String?
   createdAt        DateTime         @default(now())
-  files            File[]
+  file             File[]
   id               Int              @id @default(autoincrement())
-  lockerID         Locker?          @relation(fields: [lockerIDId], references: [id])
-  lockerIDId       Int?             @unique
-  parkingSpotID    ParkingSpot[]
+  locker           Locker?          @relation(fields: [lockerID], references: [id])
+  lockerID         Int?             @unique
+  parkingSpot      ParkingSpot[]
   propertyID       Property?        @relation(fields: [propertyIDId], references: [id])
   propertyIDId     Int?
   registrationKeys RegistrationKey?
@@ -76,7 +76,7 @@ model Locker {
 model Company {
   companyEmployees CompanyEmployee[]
   createdAt        DateTime          @default(now())
-  files            File[]
+  file             File[]
   id               Int               @id @default(autoincrement())
   name             String
   updatedAt        DateTime?         @updatedAt
@@ -84,18 +84,18 @@ model Company {
 
 model File {
   bucket      String
-  companyID   Company?   @relation(fields: [companyIDId], references: [id])
-  companyIDId Int?
-  condoUnitID CondoUnit? @relation(fields: [condoUnitID], references: [id])
+  company     Company?   @relation(fields: [companyID], references: [id])
+  companyID   Int?
+  condoUnit   CondoUnit? @relation(fields: [condoUnitID], references: [id])
   condoUnitID Int?
   createdAt   DateTime   @default(now())
   id          Int        @id @default(autoincrement())
   name        String
-  propertyId  Property?  @relation(fields: [propertyID], references: [id])
+  property    Property?  @relation(fields: [propertyID], references: [id])
   propertyID  Int?
   updatedAt   DateTime   @updatedAt
-  userId      User?      @relation(fields: [userIdId], references: [id])
-  userIdId    Int?
+  user        User?      @relation(fields: [userID], references: [id])
+  userID      Int?
 }
 
 model RegistrationKey {
@@ -113,19 +113,19 @@ model Role {
 }
 
 model CompanyEmployee {
-  companyID Company? @relation(fields: [companyID], references: [id])
+  company   Company? @relation(fields: [companyID], references: [id])
   companyID Int?
   id        Int      @id @default(autoincrement())
-  userID    User?    @relation(fields: [userID], references: [id])
+  user      User?    @relation(fields: [userID], references: [id])
   userID    Int?
 }
 
 model UserCondo {
-  condoID   CondoUnit? @relation(fields: [condoID], references: [id])
+  condo     CondoUnit? @relation(fields: [condoID], references: [id])
   condoID   Int?
   createdAt DateTime   @default(now())
   id        Int        @id @default(autoincrement())
   updatedAt DateTime   @updatedAt
-  userID    User?      @relation(fields: [userID], references: [id])
+  user      User?      @relation(fields: [userID], references: [id])
   userID    Int?
 }

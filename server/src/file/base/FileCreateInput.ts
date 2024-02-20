@@ -38,7 +38,7 @@ class FileCreateInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyID?: CompanyWhereUniqueInput | null;
+  company?: CompanyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -50,7 +50,7 @@ class FileCreateInput {
   @Field(() => CondoUnitWhereUniqueInput, {
     nullable: true,
   })
-  condoUnitID?: CondoUnitWhereUniqueInput | null;
+  condoUnit?: CondoUnitWhereUniqueInput | null;
 
   @ApiProperty({
     required: true,
@@ -70,7 +70,7 @@ class FileCreateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  property?: PropertyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -82,7 +82,7 @@ class FileCreateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userId?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { FileCreateInput as FileCreateInput };

@@ -28,7 +28,7 @@ class UserCondoCreateInput {
   @Field(() => CondoUnitWhereUniqueInput, {
     nullable: true,
   })
-  condoID?: CondoUnitWhereUniqueInput | null;
+  condo?: CondoUnitWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -40,7 +40,7 @@ class UserCondoCreateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { UserCondoCreateInput as UserCondoCreateInput };

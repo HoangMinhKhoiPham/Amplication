@@ -25,7 +25,7 @@ class CompanyEmployee {
   @ValidateNested()
   @Type(() => Company)
   @IsOptional()
-  companyID?: Company | null;
+  company?: Company | null;
 
   @ApiProperty({
     required: true,
@@ -42,7 +42,7 @@ class CompanyEmployee {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userID?: User | null;
+  user?: User | null;
 }
 
 export { CompanyEmployee as CompanyEmployee };

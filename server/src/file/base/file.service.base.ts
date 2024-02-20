@@ -55,35 +55,35 @@ export class FileServiceBase {
     return this.prisma.file.delete(args);
   }
 
-  async getCompanyId(parentId: number): Promise<Company | null> {
+  async getCompany(parentId: number): Promise<Company | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
       })
-      .companyID();
+      .company();
   }
 
-  async getCondoUnitId(parentId: number): Promise<CondoUnit | null> {
+  async getCondoUnit(parentId: number): Promise<CondoUnit | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
       })
-      .condoUnitID();
+      .condoUnit();
   }
 
-  async getPropertyId(parentId: number): Promise<Property | null> {
+  async getProperty(parentId: number): Promise<Property | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
       })
-      .propertyId();
+      .property();
   }
 
-  async getUserId(parentId: number): Promise<User | null> {
+  async getUser(parentId: number): Promise<User | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
       })
-      .userId();
+      .user();
   }
 }

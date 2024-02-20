@@ -61,7 +61,7 @@ class CondoUnitOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  lockerIDId?: SortOrder;
+  lockerID?: SortOrder;
 
   @ApiProperty({
     required: false,

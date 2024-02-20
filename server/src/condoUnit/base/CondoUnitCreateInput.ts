@@ -43,7 +43,7 @@ class CondoUnitCreateInput {
   @Field(() => FileCreateNestedManyWithoutCondoUnitsInput, {
     nullable: true,
   })
-  files?: FileCreateNestedManyWithoutCondoUnitsInput;
+  file?: FileCreateNestedManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,
@@ -55,7 +55,7 @@ class CondoUnitCreateInput {
   @Field(() => LockerWhereUniqueInput, {
     nullable: true,
   })
-  lockerID?: LockerWhereUniqueInput | null;
+  locker?: LockerWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -67,7 +67,7 @@ class CondoUnitCreateInput {
   @Field(() => ParkingSpotCreateNestedManyWithoutCondoUnitsInput, {
     nullable: true,
   })
-  parkingSpotID?: ParkingSpotCreateNestedManyWithoutCondoUnitsInput;
+  parkingSpot?: ParkingSpotCreateNestedManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,

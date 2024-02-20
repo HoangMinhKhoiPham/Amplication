@@ -40,7 +40,7 @@ class CompanyUpdateInput {
   @Field(() => FileUpdateManyWithoutCompaniesInput, {
     nullable: true,
   })
-  files?: FileUpdateManyWithoutCompaniesInput;
+  file?: FileUpdateManyWithoutCompaniesInput;
 
   @ApiProperty({
     required: false,

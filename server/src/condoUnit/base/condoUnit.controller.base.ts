@@ -56,9 +56,9 @@ export class CondoUnitControllerBase {
       data: {
         ...data,
 
-        lockerID: data.lockerID
+        locker: data.locker
           ? {
-              connect: data.lockerID,
+              connect: data.locker,
             }
           : undefined,
 
@@ -79,7 +79,7 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerID: {
+        locker: {
           select: {
             id: true,
           },
@@ -119,7 +119,7 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerID: {
+        locker: {
           select: {
             id: true,
           },
@@ -160,7 +160,7 @@ export class CondoUnitControllerBase {
         createdAt: true,
         id: true,
 
-        lockerID: {
+        locker: {
           select: {
             id: true,
           },
@@ -207,9 +207,9 @@ export class CondoUnitControllerBase {
         data: {
           ...data,
 
-          lockerID: data.lockerID
+          locker: data.locker
             ? {
-                connect: data.lockerID,
+                connect: data.locker,
               }
             : undefined,
 
@@ -230,7 +230,7 @@ export class CondoUnitControllerBase {
           createdAt: true,
           id: true,
 
-          lockerID: {
+          locker: {
             select: {
               id: true,
             },
@@ -280,7 +280,7 @@ export class CondoUnitControllerBase {
           createdAt: true,
           id: true,
 
-          lockerID: {
+          locker: {
             select: {
               id: true,
             },
@@ -313,30 +313,30 @@ export class CondoUnitControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/files")
+  @common.Get("/:id/file")
   @ApiNestedQuery(FileFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "File",
     action: "read",
     possession: "any",
   })
-  async findFiles(
+  async findFile(
     @common.Req() request: Request,
     @common.Param() params: CondoUnitWhereUniqueInput
   ): Promise<File[]> {
     const query = plainToClass(FileFindManyArgs, request.query);
-    const results = await this.service.findFiles(params.id, {
+    const results = await this.service.findFile(params.id, {
       ...query,
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -346,7 +346,7 @@ export class CondoUnitControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -354,7 +354,7 @@ export class CondoUnitControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -370,13 +370,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Post("/:id/files")
-  async connectFiles(
+  @common.Post("/:id/file")
+  async connectFile(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      files: {
+      file: {
         connect: body,
       },
     };
@@ -388,13 +388,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Patch("/:id/files")
-  async updateFiles(
+  @common.Patch("/:id/file")
+  async updateFile(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      files: {
+      file: {
         set: body,
       },
     };
@@ -406,13 +406,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Delete("/:id/files")
-  async disconnectFiles(
+  @common.Delete("/:id/file")
+  async disconnectFile(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      files: {
+      file: {
         disconnect: body,
       },
     };
@@ -424,19 +424,19 @@ export class CondoUnitControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/parkingSpotID")
+  @common.Get("/:id/parkingSpot")
   @ApiNestedQuery(ParkingSpotFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "ParkingSpot",
     action: "read",
     possession: "any",
   })
-  async findParkingSpotId(
+  async findParkingSpot(
     @common.Req() request: Request,
     @common.Param() params: CondoUnitWhereUniqueInput
   ): Promise<ParkingSpot[]> {
     const query = plainToClass(ParkingSpotFindManyArgs, request.query);
-    const results = await this.service.findParkingSpotId(params.id, {
+    const results = await this.service.findParkingSpot(params.id, {
       ...query,
       select: {
         condoUnit: {
@@ -466,13 +466,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Post("/:id/parkingSpotID")
-  async connectParkingSpotId(
+  @common.Post("/:id/parkingSpot")
+  async connectParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotID: {
+      parkingSpot: {
         connect: body,
       },
     };
@@ -484,13 +484,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Patch("/:id/parkingSpotID")
-  async updateParkingSpotId(
+  @common.Patch("/:id/parkingSpot")
+  async updateParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotID: {
+      parkingSpot: {
         set: body,
       },
     };
@@ -502,13 +502,13 @@ export class CondoUnitControllerBase {
   }
 
   @Public()
-  @common.Delete("/:id/parkingSpotID")
-  async disconnectParkingSpotId(
+  @common.Delete("/:id/parkingSpot")
+  async disconnectParkingSpot(
     @common.Param() params: CondoUnitWhereUniqueInput,
     @common.Body() body: ParkingSpotWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      parkingSpotID: {
+      parkingSpot: {
         disconnect: body,
       },
     };
@@ -535,7 +535,7 @@ export class CondoUnitControllerBase {
     const results = await this.service.findUserCondos(params.id, {
       ...query,
       select: {
-        condoID: {
+        condo: {
           select: {
             id: true,
           },
@@ -545,7 +545,7 @@ export class CondoUnitControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },

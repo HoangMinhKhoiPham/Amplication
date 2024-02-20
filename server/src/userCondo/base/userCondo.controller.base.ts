@@ -52,20 +52,20 @@ export class UserCondoControllerBase {
       data: {
         ...data,
 
-        condoID: data.condoID
+        condo: data.condo
           ? {
-              connect: data.condoID,
+              connect: data.condo,
             }
           : undefined,
 
-        userID: data.userID
+        user: data.user
           ? {
-              connect: data.userID,
+              connect: data.user,
             }
           : undefined,
       },
       select: {
-        condoID: {
+        condo: {
           select: {
             id: true,
           },
@@ -75,7 +75,7 @@ export class UserCondoControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -101,7 +101,7 @@ export class UserCondoControllerBase {
     return this.service.userCondos({
       ...args,
       select: {
-        condoID: {
+        condo: {
           select: {
             id: true,
           },
@@ -111,7 +111,7 @@ export class UserCondoControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -138,7 +138,7 @@ export class UserCondoControllerBase {
     const result = await this.service.userCondo({
       where: params,
       select: {
-        condoID: {
+        condo: {
           select: {
             id: true,
           },
@@ -148,7 +148,7 @@ export class UserCondoControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -185,20 +185,20 @@ export class UserCondoControllerBase {
         data: {
           ...data,
 
-          condoID: data.condoID
+          condo: data.condo
             ? {
-                connect: data.condoID,
+                connect: data.condo,
               }
             : undefined,
 
-          userID: data.userID
+          user: data.user
             ? {
-                connect: data.userID,
+                connect: data.user,
               }
             : undefined,
         },
         select: {
-          condoID: {
+          condo: {
             select: {
               id: true,
             },
@@ -208,7 +208,7 @@ export class UserCondoControllerBase {
           id: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },
@@ -243,7 +243,7 @@ export class UserCondoControllerBase {
       return await this.service.deleteUserCondo({
         where: params,
         select: {
-          condoID: {
+          condo: {
             select: {
               id: true,
             },
@@ -253,7 +253,7 @@ export class UserCondoControllerBase {
           id: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },

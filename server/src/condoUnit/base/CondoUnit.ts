@@ -54,7 +54,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => File)
   @IsOptional()
-  files?: Array<File>;
+  file?: Array<File>;
 
   @ApiProperty({
     required: true,
@@ -71,7 +71,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => Locker)
   @IsOptional()
-  lockerID?: Locker | null;
+  locker?: Locker | null;
 
   @ApiProperty({
     required: false,
@@ -80,7 +80,7 @@ class CondoUnit {
   @ValidateNested()
   @Type(() => ParkingSpot)
   @IsOptional()
-  parkingSpotID?: Array<ParkingSpot>;
+  parkingSpot?: Array<ParkingSpot>;
 
   @ApiProperty({
     required: false,

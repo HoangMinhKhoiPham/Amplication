@@ -41,7 +41,7 @@ class File {
   @ValidateNested()
   @Type(() => Company)
   @IsOptional()
-  companyID?: Company | null;
+  company?: Company | null;
 
   @ApiProperty({
     required: false,
@@ -50,7 +50,7 @@ class File {
   @ValidateNested()
   @Type(() => CondoUnit)
   @IsOptional()
-  condoUnitID?: CondoUnit | null;
+  condoUnit?: CondoUnit | null;
 
   @ApiProperty({
     required: true,
@@ -83,7 +83,7 @@ class File {
   @ValidateNested()
   @Type(() => Property)
   @IsOptional()
-  propertyId?: Property | null;
+  property?: Property | null;
 
   @ApiProperty({
     required: true,
@@ -100,7 +100,7 @@ class File {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userId?: User | null;
+  user?: User | null;
 }
 
 export { File as File };

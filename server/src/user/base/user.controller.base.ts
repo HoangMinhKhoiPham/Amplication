@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { UserService } from "../user.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { UserCreateInput } from "./UserCreateInput";
 import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
@@ -66,10 +67,15 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
   @swagger.ApiOkResponse({ type: [User] })
   @ApiNestedQuery(UserFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -91,10 +97,15 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "own",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -123,10 +134,15 @@ export class UserControllerBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -160,10 +176,14 @@ export class UserControllerBase {
     }
   }
 
-  @Public()
   @common.Delete("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "delete",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -211,7 +231,7 @@ export class UserControllerBase {
     const results = await this.service.findCompanyEmployees(params.id, {
       ...query,
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -219,7 +239,7 @@ export class UserControllerBase {
 
         id: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -234,8 +254,12 @@ export class UserControllerBase {
     return results;
   }
 
-  @Public()
   @common.Post("/:id/companyEmployees")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async connectCompanyEmployees(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -252,8 +276,12 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
   @common.Patch("/:id/companyEmployees")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async updateCompanyEmployees(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -270,8 +298,12 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
   @common.Delete("/:id/companyEmployees")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async disconnectCompanyEmployees(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -306,13 +338,13 @@ export class UserControllerBase {
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -322,7 +354,7 @@ export class UserControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -330,7 +362,7 @@ export class UserControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -345,8 +377,12 @@ export class UserControllerBase {
     return results;
   }
 
-  @Public()
   @common.Post("/:id/files")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async connectFiles(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -363,8 +399,12 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
   @common.Patch("/:id/files")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async updateFiles(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -381,8 +421,12 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
   @common.Delete("/:id/files")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async disconnectFiles(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -415,7 +459,7 @@ export class UserControllerBase {
     const results = await this.service.findUserCondos(params.id, {
       ...query,
       select: {
-        condoID: {
+        condo: {
           select: {
             id: true,
           },
@@ -425,7 +469,7 @@ export class UserControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -440,8 +484,12 @@ export class UserControllerBase {
     return results;
   }
 
-  @Public()
   @common.Post("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async connectUserCondos(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: UserCondoWhereUniqueInput[]
@@ -458,8 +506,12 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
   @common.Patch("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async updateUserCondos(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: UserCondoWhereUniqueInput[]
@@ -476,8 +528,12 @@ export class UserControllerBase {
     });
   }
 
-  @Public()
   @common.Delete("/:id/userCondos")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
   async disconnectUserCondos(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: UserCondoWhereUniqueInput[]

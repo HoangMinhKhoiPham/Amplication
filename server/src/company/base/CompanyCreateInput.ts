@@ -40,7 +40,7 @@ class CompanyCreateInput {
   @Field(() => FileCreateNestedManyWithoutCompaniesInput, {
     nullable: true,
   })
-  files?: FileCreateNestedManyWithoutCompaniesInput;
+  file?: FileCreateNestedManyWithoutCompaniesInput;
 
   @ApiProperty({
     required: true,

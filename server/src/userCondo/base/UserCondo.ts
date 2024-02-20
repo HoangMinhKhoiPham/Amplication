@@ -25,7 +25,7 @@ class UserCondo {
   @ValidateNested()
   @Type(() => CondoUnit)
   @IsOptional()
-  condoID?: CondoUnit | null;
+  condo?: CondoUnit | null;
 
   @ApiProperty({
     required: true,
@@ -58,7 +58,7 @@ class UserCondo {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userID?: User | null;
+  user?: User | null;
 }
 
 export { UserCondo as UserCondo };

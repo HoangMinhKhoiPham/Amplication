@@ -235,7 +235,7 @@ export class PropertyControllerBase {
         createdAt: true,
         id: true,
 
-        lockerID: {
+        locker: {
           select: {
             id: true,
           },
@@ -349,13 +349,13 @@ export class PropertyControllerBase {
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -365,7 +365,7 @@ export class PropertyControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -373,7 +373,7 @@ export class PropertyControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },

@@ -43,7 +43,7 @@ class CondoUnitUpdateInput {
   @Field(() => FileUpdateManyWithoutCondoUnitsInput, {
     nullable: true,
   })
-  files?: FileUpdateManyWithoutCondoUnitsInput;
+  file?: FileUpdateManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,
@@ -55,7 +55,7 @@ class CondoUnitUpdateInput {
   @Field(() => LockerWhereUniqueInput, {
     nullable: true,
   })
-  lockerID?: LockerWhereUniqueInput | null;
+  locker?: LockerWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -67,7 +67,7 @@ class CondoUnitUpdateInput {
   @Field(() => ParkingSpotUpdateManyWithoutCondoUnitsInput, {
     nullable: true,
   })
-  parkingSpotID?: ParkingSpotUpdateManyWithoutCondoUnitsInput;
+  parkingSpot?: ParkingSpotUpdateManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,

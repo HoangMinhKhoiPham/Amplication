@@ -39,7 +39,7 @@ class FileOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  companyIDId?: SortOrder;
+  companyID?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -116,7 +116,7 @@ class FileOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userIdId?: SortOrder;
+  userID?: SortOrder;
 }
 
 export { FileOrderByInput as FileOrderByInput };

@@ -19,8 +19,9 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CompanyService } from "../company.service";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { Company } from "./Company";
 import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
@@ -40,14 +41,9 @@ export class CompanyControllerBase {
     protected readonly service: CompanyService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Company })
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "create",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -209,7 +205,7 @@ export class CompanyControllerBase {
     const results = await this.service.findCompanyEmployees(params.id, {
       ...query,
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -217,7 +213,7 @@ export class CompanyControllerBase {
 
         id: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -299,30 +295,30 @@ export class CompanyControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/files")
+  @common.Get("/:id/file")
   @ApiNestedQuery(FileFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "File",
     action: "read",
     possession: "any",
   })
-  async findFiles(
+  async findFile(
     @common.Req() request: Request,
     @common.Param() params: CompanyWhereUniqueInput
   ): Promise<File[]> {
     const query = plainToClass(FileFindManyArgs, request.query);
-    const results = await this.service.findFiles(params.id, {
+    const results = await this.service.findFile(params.id, {
       ...query,
       select: {
         bucket: true,
 
-        companyID: {
+        company: {
           select: {
             id: true,
           },
         },
 
-        condoUnitID: {
+        condoUnit: {
           select: {
             id: true,
           },
@@ -332,7 +328,7 @@ export class CompanyControllerBase {
         id: true,
         name: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -340,7 +336,7 @@ export class CompanyControllerBase {
 
         updatedAt: true,
 
-        userId: {
+        user: {
           select: {
             id: true,
           },
@@ -355,18 +351,18 @@ export class CompanyControllerBase {
     return results;
   }
 
-  @common.Post("/:id/files")
+  @common.Post("/:id/file")
   @nestAccessControl.UseRoles({
     resource: "Company",
     action: "update",
     possession: "any",
   })
-  async connectFiles(
+  async connectFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      files: {
+      file: {
         connect: body,
       },
     };
@@ -377,18 +373,18 @@ export class CompanyControllerBase {
     });
   }
 
-  @common.Patch("/:id/files")
+  @common.Patch("/:id/file")
   @nestAccessControl.UseRoles({
     resource: "Company",
     action: "update",
     possession: "any",
   })
-  async updateFiles(
+  async updateFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      files: {
+      file: {
         set: body,
       },
     };
@@ -399,18 +395,18 @@ export class CompanyControllerBase {
     });
   }
 
-  @common.Delete("/:id/files")
+  @common.Delete("/:id/file")
   @nestAccessControl.UseRoles({
     resource: "Company",
     action: "update",
     possession: "any",
   })
-  async disconnectFiles(
+  async disconnectFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      files: {
+      file: {
         disconnect: body,
       },
     };

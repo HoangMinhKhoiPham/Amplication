@@ -41,7 +41,7 @@ class FileUpdateInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyID?: CompanyWhereUniqueInput | null;
+  company?: CompanyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -53,7 +53,7 @@ class FileUpdateInput {
   @Field(() => CondoUnitWhereUniqueInput, {
     nullable: true,
   })
-  condoUnitID?: CondoUnitWhereUniqueInput | null;
+  condoUnit?: CondoUnitWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -76,7 +76,7 @@ class FileUpdateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  property?: PropertyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -88,7 +88,7 @@ class FileUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userId?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { FileUpdateInput as FileUpdateInput };

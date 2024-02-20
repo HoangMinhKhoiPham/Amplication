@@ -29,7 +29,7 @@ class UserCondoWhereInput {
   @Field(() => CondoUnitWhereUniqueInput, {
     nullable: true,
   })
-  condoID?: CondoUnitWhereUniqueInput;
+  condo?: CondoUnitWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -52,7 +52,7 @@ class UserCondoWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { UserCondoWhereInput as UserCondoWhereInput };

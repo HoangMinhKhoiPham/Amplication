@@ -57,7 +57,7 @@ export class CondoUnitServiceBase {
     return this.prisma.condoUnit.delete(args);
   }
 
-  async findFiles(
+  async findFile(
     parentId: number,
     args: Prisma.FileFindManyArgs
   ): Promise<File[]> {
@@ -65,10 +65,10 @@ export class CondoUnitServiceBase {
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .files(args);
+      .file(args);
   }
 
-  async findParkingSpotId(
+  async findParkingSpot(
     parentId: number,
     args: Prisma.ParkingSpotFindManyArgs
   ): Promise<ParkingSpot[]> {
@@ -76,7 +76,7 @@ export class CondoUnitServiceBase {
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .parkingSpotID(args);
+      .parkingSpot(args);
   }
 
   async findUserCondos(
@@ -90,12 +90,12 @@ export class CondoUnitServiceBase {
       .userCondos(args);
   }
 
-  async getLockerId(parentId: number): Promise<Locker | null> {
+  async getLocker(parentId: number): Promise<Locker | null> {
     return this.prisma.condoUnit
       .findUnique({
         where: { id: parentId },
       })
-      .lockerID();
+      .locker();
   }
 
   async getPropertyId(parentId: number): Promise<Property | null> {

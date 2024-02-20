@@ -64,7 +64,7 @@ export class CompanyServiceBase {
       .companyEmployees(args);
   }
 
-  async findFiles(
+  async findFile(
     parentId: number,
     args: Prisma.FileFindManyArgs
   ): Promise<File[]> {
@@ -72,6 +72,6 @@ export class CompanyServiceBase {
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .files(args);
+      .file(args);
   }
 }

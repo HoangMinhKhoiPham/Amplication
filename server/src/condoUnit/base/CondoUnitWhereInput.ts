@@ -46,7 +46,7 @@ class CondoUnitWhereInput {
   @Field(() => FileListRelationFilter, {
     nullable: true,
   })
-  files?: FileListRelationFilter;
+  file?: FileListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -69,7 +69,7 @@ class CondoUnitWhereInput {
   @Field(() => LockerWhereUniqueInput, {
     nullable: true,
   })
-  lockerID?: LockerWhereUniqueInput;
+  locker?: LockerWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -81,7 +81,7 @@ class CondoUnitWhereInput {
   @Field(() => ParkingSpotListRelationFilter, {
     nullable: true,
   })
-  parkingSpotID?: ParkingSpotListRelationFilter;
+  parkingSpot?: ParkingSpotListRelationFilter;
 
   @ApiProperty({
     required: false,
