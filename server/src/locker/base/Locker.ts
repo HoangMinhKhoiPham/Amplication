@@ -50,7 +50,7 @@ class Locker {
   @ValidateNested()
   @Type(() => Property)
   @IsOptional()
-  propertyId?: Property | null;
+  property?: Property | null;
 
   @ApiProperty({
     required: true,

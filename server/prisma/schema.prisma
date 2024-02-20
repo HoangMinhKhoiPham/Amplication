@@ -65,12 +65,12 @@ model ParkingSpot {
 }
 
 model Locker {
-  condoUnits   CondoUnit?
-  createdAt    DateTime   @default(now())
-  id           Int        @id @default(autoincrement())
-  propertyId   Property?  @relation(fields: [propertyIdId], references: [id])
-  propertyIdId Int?
-  updatedAt    DateTime   @updatedAt
+  condoUnits CondoUnit?
+  createdAt  DateTime   @default(now())
+  id         Int        @id @default(autoincrement())
+  property   Property?  @relation(fields: [propertyID], references: [id])
+  propertyID Int?
+  updatedAt  DateTime   @updatedAt
 }
 
 model Company {

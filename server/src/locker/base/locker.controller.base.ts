@@ -56,9 +56,9 @@ export class LockerControllerBase {
             }
           : undefined,
 
-        propertyId: data.propertyId
+        property: data.property
           ? {
-              connect: data.propertyId,
+              connect: data.property,
             }
           : undefined,
       },
@@ -72,7 +72,7 @@ export class LockerControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -109,7 +109,7 @@ export class LockerControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -147,7 +147,7 @@ export class LockerControllerBase {
         createdAt: true,
         id: true,
 
-        propertyId: {
+        property: {
           select: {
             id: true,
           },
@@ -192,9 +192,9 @@ export class LockerControllerBase {
               }
             : undefined,
 
-          propertyId: data.propertyId
+          property: data.property
             ? {
-                connect: data.propertyId,
+                connect: data.property,
               }
             : undefined,
         },
@@ -208,7 +208,7 @@ export class LockerControllerBase {
           createdAt: true,
           id: true,
 
-          propertyId: {
+          property: {
             select: {
               id: true,
             },
@@ -254,7 +254,7 @@ export class LockerControllerBase {
           createdAt: true,
           id: true,
 
-          propertyId: {
+          property: {
             select: {
               id: true,
             },

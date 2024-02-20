@@ -40,7 +40,7 @@ class LockerCreateInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput | null;
+  property?: PropertyWhereUniqueInput | null;
 }
 
 export { LockerCreateInput as LockerCreateInput };

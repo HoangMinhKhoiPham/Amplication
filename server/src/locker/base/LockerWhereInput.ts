@@ -52,7 +52,7 @@ class LockerWhereInput {
   @Field(() => PropertyWhereUniqueInput, {
     nullable: true,
   })
-  propertyId?: PropertyWhereUniqueInput;
+  property?: PropertyWhereUniqueInput;
 }
 
 export { LockerWhereInput as LockerWhereInput };

@@ -61,11 +61,11 @@ export class LockerServiceBase {
       .condoUnits();
   }
 
-  async getPropertyId(parentId: number): Promise<Property | null> {
+  async getProperty(parentId: number): Promise<Property | null> {
     return this.prisma.locker
       .findUnique({
         where: { id: parentId },
       })
-      .propertyId();
+      .property();
   }
 }
