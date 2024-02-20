@@ -288,36 +288,6 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "ParkingSpot",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "ParkingSpot",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "ParkingSpot",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "ParkingSpot",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "ParkingSpot",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "financialManager",
     "resource": "ParkingSpot",
     "action": "create:any",
@@ -330,33 +300,9 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "ParkingSpot",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "ParkingSpot",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "ParkingSpot",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "ParkingSpot",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "ParkingSpot",
-    "action": "update:any",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -372,33 +318,9 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "ParkingSpot",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "ParkingSpot",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "ParkingSpot",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "ParkingSpot",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "ParkingSpot",
-    "action": "delete:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -409,6 +331,12 @@
   },
   {
     "role": "manager",
+    "resource": "ParkingSpot",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
     "resource": "ParkingSpot",
     "action": "delete:any",
     "attributes": "*"
@@ -498,36 +426,6 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "Locker",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Locker",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Locker",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Locker",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Locker",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "financialManager",
     "resource": "Locker",
     "action": "create:any",
@@ -540,33 +438,9 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "Locker",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Locker",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Locker",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Locker",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Locker",
-    "action": "update:any",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -582,33 +456,9 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "Locker",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Locker",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Locker",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Locker",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Locker",
-    "action": "delete:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -619,6 +469,12 @@
   },
   {
     "role": "manager",
+    "resource": "Locker",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
     "resource": "Locker",
     "action": "delete:any",
     "attributes": "*"
