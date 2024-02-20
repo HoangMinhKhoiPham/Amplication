@@ -211,7 +211,7 @@ export class UserControllerBase {
     const results = await this.service.findCompanyEmployees(params.id, {
       ...query,
       select: {
-        companyId: {
+        companyID: {
           select: {
             id: true,
           },
@@ -219,7 +219,7 @@ export class UserControllerBase {
 
         id: true,
 
-        userId: {
+        userID: {
           select: {
             id: true,
           },

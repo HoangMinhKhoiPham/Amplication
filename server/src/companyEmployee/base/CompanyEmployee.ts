@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { Company } from "../../company/base/Company";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { ValidateNested, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
 
@@ -25,15 +25,15 @@ class CompanyEmployee {
   @ValidateNested()
   @Type(() => Company)
   @IsOptional()
-  companyId?: Company | null;
+  companyID?: Company | null;
 
   @ApiProperty({
     required: true,
-    type: String,
+    type: Number,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsInt()
+  @Field(() => Number)
+  id!: number;
 
   @ApiProperty({
     required: false,
@@ -42,7 +42,7 @@ class CompanyEmployee {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userId?: User | null;
+  userID?: User | null;
 }
 
 export { CompanyEmployee as CompanyEmployee };

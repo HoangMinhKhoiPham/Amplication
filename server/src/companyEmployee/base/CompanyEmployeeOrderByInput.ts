@@ -28,7 +28,7 @@ class CompanyEmployeeOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  companyIdId?: SortOrder;
+  companyID?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -50,7 +50,7 @@ class CompanyEmployeeOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userIdId?: SortOrder;
+  userID?: SortOrder;
 }
 
 export { CompanyEmployeeOrderByInput as CompanyEmployeeOrderByInput };

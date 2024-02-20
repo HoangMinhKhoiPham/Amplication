@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
-import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
+import { ValidateNested, IsOptional, IsDate, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { Property } from "../../property/base/Property";
 
@@ -37,11 +37,11 @@ class Locker {
 
   @ApiProperty({
     required: true,
-    type: String,
+    type: Number,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsInt()
+  @Field(() => Number)
+  id!: number;
 
   @ApiProperty({
     required: false,

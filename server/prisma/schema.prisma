@@ -23,23 +23,13 @@ model User {
   username         String            @unique
 }
 
-model Customer {
-  createdAt DateTime @default(now())
-  email     String?
-  firstName String?
-  id        String   @id @default(cuid())
-  lastName  String?
-  phone     String?
-  updatedAt DateTime @updatedAt
-}
-
 model CondoUnit {
   condoFee         String?
   createdAt        DateTime         @default(now())
   files            File[]
   id               Int              @id @default(autoincrement())
   lockerID         Locker?          @relation(fields: [lockerIDId], references: [id])
-  lockerIDId       String?          @unique
+  lockerIDId       Int?             @unique
   parkingSpotID    ParkingSpot[]
   propertyID       Property?        @relation(fields: [propertyIDId], references: [id])
   propertyIDId     Int?
@@ -77,7 +67,7 @@ model ParkingSpot {
 model Locker {
   condoUnits   CondoUnit?
   createdAt    DateTime   @default(now())
-  id           String     @id @default(cuid())
+  id           Int        @id @default(autoincrement())
   propertyId   Property?  @relation(fields: [propertyIdId], references: [id])
   propertyIdId Int?
   updatedAt    DateTime   @updatedAt
@@ -99,7 +89,7 @@ model File {
   condoUnitID CondoUnit? @relation(fields: [condoUnitID], references: [id])
   condoUnitID Int?
   createdAt   DateTime   @default(now())
-  id          String     @id @default(cuid())
+  id          Int        @id @default(autoincrement())
   name        String
   propertyId  Property?  @relation(fields: [propertyID], references: [id])
   propertyID  Int?
@@ -123,11 +113,11 @@ model Role {
 }
 
 model CompanyEmployee {
-  companyId   Company? @relation(fields: [companyIdId], references: [id])
-  companyIdId Int?
-  id          String   @id @default(cuid())
-  userId      User?    @relation(fields: [userIdId], references: [id])
-  userIdId    Int?
+  companyID Company? @relation(fields: [companyID], references: [id])
+  companyID Int?
+  id        Int      @id @default(autoincrement())
+  userID    User?    @relation(fields: [userID], references: [id])
+  userID    Int?
 }
 
 model UserCondo {

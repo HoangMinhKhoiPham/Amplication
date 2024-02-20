@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { StringFilter } from "../../util/StringFilter";
+import { IntFilter } from "../../util/IntFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -29,18 +29,18 @@ class CompanyEmployeeWhereInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyId?: CompanyWhereUniqueInput;
+  companyID?: CompanyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: IntFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  id?: StringFilter;
+  id?: IntFilter;
 
   @ApiProperty({
     required: false,
@@ -52,7 +52,7 @@ class CompanyEmployeeWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userId?: UserWhereUniqueInput;
+  userID?: UserWhereUniqueInput;
 }
 
 export { CompanyEmployeeWhereInput as CompanyEmployeeWhereInput };

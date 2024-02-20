@@ -55,7 +55,7 @@ export class FileServiceBase {
     return this.prisma.file.delete(args);
   }
 
-  async getCompanyId(parentId: string): Promise<Company | null> {
+  async getCompanyId(parentId: number): Promise<Company | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
@@ -63,7 +63,7 @@ export class FileServiceBase {
       .companyID();
   }
 
-  async getCondoUnitId(parentId: string): Promise<CondoUnit | null> {
+  async getCondoUnitId(parentId: number): Promise<CondoUnit | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
@@ -71,7 +71,7 @@ export class FileServiceBase {
       .condoUnitID();
   }
 
-  async getPropertyId(parentId: string): Promise<Property | null> {
+  async getPropertyId(parentId: number): Promise<Property | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
@@ -79,7 +79,7 @@ export class FileServiceBase {
       .propertyId();
   }
 
-  async getUserId(parentId: string): Promise<User | null> {
+  async getUserId(parentId: number): Promise<User | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },

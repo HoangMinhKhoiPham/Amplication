@@ -53,7 +53,7 @@ export class LockerServiceBase {
     return this.prisma.locker.delete(args);
   }
 
-  async getCondoUnits(parentId: string): Promise<CondoUnit | null> {
+  async getCondoUnits(parentId: number): Promise<CondoUnit | null> {
     return this.prisma.locker
       .findUnique({
         where: { id: parentId },
@@ -61,7 +61,7 @@ export class LockerServiceBase {
       .condoUnits();
   }
 
-  async getPropertyId(parentId: string): Promise<Property | null> {
+  async getPropertyId(parentId: number): Promise<Property | null> {
     return this.prisma.locker
       .findUnique({
         where: { id: parentId },

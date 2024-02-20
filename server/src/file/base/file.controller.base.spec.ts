@@ -20,14 +20,14 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   bucket: "exampleBucket",
   createdAt: new Date(),
-  id: "exampleId",
+  id: 42,
   name: "exampleName",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
   bucket: "exampleBucket",
   createdAt: new Date(),
-  id: "exampleId",
+  id: 42,
   name: "exampleName",
   updatedAt: new Date(),
 };
@@ -35,7 +35,7 @@ const FIND_MANY_RESULT = [
   {
     bucket: "exampleBucket",
     createdAt: new Date(),
-    id: "exampleId",
+    id: 42,
     name: "exampleName",
     updatedAt: new Date(),
   },
@@ -43,7 +43,7 @@ const FIND_MANY_RESULT = [
 const FIND_ONE_RESULT = {
   bucket: "exampleBucket",
   createdAt: new Date(),
-  id: "exampleId",
+  id: 42,
   name: "exampleName",
   updatedAt: new Date(),
 };

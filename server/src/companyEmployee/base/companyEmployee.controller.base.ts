@@ -52,20 +52,20 @@ export class CompanyEmployeeControllerBase {
       data: {
         ...data,
 
-        companyId: data.companyId
+        companyID: data.companyID
           ? {
-              connect: data.companyId,
+              connect: data.companyID,
             }
           : undefined,
 
-        userId: data.userId
+        userID: data.userID
           ? {
-              connect: data.userId,
+              connect: data.userID,
             }
           : undefined,
       },
       select: {
-        companyId: {
+        companyID: {
           select: {
             id: true,
           },
@@ -73,7 +73,7 @@ export class CompanyEmployeeControllerBase {
 
         id: true,
 
-        userId: {
+        userID: {
           select: {
             id: true,
           },
@@ -101,7 +101,7 @@ export class CompanyEmployeeControllerBase {
     return this.service.companyEmployees({
       ...args,
       select: {
-        companyId: {
+        companyID: {
           select: {
             id: true,
           },
@@ -109,7 +109,7 @@ export class CompanyEmployeeControllerBase {
 
         id: true,
 
-        userId: {
+        userID: {
           select: {
             id: true,
           },
@@ -136,7 +136,7 @@ export class CompanyEmployeeControllerBase {
     const result = await this.service.companyEmployee({
       where: params,
       select: {
-        companyId: {
+        companyID: {
           select: {
             id: true,
           },
@@ -144,7 +144,7 @@ export class CompanyEmployeeControllerBase {
 
         id: true,
 
-        userId: {
+        userID: {
           select: {
             id: true,
           },
@@ -181,20 +181,20 @@ export class CompanyEmployeeControllerBase {
         data: {
           ...data,
 
-          companyId: data.companyId
+          companyID: data.companyID
             ? {
-                connect: data.companyId,
+                connect: data.companyID,
               }
             : undefined,
 
-          userId: data.userId
+          userID: data.userID
             ? {
-                connect: data.userId,
+                connect: data.userID,
               }
             : undefined,
         },
         select: {
-          companyId: {
+          companyID: {
             select: {
               id: true,
             },
@@ -202,7 +202,7 @@ export class CompanyEmployeeControllerBase {
 
           id: true,
 
-          userId: {
+          userID: {
             select: {
               id: true,
             },
@@ -237,7 +237,7 @@ export class CompanyEmployeeControllerBase {
       return await this.service.deleteCompanyEmployee({
         where: params,
         select: {
-          companyId: {
+          companyID: {
             select: {
               id: true,
             },
@@ -245,7 +245,7 @@ export class CompanyEmployeeControllerBase {
 
           id: true,
 
-          userId: {
+          userID: {
             select: {
               id: true,
             },

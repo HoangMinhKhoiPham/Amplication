@@ -2,7 +2,6 @@ import { Module } from "@nestjs/common";
 import { CacheModule } from "@nestjs/cache-manager";
 import { redisStore } from "cache-manager-ioredis-yet";
 import { UserModule } from "./user/user.module";
-import { CustomerModule } from "./customer/customer.module";
 import { CondoUnitModule } from "./condoUnit/condoUnit.module";
 import { PropertyModule } from "./property/property.module";
 import { ParkingSpotModule } from "./parkingSpot/parkingSpot.module";
@@ -29,7 +28,6 @@ import { AuthModule } from "./auth/auth.module";
     ACLModule,
     AuthModule,
     UserModule,
-    CustomerModule,
     CondoUnitModule,
     PropertyModule,
     ParkingSpotModule,
