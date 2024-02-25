@@ -67,6 +67,7 @@ export class RegistrationKeyControllerBase {
         id: true,
         role: true,
         updatedAt: true,
+        value: true,
       },
     });
   }
@@ -100,6 +101,7 @@ export class RegistrationKeyControllerBase {
         id: true,
         role: true,
         updatedAt: true,
+        value: true,
       },
     });
   }
@@ -132,6 +134,7 @@ export class RegistrationKeyControllerBase {
         id: true,
         role: true,
         updatedAt: true,
+        value: true,
       },
     });
     if (result === null) {
@@ -179,6 +182,7 @@ export class RegistrationKeyControllerBase {
           id: true,
           role: true,
           updatedAt: true,
+          value: true,
         },
       });
     } catch (error) {
@@ -219,6 +223,7 @@ export class RegistrationKeyControllerBase {
           id: true,
           role: true,
           updatedAt: true,
+          value: true,
         },
       });
     } catch (error) {
