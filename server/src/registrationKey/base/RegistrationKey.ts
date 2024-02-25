@@ -14,6 +14,9 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { ValidateNested, IsDate, IsInt } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { JsonValue } from "type-fest";
 
 @ObjectType()
 class RegistrationKey {
@@ -40,6 +43,13 @@ class RegistrationKey {
   @IsInt()
   @Field(() => Number)
   id!: number;
+
+  @ApiProperty({
+    required: true,
+  })
+  @IsJSONValue()
+  @Field(() => GraphQLJSON)
+  role!: JsonValue;
 
   @ApiProperty({
     required: true,
