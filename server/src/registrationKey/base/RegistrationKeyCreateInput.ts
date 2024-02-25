@@ -14,6 +14,9 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
 import { ValidateNested, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 
 @InputType()
 class RegistrationKeyCreateInput {
@@ -25,6 +28,13 @@ class RegistrationKeyCreateInput {
   @Type(() => CondoUnitWhereUniqueInput)
   @Field(() => CondoUnitWhereUniqueInput)
   condoUnit!: CondoUnitWhereUniqueInput;
+
+  @ApiProperty({
+    required: true,
+  })
+  @IsJSONValue()
+  @Field(() => GraphQLJSON)
+  role!: InputJsonValue;
 
   @ApiProperty({
     required: true,
