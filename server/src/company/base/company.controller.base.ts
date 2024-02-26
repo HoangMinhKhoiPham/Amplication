@@ -21,7 +21,6 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CompanyService } from "../company.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { Company } from "./Company";
 import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
@@ -118,15 +117,10 @@ export class CompanyControllerBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: Company })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -228,12 +222,8 @@ export class CompanyControllerBase {
     return results;
   }
 
+  @Public()
   @common.Post("/:id/companyEmployees")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async connectCompanyEmployees(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -250,12 +240,8 @@ export class CompanyControllerBase {
     });
   }
 
+  @Public()
   @common.Patch("/:id/companyEmployees")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async updateCompanyEmployees(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -351,12 +337,8 @@ export class CompanyControllerBase {
     return results;
   }
 
+  @Public()
   @common.Post("/:id/file")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async connectFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -373,12 +355,8 @@ export class CompanyControllerBase {
     });
   }
 
+  @Public()
   @common.Patch("/:id/file")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async updateFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
