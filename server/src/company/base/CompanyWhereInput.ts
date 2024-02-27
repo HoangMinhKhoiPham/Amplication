@@ -17,6 +17,7 @@ import { Type } from "class-transformer";
 import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { PropertyListRelationFilter } from "../../property/base/PropertyListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 @InputType()
@@ -66,6 +67,18 @@ class CompanyWhereInput {
     nullable: true,
   })
   name?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => PropertyListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => PropertyListRelationFilter)
+  @IsOptional()
+  @Field(() => PropertyListRelationFilter, {
+    nullable: true,
+  })
+  properties?: PropertyListRelationFilter;
 
   @ApiProperty({
     required: false,

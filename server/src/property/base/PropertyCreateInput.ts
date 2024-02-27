@@ -12,8 +12,9 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, ValidateNested, IsOptional, IsInt } from "class-validator";
-import { CondoUnitCreateNestedManyWithoutPropertiesInput } from "./CondoUnitCreateNestedManyWithoutPropertiesInput";
+import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { Type } from "class-transformer";
+import { CondoUnitCreateNestedManyWithoutPropertiesInput } from "./CondoUnitCreateNestedManyWithoutPropertiesInput";
 import { FileCreateNestedManyWithoutPropertiesInput } from "./FileCreateNestedManyWithoutPropertiesInput";
 import { LockerCreateNestedManyWithoutPropertiesInput } from "./LockerCreateNestedManyWithoutPropertiesInput";
 import { ParkingSpotCreateNestedManyWithoutPropertiesInput } from "./ParkingSpotCreateNestedManyWithoutPropertiesInput";
@@ -27,6 +28,18 @@ class PropertyCreateInput {
   @IsString()
   @Field(() => String)
   address!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => CompanyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CompanyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CompanyWhereUniqueInput, {
+    nullable: true,
+  })
+  company?: CompanyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

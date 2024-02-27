@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
+import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { CondoUnitListRelationFilter } from "../../condoUnit/base/CondoUnitListRelationFilter";
 import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
@@ -33,6 +34,18 @@ class PropertyWhereInput {
     nullable: true,
   })
   address?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => CompanyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CompanyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CompanyWhereUniqueInput, {
+    nullable: true,
+  })
+  company?: CompanyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
