@@ -788,54 +788,6 @@
   {
     "role": "condoOwner",
     "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Company",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Company",
     "action": "delete:any",
     "attributes": "*"
   },

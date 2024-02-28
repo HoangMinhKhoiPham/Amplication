@@ -21,7 +21,6 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CompanyService } from "../company.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { Company } from "./Company";
 import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
@@ -33,6 +32,9 @@ import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/Comp
 import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
 import { File } from "../../file/base/File";
 import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
+import { PropertyFindManyArgs } from "../../property/base/PropertyFindManyArgs";
+import { Property } from "../../property/base/Property";
+import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -118,15 +120,10 @@ export class CompanyControllerBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: Company })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -228,12 +225,8 @@ export class CompanyControllerBase {
     return results;
   }
 
+  @Public()
   @common.Post("/:id/companyEmployees")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async connectCompanyEmployees(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -250,12 +243,8 @@ export class CompanyControllerBase {
     });
   }
 
+  @Public()
   @common.Patch("/:id/companyEmployees")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async updateCompanyEmployees(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: CompanyEmployeeWhereUniqueInput[]
@@ -351,12 +340,8 @@ export class CompanyControllerBase {
     return results;
   }
 
+  @Public()
   @common.Post("/:id/file")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async connectFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -373,12 +358,8 @@ export class CompanyControllerBase {
     });
   }
 
+  @Public()
   @common.Patch("/:id/file")
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "update",
-    possession: "any",
-  })
   async updateFile(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: FileWhereUniqueInput[]
@@ -407,6 +388,105 @@ export class CompanyControllerBase {
   ): Promise<void> {
     const data = {
       file: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/properties")
+  @ApiNestedQuery(PropertyFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "read",
+    possession: "any",
+  })
+  async findProperties(
+    @common.Req() request: Request,
+    @common.Param() params: CompanyWhereUniqueInput
+  ): Promise<Property[]> {
+    const query = plainToClass(PropertyFindManyArgs, request.query);
+    const results = await this.service.findProperties(params.id, {
+      ...query,
+      select: {
+        address: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        lockerCount: true,
+        name: true,
+        parkingCount: true,
+        unitCount: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @Public()
+  @common.Post("/:id/properties")
+  async connectProperties(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: PropertyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      properties: {
+        connect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Patch("/:id/properties")
+  async updateProperties(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: PropertyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      properties: {
+        set: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/properties")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectProperties(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: PropertyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      properties: {
         disconnect: body,
       },
     };

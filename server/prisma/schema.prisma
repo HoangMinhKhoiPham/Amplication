@@ -35,12 +35,15 @@ model CondoUnit {
   propertyIDId     Int?
   registrationKeys RegistrationKey?
   size             String
+  unitNumber       String?
   updatedAt        DateTime         @updatedAt
   userCondos       UserCondo[]
 }
 
 model Property {
   address      String
+  company      Company?      @relation(fields: [companyID], references: [id])
+  companyID    Int?
   condoUnits   CondoUnit[]
   createdAt    DateTime      @default(now())
   files        File[]
@@ -79,6 +82,7 @@ model Company {
   file             File[]
   id               Int               @id @default(autoincrement())
   name             String
+  properties       Property[]
   updatedAt        DateTime?         @updatedAt
 }
 
