@@ -21,6 +21,7 @@ import { ParkingSpotListRelationFilter } from "../../parkingSpot/base/ParkingSpo
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListRelationFilter";
 
 @InputType()
@@ -117,6 +118,17 @@ class CondoUnitWhereInput {
     nullable: true,
   })
   size?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  unitNumber?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
