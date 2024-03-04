@@ -128,6 +128,17 @@ class CondoUnitWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  test?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   unitNumber?: StringNullableFilter;
 
   @ApiProperty({

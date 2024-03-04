@@ -309,6 +309,7 @@ export class PropertyControllerBase {
         },
 
         size: true,
+        test: true,
         unitNumber: true,
         updatedAt: true,
       },

@@ -35,6 +35,7 @@ model CondoUnit {
   propertyIDId     Int?
   registrationKeys RegistrationKey?
   size             String
+  test             String?
   unitNumber       String?
   updatedAt        DateTime         @updatedAt
   userCondos       UserCondo[]
