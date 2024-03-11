@@ -20,6 +20,7 @@ import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { RegistrationKeyService } from "../registrationKey.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { RegistrationKeyCreateInput } from "./RegistrationKeyCreateInput";
 import { RegistrationKey } from "./RegistrationKey";
@@ -72,15 +73,10 @@ export class RegistrationKeyControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @common.Get()
   @swagger.ApiOkResponse({ type: [RegistrationKey] })
   @ApiNestedQuery(RegistrationKeyFindManyArgs)
-  @nestAccessControl.UseRoles({
-    resource: "RegistrationKey",
-    action: "read",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })

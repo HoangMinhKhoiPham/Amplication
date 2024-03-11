@@ -1224,24 +1224,6 @@
     "attributes": "*"
   },
   {
-    "role": "financialManager",
-    "resource": "RegistrationKey",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "RegistrationKey",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "RegistrationKey",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "condoOwner",
     "resource": "Role",
     "action": "read:own",
