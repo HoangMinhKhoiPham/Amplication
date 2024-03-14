@@ -22,6 +22,7 @@ import {
 import { Type } from "class-transformer";
 import { File } from "../../file/base/File";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { Reservation } from "../../reservation/base/Reservation";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
@@ -110,6 +111,15 @@ class User {
   @Type(() => Post)
   @IsOptional()
   posts?: Array<Post>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Request],
+  })
+  @ValidateNested()
+  @Type(() => Request)
+  @IsOptional()
+  requests?: Array<Request>;
 
   @ApiProperty({
     required: false,

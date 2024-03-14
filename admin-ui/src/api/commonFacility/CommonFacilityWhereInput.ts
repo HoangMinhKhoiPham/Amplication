@@ -3,6 +3,6 @@ import { StringFilter } from "../../util/StringFilter";
 
 export type CommonFacilityWhereInput = {
   availabilities?: ReservationListRelationFilter;
-  facilityType?: "SkyLounge" | "SpaFitness";
+  facilityType?: "sky_lounge" | "spa_fitness" | "sauna";
   id?: StringFilter;
 };

@@ -19,6 +19,7 @@ import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { PostListRelationFilter } from "../../post/base/PostListRelationFilter";
+import { RequestListRelationFilter } from "../../request/base/RequestListRelationFilter";
 import { ReservationListRelationFilter } from "../../reservation/base/ReservationListRelationFilter";
 import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListRelationFilter";
 
@@ -114,6 +115,18 @@ class UserWhereInput {
     nullable: true,
   })
   posts?: PostListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RequestListRelationFilter)
+  @IsOptional()
+  @Field(() => RequestListRelationFilter, {
+    nullable: true,
+  })
+  requests?: RequestListRelationFilter;
 
   @ApiProperty({
     required: false,

@@ -22,6 +22,7 @@ import { RegistrationKeyService } from "../registrationKey.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { RegistrationKeyCreateInput } from "./RegistrationKeyCreateInput";
 import { RegistrationKey } from "./RegistrationKey";
 import { Post } from "../../post/base/Post";

@@ -22,6 +22,7 @@ import {
 import { Type } from "class-transformer";
 import { File } from "../../file/base/File";
 import { Property } from "../../property/base/Property";
+import { Request } from "../../request/base/Request";
 
 @ObjectType()
 class Company {
@@ -75,6 +76,15 @@ class Company {
   @Type(() => Property)
   @IsOptional()
   properties?: Array<Property>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Request],
+  })
+  @ValidateNested()
+  @Type(() => Request)
+  @IsOptional()
+  requests?: Array<Request>;
 
   @ApiProperty({
     required: false,

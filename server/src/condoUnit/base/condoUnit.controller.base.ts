@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CondoUnitService } from "../condoUnit.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { CondoUnitCreateInput } from "./CondoUnitCreateInput";
 import { CondoUnit } from "./CondoUnit";
 import { Post } from "../../post/base/Post";

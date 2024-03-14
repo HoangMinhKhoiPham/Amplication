@@ -2,5 +2,5 @@ import { ReservationUpdateManyWithoutCommonFacilitiesInput } from "./Reservation
 
 export type CommonFacilityUpdateInput = {
   availabilities?: ReservationUpdateManyWithoutCommonFacilitiesInput;
-  facilityType?: "SkyLounge" | "SpaFitness" | null;
+  facilityType?: "sky_lounge" | "spa_fitness" | "sauna" | null;
 };

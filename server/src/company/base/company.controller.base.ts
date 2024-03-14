@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CompanyService } from "../company.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { Company } from "./Company";
 import { Post } from "../../post/base/Post";
@@ -36,6 +37,8 @@ import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { PropertyFindManyArgs } from "../../property/base/PropertyFindManyArgs";
 import { Property } from "../../property/base/Property";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { RequestWhereUniqueInput } from "../../request/base/RequestWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -488,6 +491,106 @@ export class CompanyControllerBase {
   ): Promise<void> {
     const data = {
       properties: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/requests")
+  @ApiNestedQuery(RequestFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async findRequests(
+    @common.Req() request: Request,
+    @common.Param() params: CompanyWhereUniqueInput
+  ): Promise<Request[]> {
+    const query = plainToClass(RequestFindManyArgs, request.query);
+    const results = await this.service.findRequests(params.id, {
+      ...query,
+      select: {
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        requestType: true,
+        updatedAt: true,
+
+        userID: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @Public()
+  @common.Post("/:id/requests")
+  async connectRequests(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        connect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Patch("/:id/requests")
+  async updateRequests(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        set: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectRequests(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
         disconnect: body,
       },
     };

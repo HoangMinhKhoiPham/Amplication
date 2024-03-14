@@ -13,6 +13,7 @@ import {
 import { CompanyEmployeeTitle } from "../companyEmployee/CompanyEmployeeTitle";
 import { FileTitle } from "../file/FileTitle";
 import { PostTitle } from "../post/PostTitle";
+import { RequestTitle } from "../request/RequestTitle";
 import { ReservationTitle } from "../reservation/ReservationTitle";
 import { UserCondoTitle } from "../userCondo/UserCondoTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
@@ -49,6 +50,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
           <SelectArrayInput optionText={PostTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="requests"
+          reference="Request"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={RequestTitle} />
         </ReferenceArrayInput>
         <ReferenceArrayInput
           source="reservations"
