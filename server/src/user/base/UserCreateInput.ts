@@ -15,6 +15,8 @@ import { CompanyEmployeeCreateNestedManyWithoutUsersInput } from "./CompanyEmplo
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileCreateNestedManyWithoutUsersInput } from "./FileCreateNestedManyWithoutUsersInput";
+import { PostCreateNestedManyWithoutUsersInput } from "./PostCreateNestedManyWithoutUsersInput";
+import { ReservationCreateNestedManyWithoutUsersInput } from "./ReservationCreateNestedManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -91,6 +93,30 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   phoneNumber!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => PostCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => PostCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => PostCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  posts?: PostCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ReservationCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ReservationCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ReservationCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  reservations?: ReservationCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

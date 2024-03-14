@@ -18,6 +18,8 @@ import { StringFilter } from "../../util/StringFilter";
 import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IntFilter } from "../../util/IntFilter";
+import { PostListRelationFilter } from "../../post/base/PostListRelationFilter";
+import { ReservationListRelationFilter } from "../../reservation/base/ReservationListRelationFilter";
 import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListRelationFilter";
 
 @InputType()
@@ -100,6 +102,30 @@ class UserWhereInput {
     nullable: true,
   })
   phoneNumber?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => PostListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => PostListRelationFilter)
+  @IsOptional()
+  @Field(() => PostListRelationFilter, {
+    nullable: true,
+  })
+  posts?: PostListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ReservationListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ReservationListRelationFilter)
+  @IsOptional()
+  @Field(() => ReservationListRelationFilter, {
+    nullable: true,
+  })
+  reservations?: ReservationListRelationFilter;
 
   @ApiProperty({
     required: false,

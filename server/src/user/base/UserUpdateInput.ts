@@ -15,6 +15,8 @@ import { CompanyEmployeeUpdateManyWithoutUsersInput } from "./CompanyEmployeeUpd
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileUpdateManyWithoutUsersInput } from "./FileUpdateManyWithoutUsersInput";
+import { PostUpdateManyWithoutUsersInput } from "./PostUpdateManyWithoutUsersInput";
+import { ReservationUpdateManyWithoutUsersInput } from "./ReservationUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -100,6 +102,30 @@ class UserUpdateInput {
     nullable: true,
   })
   phoneNumber?: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => PostUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => PostUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => PostUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  posts?: PostUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ReservationUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ReservationUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ReservationUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  reservations?: ReservationUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

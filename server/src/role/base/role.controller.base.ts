@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { RoleCreateInput } from "./RoleCreateInput";
 import { Role } from "./Role";
+import { Post } from "../../post/base/Post";
 import { RoleFindManyArgs } from "./RoleFindManyArgs";
 import { RoleWhereUniqueInput } from "./RoleWhereUniqueInput";
 import { RoleUpdateInput } from "./RoleUpdateInput";

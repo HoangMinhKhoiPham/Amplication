@@ -1,5 +1,7 @@
 import { CompanyEmployee } from "../companyEmployee/CompanyEmployee";
 import { File } from "../file/File";
+import { Post } from "../post/Post";
+import { Reservation } from "../reservation/Reservation";
 import { JsonValue } from "type-fest";
 import { UserCondo } from "../userCondo/UserCondo";
 
@@ -12,6 +14,8 @@ export type User = {
   id: number;
   lastName: string | null;
   phoneNumber: string;
+  posts?: Array<Post>;
+  reservations?: Array<Reservation>;
   roles: JsonValue;
   updatedAt: Date;
   userCondos?: Array<UserCondo>;

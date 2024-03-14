@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { UserCondoCreateInput } from "./UserCondoCreateInput";
 import { UserCondo } from "./UserCondo";
+import { Post } from "../../post/base/Post";
 import { UserCondoFindManyArgs } from "./UserCondoFindManyArgs";
 import { UserCondoWhereUniqueInput } from "./UserCondoWhereUniqueInput";
 import { UserCondoUpdateInput } from "./UserCondoUpdateInput";

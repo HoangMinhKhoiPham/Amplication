@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CompanyEmployeeCreateInput } from "./CompanyEmployeeCreateInput";
 import { CompanyEmployee } from "./CompanyEmployee";
+import { Post } from "../../post/base/Post";
 import { CompanyEmployeeFindManyArgs } from "./CompanyEmployeeFindManyArgs";
 import { CompanyEmployeeWhereUniqueInput } from "./CompanyEmployeeWhereUniqueInput";
 import { CompanyEmployeeUpdateInput } from "./CompanyEmployeeUpdateInput";

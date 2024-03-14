@@ -1852,5 +1852,965 @@
     "resource": "UserCondo",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]
