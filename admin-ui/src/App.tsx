@@ -49,6 +49,22 @@ import { UserCondoList } from "./userCondo/UserCondoList";
 import { UserCondoCreate } from "./userCondo/UserCondoCreate";
 import { UserCondoEdit } from "./userCondo/UserCondoEdit";
 import { UserCondoShow } from "./userCondo/UserCondoShow";
+import { ForumList } from "./forum/ForumList";
+import { ForumCreate } from "./forum/ForumCreate";
+import { ForumEdit } from "./forum/ForumEdit";
+import { ForumShow } from "./forum/ForumShow";
+import { PostList } from "./post/PostList";
+import { PostCreate } from "./post/PostCreate";
+import { PostEdit } from "./post/PostEdit";
+import { PostShow } from "./post/PostShow";
+import { CommonFacilityList } from "./commonFacility/CommonFacilityList";
+import { CommonFacilityCreate } from "./commonFacility/CommonFacilityCreate";
+import { CommonFacilityEdit } from "./commonFacility/CommonFacilityEdit";
+import { CommonFacilityShow } from "./commonFacility/CommonFacilityShow";
+import { ReservationList } from "./reservation/ReservationList";
+import { ReservationCreate } from "./reservation/ReservationCreate";
+import { ReservationEdit } from "./reservation/ReservationEdit";
+import { ReservationShow } from "./reservation/ReservationShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -151,6 +167,34 @@ const App = (): React.ReactElement => {
           edit={UserCondoEdit}
           create={UserCondoCreate}
           show={UserCondoShow}
+        />
+        <Resource
+          name="Forum"
+          list={ForumList}
+          edit={ForumEdit}
+          create={ForumCreate}
+          show={ForumShow}
+        />
+        <Resource
+          name="Post"
+          list={PostList}
+          edit={PostEdit}
+          create={PostCreate}
+          show={PostShow}
+        />
+        <Resource
+          name="CommonFacility"
+          list={CommonFacilityList}
+          edit={CommonFacilityEdit}
+          create={CommonFacilityCreate}
+          show={CommonFacilityShow}
+        />
+        <Resource
+          name="Reservation"
+          list={ReservationList}
+          edit={ReservationEdit}
+          create={ReservationCreate}
+          show={ReservationShow}
         />
       </Admin>
     </div>

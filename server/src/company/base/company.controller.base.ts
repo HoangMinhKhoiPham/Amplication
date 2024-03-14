@@ -23,6 +23,7 @@ import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { Company } from "./Company";
+import { Post } from "../../post/base/Post";
 import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
 import { CompanyWhereUniqueInput } from "./CompanyWhereUniqueInput";
 import { CompanyUpdateInput } from "./CompanyUpdateInput";

@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { LockerCreateInput } from "./LockerCreateInput";
 import { Locker } from "./Locker";
+import { Post } from "../../post/base/Post";
 import { LockerFindManyArgs } from "./LockerFindManyArgs";
 import { LockerWhereUniqueInput } from "./LockerWhereUniqueInput";
 import { LockerUpdateInput } from "./LockerUpdateInput";

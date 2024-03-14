@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { ParkingSpotCreateInput } from "./ParkingSpotCreateInput";
 import { ParkingSpot } from "./ParkingSpot";
+import { Post } from "../../post/base/Post";
 import { ParkingSpotFindManyArgs } from "./ParkingSpotFindManyArgs";
 import { ParkingSpotWhereUniqueInput } from "./ParkingSpotWhereUniqueInput";
 import { ParkingSpotUpdateInput } from "./ParkingSpotUpdateInput";

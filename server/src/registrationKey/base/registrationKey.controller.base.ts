@@ -24,6 +24,7 @@ import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { RegistrationKeyCreateInput } from "./RegistrationKeyCreateInput";
 import { RegistrationKey } from "./RegistrationKey";
+import { Post } from "../../post/base/Post";
 import { RegistrationKeyFindManyArgs } from "./RegistrationKeyFindManyArgs";
 import { RegistrationKeyWhereUniqueInput } from "./RegistrationKeyWhereUniqueInput";
 import { RegistrationKeyUpdateInput } from "./RegistrationKeyUpdateInput";

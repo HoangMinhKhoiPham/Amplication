@@ -15,6 +15,8 @@ import { COMPANY_TITLE_FIELD } from "../company/CompanyTitle";
 import { USER_TITLE_FIELD } from "./UserTitle";
 import { CONDOUNIT_TITLE_FIELD } from "../condoUnit/CondoUnitTitle";
 import { PROPERTY_TITLE_FIELD } from "../property/PropertyTitle";
+import { FORUM_TITLE_FIELD } from "../forum/ForumTitle";
+import { COMMONFACILITY_TITLE_FIELD } from "../commonFacility/CommonFacilityTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -77,6 +79,42 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <DateField source="updatedAt" label="Updated At" />
             <ReferenceField label="user" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField reference="Post" target="userID" label="Posts">
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <ReferenceField label="forumID" source="forum.id" reference="Forum">
+              <TextField source={FORUM_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="ID" source="id" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="userID" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="Reservation"
+          target="userID"
+          label="Reservations"
+        >
+          <Datagrid rowClick="show">
+            <TextField label="availablity" source="availablity" />
+            <ReferenceField
+              label="commonFacilityID"
+              source="commonfacility.id"
+              reference="CommonFacility"
+            >
+              <TextField source={COMMONFACILITY_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField label="notes" source="notes" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="userID" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
           </Datagrid>

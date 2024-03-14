@@ -21,6 +21,8 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { File } from "../../file/base/File";
+import { Post } from "../../post/base/Post";
+import { Reservation } from "../../reservation/base/Reservation";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
@@ -99,6 +101,24 @@ class User {
   @IsString()
   @Field(() => String)
   phoneNumber!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Post],
+  })
+  @ValidateNested()
+  @Type(() => Post)
+  @IsOptional()
+  posts?: Array<Post>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Reservation],
+  })
+  @ValidateNested()
+  @Type(() => Reservation)
+  @IsOptional()
+  reservations?: Array<Reservation>;
 
   @ApiProperty({
     required: true,

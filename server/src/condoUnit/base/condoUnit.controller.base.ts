@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CondoUnitCreateInput } from "./CondoUnitCreateInput";
 import { CondoUnit } from "./CondoUnit";
+import { Post } from "../../post/base/Post";
 import { CondoUnitFindManyArgs } from "./CondoUnitFindManyArgs";
 import { CondoUnitWhereUniqueInput } from "./CondoUnitWhereUniqueInput";
 import { CondoUnitUpdateInput } from "./CondoUnitUpdateInput";

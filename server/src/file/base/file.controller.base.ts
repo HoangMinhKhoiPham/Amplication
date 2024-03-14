@@ -23,6 +23,7 @@ import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateReq
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { FileCreateInput } from "./FileCreateInput";
 import { File } from "./File";
+import { Post } from "../../post/base/Post";
 import { FileFindManyArgs } from "./FileFindManyArgs";
 import { FileWhereUniqueInput } from "./FileWhereUniqueInput";
 import { FileUpdateInput } from "./FileUpdateInput";
