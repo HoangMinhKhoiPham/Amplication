@@ -30,7 +30,7 @@ class RequestWhereInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyID?: CompanyWhereUniqueInput;
+  company?: CompanyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -71,7 +71,7 @@ class RequestWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { RequestWhereInput as RequestWhereInput };

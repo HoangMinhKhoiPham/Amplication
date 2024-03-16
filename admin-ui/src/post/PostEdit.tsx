@@ -13,10 +13,10 @@ export const PostEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <ReferenceInput source="forumId.id" reference="Forum" label="forumID">
+        <ReferenceInput source="forum.id" reference="Forum" label="forum">
           <SelectInput optionText={ForumTitle} />
         </ReferenceInput>
-        <ReferenceInput source="userID.id" reference="User" label="userID">
+        <ReferenceInput source="user.id" reference="User" label="user">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

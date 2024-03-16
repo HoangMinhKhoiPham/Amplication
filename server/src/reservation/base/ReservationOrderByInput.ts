@@ -94,7 +94,7 @@ class ReservationOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userIDId?: SortOrder;
+  userID?: SortOrder;
 }
 
 export { ReservationOrderByInput as ReservationOrderByInput };

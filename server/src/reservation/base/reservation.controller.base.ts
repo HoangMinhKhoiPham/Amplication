@@ -60,9 +60,9 @@ export class ReservationControllerBase {
             }
           : undefined,
 
-        userID: data.userID
+        user: data.user
           ? {
-              connect: data.userID,
+              connect: data.user,
             }
           : undefined,
       },
@@ -80,7 +80,7 @@ export class ReservationControllerBase {
         notes: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -119,7 +119,7 @@ export class ReservationControllerBase {
         notes: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -159,7 +159,7 @@ export class ReservationControllerBase {
         notes: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -202,9 +202,9 @@ export class ReservationControllerBase {
               }
             : undefined,
 
-          userID: data.userID
+          user: data.user
             ? {
-                connect: data.userID,
+                connect: data.user,
               }
             : undefined,
         },
@@ -222,7 +222,7 @@ export class ReservationControllerBase {
           notes: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },
@@ -270,7 +270,7 @@ export class ReservationControllerBase {
           notes: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },

@@ -8,5 +8,5 @@ export type Reservation = {
   id: string;
   notes: string | null;
   updatedAt: Date;
-  userID?: User | null;
+  user?: User | null;
 };

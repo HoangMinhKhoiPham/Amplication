@@ -5,5 +5,5 @@ export type PostOrderByInput = {
   forumID?: SortOrder;
   id?: SortOrder;
   updatedAt?: SortOrder;
-  userIDId?: SortOrder;
+  userID?: SortOrder;
 };

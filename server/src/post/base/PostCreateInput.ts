@@ -28,7 +28,7 @@ class PostCreateInput {
   @Field(() => ForumWhereUniqueInput, {
     nullable: true,
   })
-  forumId?: ForumWhereUniqueInput | null;
+  forum?: ForumWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -40,7 +40,7 @@ class PostCreateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { PostCreateInput as PostCreateInput };

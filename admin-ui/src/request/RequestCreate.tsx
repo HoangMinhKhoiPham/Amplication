@@ -13,11 +13,7 @@ export const RequestCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <ReferenceInput
-          source="companyID.id"
-          reference="Company"
-          label="companyID"
-        >
+        <ReferenceInput source="company.id" reference="Company" label="company">
           <SelectInput optionText={CompanyTitle} />
         </ReferenceInput>
         <SelectInput
@@ -36,7 +32,7 @@ export const RequestCreate = (props: CreateProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
-        <ReferenceInput source="userID.id" reference="User" label="userID">
+        <ReferenceInput source="user.id" reference="User" label="user">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

@@ -2,7 +2,7 @@ import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type RequestCreateInput = {
-  companyID?: CompanyWhereUniqueInput | null;
+  company?: CompanyWhereUniqueInput | null;
   requestType?:
     | "moving_in"
     | "moving_out"
@@ -12,5 +12,5 @@ export type RequestCreateInput = {
     | "deficiency_report"
     | "question"
     | null;
-  userID?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 };

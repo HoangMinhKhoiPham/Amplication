@@ -14,18 +14,14 @@ export const RequestShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <ReferenceField
-          label="companyID"
-          source="company.id"
-          reference="Company"
-        >
+        <ReferenceField label="company" source="company.id" reference="Company">
           <TextField source={COMPANY_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="requestType" source="requestType" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="userID" source="user.id" reference="User">
+        <ReferenceField label="user" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </SimpleShowLayout>

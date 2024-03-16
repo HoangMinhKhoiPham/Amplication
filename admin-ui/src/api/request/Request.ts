@@ -2,7 +2,7 @@ import { Company } from "../company/Company";
 import { User } from "../user/User";
 
 export type Request = {
-  companyID?: Company | null;
+  company?: Company | null;
   createdAt: Date;
   id: string;
   requestType?:
@@ -15,5 +15,5 @@ export type Request = {
     | "question"
     | null;
   updatedAt: Date;
-  userID?: User | null;
+  user?: User | null;
 };

@@ -517,7 +517,7 @@ export class CompanyControllerBase {
     const results = await this.service.findRequests(params.id, {
       ...query,
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -528,7 +528,7 @@ export class CompanyControllerBase {
         requestType: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },

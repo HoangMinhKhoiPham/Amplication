@@ -8,5 +8,5 @@ export type ReservationWhereInput = {
   commonFacilityID?: CommonFacilityWhereUniqueInput;
   id?: StringFilter;
   notes?: StringNullableFilter;
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 };

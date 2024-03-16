@@ -5,5 +5,5 @@ export type ReservationUpdateInput = {
   availablity?: string | null;
   commonFacilityID?: CommonFacilityWhereUniqueInput | null;
   notes?: string | null;
-  userID?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 };

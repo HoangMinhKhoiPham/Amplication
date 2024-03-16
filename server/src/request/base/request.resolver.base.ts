@@ -97,15 +97,15 @@ export class RequestResolverBase {
       data: {
         ...args.data,
 
-        companyID: args.data.companyID
+        company: args.data.company
           ? {
-              connect: args.data.companyID,
+              connect: args.data.company,
             }
           : undefined,
 
-        userID: args.data.userID
+        user: args.data.user
           ? {
-              connect: args.data.userID,
+              connect: args.data.user,
             }
           : undefined,
       },
@@ -128,15 +128,15 @@ export class RequestResolverBase {
         data: {
           ...args.data,
 
-          companyID: args.data.companyID
+          company: args.data.company
             ? {
-                connect: args.data.companyID,
+                connect: args.data.company,
               }
             : undefined,
 
-          userID: args.data.userID
+          user: args.data.user
             ? {
-                connect: args.data.userID,
+                connect: args.data.user,
               }
             : undefined,
         },
@@ -175,17 +175,15 @@ export class RequestResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Company, {
     nullable: true,
-    name: "companyId",
+    name: "company",
   })
   @nestAccessControl.UseRoles({
     resource: "Company",
     action: "read",
     possession: "any",
   })
-  async getCompanyId(
-    @graphql.Parent() parent: Request
-  ): Promise<Company | null> {
-    const result = await this.service.getCompanyId(parent.id);
+  async getCompany(@graphql.Parent() parent: Request): Promise<Company | null> {
+    const result = await this.service.getCompany(parent.id);
 
     if (!result) {
       return null;
@@ -196,15 +194,15 @@ export class RequestResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "userId",
+    name: "user",
   })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
-  async getUserId(@graphql.Parent() parent: Request): Promise<User | null> {
-    const result = await this.service.getUserId(parent.id);
+  async getUser(@graphql.Parent() parent: Request): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

@@ -106,7 +106,7 @@ export const CompanyShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show">
             <ReferenceField
-              label="companyID"
+              label="company"
               source="company.id"
               reference="Company"
             >
@@ -116,7 +116,7 @@ export const CompanyShow = (props: ShowProps): React.ReactElement => {
             <TextField label="ID" source="id" />
             <TextField label="requestType" source="requestType" />
             <DateField source="updatedAt" label="Updated At" />
-            <ReferenceField label="userID" source="user.id" reference="User">
+            <ReferenceField label="user" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
           </Datagrid>

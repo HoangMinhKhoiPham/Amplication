@@ -53,20 +53,20 @@ export class RequestControllerBase {
       data: {
         ...data,
 
-        companyID: data.companyID
+        company: data.company
           ? {
-              connect: data.companyID,
+              connect: data.company,
             }
           : undefined,
 
-        userID: data.userID
+        user: data.user
           ? {
-              connect: data.userID,
+              connect: data.user,
             }
           : undefined,
       },
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -77,7 +77,7 @@ export class RequestControllerBase {
         requestType: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -103,7 +103,7 @@ export class RequestControllerBase {
     return this.service.requests({
       ...args,
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -114,7 +114,7 @@ export class RequestControllerBase {
         requestType: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -141,7 +141,7 @@ export class RequestControllerBase {
     const result = await this.service.request({
       where: params,
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -152,7 +152,7 @@ export class RequestControllerBase {
         requestType: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -189,20 +189,20 @@ export class RequestControllerBase {
         data: {
           ...data,
 
-          companyID: data.companyID
+          company: data.company
             ? {
-                connect: data.companyID,
+                connect: data.company,
               }
             : undefined,
 
-          userID: data.userID
+          user: data.user
             ? {
-                connect: data.userID,
+                connect: data.user,
               }
             : undefined,
         },
         select: {
-          companyID: {
+          company: {
             select: {
               id: true,
             },
@@ -213,7 +213,7 @@ export class RequestControllerBase {
           requestType: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },
@@ -248,7 +248,7 @@ export class RequestControllerBase {
       return await this.service.deleteRequest({
         where: params,
         select: {
-          companyID: {
+          company: {
             select: {
               id: true,
             },
@@ -259,7 +259,7 @@ export class RequestControllerBase {
           requestType: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },

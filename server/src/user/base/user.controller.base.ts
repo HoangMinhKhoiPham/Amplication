@@ -470,7 +470,7 @@ export class UserControllerBase {
       select: {
         createdAt: true,
 
-        forumId: {
+        forum: {
           select: {
             id: true,
           },
@@ -479,7 +479,7 @@ export class UserControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -576,7 +576,7 @@ export class UserControllerBase {
     const results = await this.service.findRequests(params.id, {
       ...query,
       select: {
-        companyID: {
+        company: {
           select: {
             id: true,
           },
@@ -587,7 +587,7 @@ export class UserControllerBase {
         requestType: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -697,7 +697,7 @@ export class UserControllerBase {
         notes: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
