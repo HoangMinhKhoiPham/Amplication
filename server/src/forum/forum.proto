@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+                 package forum;
+service ForumService {
+ rpc createForum (ForumCreateInput) returns (Forum) {}
+rpc forums (findManyParams) returns (stream Forum) {}
+rpc forum (ForumWhereUniqueInput) returns (Forum) {}
+rpc updateForum (ForumUpdateInput) returns (Forum) {}
+rpc deleteForum (ForumWhereUniqueInput) returns (Forum) {}
+rpc findManyForum (ForumWhereUniqueInput) returns (stream Post) {}
+rpc updateForum (PostParams) returns (stream Post) {}
+rpc connectForum (PostParams) returns (Post) {}
+rpc disconnectForum (PostParams) returns (Post) {} 
+ }
+message ForumCreateInput {
+string createdAt = 1;
+string id = 2;
+repeated Post posts = 3;
+string updatedAt = 4;
+};
+message Forum {
+string createdAt = 1;
+string id = 2;
+repeated Post posts = 3;
+string updatedAt = 4;
+};
+message ForumWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+repeated Post posts = 3;
+string updatedAt = 4;
+};
+message ForumUpdateInput {
+string createdAt = 1;
+string id = 2;
+repeated Post posts = 3;
+string updatedAt = 4;
+};
+message findManyParams {
+
+};
+message Post {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message PostWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message PostParams {
+ForumWhereUniqueInput forumWhereUniqueInput = 1;
+PostWhereUniqueInput postWhereUniqueInput = 2;
+};

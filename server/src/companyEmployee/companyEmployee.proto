@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+                 package companyEmployee;
+service CompanyEmployeeService {
+ rpc createCompanyEmployee (CompanyEmployeeCreateInput) returns (CompanyEmployee) {}
+rpc companyEmployees (findManyParams) returns (stream CompanyEmployee) {}
+rpc companyEmployee (CompanyEmployeeWhereUniqueInput) returns (CompanyEmployee) {}
+rpc updateCompanyEmployee (CompanyEmployeeUpdateInput) returns (CompanyEmployee) {}
+rpc deleteCompanyEmployee (CompanyEmployeeWhereUniqueInput) returns (CompanyEmployee) {} 
+ }
+message CompanyEmployeeCreateInput {
+int32 id = 1;
+};
+message CompanyEmployee {
+int32 id = 1;
+};
+message CompanyEmployeeWhereUniqueInput {
+int32 id = 1;
+};
+message CompanyEmployeeUpdateInput {
+int32 id = 1;
+};
+message findManyParams {
+
+};

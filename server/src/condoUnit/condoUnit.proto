@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+                 package condoUnit;
+service CondoUnitService {
+ rpc createCondoUnit (CondoUnitCreateInput) returns (CondoUnit) {}
+rpc condoUnits (findManyParams) returns (stream CondoUnit) {}
+rpc condoUnit (CondoUnitWhereUniqueInput) returns (CondoUnit) {}
+rpc updateCondoUnit (CondoUnitUpdateInput) returns (CondoUnit) {}
+rpc deleteCondoUnit (CondoUnitWhereUniqueInput) returns (CondoUnit) {}
+rpc findManyCondoUnit (CondoUnitWhereUniqueInput) returns (stream File) {}
+rpc updateCondoUnit (FileParams) returns (stream File) {}
+rpc connectCondoUnit (FileParams) returns (File) {}
+rpc disconnectCondoUnit (FileParams) returns (File) {}
+rpc findManyCondoUnit (CondoUnitWhereUniqueInput) returns (stream ParkingSpot) {}
+rpc updateCondoUnit (ParkingSpotParams) returns (stream ParkingSpot) {}
+rpc connectCondoUnit (ParkingSpotParams) returns (ParkingSpot) {}
+rpc disconnectCondoUnit (ParkingSpotParams) returns (ParkingSpot) {}
+rpc findManyCondo (CondoUnitWhereUniqueInput) returns (stream UserCondo) {}
+rpc updateCondo (UserCondoParams) returns (stream UserCondo) {}
+rpc connectCondo (UserCondoParams) returns (UserCondo) {}
+rpc disconnectCondo (UserCondoParams) returns (UserCondo) {} 
+ }
+message CondoUnitCreateInput {
+int32 condoFee = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+repeated ParkingSpot parkingSpot = 5;
+RegistrationKey registrationKeys = 6;
+string size = 7;
+string test = 8;
+string unitNumber = 9;
+string updatedAt = 10;
+repeated UserCondo userCondos = 11;
+};
+message CondoUnit {
+int32 condoFee = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+repeated ParkingSpot parkingSpot = 5;
+RegistrationKey registrationKeys = 6;
+string size = 7;
+string test = 8;
+string unitNumber = 9;
+string updatedAt = 10;
+repeated UserCondo userCondos = 11;
+};
+message CondoUnitWhereUniqueInput {
+int32 condoFee = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+repeated ParkingSpot parkingSpot = 5;
+RegistrationKey registrationKeys = 6;
+string size = 7;
+string test = 8;
+string unitNumber = 9;
+string updatedAt = 10;
+repeated UserCondo userCondos = 11;
+};
+message CondoUnitUpdateInput {
+int32 condoFee = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+repeated ParkingSpot parkingSpot = 5;
+RegistrationKey registrationKeys = 6;
+string size = 7;
+string test = 8;
+string unitNumber = 9;
+string updatedAt = 10;
+repeated UserCondo userCondos = 11;
+};
+message findManyParams {
+
+};
+message File {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileWhereUniqueInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileParams {
+CondoUnitWhereUniqueInput condoUnitWhereUniqueInput = 1;
+FileWhereUniqueInput fileWhereUniqueInput = 2;
+};
+message ParkingSpot {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpotWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpotParams {
+CondoUnitWhereUniqueInput condoUnitWhereUniqueInput = 1;
+ParkingSpotWhereUniqueInput parkingspotWhereUniqueInput = 2;
+};
+message UserCondo {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondoWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondoParams {
+CondoUnitWhereUniqueInput condoUnitWhereUniqueInput = 1;
+UserCondoWhereUniqueInput usercondoWhereUniqueInput = 2;
+};

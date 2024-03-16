@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+                 package reservation;
+service ReservationService {
+ rpc createReservation (ReservationCreateInput) returns (Reservation) {}
+rpc reservations (findManyParams) returns (stream Reservation) {}
+rpc reservation (ReservationWhereUniqueInput) returns (Reservation) {}
+rpc updateReservation (ReservationUpdateInput) returns (Reservation) {}
+rpc deleteReservation (ReservationWhereUniqueInput) returns (Reservation) {} 
+ }
+message ReservationCreateInput {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message Reservation {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message ReservationWhereUniqueInput {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message ReservationUpdateInput {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message findManyParams {
+
+};

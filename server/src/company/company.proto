@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+                 package company;
+service CompanyService {
+ rpc createCompany (CompanyCreateInput) returns (Company) {}
+rpc companies (findManyParams) returns (stream Company) {}
+rpc company (CompanyWhereUniqueInput) returns (Company) {}
+rpc updateCompany (CompanyUpdateInput) returns (Company) {}
+rpc deleteCompany (CompanyWhereUniqueInput) returns (Company) {}
+rpc findManyCompany (CompanyWhereUniqueInput) returns (stream CompanyEmployee) {}
+rpc updateCompany (CompanyEmployeeParams) returns (stream CompanyEmployee) {}
+rpc connectCompany (CompanyEmployeeParams) returns (CompanyEmployee) {}
+rpc disconnectCompany (CompanyEmployeeParams) returns (CompanyEmployee) {}
+rpc findManyCompany (CompanyWhereUniqueInput) returns (stream File) {}
+rpc updateCompany (FileParams) returns (stream File) {}
+rpc connectCompany (FileParams) returns (File) {}
+rpc disconnectCompany (FileParams) returns (File) {}
+rpc findManyCompany (CompanyWhereUniqueInput) returns (stream Property) {}
+rpc updateCompany (PropertyParams) returns (stream Property) {}
+rpc connectCompany (PropertyParams) returns (Property) {}
+rpc disconnectCompany (PropertyParams) returns (Property) {}
+rpc findManyCompany (CompanyWhereUniqueInput) returns (stream Request) {}
+rpc updateCompany (RequestParams) returns (stream Request) {}
+rpc connectCompany (RequestParams) returns (Request) {}
+rpc disconnectCompany (RequestParams) returns (Request) {} 
+ }
+message CompanyCreateInput {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+string name = 5;
+repeated Property properties = 6;
+repeated Request requests = 7;
+string updatedAt = 8;
+};
+message Company {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+string name = 5;
+repeated Property properties = 6;
+repeated Request requests = 7;
+string updatedAt = 8;
+};
+message CompanyWhereUniqueInput {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+string name = 5;
+repeated Property properties = 6;
+repeated Request requests = 7;
+string updatedAt = 8;
+};
+message CompanyUpdateInput {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+repeated File file = 3;
+int32 id = 4;
+string name = 5;
+repeated Property properties = 6;
+repeated Request requests = 7;
+string updatedAt = 8;
+};
+message findManyParams {
+
+};
+message CompanyEmployee {
+int32 id = 1;
+};
+message CompanyEmployeeWhereUniqueInput {
+int32 id = 1;
+};
+message CompanyEmployeeParams {
+CompanyWhereUniqueInput companyWhereUniqueInput = 1;
+CompanyEmployeeWhereUniqueInput companyemployeeWhereUniqueInput = 2;
+};
+message File {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileWhereUniqueInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileParams {
+CompanyWhereUniqueInput companyWhereUniqueInput = 1;
+FileWhereUniqueInput fileWhereUniqueInput = 2;
+};
+message Property {
+string address = 1;
+string createdAt = 2;
+int32 id = 3;
+int32 lockerCount = 4;
+string name = 5;
+int32 parkingCount = 6;
+int32 unitCount = 7;
+string updatedAt = 8;
+};
+message PropertyWhereUniqueInput {
+string address = 1;
+string createdAt = 2;
+int32 id = 3;
+int32 lockerCount = 4;
+string name = 5;
+int32 parkingCount = 6;
+int32 unitCount = 7;
+string updatedAt = 8;
+};
+message PropertyParams {
+CompanyWhereUniqueInput companyWhereUniqueInput = 1;
+PropertyWhereUniqueInput propertyWhereUniqueInput = 2;
+};
+message Request {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message RequestWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message RequestParams {
+CompanyWhereUniqueInput companyWhereUniqueInput = 1;
+RequestWhereUniqueInput requestWhereUniqueInput = 2;
+};

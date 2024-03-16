@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+                 package file;
+service FileService {
+ rpc createFile (FileCreateInput) returns (File) {}
+rpc files (findManyParams) returns (stream File) {}
+rpc file (FileWhereUniqueInput) returns (File) {}
+rpc updateFile (FileUpdateInput) returns (File) {}
+rpc deleteFile (FileWhereUniqueInput) returns (File) {} 
+ }
+message FileCreateInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message File {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileWhereUniqueInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileUpdateInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message findManyParams {
+
+};
