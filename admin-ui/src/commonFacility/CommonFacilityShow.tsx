@@ -24,7 +24,7 @@ export const CommonFacilityShow = (props: ShowProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <ReferenceManyField
           reference="Reservation"
-          target="commonFacilityID"
+          target="commonFacilityIDId"
           label="Reservations"
         >
           <Datagrid rowClick="show">

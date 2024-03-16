@@ -72,7 +72,7 @@ class PostOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userID?: SortOrder;
+  userIDId?: SortOrder;
 }
 
 export { PostOrderByInput as PostOrderByInput };

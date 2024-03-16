@@ -153,8 +153,8 @@ model Post {
   forumID   String?
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
-  userID    User?    @relation(fields: [userID], references: [id])
-  userID    Int?
+  userID    User?    @relation(fields: [userIDId], references: [id])
+  userIDId  Int?
 }
 
 model CommonFacility {
@@ -166,15 +166,15 @@ model CommonFacility {
 }
 
 model Reservation {
-  availablity      String?
-  commonFacilityID CommonFacility? @relation(fields: [commonFacilityID], references: [id])
-  commonFacilityID String?
-  createdAt        DateTime        @default(now())
-  id               String          @id @default(cuid())
-  notes            String?
-  updatedAt        DateTime        @updatedAt
-  userID           User?           @relation(fields: [userID], references: [id])
-  userID           Int?
+  availablity        String?
+  commonFacilityID   CommonFacility? @relation(fields: [commonFacilityIDId], references: [id])
+  commonFacilityIDId String?
+  createdAt          DateTime        @default(now())
+  id                 String          @id @default(cuid())
+  notes              String?
+  updatedAt          DateTime        @updatedAt
+  userID             User?           @relation(fields: [userIDId], references: [id])
+  userIDId           Int?
 }
 
 model Request {
