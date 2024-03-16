@@ -69,6 +69,10 @@ import { RequestList } from "./request/RequestList";
 import { RequestCreate } from "./request/RequestCreate";
 import { RequestEdit } from "./request/RequestEdit";
 import { RequestShow } from "./request/RequestShow";
+import { NotificationList } from "./notification/NotificationList";
+import { NotificationCreate } from "./notification/NotificationCreate";
+import { NotificationEdit } from "./notification/NotificationEdit";
+import { NotificationShow } from "./notification/NotificationShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -206,6 +210,13 @@ const App = (): React.ReactElement => {
           edit={RequestEdit}
           create={RequestCreate}
           show={RequestShow}
+        />
+        <Resource
+          name="Notification"
+          list={NotificationList}
+          edit={NotificationEdit}
+          create={NotificationCreate}
+          show={NotificationShow}
         />
       </Admin>
     </div>
