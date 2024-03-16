@@ -39,7 +39,7 @@ class ReservationOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  commonFacilityID?: SortOrder;
+  commonFacilityIDId?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -94,7 +94,7 @@ class ReservationOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userID?: SortOrder;
+  userIDId?: SortOrder;
 }
 
 export { ReservationOrderByInput as ReservationOrderByInput };

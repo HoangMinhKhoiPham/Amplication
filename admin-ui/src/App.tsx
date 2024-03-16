@@ -65,6 +65,10 @@ import { ReservationList } from "./reservation/ReservationList";
 import { ReservationCreate } from "./reservation/ReservationCreate";
 import { ReservationEdit } from "./reservation/ReservationEdit";
 import { ReservationShow } from "./reservation/ReservationShow";
+import { RequestList } from "./request/RequestList";
+import { RequestCreate } from "./request/RequestCreate";
+import { RequestEdit } from "./request/RequestEdit";
+import { RequestShow } from "./request/RequestShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -195,6 +199,13 @@ const App = (): React.ReactElement => {
           edit={ReservationEdit}
           create={ReservationCreate}
           show={ReservationShow}
+        />
+        <Resource
+          name="Request"
+          list={RequestList}
+          edit={RequestEdit}
+          create={RequestCreate}
+          show={RequestShow}
         />
       </Admin>
     </div>

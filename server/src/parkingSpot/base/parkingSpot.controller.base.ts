@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { ParkingSpotService } from "../parkingSpot.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { ParkingSpotCreateInput } from "./ParkingSpotCreateInput";
 import { ParkingSpot } from "./ParkingSpot";
 import { Post } from "../../post/base/Post";

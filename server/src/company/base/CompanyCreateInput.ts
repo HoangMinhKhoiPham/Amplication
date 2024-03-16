@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileCreateNestedManyWithoutCompaniesInput } from "./FileCreateNestedManyWithoutCompaniesInput";
 import { PropertyCreateNestedManyWithoutCompaniesInput } from "./PropertyCreateNestedManyWithoutCompaniesInput";
+import { RequestCreateNestedManyWithoutCompaniesInput } from "./RequestCreateNestedManyWithoutCompaniesInput";
 
 @InputType()
 class CompanyCreateInput {
@@ -62,6 +63,18 @@ class CompanyCreateInput {
     nullable: true,
   })
   properties?: PropertyCreateNestedManyWithoutCompaniesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestCreateNestedManyWithoutCompaniesInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestCreateNestedManyWithoutCompaniesInput)
+  @IsOptional()
+  @Field(() => RequestCreateNestedManyWithoutCompaniesInput, {
+    nullable: true,
+  })
+  requests?: RequestCreateNestedManyWithoutCompaniesInput;
 }
 
 export { CompanyCreateInput as CompanyCreateInput };

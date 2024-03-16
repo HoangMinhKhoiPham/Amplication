@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { PropertyService } from "../property.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { PropertyCreateInput } from "./PropertyCreateInput";
 import { Property } from "./Property";
 import { Post } from "../../post/base/Post";

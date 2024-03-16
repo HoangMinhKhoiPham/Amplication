@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileCreateNestedManyWithoutUsersInput } from "./FileCreateNestedManyWithoutUsersInput";
 import { PostCreateNestedManyWithoutUsersInput } from "./PostCreateNestedManyWithoutUsersInput";
+import { RequestCreateNestedManyWithoutUsersInput } from "./RequestCreateNestedManyWithoutUsersInput";
 import { ReservationCreateNestedManyWithoutUsersInput } from "./ReservationCreateNestedManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
@@ -105,6 +106,18 @@ class UserCreateInput {
     nullable: true,
   })
   posts?: PostCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => RequestCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  requests?: RequestCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

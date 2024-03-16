@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CompanyEmployeeService } from "../companyEmployee.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { CompanyEmployeeCreateInput } from "./CompanyEmployeeCreateInput";
 import { CompanyEmployee } from "./CompanyEmployee";
 import { Post } from "../../post/base/Post";

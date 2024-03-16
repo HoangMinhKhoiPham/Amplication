@@ -12,6 +12,7 @@ import {
 import { CompanyEmployeeTitle } from "../companyEmployee/CompanyEmployeeTitle";
 import { FileTitle } from "../file/FileTitle";
 import { PropertyTitle } from "../property/PropertyTitle";
+import { RequestTitle } from "../request/RequestTitle";
 
 export const CompanyCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -41,6 +42,14 @@ export const CompanyCreate = (props: CreateProps): React.ReactElement => {
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
           <SelectArrayInput optionText={PropertyTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="requests"
+          reference="Request"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={RequestTitle} />
         </ReferenceArrayInput>
       </SimpleForm>
     </Create>

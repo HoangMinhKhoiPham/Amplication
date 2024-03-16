@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { RoleService } from "../role.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Request } from "../../request/base/Request";
 import { RoleCreateInput } from "./RoleCreateInput";
 import { Role } from "./Role";
 import { Post } from "../../post/base/Post";

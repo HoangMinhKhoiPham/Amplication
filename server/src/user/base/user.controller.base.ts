@@ -22,6 +22,7 @@ import { UserService } from "../user.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Request } from "../../request/base/Request";
 import { UserCreateInput } from "./UserCreateInput";
 import { User } from "./User";
 import { Post } from "../../post/base/Post";
@@ -36,6 +37,8 @@ import { File } from "../../file/base/File";
 import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { PostWhereUniqueInput } from "../../post/base/PostWhereUniqueInput";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { RequestWhereUniqueInput } from "../../request/base/RequestWhereUniqueInput";
 import { ReservationFindManyArgs } from "../../reservation/base/ReservationFindManyArgs";
 import { Reservation } from "../../reservation/base/Reservation";
 import { ReservationWhereUniqueInput } from "../../reservation/base/ReservationWhereUniqueInput";
@@ -547,6 +550,114 @@ export class UserControllerBase {
   ): Promise<void> {
     const data = {
       posts: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/requests")
+  @ApiNestedQuery(RequestFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async findRequests(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Request[]> {
+    const query = plainToClass(RequestFindManyArgs, request.query);
+    const results = await this.service.findRequests(params.id, {
+      ...query,
+      select: {
+        companyID: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        id: true,
+        requestType: true,
+        updatedAt: true,
+
+        userID: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectRequests(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateRequests(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectRequests(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
         disconnect: body,
       },
     };

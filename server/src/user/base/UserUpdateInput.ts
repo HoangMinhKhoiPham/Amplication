@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileUpdateManyWithoutUsersInput } from "./FileUpdateManyWithoutUsersInput";
 import { PostUpdateManyWithoutUsersInput } from "./PostUpdateManyWithoutUsersInput";
+import { RequestUpdateManyWithoutUsersInput } from "./RequestUpdateManyWithoutUsersInput";
 import { ReservationUpdateManyWithoutUsersInput } from "./ReservationUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
@@ -114,6 +115,18 @@ class UserUpdateInput {
     nullable: true,
   })
   posts?: PostUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => RequestUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  requests?: RequestUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

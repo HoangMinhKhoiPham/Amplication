@@ -12,8 +12,9 @@ https://docs.amplication.com/how-to/custom-code
 import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumCommonFacilityFacilityType {
-  Type_1 = "SkyLounge",
-  Type_2 = "SpaFitness",
+  Type_1 = "sky_lounge",
+  Type_2 = "spa_fitness",
+  Type_3 = "sauna",
 }
 
 registerEnumType(EnumCommonFacilityFacilityType, {

@@ -1,6 +1,7 @@
 import { CompanyEmployeeUpdateManyWithoutUsersInput } from "./CompanyEmployeeUpdateManyWithoutUsersInput";
 import { FileUpdateManyWithoutUsersInput } from "./FileUpdateManyWithoutUsersInput";
 import { PostUpdateManyWithoutUsersInput } from "./PostUpdateManyWithoutUsersInput";
+import { RequestUpdateManyWithoutUsersInput } from "./RequestUpdateManyWithoutUsersInput";
 import { ReservationUpdateManyWithoutUsersInput } from "./ReservationUpdateManyWithoutUsersInput";
 import { InputJsonValue } from "../../types";
 import { UserCondoUpdateManyWithoutUsersInput } from "./UserCondoUpdateManyWithoutUsersInput";
@@ -14,6 +15,7 @@ export type UserUpdateInput = {
   password?: string;
   phoneNumber?: string;
   posts?: PostUpdateManyWithoutUsersInput;
+  requests?: RequestUpdateManyWithoutUsersInput;
   reservations?: ReservationUpdateManyWithoutUsersInput;
   roles?: InputJsonValue;
   userCondos?: UserCondoUpdateManyWithoutUsersInput;

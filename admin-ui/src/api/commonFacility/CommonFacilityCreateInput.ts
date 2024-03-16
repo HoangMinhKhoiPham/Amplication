@@ -2,5 +2,5 @@ import { ReservationCreateNestedManyWithoutCommonFacilitiesInput } from "./Reser
 
 export type CommonFacilityCreateInput = {
   availabilities?: ReservationCreateNestedManyWithoutCommonFacilitiesInput;
-  facilityType?: "SkyLounge" | "SpaFitness" | null;
+  facilityType?: "sky_lounge" | "spa_fitness" | "sauna" | null;
 };

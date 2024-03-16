@@ -18,6 +18,7 @@ model User {
   password         String
   phoneNumber      String            @unique
   posts            Post[]
+  requests         Request[]
   reservations     Reservation[]
   roles            Json
   updatedAt        DateTime          @updatedAt
@@ -86,6 +87,7 @@ model Company {
   id               Int               @id @default(autoincrement())
   name             String
   properties       Property[]
+  requests         Request[]
   updatedAt        DateTime?         @updatedAt
 }
 
@@ -151,8 +153,8 @@ model Post {
   forumID   String?
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
-  userID    User?    @relation(fields: [userID], references: [id])
-  userID    Int?
+  userID    User?    @relation(fields: [userIDId], references: [id])
+  userIDId  Int?
 }
 
 model CommonFacility {
@@ -164,18 +166,40 @@ model CommonFacility {
 }
 
 model Reservation {
-  availablity      String?
-  commonFacilityID CommonFacility? @relation(fields: [commonFacilityID], references: [id])
-  commonFacilityID String?
-  createdAt        DateTime        @default(now())
-  id               String          @id @default(cuid())
-  notes            String?
-  updatedAt        DateTime        @updatedAt
-  userID           User?           @relation(fields: [userID], references: [id])
-  userID           Int?
+  availablity        String?
+  commonFacilityID   CommonFacility? @relation(fields: [commonFacilityIDId], references: [id])
+  commonFacilityIDId String?
+  createdAt          DateTime        @default(now())
+  id                 String          @id @default(cuid())
+  notes              String?
+  updatedAt          DateTime        @updatedAt
+  userID             User?           @relation(fields: [userIDId], references: [id])
+  userIDId           Int?
+}
+
+model Request {
+  companyID   Company?                @relation(fields: [companyID], references: [id])
+  companyID   Int?
+  createdAt   DateTime                @default(now())
+  id          String                  @id @default(cuid())
+  requestType EnumRequestRequestType?
+  updatedAt   DateTime                @updatedAt
+  userID      User?                   @relation(fields: [userID], references: [id])
+  userID      Int?
 }
 
 enum EnumCommonFacilityFacilityType {
-  SkyLounge
-  SpaFitness
+  sky_lounge
+  spa_fitness
+  sauna
+}
+
+enum EnumRequestRequestType {
+  moving_in
+  moving_out
+  intercom_change
+  access_request
+  violation_report
+  deficiency_report
+  question
 }

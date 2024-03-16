@@ -16,7 +16,8 @@ import {
   Company, // @ts-ignore
   CompanyEmployee, // @ts-ignore
   File, // @ts-ignore
-  Property,
+  Property, // @ts-ignore
+  Request,
 } from "@prisma/client";
 
 export class CompanyServiceBase {
@@ -85,5 +86,16 @@ export class CompanyServiceBase {
         where: { id: parentId },
       })
       .properties(args);
+  }
+
+  async findRequests(
+    parentId: number,
+    args: Prisma.RequestFindManyArgs
+  ): Promise<Request[]> {
+    return this.prisma.company
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .requests(args);
   }
 }

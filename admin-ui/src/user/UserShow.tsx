@@ -83,7 +83,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
-        <ReferenceManyField reference="Post" target="userID" label="Posts">
+        <ReferenceManyField reference="Post" target="userIDId" label="Posts">
           <Datagrid rowClick="show">
             <DateField source="createdAt" label="Created At" />
             <ReferenceField label="forumID" source="forum.id" reference="Forum">
@@ -97,8 +97,30 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
-          reference="Reservation"
+          reference="Request"
           target="userID"
+          label="Requests"
+        >
+          <Datagrid rowClick="show">
+            <ReferenceField
+              label="companyID"
+              source="company.id"
+              reference="Company"
+            >
+              <TextField source={COMPANY_TITLE_FIELD} />
+            </ReferenceField>
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField label="requestType" source="requestType" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="userID" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="Reservation"
+          target="userIDId"
           label="Reservations"
         >
           <Datagrid rowClick="show">

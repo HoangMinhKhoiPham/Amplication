@@ -39,7 +39,7 @@ class CommonFacilityUpdateInput {
   @Field(() => EnumCommonFacilityFacilityType, {
     nullable: true,
   })
-  facilityType?: "SkyLounge" | "SpaFitness" | null;
+  facilityType?: "sky_lounge" | "spa_fitness" | "sauna" | null;
 }
 
 export { CommonFacilityUpdateInput as CommonFacilityUpdateInput };

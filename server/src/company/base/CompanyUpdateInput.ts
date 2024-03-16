@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileUpdateManyWithoutCompaniesInput } from "./FileUpdateManyWithoutCompaniesInput";
 import { PropertyUpdateManyWithoutCompaniesInput } from "./PropertyUpdateManyWithoutCompaniesInput";
+import { RequestUpdateManyWithoutCompaniesInput } from "./RequestUpdateManyWithoutCompaniesInput";
 
 @InputType()
 class CompanyUpdateInput {
@@ -65,6 +66,18 @@ class CompanyUpdateInput {
     nullable: true,
   })
   properties?: PropertyUpdateManyWithoutCompaniesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestUpdateManyWithoutCompaniesInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestUpdateManyWithoutCompaniesInput)
+  @IsOptional()
+  @Field(() => RequestUpdateManyWithoutCompaniesInput, {
+    nullable: true,
+  })
+  requests?: RequestUpdateManyWithoutCompaniesInput;
 }
 
 export { CompanyUpdateInput as CompanyUpdateInput };

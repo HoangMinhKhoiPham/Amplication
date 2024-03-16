@@ -17,6 +17,7 @@ import {
   CompanyEmployee, // @ts-ignore
   File, // @ts-ignore
   Post, // @ts-ignore
+  Request, // @ts-ignore
   Reservation, // @ts-ignore
   UserCondo,
 } from "@prisma/client";
@@ -113,6 +114,17 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .posts(args);
+  }
+
+  async findRequests(
+    parentId: number,
+    args: Prisma.RequestFindManyArgs
+  ): Promise<Request[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .requests(args);
   }
 
   async findReservations(

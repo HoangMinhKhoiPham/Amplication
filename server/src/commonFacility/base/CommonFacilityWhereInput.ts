@@ -40,7 +40,7 @@ class CommonFacilityWhereInput {
   @Field(() => EnumCommonFacilityFacilityType, {
     nullable: true,
   })
-  facilityType?: "SkyLounge" | "SpaFitness";
+  facilityType?: "sky_lounge" | "spa_fitness" | "sauna";
 
   @ApiProperty({
     required: false,

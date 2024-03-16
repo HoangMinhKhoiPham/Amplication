@@ -3,6 +3,7 @@ import { FileListRelationFilter } from "../file/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { PropertyListRelationFilter } from "../property/PropertyListRelationFilter";
+import { RequestListRelationFilter } from "../request/RequestListRelationFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 export type CompanyWhereInput = {
@@ -11,5 +12,6 @@ export type CompanyWhereInput = {
   id?: IntFilter;
   name?: StringFilter;
   properties?: PropertyListRelationFilter;
+  requests?: RequestListRelationFilter;
   updatedAt?: DateTimeNullableFilter;
 };

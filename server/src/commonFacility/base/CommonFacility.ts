@@ -50,7 +50,7 @@ class CommonFacility {
   @Field(() => EnumCommonFacilityFacilityType, {
     nullable: true,
   })
-  facilityType?: "SkyLounge" | "SpaFitness" | null;
+  facilityType?: "sky_lounge" | "spa_fitness" | "sauna" | null;
 
   @ApiProperty({
     required: true,
