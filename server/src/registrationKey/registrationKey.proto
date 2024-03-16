@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+                 package registrationKey;
+service RegistrationKeyService {
+ rpc createRegistrationKey (RegistrationKeyCreateInput) returns (RegistrationKey) {}
+rpc registrationKeys (findManyParams) returns (stream RegistrationKey) {}
+rpc registrationKey (RegistrationKeyWhereUniqueInput) returns (RegistrationKey) {}
+rpc updateRegistrationKey (RegistrationKeyUpdateInput) returns (RegistrationKey) {}
+rpc deleteRegistrationKey (RegistrationKeyWhereUniqueInput) returns (RegistrationKey) {} 
+ }
+message RegistrationKeyCreateInput {
+string createdAt = 1;
+int32 id = 2;
+repeated string role = 3;
+string updatedAt = 4;
+string value = 5;
+};
+message RegistrationKey {
+string createdAt = 1;
+int32 id = 2;
+repeated string role = 3;
+string updatedAt = 4;
+string value = 5;
+};
+message RegistrationKeyWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+repeated string role = 3;
+string updatedAt = 4;
+string value = 5;
+};
+message RegistrationKeyUpdateInput {
+string createdAt = 1;
+int32 id = 2;
+repeated string role = 3;
+string updatedAt = 4;
+string value = 5;
+};
+message findManyParams {
+
+};

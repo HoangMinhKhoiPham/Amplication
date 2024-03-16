@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+                 package commonFacility;
+service CommonFacilityService {
+ rpc createCommonFacility (CommonFacilityCreateInput) returns (CommonFacility) {}
+rpc commonFacilities (findManyParams) returns (stream CommonFacility) {}
+rpc commonFacility (CommonFacilityWhereUniqueInput) returns (CommonFacility) {}
+rpc updateCommonFacility (CommonFacilityUpdateInput) returns (CommonFacility) {}
+rpc deleteCommonFacility (CommonFacilityWhereUniqueInput) returns (CommonFacility) {}
+rpc findManyCommonFacilityId (CommonFacilityWhereUniqueInput) returns (stream Reservation) {}
+rpc updateCommonFacilityId (ReservationParams) returns (stream Reservation) {}
+rpc connectCommonFacilityId (ReservationParams) returns (Reservation) {}
+rpc disconnectCommonFacilityId (ReservationParams) returns (Reservation) {} 
+ }
+message CommonFacilityCreateInput {
+repeated Reservation availabilities = 1;
+string createdAt = 2;
+repeated string facilityType = 3;
+string id = 4;
+string updatedAt = 5;
+};
+message CommonFacility {
+repeated Reservation availabilities = 1;
+string createdAt = 2;
+repeated string facilityType = 3;
+string id = 4;
+string updatedAt = 5;
+};
+message CommonFacilityWhereUniqueInput {
+repeated Reservation availabilities = 1;
+string createdAt = 2;
+repeated string facilityType = 3;
+string id = 4;
+string updatedAt = 5;
+};
+message CommonFacilityUpdateInput {
+repeated Reservation availabilities = 1;
+string createdAt = 2;
+repeated string facilityType = 3;
+string id = 4;
+string updatedAt = 5;
+};
+message findManyParams {
+
+};
+message Reservation {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message ReservationWhereUniqueInput {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message ReservationParams {
+CommonFacilityWhereUniqueInput commonFacilityWhereUniqueInput = 1;
+ReservationWhereUniqueInput reservationWhereUniqueInput = 2;
+};

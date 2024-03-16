@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+                 package property;
+service PropertyService {
+ rpc createProperty (PropertyCreateInput) returns (Property) {}
+rpc properties (findManyParams) returns (stream Property) {}
+rpc property (PropertyWhereUniqueInput) returns (Property) {}
+rpc updateProperty (PropertyUpdateInput) returns (Property) {}
+rpc deleteProperty (PropertyWhereUniqueInput) returns (Property) {}
+rpc findManyPropertyId (PropertyWhereUniqueInput) returns (stream CondoUnit) {}
+rpc updatePropertyId (CondoUnitParams) returns (stream CondoUnit) {}
+rpc connectPropertyId (CondoUnitParams) returns (CondoUnit) {}
+rpc disconnectPropertyId (CondoUnitParams) returns (CondoUnit) {}
+rpc findManyProperty (PropertyWhereUniqueInput) returns (stream File) {}
+rpc updateProperty (FileParams) returns (stream File) {}
+rpc connectProperty (FileParams) returns (File) {}
+rpc disconnectProperty (FileParams) returns (File) {}
+rpc findManyProperty (PropertyWhereUniqueInput) returns (stream Locker) {}
+rpc updateProperty (LockerParams) returns (stream Locker) {}
+rpc connectProperty (LockerParams) returns (Locker) {}
+rpc disconnectProperty (LockerParams) returns (Locker) {}
+rpc findManyProperty (PropertyWhereUniqueInput) returns (stream ParkingSpot) {}
+rpc updateProperty (ParkingSpotParams) returns (stream ParkingSpot) {}
+rpc connectProperty (ParkingSpotParams) returns (ParkingSpot) {}
+rpc disconnectProperty (ParkingSpotParams) returns (ParkingSpot) {} 
+ }
+message PropertyCreateInput {
+string address = 1;
+repeated CondoUnit condoUnits = 2;
+string createdAt = 3;
+repeated File files = 4;
+int32 id = 5;
+int32 lockerCount = 6;
+repeated Locker Lockers = 7;
+string name = 8;
+int32 parkingCount = 9;
+repeated ParkingSpot ParkingSpots = 10;
+int32 unitCount = 11;
+string updatedAt = 12;
+};
+message Property {
+string address = 1;
+repeated CondoUnit condoUnits = 2;
+string createdAt = 3;
+repeated File files = 4;
+int32 id = 5;
+int32 lockerCount = 6;
+repeated Locker Lockers = 7;
+string name = 8;
+int32 parkingCount = 9;
+repeated ParkingSpot ParkingSpots = 10;
+int32 unitCount = 11;
+string updatedAt = 12;
+};
+message PropertyWhereUniqueInput {
+string address = 1;
+repeated CondoUnit condoUnits = 2;
+string createdAt = 3;
+repeated File files = 4;
+int32 id = 5;
+int32 lockerCount = 6;
+repeated Locker Lockers = 7;
+string name = 8;
+int32 parkingCount = 9;
+repeated ParkingSpot ParkingSpots = 10;
+int32 unitCount = 11;
+string updatedAt = 12;
+};
+message PropertyUpdateInput {
+string address = 1;
+repeated CondoUnit condoUnits = 2;
+string createdAt = 3;
+repeated File files = 4;
+int32 id = 5;
+int32 lockerCount = 6;
+repeated Locker Lockers = 7;
+string name = 8;
+int32 parkingCount = 9;
+repeated ParkingSpot ParkingSpots = 10;
+int32 unitCount = 11;
+string updatedAt = 12;
+};
+message findManyParams {
+
+};
+message CondoUnit {
+int32 condoFee = 1;
+string createdAt = 2;
+int32 id = 3;
+string size = 4;
+string test = 5;
+string unitNumber = 6;
+string updatedAt = 7;
+};
+message CondoUnitWhereUniqueInput {
+int32 condoFee = 1;
+string createdAt = 2;
+int32 id = 3;
+string size = 4;
+string test = 5;
+string unitNumber = 6;
+string updatedAt = 7;
+};
+message CondoUnitParams {
+PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
+CondoUnitWhereUniqueInput condounitWhereUniqueInput = 2;
+};
+message File {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileWhereUniqueInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileParams {
+PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
+FileWhereUniqueInput fileWhereUniqueInput = 2;
+};
+message Locker {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message LockerWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message LockerParams {
+PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
+LockerWhereUniqueInput lockerWhereUniqueInput = 2;
+};
+message ParkingSpot {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpotWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpotParams {
+PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
+ParkingSpotWhereUniqueInput parkingspotWhereUniqueInput = 2;
+};

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package userCondo;
+service UserCondoService {
+ rpc createUserCondo (UserCondoCreateInput) returns (UserCondo) {}
+rpc userCondos (findManyParams) returns (stream UserCondo) {}
+rpc userCondo (UserCondoWhereUniqueInput) returns (UserCondo) {}
+rpc updateUserCondo (UserCondoUpdateInput) returns (UserCondo) {}
+rpc deleteUserCondo (UserCondoWhereUniqueInput) returns (UserCondo) {} 
+ }
+message UserCondoCreateInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondo {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondoWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondoUpdateInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message findManyParams {
+
+};

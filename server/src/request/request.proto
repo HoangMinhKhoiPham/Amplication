@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+                 package request;
+service RequestService {
+ rpc createRequest (RequestCreateInput) returns (Request) {}
+rpc requests (findManyParams) returns (stream Request) {}
+rpc request (RequestWhereUniqueInput) returns (Request) {}
+rpc updateRequest (RequestUpdateInput) returns (Request) {}
+rpc deleteRequest (RequestWhereUniqueInput) returns (Request) {} 
+ }
+message RequestCreateInput {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message Request {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message RequestWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message RequestUpdateInput {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message findManyParams {
+
+};

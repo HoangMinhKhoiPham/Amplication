@@ -1,0 +1,199 @@
+syntax = "proto3";
+
+                 package user;
+service UserService {
+ rpc createUser (UserCreateInput) returns (User) {}
+rpc users (findManyParams) returns (stream User) {}
+rpc user (UserWhereUniqueInput) returns (User) {}
+rpc updateUser (UserUpdateInput) returns (User) {}
+rpc deleteUser (UserWhereUniqueInput) returns (User) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream CompanyEmployee) {}
+rpc updateUser (CompanyEmployeeParams) returns (stream CompanyEmployee) {}
+rpc connectUser (CompanyEmployeeParams) returns (CompanyEmployee) {}
+rpc disconnectUser (CompanyEmployeeParams) returns (CompanyEmployee) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream File) {}
+rpc updateUser (FileParams) returns (stream File) {}
+rpc connectUser (FileParams) returns (File) {}
+rpc disconnectUser (FileParams) returns (File) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream Post) {}
+rpc updateUser (PostParams) returns (stream Post) {}
+rpc connectUser (PostParams) returns (Post) {}
+rpc disconnectUser (PostParams) returns (Post) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream Request) {}
+rpc updateUser (RequestParams) returns (stream Request) {}
+rpc connectUser (RequestParams) returns (Request) {}
+rpc disconnectUser (RequestParams) returns (Request) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream Reservation) {}
+rpc updateUser (ReservationParams) returns (stream Reservation) {}
+rpc connectUser (ReservationParams) returns (Reservation) {}
+rpc disconnectUser (ReservationParams) returns (Reservation) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream UserCondo) {}
+rpc updateUser (UserCondoParams) returns (stream UserCondo) {}
+rpc connectUser (UserCondoParams) returns (UserCondo) {}
+rpc disconnectUser (UserCondoParams) returns (UserCondo) {} 
+ }
+message UserCreateInput {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+string email = 3;
+repeated File files = 4;
+string firstName = 5;
+int32 id = 6;
+string lastName = 7;
+string password = 8;
+string phoneNumber = 9;
+repeated Post posts = 10;
+repeated Request requests = 11;
+repeated Reservation reservations = 12;
+repeated string roles = 13;
+string updatedAt = 14;
+repeated UserCondo userCondos = 15;
+string username = 16;
+};
+message User {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+string email = 3;
+repeated File files = 4;
+string firstName = 5;
+int32 id = 6;
+string lastName = 7;
+string password = 8;
+string phoneNumber = 9;
+repeated Post posts = 10;
+repeated Request requests = 11;
+repeated Reservation reservations = 12;
+repeated string roles = 13;
+string updatedAt = 14;
+repeated UserCondo userCondos = 15;
+string username = 16;
+};
+message UserWhereUniqueInput {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+string email = 3;
+repeated File files = 4;
+string firstName = 5;
+int32 id = 6;
+string lastName = 7;
+string password = 8;
+string phoneNumber = 9;
+repeated Post posts = 10;
+repeated Request requests = 11;
+repeated Reservation reservations = 12;
+repeated string roles = 13;
+string updatedAt = 14;
+repeated UserCondo userCondos = 15;
+string username = 16;
+};
+message UserUpdateInput {
+repeated CompanyEmployee companyEmployees = 1;
+string createdAt = 2;
+string email = 3;
+repeated File files = 4;
+string firstName = 5;
+int32 id = 6;
+string lastName = 7;
+string password = 8;
+string phoneNumber = 9;
+repeated Post posts = 10;
+repeated Request requests = 11;
+repeated Reservation reservations = 12;
+repeated string roles = 13;
+string updatedAt = 14;
+repeated UserCondo userCondos = 15;
+string username = 16;
+};
+message findManyParams {
+
+};
+message CompanyEmployee {
+int32 id = 1;
+};
+message CompanyEmployeeWhereUniqueInput {
+int32 id = 1;
+};
+message CompanyEmployeeParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+CompanyEmployeeWhereUniqueInput companyemployeeWhereUniqueInput = 2;
+};
+message File {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileWhereUniqueInput {
+string bucket = 1;
+string createdAt = 2;
+int32 id = 3;
+string name = 4;
+string updatedAt = 5;
+};
+message FileParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+FileWhereUniqueInput fileWhereUniqueInput = 2;
+};
+message Post {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message PostWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message PostParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+PostWhereUniqueInput postWhereUniqueInput = 2;
+};
+message Request {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message RequestWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+repeated string requestType = 3;
+string updatedAt = 4;
+};
+message RequestParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+RequestWhereUniqueInput requestWhereUniqueInput = 2;
+};
+message Reservation {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message ReservationWhereUniqueInput {
+string availablity = 1;
+string createdAt = 2;
+string id = 3;
+string notes = 4;
+string updatedAt = 5;
+};
+message ReservationParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+ReservationWhereUniqueInput reservationWhereUniqueInput = 2;
+};
+message UserCondo {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondoWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message UserCondoParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+UserCondoWhereUniqueInput usercondoWhereUniqueInput = 2;
+};

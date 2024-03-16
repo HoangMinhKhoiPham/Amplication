@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package parkingSpot;
+service ParkingSpotService {
+ rpc createParkingSpot (ParkingSpotCreateInput) returns (ParkingSpot) {}
+rpc parkingSpots (findManyParams) returns (stream ParkingSpot) {}
+rpc parkingSpot (ParkingSpotWhereUniqueInput) returns (ParkingSpot) {}
+rpc updateParkingSpot (ParkingSpotUpdateInput) returns (ParkingSpot) {}
+rpc deleteParkingSpot (ParkingSpotWhereUniqueInput) returns (ParkingSpot) {} 
+ }
+message ParkingSpotCreateInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpot {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpotWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message ParkingSpotUpdateInput {
+string createdAt = 1;
+int32 id = 2;
+string updatedAt = 3;
+};
+message findManyParams {
+
+};
