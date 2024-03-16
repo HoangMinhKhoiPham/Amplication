@@ -29,7 +29,7 @@ class PostWhereInput {
   @Field(() => ForumWhereUniqueInput, {
     nullable: true,
   })
-  forumId?: ForumWhereUniqueInput;
+  forum?: ForumWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -52,7 +52,7 @@ class PostWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { PostWhereInput as PostWhereInput };

@@ -470,7 +470,7 @@ export class UserControllerBase {
       select: {
         createdAt: true,
 
-        forumId: {
+        forum: {
           select: {
             id: true,
           },
@@ -479,7 +479,7 @@ export class UserControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },

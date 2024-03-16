@@ -33,7 +33,7 @@ class Post {
   @ValidateNested()
   @Type(() => Forum)
   @IsOptional()
-  forumId?: Forum | null;
+  forum?: Forum | null;
 
   @ApiProperty({
     required: true,
@@ -58,7 +58,7 @@ class Post {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userID?: User | null;
+  user?: User | null;
 }
 
 export { Post as Post };

@@ -15,12 +15,12 @@ export const PostShow = (props: ShowProps): React.ReactElement => {
     <Show {...props}>
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
-        <ReferenceField label="forumID" source="forum.id" reference="Forum">
+        <ReferenceField label="forum" source="forum.id" reference="Forum">
           <TextField source={FORUM_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="ID" source="id" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="userID" source="user.id" reference="User">
+        <ReferenceField label="user" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </SimpleShowLayout>

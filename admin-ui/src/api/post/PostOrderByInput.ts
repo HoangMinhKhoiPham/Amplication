@@ -2,8 +2,8 @@ import { SortOrder } from "../../util/SortOrder";
 
 export type PostOrderByInput = {
   createdAt?: SortOrder;
-  forum?: SortOrder;
+  forumID?: SortOrder;
   id?: SortOrder;
   updatedAt?: SortOrder;
-  user?: SortOrder;
+  userID?: SortOrder;
 };

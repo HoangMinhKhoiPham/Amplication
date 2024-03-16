@@ -149,12 +149,12 @@ model Forum {
 
 model Post {
   createdAt DateTime @default(now())
-  forumId   Forum?   @relation(fields: [forum], references: [id])
-  forum     String?
+  forum     Forum?   @relation(fields: [forumID], references: [id])
+  forumID   String?
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
-  userID    User?    @relation(fields: [user], references: [id])
-  user      Int?
+  user      User?    @relation(fields: [userID], references: [id])
+  userID    Int?
 }
 
 model CommonFacility {

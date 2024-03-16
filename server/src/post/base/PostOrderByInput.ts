@@ -39,7 +39,7 @@ class PostOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  forum?: SortOrder;
+  forumID?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -72,7 +72,7 @@ class PostOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  user?: SortOrder;
+  userID?: SortOrder;
 }
 
 export { PostOrderByInput as PostOrderByInput };

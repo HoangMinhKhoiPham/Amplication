@@ -3,7 +3,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type PostWhereInput = {
-  forumId?: ForumWhereUniqueInput;
+  forum?: ForumWhereUniqueInput;
   id?: StringFilter;
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 };

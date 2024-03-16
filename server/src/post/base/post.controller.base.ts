@@ -51,22 +51,22 @@ export class PostControllerBase {
       data: {
         ...data,
 
-        forumId: data.forumId
+        forum: data.forum
           ? {
-              connect: data.forumId,
+              connect: data.forum,
             }
           : undefined,
 
-        userID: data.userID
+        user: data.user
           ? {
-              connect: data.userID,
+              connect: data.user,
             }
           : undefined,
       },
       select: {
         createdAt: true,
 
-        forumId: {
+        forum: {
           select: {
             id: true,
           },
@@ -75,7 +75,7 @@ export class PostControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -103,7 +103,7 @@ export class PostControllerBase {
       select: {
         createdAt: true,
 
-        forumId: {
+        forum: {
           select: {
             id: true,
           },
@@ -112,7 +112,7 @@ export class PostControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -141,7 +141,7 @@ export class PostControllerBase {
       select: {
         createdAt: true,
 
-        forumId: {
+        forum: {
           select: {
             id: true,
           },
@@ -150,7 +150,7 @@ export class PostControllerBase {
         id: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },
@@ -187,22 +187,22 @@ export class PostControllerBase {
         data: {
           ...data,
 
-          forumId: data.forumId
+          forum: data.forum
             ? {
-                connect: data.forumId,
+                connect: data.forum,
               }
             : undefined,
 
-          userID: data.userID
+          user: data.user
             ? {
-                connect: data.userID,
+                connect: data.user,
               }
             : undefined,
         },
         select: {
           createdAt: true,
 
-          forumId: {
+          forum: {
             select: {
               id: true,
             },
@@ -211,7 +211,7 @@ export class PostControllerBase {
           id: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },
@@ -248,7 +248,7 @@ export class PostControllerBase {
         select: {
           createdAt: true,
 
-          forumId: {
+          forum: {
             select: {
               id: true,
             },
@@ -257,7 +257,7 @@ export class PostControllerBase {
           id: true,
           updatedAt: true,
 
-          userID: {
+          user: {
             select: {
               id: true,
             },

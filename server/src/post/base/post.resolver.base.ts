@@ -91,15 +91,15 @@ export class PostResolverBase {
       data: {
         ...args.data,
 
-        forumId: args.data.forumId
+        forum: args.data.forum
           ? {
-              connect: args.data.forumId,
+              connect: args.data.forum,
             }
           : undefined,
 
-        userID: args.data.userID
+        user: args.data.user
           ? {
-              connect: args.data.userID,
+              connect: args.data.user,
             }
           : undefined,
       },
@@ -120,15 +120,15 @@ export class PostResolverBase {
         data: {
           ...args.data,
 
-          forumId: args.data.forumId
+          forum: args.data.forum
             ? {
-                connect: args.data.forumId,
+                connect: args.data.forum,
               }
             : undefined,
 
-          userID: args.data.userID
+          user: args.data.user
             ? {
-                connect: args.data.userID,
+                connect: args.data.user,
               }
             : undefined,
         },
@@ -165,15 +165,15 @@ export class PostResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Forum, {
     nullable: true,
-    name: "forumId",
+    name: "forum",
   })
   @nestAccessControl.UseRoles({
     resource: "Forum",
     action: "read",
     possession: "any",
   })
-  async getForumId(@graphql.Parent() parent: Post): Promise<Forum | null> {
-    const result = await this.service.getForumId(parent.id);
+  async getForum(@graphql.Parent() parent: Post): Promise<Forum | null> {
+    const result = await this.service.getForum(parent.id);
 
     if (!result) {
       return null;
@@ -184,15 +184,15 @@ export class PostResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "userId",
+    name: "user",
   })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
-  async getUserId(@graphql.Parent() parent: Post): Promise<User | null> {
-    const result = await this.service.getUserId(parent.id);
+  async getUser(@graphql.Parent() parent: Post): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;
