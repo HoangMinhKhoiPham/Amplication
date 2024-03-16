@@ -7,5 +7,5 @@ export type ReservationOrderByInput = {
   id?: SortOrder;
   notes?: SortOrder;
   updatedAt?: SortOrder;
-  userIDId?: SortOrder;
+  userID?: SortOrder;
 };

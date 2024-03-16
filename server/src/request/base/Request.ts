@@ -32,7 +32,7 @@ class Request {
   @ValidateNested()
   @Type(() => Company)
   @IsOptional()
-  companyID?: Company | null;
+  company?: Company | null;
 
   @ApiProperty({
     required: true,
@@ -84,7 +84,7 @@ class Request {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userID?: User | null;
+  user?: User | null;
 }
 
 export { Request as Request };

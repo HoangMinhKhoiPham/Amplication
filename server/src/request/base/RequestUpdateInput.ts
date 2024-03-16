@@ -29,7 +29,7 @@ class RequestUpdateInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companyID?: CompanyWhereUniqueInput | null;
+  company?: CompanyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -60,7 +60,7 @@ class RequestUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { RequestUpdateInput as RequestUpdateInput };

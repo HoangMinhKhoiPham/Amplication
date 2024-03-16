@@ -149,12 +149,12 @@ model Forum {
 
 model Post {
   createdAt DateTime @default(now())
-  forumId   Forum?   @relation(fields: [forumID], references: [id])
-  forumID   String?
+  forumId   Forum?   @relation(fields: [forum], references: [id])
+  forum     String?
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
-  userID    User?    @relation(fields: [userIDId], references: [id])
-  userIDId  Int?
+  userID    User?    @relation(fields: [user], references: [id])
+  user      Int?
 }
 
 model CommonFacility {
@@ -173,18 +173,18 @@ model Reservation {
   id                 String          @id @default(cuid())
   notes              String?
   updatedAt          DateTime        @updatedAt
-  userID             User?           @relation(fields: [userIDId], references: [id])
-  userIDId           Int?
+  user               User?           @relation(fields: [userID], references: [id])
+  userID             Int?
 }
 
 model Request {
-  companyID   Company?                @relation(fields: [companyID], references: [id])
+  company     Company?                @relation(fields: [companyID], references: [id])
   companyID   Int?
   createdAt   DateTime                @default(now())
   id          String                  @id @default(cuid())
   requestType EnumRequestRequestType?
   updatedAt   DateTime                @updatedAt
-  userID      User?                   @relation(fields: [userID], references: [id])
+  user        User?                   @relation(fields: [userID], references: [id])
   userID      Int?
 }
 

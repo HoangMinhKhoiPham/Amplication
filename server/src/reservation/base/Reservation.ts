@@ -80,7 +80,7 @@ class Reservation {
   @ValidateNested()
   @Type(() => User)
   @IsOptional()
-  userID?: User | null;
+  user?: User | null;
 }
 
 export { Reservation as Reservation };

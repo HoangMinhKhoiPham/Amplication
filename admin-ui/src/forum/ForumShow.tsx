@@ -21,7 +21,7 @@ export const ForumShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceManyField reference="Post" target="forumID" label="Posts">
+        <ReferenceManyField reference="Post" target="forum" label="Posts">
           <Datagrid rowClick="show">
             <DateField source="createdAt" label="Created At" />
             <ReferenceField label="forumID" source="forum.id" reference="Forum">

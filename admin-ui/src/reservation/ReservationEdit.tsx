@@ -23,7 +23,7 @@ export const ReservationEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={CommonFacilityTitle} />
         </ReferenceInput>
         <TextInput label="notes" source="notes" />
-        <ReferenceInput source="userID.id" reference="User" label="userID">
+        <ReferenceInput source="user.id" reference="User" label="user">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

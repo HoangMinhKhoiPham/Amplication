@@ -75,7 +75,7 @@ class ReservationWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { ReservationWhereInput as ReservationWhereInput };

@@ -33,7 +33,7 @@ export const ReservationList = (props: ListProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="notes" source="notes" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="userID" source="user.id" reference="User">
+        <ReferenceField label="user" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </Datagrid>

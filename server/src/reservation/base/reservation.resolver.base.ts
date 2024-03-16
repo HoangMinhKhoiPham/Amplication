@@ -103,9 +103,9 @@ export class ReservationResolverBase {
             }
           : undefined,
 
-        userID: args.data.userID
+        user: args.data.user
           ? {
-              connect: args.data.userID,
+              connect: args.data.user,
             }
           : undefined,
       },
@@ -134,9 +134,9 @@ export class ReservationResolverBase {
               }
             : undefined,
 
-          userID: args.data.userID
+          user: args.data.user
             ? {
-                connect: args.data.userID,
+                connect: args.data.user,
               }
             : undefined,
         },
@@ -196,15 +196,15 @@ export class ReservationResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "userId",
+    name: "user",
   })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
-  async getUserId(@graphql.Parent() parent: Reservation): Promise<User | null> {
-    const result = await this.service.getUserId(parent.id);
+  async getUser(@graphql.Parent() parent: Reservation): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

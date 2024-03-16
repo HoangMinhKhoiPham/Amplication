@@ -83,7 +83,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
-        <ReferenceManyField reference="Post" target="userIDId" label="Posts">
+        <ReferenceManyField reference="Post" target="user" label="Posts">
           <Datagrid rowClick="show">
             <DateField source="createdAt" label="Created At" />
             <ReferenceField label="forumID" source="forum.id" reference="Forum">
@@ -103,7 +103,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show">
             <ReferenceField
-              label="companyID"
+              label="company"
               source="company.id"
               reference="Company"
             >
@@ -113,14 +113,14 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="ID" source="id" />
             <TextField label="requestType" source="requestType" />
             <DateField source="updatedAt" label="Updated At" />
-            <ReferenceField label="userID" source="user.id" reference="User">
+            <ReferenceField label="user" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
         <ReferenceManyField
           reference="Reservation"
-          target="userIDId"
+          target="userID"
           label="Reservations"
         >
           <Datagrid rowClick="show">
@@ -136,7 +136,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="ID" source="id" />
             <TextField label="notes" source="notes" />
             <DateField source="updatedAt" label="Updated At" />
-            <ReferenceField label="userID" source="user.id" reference="User">
+            <ReferenceField label="user" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
           </Datagrid>

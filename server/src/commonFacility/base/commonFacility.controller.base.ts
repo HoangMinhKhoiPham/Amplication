@@ -223,7 +223,7 @@ export class CommonFacilityControllerBase {
         notes: true,
         updatedAt: true,
 
-        userID: {
+        user: {
           select: {
             id: true,
           },

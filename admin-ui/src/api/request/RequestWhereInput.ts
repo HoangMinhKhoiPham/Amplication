@@ -3,7 +3,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type RequestWhereInput = {
-  companyID?: CompanyWhereUniqueInput;
+  company?: CompanyWhereUniqueInput;
   id?: StringFilter;
   requestType?:
     | "moving_in"
@@ -13,5 +13,5 @@ export type RequestWhereInput = {
     | "violation_report"
     | "deficiency_report"
     | "question";
-  userID?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 };

@@ -61,11 +61,11 @@ export class ReservationServiceBase {
       .commonFacilityID();
   }
 
-  async getUserId(parentId: string): Promise<User | null> {
+  async getUser(parentId: string): Promise<User | null> {
     return this.prisma.reservation
       .findUnique({
         where: { id: parentId },
       })
-      .userID();
+      .user();
   }
 }
