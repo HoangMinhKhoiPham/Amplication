@@ -12,5 +12,13 @@ export type RequestCreateInput = {
     | "deficiency_report"
     | "question"
     | null;
+  status?:
+    | "New"
+    | "In_Progress"
+    | "Pending_Approval"
+    | "Approved"
+    | "Disapproved"
+    | "Complete"
+    | null;
   user?: UserWhereUniqueInput | null;
 };

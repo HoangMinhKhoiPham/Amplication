@@ -5,6 +5,7 @@ export type RequestOrderByInput = {
   createdAt?: SortOrder;
   id?: SortOrder;
   requestType?: SortOrder;
+  status?: SortOrder;
   updatedAt?: SortOrder;
   userID?: SortOrder;
 };

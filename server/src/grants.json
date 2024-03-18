@@ -18,13 +18,13 @@
     "attributes": "*"
   },
   {
-    "role": "condoOwner",
+    "role": "Admin",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
@@ -36,13 +36,7 @@
     "attributes": "*"
   },
   {
-    "role": "rental",
-    "resource": "User",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
+    "role": "manager",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
@@ -54,13 +48,19 @@
     "attributes": "*"
   },
   {
-    "role": "Admin",
+    "role": "PublicUser",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "rental",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
@@ -85,54 +85,72 @@
   },
   {
     "role": "rental",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
     "resource": "User",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "condoOwner",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
     "resource": "CondoUnit",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "CondoUnit",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "financialManager",
+    "resource": "CondoUnit",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CondoUnit",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CondoUnit",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CondoUnit",
     "action": "read:own",
     "attributes": "*"
@@ -150,109 +168,109 @@
     "attributes": "*"
   },
   {
+    "role": "condoOwner",
+    "resource": "CondoUnit",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CondoUnit",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CondoUnit",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CondoUnit",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CondoUnit",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CondoUnit",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CondoUnit",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CondoUnit",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CondoUnit",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CondoUnit",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CondoUnit",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CondoUnit",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "CondoUnit",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "CondoUnit",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "CondoUnit",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "CondoUnit",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "operator",
-    "resource": "CondoUnit",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "CondoUnit",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CondoUnit",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "CondoUnit",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "CondoUnit",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CondoUnit",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "CondoUnit",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "CondoUnit",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "CondoUnit",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CondoUnit",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "CondoUnit",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "CondoUnit",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "CondoUnit",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CondoUnit",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "CondoUnit",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "CondoUnit",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "PublicUser",
-    "resource": "CondoUnit",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
     "resource": "CondoUnit",
     "action": "read:any",
     "attributes": "*"
@@ -270,21 +288,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CondoUnit",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "CondoUnit",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CondoUnit",
-    "action": "read:any",
+    "resource": "Property",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -294,13 +300,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Property",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Property",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Property",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Property",
     "action": "read:own",
     "attributes": "*"
@@ -318,24 +336,6 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Property",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Property",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Property",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "financialManager",
     "resource": "Property",
     "action": "create:any",
@@ -387,6 +387,12 @@
     "role": "Admin",
     "resource": "Property",
     "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Property",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -396,13 +402,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Property",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Property",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Property",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Property",
     "action": "read:any",
     "attributes": "*"
@@ -420,21 +438,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Property",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Property",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Property",
-    "action": "read:any",
+    "resource": "ParkingSpot",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -444,13 +450,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "ParkingSpot",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "ParkingSpot",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "ParkingSpot",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "ParkingSpot",
     "action": "read:own",
     "attributes": "*"
@@ -468,24 +486,6 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "ParkingSpot",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "ParkingSpot",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "ParkingSpot",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "financialManager",
     "resource": "ParkingSpot",
     "action": "create:any",
@@ -537,6 +537,12 @@
     "role": "Admin",
     "resource": "ParkingSpot",
     "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "ParkingSpot",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -546,13 +552,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "ParkingSpot",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "ParkingSpot",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "ParkingSpot",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "ParkingSpot",
     "action": "read:any",
     "attributes": "*"
@@ -570,21 +588,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "ParkingSpot",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "ParkingSpot",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "ParkingSpot",
-    "action": "read:any",
+    "resource": "Locker",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -594,13 +600,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Locker",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Locker",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Locker",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Locker",
     "action": "read:own",
     "attributes": "*"
@@ -618,24 +636,6 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Locker",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Locker",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Locker",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "financialManager",
     "resource": "Locker",
     "action": "create:any",
@@ -687,6 +687,12 @@
     "role": "Admin",
     "resource": "Locker",
     "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Locker",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -696,13 +702,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Locker",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Locker",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Locker",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Locker",
     "action": "read:any",
     "attributes": "*"
@@ -720,21 +738,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Locker",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Locker",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Locker",
-    "action": "read:any",
+    "resource": "Company",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -744,13 +750,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Company",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Company",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Company",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Company",
     "action": "read:own",
     "attributes": "*"
@@ -768,21 +786,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Company",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Company",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Company",
-    "action": "read:own",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -792,13 +798,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Company",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Company",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Company",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Company",
     "action": "delete:any",
     "attributes": "*"
@@ -816,21 +834,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Company",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Company",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Company",
-    "action": "delete:any",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -840,13 +846,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Company",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Company",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Company",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Company",
     "action": "read:any",
     "attributes": "*"
@@ -864,21 +882,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Company",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Company",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Company",
-    "action": "read:any",
+    "resource": "File",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -888,13 +894,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "File",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "File",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "File",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "File",
     "action": "read:own",
     "attributes": "*"
@@ -912,217 +930,223 @@
     "attributes": "*"
   },
   {
+    "role": "Admin",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "operator",
     "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "File",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "File",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "File",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "File",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "RegistrationKey",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "Admin",
-    "resource": "File",
+    "role": "condoOwner",
+    "resource": "RegistrationKey",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "RegistrationKey",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "manager",
-    "resource": "File",
+    "resource": "RegistrationKey",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "condoOwner",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "operator",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "File",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "File",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "File",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "File",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "RegistrationKey",
     "action": "read:own",
     "attributes": "*"
@@ -1134,12 +1158,6 @@
     "attributes": "*"
   },
   {
-    "role": "financialManager",
-    "resource": "RegistrationKey",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "rental",
     "resource": "RegistrationKey",
     "action": "read:own",
@@ -1147,24 +1165,6 @@
   },
   {
     "role": "test",
-    "resource": "RegistrationKey",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "RegistrationKey",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "RegistrationKey",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
     "resource": "RegistrationKey",
     "action": "read:own",
     "attributes": "*"
@@ -1224,19 +1224,37 @@
     "attributes": "*"
   },
   {
+    "role": "Admin",
+    "resource": "Role",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "condoOwner",
     "resource": "Role",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Role",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Role",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Role",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Role",
     "action": "read:own",
     "attributes": "*"
@@ -1254,31 +1272,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Role",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Role",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Role",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Role",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Role",
     "action": "create:any",
     "attributes": "*"
@@ -1290,6 +1290,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Role",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Role",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Role",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Role",
     "action": "create:any",
@@ -1302,31 +1320,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Role",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Role",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Role",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Role",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Role",
     "action": "update:any",
     "attributes": "*"
@@ -1338,6 +1338,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Role",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Role",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Role",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Role",
     "action": "update:any",
@@ -1350,31 +1368,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Role",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Role",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Role",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Role",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Role",
     "action": "delete:any",
     "attributes": "*"
@@ -1386,6 +1386,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Role",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Role",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Role",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Role",
     "action": "delete:any",
@@ -1398,31 +1416,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Role",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Role",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Role",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Role",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Role",
     "action": "read:any",
     "attributes": "*"
@@ -1434,6 +1434,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Role",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Role",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Role",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Role",
     "action": "read:any",
@@ -1446,21 +1464,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Role",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Role",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Role",
-    "action": "read:any",
+    "resource": "CompanyEmployee",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -1470,13 +1476,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CompanyEmployee",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CompanyEmployee",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CompanyEmployee",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CompanyEmployee",
     "action": "read:own",
     "attributes": "*"
@@ -1494,21 +1512,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CompanyEmployee",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "CompanyEmployee",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CompanyEmployee",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -1518,13 +1524,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CompanyEmployee",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CompanyEmployee",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CompanyEmployee",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CompanyEmployee",
     "action": "create:any",
     "attributes": "*"
@@ -1542,31 +1560,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CompanyEmployee",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "CompanyEmployee",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CompanyEmployee",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "CompanyEmployee",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "CompanyEmployee",
     "action": "update:any",
     "attributes": "*"
@@ -1578,6 +1578,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "CompanyEmployee",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CompanyEmployee",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CompanyEmployee",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "CompanyEmployee",
     "action": "update:any",
@@ -1590,31 +1608,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CompanyEmployee",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "CompanyEmployee",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CompanyEmployee",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "CompanyEmployee",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "CompanyEmployee",
     "action": "delete:any",
     "attributes": "*"
@@ -1626,6 +1626,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "CompanyEmployee",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CompanyEmployee",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CompanyEmployee",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "CompanyEmployee",
     "action": "delete:any",
@@ -1638,31 +1656,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CompanyEmployee",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "CompanyEmployee",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CompanyEmployee",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "CompanyEmployee",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "CompanyEmployee",
     "action": "read:any",
     "attributes": "*"
@@ -1674,6 +1674,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "CompanyEmployee",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CompanyEmployee",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "CompanyEmployee",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "CompanyEmployee",
     "action": "read:any",
@@ -1686,21 +1704,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CompanyEmployee",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "CompanyEmployee",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CompanyEmployee",
-    "action": "read:any",
+    "resource": "UserCondo",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -1710,13 +1716,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "UserCondo",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "UserCondo",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "UserCondo",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "UserCondo",
     "action": "read:own",
     "attributes": "*"
@@ -1734,21 +1752,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "UserCondo",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "UserCondo",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "UserCondo",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -1758,13 +1764,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "UserCondo",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "UserCondo",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "UserCondo",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "UserCondo",
     "action": "create:any",
     "attributes": "*"
@@ -1782,31 +1800,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "UserCondo",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "UserCondo",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "UserCondo",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "UserCondo",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "UserCondo",
     "action": "update:any",
     "attributes": "*"
@@ -1818,6 +1818,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "UserCondo",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "UserCondo",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "UserCondo",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "UserCondo",
     "action": "update:any",
@@ -1830,31 +1848,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "UserCondo",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "UserCondo",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "UserCondo",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "UserCondo",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "UserCondo",
     "action": "delete:any",
     "attributes": "*"
@@ -1866,6 +1866,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "UserCondo",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "UserCondo",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "UserCondo",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "UserCondo",
     "action": "delete:any",
@@ -1878,31 +1896,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "UserCondo",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "UserCondo",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "UserCondo",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "UserCondo",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "UserCondo",
     "action": "read:any",
     "attributes": "*"
@@ -1914,6 +1914,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "UserCondo",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "UserCondo",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "UserCondo",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "UserCondo",
     "action": "read:any",
@@ -1926,21 +1944,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "UserCondo",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "UserCondo",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "UserCondo",
-    "action": "read:any",
+    "resource": "Forum",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -1950,13 +1956,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Forum",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Forum",
     "action": "read:own",
     "attributes": "*"
@@ -1974,21 +1992,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Forum",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Forum",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Forum",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -1998,13 +2004,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Forum",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Forum",
     "action": "create:any",
     "attributes": "*"
@@ -2022,21 +2040,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Forum",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Forum",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Forum",
-    "action": "create:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -2046,13 +2052,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Forum",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Forum",
     "action": "update:any",
     "attributes": "*"
@@ -2070,31 +2088,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Forum",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Forum",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Forum",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Forum",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Forum",
     "action": "delete:any",
     "attributes": "*"
@@ -2106,6 +2106,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Forum",
     "action": "delete:any",
@@ -2118,31 +2136,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Forum",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Forum",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Forum",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Forum",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Forum",
     "action": "read:any",
     "attributes": "*"
@@ -2154,6 +2154,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Forum",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Forum",
     "action": "read:any",
@@ -2166,21 +2184,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Forum",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Forum",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Forum",
-    "action": "read:any",
+    "resource": "Post",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -2190,13 +2196,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Post",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Post",
     "action": "read:own",
     "attributes": "*"
@@ -2214,21 +2232,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Post",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Post",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Post",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -2238,13 +2244,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Post",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Post",
     "action": "create:any",
     "attributes": "*"
@@ -2262,21 +2280,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Post",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Post",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Post",
-    "action": "create:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -2286,13 +2292,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Post",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Post",
     "action": "update:any",
     "attributes": "*"
@@ -2310,21 +2328,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Post",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Post",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Post",
-    "action": "update:any",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -2334,13 +2340,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Post",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Post",
     "action": "delete:any",
     "attributes": "*"
@@ -2358,31 +2376,13 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Post",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Post",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Post",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
     "resource": "Post",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "condoOwner",
     "resource": "Post",
     "action": "read:any",
     "attributes": "*"
@@ -2394,6 +2394,24 @@
     "attributes": "*"
   },
   {
+    "role": "manager",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Post",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "rental",
     "resource": "Post",
     "action": "read:any",
@@ -2406,21 +2424,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Post",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Post",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Post",
-    "action": "read:any",
+    "resource": "CommonFacility",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -2430,13 +2436,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CommonFacility",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CommonFacility",
     "action": "read:own",
     "attributes": "*"
@@ -2454,21 +2472,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CommonFacility",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "CommonFacility",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CommonFacility",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -2478,13 +2484,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CommonFacility",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CommonFacility",
     "action": "create:any",
     "attributes": "*"
@@ -2502,21 +2520,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CommonFacility",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "CommonFacility",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CommonFacility",
-    "action": "create:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -2526,13 +2532,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CommonFacility",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CommonFacility",
     "action": "update:any",
     "attributes": "*"
@@ -2550,21 +2568,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CommonFacility",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "CommonFacility",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CommonFacility",
-    "action": "update:any",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -2574,13 +2580,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CommonFacility",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CommonFacility",
     "action": "delete:any",
     "attributes": "*"
@@ -2598,21 +2616,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CommonFacility",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "CommonFacility",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CommonFacility",
-    "action": "delete:any",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -2622,13 +2628,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "CommonFacility",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "CommonFacility",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "CommonFacility",
     "action": "read:any",
     "attributes": "*"
@@ -2646,21 +2664,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "CommonFacility",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "CommonFacility",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "CommonFacility",
-    "action": "read:any",
+    "resource": "Reservation",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -2670,13 +2676,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Reservation",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Reservation",
     "action": "read:own",
     "attributes": "*"
@@ -2694,21 +2712,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Reservation",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Reservation",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Reservation",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -2718,13 +2724,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Reservation",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Reservation",
     "action": "create:any",
     "attributes": "*"
@@ -2742,21 +2760,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Reservation",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Reservation",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Reservation",
-    "action": "create:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -2766,13 +2772,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Reservation",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Reservation",
     "action": "update:any",
     "attributes": "*"
@@ -2790,21 +2808,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Reservation",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Reservation",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Reservation",
-    "action": "update:any",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -2814,13 +2820,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Reservation",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Reservation",
     "action": "delete:any",
     "attributes": "*"
@@ -2838,21 +2856,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Reservation",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Reservation",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Reservation",
-    "action": "delete:any",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -2862,13 +2868,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Reservation",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Reservation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Reservation",
     "action": "read:any",
     "attributes": "*"
@@ -2886,21 +2904,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Reservation",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
-    "resource": "Reservation",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Reservation",
-    "action": "read:any",
+    "resource": "Request",
+    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -2910,13 +2916,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Request",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Request",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Request",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Request",
     "action": "read:own",
     "attributes": "*"
@@ -2934,213 +2952,201 @@
     "attributes": "*"
   },
   {
+    "role": "Admin",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "operator",
     "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Request",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Request",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Request",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Request",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Notification",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Request",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Request",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Request",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Request",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Request",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "condoOwner",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "PublicUser",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "financialManager",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Request",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Request",
-    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -3150,37 +3156,7 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
-    "resource": "Notification",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "financialManager",
-    "resource": "Notification",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "rental",
-    "resource": "Notification",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "test",
-    "resource": "Notification",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Notification",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
     "resource": "Notification",
     "action": "read:own",
     "attributes": "*"
@@ -3192,19 +3168,61 @@
     "attributes": "*"
   },
   {
+    "role": "operator",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Notification",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "condoOwner",
     "resource": "Notification",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Notification",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Notification",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Notification",
     "action": "create:any",
     "attributes": "*"
@@ -3222,21 +3240,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Notification",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Notification",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Notification",
-    "action": "create:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -3246,13 +3252,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Notification",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Notification",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Notification",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Notification",
     "action": "update:any",
     "attributes": "*"
@@ -3270,21 +3288,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Notification",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Notification",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Notification",
-    "action": "update:any",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -3294,13 +3300,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Notification",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Notification",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Notification",
     "action": "delete:any",
     "attributes": "*"
@@ -3318,21 +3336,9 @@
     "attributes": "*"
   },
   {
-    "role": "operator",
-    "resource": "Notification",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "Admin",
     "resource": "Notification",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Notification",
-    "action": "delete:any",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -3342,13 +3348,25 @@
     "attributes": "*"
   },
   {
-    "role": "PublicUser",
+    "role": "financialManager",
     "resource": "Notification",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "financialManager",
+    "role": "manager",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Notification",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
     "resource": "Notification",
     "action": "read:any",
     "attributes": "*"
@@ -3361,24 +3379,6 @@
   },
   {
     "role": "test",
-    "resource": "Notification",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "operator",
-    "resource": "Notification",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "Admin",
-    "resource": "Notification",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
     "resource": "Notification",
     "action": "read:any",
     "attributes": "*"

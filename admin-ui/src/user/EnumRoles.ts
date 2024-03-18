@@ -1,10 +1,10 @@
 export enum EnumRoles {
+  Admin = "Admin",
   CondoOwner = "condoOwner",
-  PublicUser = "PublicUser",
   FinancialManager = "financialManager",
+  Manager = "manager",
+  Operator = "operator",
+  PublicUser = "PublicUser",
   Rental = "rental",
   Test = "test",
-  Operator = "operator",
-  Admin = "Admin",
-  Manager = "manager",
 }
