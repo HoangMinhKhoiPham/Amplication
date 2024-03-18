@@ -26,6 +26,8 @@ import { CompanyEmployeeFindUniqueArgs } from "./CompanyEmployeeFindUniqueArgs";
 import { CreateCompanyEmployeeArgs } from "./CreateCompanyEmployeeArgs";
 import { UpdateCompanyEmployeeArgs } from "./UpdateCompanyEmployeeArgs";
 import { DeleteCompanyEmployeeArgs } from "./DeleteCompanyEmployeeArgs";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { Request } from "../../request/base/Request";
 import { Company } from "../../company/base/Company";
 import { User } from "../../user/base/User";
 import { CompanyEmployeeService } from "../companyEmployee.service";
@@ -170,6 +172,26 @@ export class CompanyEmployeeResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Request], { name: "requests" })
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async findRequests(
+    @graphql.Parent() parent: CompanyEmployee,
+    @graphql.Args() args: RequestFindManyArgs
+  ): Promise<Request[]> {
+    const results = await this.service.findRequests(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

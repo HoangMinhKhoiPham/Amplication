@@ -38,6 +38,8 @@ import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput
 import { ParkingSpotFindManyArgs } from "../../parkingSpot/base/ParkingSpotFindManyArgs";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { RequestWhereUniqueInput } from "../../request/base/RequestWhereUniqueInput";
 
 export class PropertyGrpcControllerBase {
   constructor(protected readonly service: PropertyService) {}
@@ -605,6 +607,124 @@ export class PropertyGrpcControllerBase {
   ): Promise<void> {
     const data = {
       ParkingSpots: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/requests")
+  @ApiNestedQuery(RequestFindManyArgs)
+  @GrpcMethod("PropertyService", "findManyRequests")
+  async findManyRequests(
+    @common.Req() request: Request,
+    @common.Param() params: PropertyWhereUniqueInput
+  ): Promise<Request[]> {
+    const query = plainToClass(RequestFindManyArgs, request.query);
+    const results = await this.service.findRequests(params.id, {
+      ...query,
+      select: {
+        comment: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        requestType: true,
+        response: true,
+        status: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/requests")
+  @GrpcMethod("PropertyService", "connectRequests")
+  async connectRequests(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        connect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/requests")
+  @GrpcMethod("PropertyService", "updateRequests")
+  async updateRequests(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        set: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/requests")
+  @GrpcMethod("PropertyService", "disconnectRequests")
+  async disconnectRequests(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
         disconnect: body,
       },
     };

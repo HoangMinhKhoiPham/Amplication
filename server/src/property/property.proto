@@ -22,7 +22,11 @@ rpc disconnectProperty (LockerParams) returns (Locker) {}
 rpc findManyProperty (PropertyWhereUniqueInput) returns (stream ParkingSpot) {}
 rpc updateProperty (ParkingSpotParams) returns (stream ParkingSpot) {}
 rpc connectProperty (ParkingSpotParams) returns (ParkingSpot) {}
-rpc disconnectProperty (ParkingSpotParams) returns (ParkingSpot) {} 
+rpc disconnectProperty (ParkingSpotParams) returns (ParkingSpot) {}
+rpc findManyProperty (PropertyWhereUniqueInput) returns (stream Request) {}
+rpc updateProperty (RequestParams) returns (stream Request) {}
+rpc connectProperty (RequestParams) returns (Request) {}
+rpc disconnectProperty (RequestParams) returns (Request) {} 
  }
 message PropertyCreateInput {
 string address = 1;
@@ -35,8 +39,9 @@ repeated Locker Lockers = 7;
 string name = 8;
 int32 parkingCount = 9;
 repeated ParkingSpot ParkingSpots = 10;
-int32 unitCount = 11;
-string updatedAt = 12;
+repeated Request requests = 11;
+int32 unitCount = 12;
+string updatedAt = 13;
 };
 message Property {
 string address = 1;
@@ -49,8 +54,9 @@ repeated Locker Lockers = 7;
 string name = 8;
 int32 parkingCount = 9;
 repeated ParkingSpot ParkingSpots = 10;
-int32 unitCount = 11;
-string updatedAt = 12;
+repeated Request requests = 11;
+int32 unitCount = 12;
+string updatedAt = 13;
 };
 message PropertyWhereUniqueInput {
 string address = 1;
@@ -63,8 +69,9 @@ repeated Locker Lockers = 7;
 string name = 8;
 int32 parkingCount = 9;
 repeated ParkingSpot ParkingSpots = 10;
-int32 unitCount = 11;
-string updatedAt = 12;
+repeated Request requests = 11;
+int32 unitCount = 12;
+string updatedAt = 13;
 };
 message PropertyUpdateInput {
 string address = 1;
@@ -77,8 +84,9 @@ repeated Locker Lockers = 7;
 string name = 8;
 int32 parkingCount = 9;
 repeated ParkingSpot ParkingSpots = 10;
-int32 unitCount = 11;
-string updatedAt = 12;
+repeated Request requests = 11;
+int32 unitCount = 12;
+string updatedAt = 13;
 };
 message findManyParams {
 
@@ -150,4 +158,32 @@ string updatedAt = 3;
 message ParkingSpotParams {
 PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
 ParkingSpotWhereUniqueInput parkingspotWhereUniqueInput = 2;
+};
+message Request {
+string comment = 1;
+string createdAt = 2;
+string elevator = 3;
+string id = 4;
+string key = 5;
+string question = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
+};
+message RequestWhereUniqueInput {
+string comment = 1;
+string createdAt = 2;
+string elevator = 3;
+string id = 4;
+string key = 5;
+string question = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
+};
+message RequestParams {
+PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
+RequestWhereUniqueInput requestWhereUniqueInput = 2;
 };

@@ -59,6 +59,24 @@ export class RequestControllerBase {
             }
           : undefined,
 
+        condoUnit: data.condoUnit
+          ? {
+              connect: data.condoUnit,
+            }
+          : undefined,
+
+        employee: data.employee
+          ? {
+              connect: data.employee,
+            }
+          : undefined,
+
+        property: data.property
+          ? {
+              connect: data.property,
+            }
+          : undefined,
+
         user: data.user
           ? {
               connect: data.user,
@@ -66,15 +84,41 @@ export class RequestControllerBase {
           : undefined,
       },
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -104,15 +148,41 @@ export class RequestControllerBase {
     return this.service.requests({
       ...args,
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -143,15 +213,41 @@ export class RequestControllerBase {
     const result = await this.service.request({
       where: params,
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -198,6 +294,24 @@ export class RequestControllerBase {
               }
             : undefined,
 
+          condoUnit: data.condoUnit
+            ? {
+                connect: data.condoUnit,
+              }
+            : undefined,
+
+          employee: data.employee
+            ? {
+                connect: data.employee,
+              }
+            : undefined,
+
+          property: data.property
+            ? {
+                connect: data.property,
+              }
+            : undefined,
+
           user: data.user
             ? {
                 connect: data.user,
@@ -205,15 +319,41 @@ export class RequestControllerBase {
             : undefined,
         },
         select: {
+          comment: true,
+
           company: {
             select: {
               id: true,
             },
           },
 
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          elevator: true,
+
+          employee: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+          key: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          question: true,
           requestType: true,
+          response: true,
           status: true,
           updatedAt: true,
 
@@ -252,15 +392,41 @@ export class RequestControllerBase {
       return await this.service.deleteRequest({
         where: params,
         select: {
+          comment: true,
+
           company: {
             select: {
               id: true,
             },
           },
 
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          elevator: true,
+
+          employee: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+          key: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          question: true,
           requestType: true,
+          response: true,
           status: true,
           updatedAt: true,
 

@@ -9,32 +9,52 @@ rpc updateRequest (RequestUpdateInput) returns (Request) {}
 rpc deleteRequest (RequestWhereUniqueInput) returns (Request) {} 
  }
 message RequestCreateInput {
-string createdAt = 1;
-string id = 2;
-repeated string requestType = 3;
-repeated string status = 4;
-string updatedAt = 5;
+string comment = 1;
+string createdAt = 2;
+string elevator = 3;
+string id = 4;
+string key = 5;
+string question = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
 };
 message Request {
-string createdAt = 1;
-string id = 2;
-repeated string requestType = 3;
-repeated string status = 4;
-string updatedAt = 5;
+string comment = 1;
+string createdAt = 2;
+string elevator = 3;
+string id = 4;
+string key = 5;
+string question = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
 };
 message RequestWhereUniqueInput {
-string createdAt = 1;
-string id = 2;
-repeated string requestType = 3;
-repeated string status = 4;
-string updatedAt = 5;
+string comment = 1;
+string createdAt = 2;
+string elevator = 3;
+string id = 4;
+string key = 5;
+string question = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
 };
 message RequestUpdateInput {
-string createdAt = 1;
-string id = 2;
-repeated string requestType = 3;
-repeated string status = 4;
-string updatedAt = 5;
+string comment = 1;
+string createdAt = 2;
+string elevator = 3;
+string id = 4;
+string key = 5;
+string question = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
 };
 message findManyParams {
 

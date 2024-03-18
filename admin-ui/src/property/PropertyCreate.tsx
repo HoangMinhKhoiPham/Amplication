@@ -17,6 +17,7 @@ import { CondoUnitTitle } from "../condoUnit/CondoUnitTitle";
 import { FileTitle } from "../file/FileTitle";
 import { LockerTitle } from "../locker/LockerTitle";
 import { ParkingSpotTitle } from "../parkingSpot/ParkingSpotTitle";
+import { RequestTitle } from "../request/RequestTitle";
 
 export const PropertyCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -60,6 +61,14 @@ export const PropertyCreate = (props: CreateProps): React.ReactElement => {
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
           <SelectArrayInput optionText={ParkingSpotTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="requests"
+          reference="Request"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={RequestTitle} />
         </ReferenceArrayInput>
         <NumberInput step={1} label="unitCount" source="unitCount" />
       </SimpleForm>

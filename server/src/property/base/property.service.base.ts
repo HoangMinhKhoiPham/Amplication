@@ -18,6 +18,7 @@ import {
   File, // @ts-ignore
   Locker, // @ts-ignore
   ParkingSpot, // @ts-ignore
+  Request, // @ts-ignore
   Company,
 } from "@prisma/client";
 
@@ -98,6 +99,17 @@ export class PropertyServiceBase {
         where: { id: parentId },
       })
       .ParkingSpots(args);
+  }
+
+  async findRequests(
+    parentId: number,
+    args: Prisma.RequestFindManyArgs
+  ): Promise<Request[]> {
+    return this.prisma.property
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .requests(args);
   }
 
   async getCompany(parentId: number): Promise<Company | null> {

@@ -24,6 +24,7 @@ import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { File } from "../../file/base/File";
 import { Locker } from "../../locker/base/Locker";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
+import { Request } from "../../request/base/Request";
 
 @ObjectType()
 class Property {
@@ -122,6 +123,15 @@ class Property {
   @Type(() => ParkingSpot)
   @IsOptional()
   ParkingSpots?: Array<ParkingSpot>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Request],
+  })
+  @ValidateNested()
+  @Type(() => Request)
+  @IsOptional()
+  requests?: Array<Request>;
 
   @ApiProperty({
     required: true,

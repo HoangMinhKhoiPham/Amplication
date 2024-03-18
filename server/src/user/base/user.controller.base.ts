@@ -576,15 +576,41 @@ export class UserControllerBase {
     const results = await this.service.findRequests(params.id, {
       ...query,
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 

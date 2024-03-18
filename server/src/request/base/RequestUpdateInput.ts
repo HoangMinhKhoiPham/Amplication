@@ -11,15 +11,29 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsString, IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
-import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
+import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
+import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
 import { EnumRequestStatus } from "./EnumRequestStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class RequestUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  comment?: string | null;
+
   @ApiProperty({
     required: false,
     type: () => CompanyWhereUniqueInput,
@@ -31,6 +45,75 @@ class RequestUpdateInput {
     nullable: true,
   })
   company?: CompanyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CondoUnitWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CondoUnitWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CondoUnitWhereUniqueInput, {
+    nullable: true,
+  })
+  condoUnit?: CondoUnitWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  elevator?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CompanyEmployeeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployeeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CompanyEmployeeWhereUniqueInput, {
+    nullable: true,
+  })
+  employee?: CompanyEmployeeWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  key?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => PropertyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => PropertyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => PropertyWhereUniqueInput, {
+    nullable: true,
+  })
+  property?: PropertyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  question?: string | null;
 
   @ApiProperty({
     required: false,
@@ -50,6 +133,17 @@ class RequestUpdateInput {
     | "deficiency_report"
     | "question"
     | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  response?: string | null;
 
   @ApiProperty({
     required: false,

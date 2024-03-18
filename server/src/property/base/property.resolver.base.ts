@@ -34,6 +34,8 @@ import { LockerFindManyArgs } from "../../locker/base/LockerFindManyArgs";
 import { Locker } from "../../locker/base/Locker";
 import { ParkingSpotFindManyArgs } from "../../parkingSpot/base/ParkingSpotFindManyArgs";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { Request } from "../../request/base/Request";
 import { Company } from "../../company/base/Company";
 import { PropertyService } from "../property.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -239,6 +241,26 @@ export class PropertyResolverBase {
     @graphql.Args() args: ParkingSpotFindManyArgs
   ): Promise<ParkingSpot[]> {
     const results = await this.service.findParkingSpots(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Request], { name: "requests" })
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async findRequests(
+    @graphql.Parent() parent: Property,
+    @graphql.Args() args: RequestFindManyArgs
+  ): Promise<Request[]> {
+    const results = await this.service.findRequests(parent.id, args);
 
     if (!results) {
       return [];

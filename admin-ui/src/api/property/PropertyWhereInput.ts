@@ -6,6 +6,7 @@ import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { LockerListRelationFilter } from "../locker/LockerListRelationFilter";
 import { ParkingSpotListRelationFilter } from "../parkingSpot/ParkingSpotListRelationFilter";
+import { RequestListRelationFilter } from "../request/RequestListRelationFilter";
 
 export type PropertyWhereInput = {
   address?: StringFilter;
@@ -18,5 +19,6 @@ export type PropertyWhereInput = {
   name?: StringFilter;
   parkingCount?: IntFilter;
   ParkingSpots?: ParkingSpotListRelationFilter;
+  requests?: RequestListRelationFilter;
   unitCount?: IntFilter;
 };

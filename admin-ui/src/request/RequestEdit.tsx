@@ -3,19 +3,48 @@ import {
   Edit,
   SimpleForm,
   EditProps,
+  TextInput,
   ReferenceInput,
   SelectInput,
 } from "react-admin";
 import { CompanyTitle } from "../company/CompanyTitle";
+import { CondoUnitTitle } from "../condoUnit/CondoUnitTitle";
+import { CompanyEmployeeTitle } from "../companyEmployee/CompanyEmployeeTitle";
+import { PropertyTitle } from "../property/PropertyTitle";
 import { UserTitle } from "../user/UserTitle";
 
 export const RequestEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <TextInput label="comment" source="comment" />
         <ReferenceInput source="company.id" reference="Company" label="company">
           <SelectInput optionText={CompanyTitle} />
         </ReferenceInput>
+        <ReferenceInput
+          source="condoUnit.id"
+          reference="CondoUnit"
+          label="condoUnit"
+        >
+          <SelectInput optionText={CondoUnitTitle} />
+        </ReferenceInput>
+        <TextInput label="elevator" source="elevator" />
+        <ReferenceInput
+          source="employee.id"
+          reference="CompanyEmployee"
+          label="employee"
+        >
+          <SelectInput optionText={CompanyEmployeeTitle} />
+        </ReferenceInput>
+        <TextInput label="key" source="key" />
+        <ReferenceInput
+          source="property.id"
+          reference="Property"
+          label="property"
+        >
+          <SelectInput optionText={PropertyTitle} />
+        </ReferenceInput>
+        <TextInput label="question" source="question" />
         <SelectInput
           source="requestType"
           label="requestType"
@@ -32,6 +61,7 @@ export const RequestEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
+        <TextInput label="response" source="response" />
         <SelectInput
           source="status"
           label="status"

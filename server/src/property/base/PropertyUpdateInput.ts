@@ -18,6 +18,7 @@ import { CondoUnitUpdateManyWithoutPropertiesInput } from "./CondoUnitUpdateMany
 import { FileUpdateManyWithoutPropertiesInput } from "./FileUpdateManyWithoutPropertiesInput";
 import { LockerUpdateManyWithoutPropertiesInput } from "./LockerUpdateManyWithoutPropertiesInput";
 import { ParkingSpotUpdateManyWithoutPropertiesInput } from "./ParkingSpotUpdateManyWithoutPropertiesInput";
+import { RequestUpdateManyWithoutPropertiesInput } from "./RequestUpdateManyWithoutPropertiesInput";
 
 @InputType()
 class PropertyUpdateInput {
@@ -124,6 +125,18 @@ class PropertyUpdateInput {
     nullable: true,
   })
   ParkingSpots?: ParkingSpotUpdateManyWithoutPropertiesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestUpdateManyWithoutPropertiesInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestUpdateManyWithoutPropertiesInput)
+  @IsOptional()
+  @Field(() => RequestUpdateManyWithoutPropertiesInput, {
+    nullable: true,
+  })
+  requests?: RequestUpdateManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: false,

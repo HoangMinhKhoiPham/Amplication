@@ -44,6 +44,24 @@ export class RequestGrpcControllerBase {
             }
           : undefined,
 
+        condoUnit: data.condoUnit
+          ? {
+              connect: data.condoUnit,
+            }
+          : undefined,
+
+        employee: data.employee
+          ? {
+              connect: data.employee,
+            }
+          : undefined,
+
+        property: data.property
+          ? {
+              connect: data.property,
+            }
+          : undefined,
+
         user: data.user
           ? {
               connect: data.user,
@@ -51,15 +69,41 @@ export class RequestGrpcControllerBase {
           : undefined,
       },
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -81,15 +125,41 @@ export class RequestGrpcControllerBase {
     return this.service.requests({
       ...args,
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -112,15 +182,41 @@ export class RequestGrpcControllerBase {
     const result = await this.service.request({
       where: params,
       select: {
+        comment: true,
+
         company: {
           select: {
             id: true,
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -159,6 +255,24 @@ export class RequestGrpcControllerBase {
               }
             : undefined,
 
+          condoUnit: data.condoUnit
+            ? {
+                connect: data.condoUnit,
+              }
+            : undefined,
+
+          employee: data.employee
+            ? {
+                connect: data.employee,
+              }
+            : undefined,
+
+          property: data.property
+            ? {
+                connect: data.property,
+              }
+            : undefined,
+
           user: data.user
             ? {
                 connect: data.user,
@@ -166,15 +280,41 @@ export class RequestGrpcControllerBase {
             : undefined,
         },
         select: {
+          comment: true,
+
           company: {
             select: {
               id: true,
             },
           },
 
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          elevator: true,
+
+          employee: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+          key: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          question: true,
           requestType: true,
+          response: true,
           status: true,
           updatedAt: true,
 
@@ -206,15 +346,41 @@ export class RequestGrpcControllerBase {
       return await this.service.deleteRequest({
         where: params,
         select: {
+          comment: true,
+
           company: {
             select: {
               id: true,
             },
           },
 
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          elevator: true,
+
+          employee: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+          key: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          question: true,
           requestType: true,
+          response: true,
           status: true,
           updatedAt: true,
 

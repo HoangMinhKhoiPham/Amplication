@@ -21,6 +21,7 @@ import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { LockerListRelationFilter } from "../../locker/base/LockerListRelationFilter";
 import { ParkingSpotListRelationFilter } from "../../parkingSpot/base/ParkingSpotListRelationFilter";
+import { RequestListRelationFilter } from "../../request/base/RequestListRelationFilter";
 
 @InputType()
 class PropertyWhereInput {
@@ -138,6 +139,18 @@ class PropertyWhereInput {
     nullable: true,
   })
   ParkingSpots?: ParkingSpotListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RequestListRelationFilter)
+  @IsOptional()
+  @Field(() => RequestListRelationFilter, {
+    nullable: true,
+  })
+  requests?: RequestListRelationFilter;
 
   @ApiProperty({
     required: false,

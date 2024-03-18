@@ -5,6 +5,7 @@ import { LockerWhereUniqueInput } from "../locker/LockerWhereUniqueInput";
 import { ParkingSpotListRelationFilter } from "../parkingSpot/ParkingSpotListRelationFilter";
 import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../registrationKey/RegistrationKeyWhereUniqueInput";
+import { RequestListRelationFilter } from "../request/RequestListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { UserCondoListRelationFilter } from "../userCondo/UserCondoListRelationFilter";
@@ -17,6 +18,7 @@ export type CondoUnitWhereInput = {
   parkingSpot?: ParkingSpotListRelationFilter;
   propertyID?: PropertyWhereUniqueInput;
   registrationKeys?: RegistrationKeyWhereUniqueInput;
+  requests?: RequestListRelationFilter;
   size?: StringFilter;
   test?: StringNullableFilter;
   unitNumber?: StringNullableFilter;
