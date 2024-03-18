@@ -1,15 +1,27 @@
 export const ROLES = [
   {
+    name: "Admin",
+    displayName: "Admin",
+  },
+  {
     name: "condoOwner",
     displayName: "CondoOwner",
   },
   {
-    name: "PublicUser",
-    displayName: "PublicUser",
-  },
-  {
     name: "financialManager",
     displayName: "FinancialManager",
+  },
+  {
+    name: "manager",
+    displayName: "Manager",
+  },
+  {
+    name: "operator",
+    displayName: "Operator",
+  },
+  {
+    name: "PublicUser",
+    displayName: "PublicUser",
   },
   {
     name: "rental",
@@ -18,17 +30,5 @@ export const ROLES = [
   {
     name: "test",
     displayName: "Test",
-  },
-  {
-    name: "operator",
-    displayName: "Operator",
-  },
-  {
-    name: "Admin",
-    displayName: "Admin",
-  },
-  {
-    name: "manager",
-    displayName: "Manager",
   },
 ];

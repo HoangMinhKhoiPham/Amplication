@@ -123,13 +123,15 @@ message Request {
 string createdAt = 1;
 string id = 2;
 repeated string requestType = 3;
-string updatedAt = 4;
+repeated string status = 4;
+string updatedAt = 5;
 };
 message RequestWhereUniqueInput {
 string createdAt = 1;
 string id = 2;
 repeated string requestType = 3;
-string updatedAt = 4;
+repeated string status = 4;
+string updatedAt = 5;
 };
 message RequestParams {
 CompanyWhereUniqueInput companyWhereUniqueInput = 1;

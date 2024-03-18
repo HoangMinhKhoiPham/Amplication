@@ -467,6 +467,7 @@ export class CompanyGrpcControllerBase {
         createdAt: true,
         id: true,
         requestType: true,
+        status: true,
         updatedAt: true,
 
         user: {

@@ -32,6 +32,21 @@ export const RequestEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
+        <SelectInput
+          source="status"
+          label="status"
+          choices={[
+            { label: "Option 1", value: "New" },
+            { label: "Option 2", value: "In_Progress" },
+            { label: "Option 3", value: "Pending_Approval" },
+            { label: "Option 4", value: "Approved" },
+            { label: "Option 5", value: "Disapproved" },
+            { label: "Option 6 ", value: "Complete" },
+          ]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <ReferenceInput source="user.id" reference="User" label="user">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>

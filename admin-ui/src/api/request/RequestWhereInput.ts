@@ -13,5 +13,12 @@ export type RequestWhereInput = {
     | "violation_report"
     | "deficiency_report"
     | "question";
+  status?:
+    | "New"
+    | "In_Progress"
+    | "Pending_Approval"
+    | "Approved"
+    | "Disapproved"
+    | "Complete";
   user?: UserWhereUniqueInput;
 };

@@ -14,6 +14,14 @@ export type Request = {
     | "deficiency_report"
     | "question"
     | null;
+  status?:
+    | "New"
+    | "In_Progress"
+    | "Pending_Approval"
+    | "Approved"
+    | "Disapproved"
+    | "Complete"
+    | null;
   updatedAt: Date;
   user?: User | null;
 };

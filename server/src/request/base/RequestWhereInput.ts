@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
+import { EnumRequestStatus } from "./EnumRequestStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -60,6 +61,23 @@ class RequestWhereInput {
     | "violation_report"
     | "deficiency_report"
     | "question";
+
+  @ApiProperty({
+    required: false,
+    enum: EnumRequestStatus,
+  })
+  @IsEnum(EnumRequestStatus)
+  @IsOptional()
+  @Field(() => EnumRequestStatus, {
+    nullable: true,
+  })
+  status?:
+    | "New"
+    | "In_Progress"
+    | "Pending_Approval"
+    | "Approved"
+    | "Disapproved"
+    | "Complete";
 
   @ApiProperty({
     required: false,

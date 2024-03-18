@@ -60,6 +60,7 @@ export class RequestGrpcControllerBase {
         createdAt: true,
         id: true,
         requestType: true,
+        status: true,
         updatedAt: true,
 
         user: {
@@ -89,6 +90,7 @@ export class RequestGrpcControllerBase {
         createdAt: true,
         id: true,
         requestType: true,
+        status: true,
         updatedAt: true,
 
         user: {
@@ -119,6 +121,7 @@ export class RequestGrpcControllerBase {
         createdAt: true,
         id: true,
         requestType: true,
+        status: true,
         updatedAt: true,
 
         user: {
@@ -172,6 +175,7 @@ export class RequestGrpcControllerBase {
           createdAt: true,
           id: true,
           requestType: true,
+          status: true,
           updatedAt: true,
 
           user: {
@@ -211,6 +215,7 @@ export class RequestGrpcControllerBase {
           createdAt: true,
           id: true,
           requestType: true,
+          status: true,
           updatedAt: true,
 
           user: {

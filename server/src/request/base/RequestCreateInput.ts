@@ -15,6 +15,7 @@ import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueIn
 import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
+import { EnumRequestStatus } from "./EnumRequestStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -48,6 +49,24 @@ class RequestCreateInput {
     | "violation_report"
     | "deficiency_report"
     | "question"
+    | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumRequestStatus,
+  })
+  @IsEnum(EnumRequestStatus)
+  @IsOptional()
+  @Field(() => EnumRequestStatus, {
+    nullable: true,
+  })
+  status?:
+    | "New"
+    | "In_Progress"
+    | "Pending_Approval"
+    | "Approved"
+    | "Disapproved"
+    | "Complete"
     | null;
 
   @ApiProperty({
