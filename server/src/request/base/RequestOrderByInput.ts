@@ -28,17 +28,6 @@ class RequestOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  comment?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @IsOptional()
-  @IsEnum(SortOrder)
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   companyID?: SortOrder;
 
   @ApiProperty({
@@ -128,6 +117,17 @@ class RequestOrderByInput {
     nullable: true,
   })
   question?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  reportMessage?: SortOrder;
 
   @ApiProperty({
     required: false,

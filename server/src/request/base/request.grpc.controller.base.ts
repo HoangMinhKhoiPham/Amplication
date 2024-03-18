@@ -69,8 +69,6 @@ export class RequestGrpcControllerBase {
           : undefined,
       },
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -102,6 +100,7 @@ export class RequestGrpcControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,
@@ -125,8 +124,6 @@ export class RequestGrpcControllerBase {
     return this.service.requests({
       ...args,
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -158,6 +155,7 @@ export class RequestGrpcControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,
@@ -182,8 +180,6 @@ export class RequestGrpcControllerBase {
     const result = await this.service.request({
       where: params,
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -215,6 +211,7 @@ export class RequestGrpcControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,
@@ -280,8 +277,6 @@ export class RequestGrpcControllerBase {
             : undefined,
         },
         select: {
-          comment: true,
-
           company: {
             select: {
               id: true,
@@ -313,6 +308,7 @@ export class RequestGrpcControllerBase {
           },
 
           question: true,
+          reportMessage: true,
           requestType: true,
           response: true,
           status: true,
@@ -346,8 +342,6 @@ export class RequestGrpcControllerBase {
       return await this.service.deleteRequest({
         where: params,
         select: {
-          comment: true,
-
           company: {
             select: {
               id: true,
@@ -379,6 +373,7 @@ export class RequestGrpcControllerBase {
           },
 
           question: true,
+          reportMessage: true,
           requestType: true,
           response: true,
           status: true,

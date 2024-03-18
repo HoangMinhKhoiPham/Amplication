@@ -576,8 +576,6 @@ export class UserControllerBase {
     const results = await this.service.findRequests(params.id, {
       ...query,
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -609,6 +607,7 @@ export class UserControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,

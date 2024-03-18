@@ -11,14 +11,14 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { Company } from "../../company/base/Company";
 import {
-  IsString,
-  IsOptional,
   ValidateNested,
+  IsOptional,
   IsDate,
+  IsString,
   IsEnum,
 } from "class-validator";
-import { Company } from "../../company/base/Company";
 import { Type } from "class-transformer";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
@@ -29,17 +29,6 @@ import { User } from "../../user/base/User";
 
 @ObjectType()
 class Request {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  comment!: string | null;
-
   @ApiProperty({
     required: false,
     type: () => Company,
@@ -124,6 +113,17 @@ class Request {
     nullable: true,
   })
   question!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  reportMessage!: string | null;
 
   @ApiProperty({
     required: false,

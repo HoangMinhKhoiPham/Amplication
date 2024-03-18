@@ -5,7 +5,6 @@ import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type RequestCreateInput = {
-  comment?: string | null;
   company?: CompanyWhereUniqueInput | null;
   condoUnit?: CondoUnitWhereUniqueInput | null;
   elevator?: string | null;
@@ -13,6 +12,7 @@ export type RequestCreateInput = {
   key?: string | null;
   property?: PropertyWhereUniqueInput | null;
   question?: string | null;
+  reportMessage?: string | null;
   requestType?:
     | "moving_in"
     | "moving_out"

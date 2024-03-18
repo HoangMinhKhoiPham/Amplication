@@ -5,7 +5,6 @@ import { Property } from "../property/Property";
 import { User } from "../user/User";
 
 export type Request = {
-  comment: string | null;
   company?: Company | null;
   condoUnit?: CondoUnit | null;
   createdAt: Date;
@@ -15,6 +14,7 @@ export type Request = {
   key: string | null;
   property?: Property | null;
   question: string | null;
+  reportMessage: string | null;
   requestType?:
     | "moving_in"
     | "moving_out"

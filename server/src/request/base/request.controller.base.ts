@@ -84,8 +84,6 @@ export class RequestControllerBase {
           : undefined,
       },
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -117,6 +115,7 @@ export class RequestControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,
@@ -148,8 +147,6 @@ export class RequestControllerBase {
     return this.service.requests({
       ...args,
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -181,6 +178,7 @@ export class RequestControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,
@@ -213,8 +211,6 @@ export class RequestControllerBase {
     const result = await this.service.request({
       where: params,
       select: {
-        comment: true,
-
         company: {
           select: {
             id: true,
@@ -246,6 +242,7 @@ export class RequestControllerBase {
         },
 
         question: true,
+        reportMessage: true,
         requestType: true,
         response: true,
         status: true,
@@ -319,8 +316,6 @@ export class RequestControllerBase {
             : undefined,
         },
         select: {
-          comment: true,
-
           company: {
             select: {
               id: true,
@@ -352,6 +347,7 @@ export class RequestControllerBase {
           },
 
           question: true,
+          reportMessage: true,
           requestType: true,
           response: true,
           status: true,
@@ -392,8 +388,6 @@ export class RequestControllerBase {
       return await this.service.deleteRequest({
         where: params,
         select: {
-          comment: true,
-
           company: {
             select: {
               id: true,
@@ -425,6 +419,7 @@ export class RequestControllerBase {
           },
 
           question: true,
+          reportMessage: true,
           requestType: true,
           response: true,
           status: true,

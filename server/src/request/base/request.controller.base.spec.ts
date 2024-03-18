@@ -18,44 +18,44 @@ import { RequestService } from "../request.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  comment: "exampleComment",
   createdAt: new Date(),
   elevator: "exampleElevator",
   id: "exampleId",
   key: "exampleKey",
   question: "exampleQuestion",
+  reportMessage: "exampleReportMessage",
   response: "exampleResponse",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
-  comment: "exampleComment",
   createdAt: new Date(),
   elevator: "exampleElevator",
   id: "exampleId",
   key: "exampleKey",
   question: "exampleQuestion",
+  reportMessage: "exampleReportMessage",
   response: "exampleResponse",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
-    comment: "exampleComment",
     createdAt: new Date(),
     elevator: "exampleElevator",
     id: "exampleId",
     key: "exampleKey",
     question: "exampleQuestion",
+    reportMessage: "exampleReportMessage",
     response: "exampleResponse",
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
-  comment: "exampleComment",
   createdAt: new Date(),
   elevator: "exampleElevator",
   id: "exampleId",
   key: "exampleKey",
   question: "exampleQuestion",
+  reportMessage: "exampleReportMessage",
   response: "exampleResponse",
   updatedAt: new Date(),
 };

@@ -111,7 +111,6 @@ export const CondoUnitShow = (props: ShowProps): React.ReactElement => {
           label="Requests"
         >
           <Datagrid rowClick="show">
-            <TextField label="comment" source="comment" />
             <ReferenceField
               label="company"
               source="company.id"
@@ -145,6 +144,7 @@ export const CondoUnitShow = (props: ShowProps): React.ReactElement => {
               <TextField source={PROPERTY_TITLE_FIELD} />
             </ReferenceField>
             <TextField label="question" source="question" />
+            <TextField label="reportMessage" source="reportMessage" />
             <TextField label="requestType" source="requestType" />
             <TextField label="response" source="response" />
             <TextField label="status" source="status" />

@@ -3,8 +3,8 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  TextField,
   ReferenceField,
+  TextField,
   DateField,
 } from "react-admin";
 import { COMPANY_TITLE_FIELD } from "../company/CompanyTitle";
@@ -17,7 +17,6 @@ export const RequestShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField label="comment" source="comment" />
         <ReferenceField label="company" source="company.id" reference="Company">
           <TextField source={COMPANY_TITLE_FIELD} />
         </ReferenceField>
@@ -47,6 +46,7 @@ export const RequestShow = (props: ShowProps): React.ReactElement => {
           <TextField source={PROPERTY_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="question" source="question" />
+        <TextField label="reportMessage" source="reportMessage" />
         <TextField label="requestType" source="requestType" />
         <TextField label="response" source="response" />
         <TextField label="status" source="status" />
