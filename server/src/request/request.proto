@@ -6,56 +6,82 @@ service RequestService {
 rpc requests (findManyParams) returns (stream Request) {}
 rpc request (RequestWhereUniqueInput) returns (Request) {}
 rpc updateRequest (RequestUpdateInput) returns (Request) {}
-rpc deleteRequest (RequestWhereUniqueInput) returns (Request) {} 
+rpc deleteRequest (RequestWhereUniqueInput) returns (Request) {}
+rpc findManyRequest (RequestWhereUniqueInput) returns (stream Notification) {}
+rpc updateRequest (NotificationParams) returns (stream Notification) {}
+rpc connectRequest (NotificationParams) returns (Notification) {}
+rpc disconnectRequest (NotificationParams) returns (Notification) {} 
  }
 message RequestCreateInput {
 string createdAt = 1;
 string elevator = 2;
 string id = 3;
 string key = 4;
-string question = 5;
-string reportMessage = 6;
-repeated string requestType = 7;
-string response = 8;
-repeated string status = 9;
-string updatedAt = 10;
+repeated Notification notifications = 5;
+string question = 6;
+string reportMessage = 7;
+repeated string requestType = 8;
+string response = 9;
+repeated string status = 10;
+string updatedAt = 11;
 };
 message Request {
 string createdAt = 1;
 string elevator = 2;
 string id = 3;
 string key = 4;
-string question = 5;
-string reportMessage = 6;
-repeated string requestType = 7;
-string response = 8;
-repeated string status = 9;
-string updatedAt = 10;
+repeated Notification notifications = 5;
+string question = 6;
+string reportMessage = 7;
+repeated string requestType = 8;
+string response = 9;
+repeated string status = 10;
+string updatedAt = 11;
 };
 message RequestWhereUniqueInput {
 string createdAt = 1;
 string elevator = 2;
 string id = 3;
 string key = 4;
-string question = 5;
-string reportMessage = 6;
-repeated string requestType = 7;
-string response = 8;
-repeated string status = 9;
-string updatedAt = 10;
+repeated Notification notifications = 5;
+string question = 6;
+string reportMessage = 7;
+repeated string requestType = 8;
+string response = 9;
+repeated string status = 10;
+string updatedAt = 11;
 };
 message RequestUpdateInput {
 string createdAt = 1;
 string elevator = 2;
 string id = 3;
 string key = 4;
-string question = 5;
-string reportMessage = 6;
-repeated string requestType = 7;
-string response = 8;
-repeated string status = 9;
-string updatedAt = 10;
+repeated Notification notifications = 5;
+string question = 6;
+string reportMessage = 7;
+repeated string requestType = 8;
+string response = 9;
+repeated string status = 10;
+string updatedAt = 11;
 };
 message findManyParams {
 
+};
+message Notification {
+string createdAt = 1;
+string id = 2;
+string message = 3;
+string title = 4;
+string updatedAt = 5;
+};
+message NotificationWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string message = 3;
+string title = 4;
+string updatedAt = 5;
+};
+message NotificationParams {
+RequestWhereUniqueInput requestWhereUniqueInput = 1;
+NotificationWhereUniqueInput notificationWhereUniqueInput = 2;
 };

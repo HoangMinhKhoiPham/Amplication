@@ -16,6 +16,7 @@ import {
   User, // @ts-ignore
   CompanyEmployee, // @ts-ignore
   File, // @ts-ignore
+  Notification, // @ts-ignore
   Post, // @ts-ignore
   Request, // @ts-ignore
   Reservation, // @ts-ignore
@@ -103,6 +104,17 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .files(args);
+  }
+
+  async findNotifications(
+    parentId: number,
+    args: Prisma.NotificationFindManyArgs
+  ): Promise<Notification[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .notifications(args);
   }
 
   async findPosts(

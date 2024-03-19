@@ -25,6 +25,9 @@ import { RequestWhereUniqueInput } from "./RequestWhereUniqueInput";
 import { RequestFindManyArgs } from "./RequestFindManyArgs";
 import { RequestUpdateInput } from "./RequestUpdateInput";
 import { Post } from "../../post/base/Post";
+import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
+import { Notification } from "../../notification/base/Notification";
+import { NotificationWhereUniqueInput } from "../../notification/base/NotificationWhereUniqueInput";
 
 export class RequestGrpcControllerBase {
   constructor(protected readonly service: RequestService) {}
@@ -394,5 +397,98 @@ export class RequestGrpcControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.Get("/:id/notifications")
+  @ApiNestedQuery(NotificationFindManyArgs)
+  @GrpcMethod("RequestService", "findManyNotifications")
+  async findManyNotifications(
+    @common.Req() request: Request,
+    @common.Param() params: RequestWhereUniqueInput
+  ): Promise<Notification[]> {
+    const query = plainToClass(NotificationFindManyArgs, request.query);
+    const results = await this.service.findNotifications(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        id: true,
+        message: true,
+
+        request: {
+          select: {
+            id: true,
+          },
+        },
+
+        title: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/notifications")
+  @GrpcMethod("RequestService", "connectNotifications")
+  async connectNotifications(
+    @common.Param() params: RequestWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        connect: body,
+      },
+    };
+    await this.service.updateRequest({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/notifications")
+  @GrpcMethod("RequestService", "updateNotifications")
+  async updateNotifications(
+    @common.Param() params: RequestWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        set: body,
+      },
+    };
+    await this.service.updateRequest({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/notifications")
+  @GrpcMethod("RequestService", "disconnectNotifications")
+  async disconnectNotifications(
+    @common.Param() params: RequestWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateRequest({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

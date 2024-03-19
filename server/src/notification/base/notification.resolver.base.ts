@@ -26,6 +26,8 @@ import { NotificationFindUniqueArgs } from "./NotificationFindUniqueArgs";
 import { CreateNotificationArgs } from "./CreateNotificationArgs";
 import { UpdateNotificationArgs } from "./UpdateNotificationArgs";
 import { DeleteNotificationArgs } from "./DeleteNotificationArgs";
+import { Request } from "../../request/base/Request";
+import { User } from "../../user/base/User";
 import { NotificationService } from "../notification.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Notification)
@@ -92,7 +94,21 @@ export class NotificationResolverBase {
   ): Promise<Notification> {
     return await this.service.createNotification({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        request: args.data.request
+          ? {
+              connect: args.data.request,
+            }
+          : undefined,
+
+        user: args.data.user
+          ? {
+              connect: args.data.user,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -109,7 +125,21 @@ export class NotificationResolverBase {
     try {
       return await this.service.updateNotification({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          request: args.data.request
+            ? {
+                connect: args.data.request,
+              }
+            : undefined,
+
+          user: args.data.user
+            ? {
+                connect: args.data.user,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -140,5 +170,45 @@ export class NotificationResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Request, {
+    nullable: true,
+    name: "request",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async getRequest(
+    @graphql.Parent() parent: Notification
+  ): Promise<Request | null> {
+    const result = await this.service.getRequest(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "user",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async getUser(@graphql.Parent() parent: Notification): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }

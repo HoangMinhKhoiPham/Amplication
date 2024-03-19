@@ -18,6 +18,7 @@ import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUn
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { NotificationListRelationFilter } from "../../notification/base/NotificationListRelationFilter";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
 import { EnumRequestStatus } from "./EnumRequestStatus";
@@ -93,6 +94,18 @@ class RequestWhereInput {
     nullable: true,
   })
   key?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => NotificationListRelationFilter)
+  @IsOptional()
+  @Field(() => NotificationListRelationFilter, {
+    nullable: true,
+  })
+  notifications?: NotificationListRelationFilter;
 
   @ApiProperty({
     required: false,

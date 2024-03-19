@@ -15,6 +15,7 @@ import { COMPANY_TITLE_FIELD } from "../company/CompanyTitle";
 import { USER_TITLE_FIELD } from "./UserTitle";
 import { CONDOUNIT_TITLE_FIELD } from "../condoUnit/CondoUnitTitle";
 import { PROPERTY_TITLE_FIELD } from "../property/PropertyTitle";
+import { REQUEST_TITLE_FIELD } from "../request/RequestTitle";
 import { FORUM_TITLE_FIELD } from "../forum/ForumTitle";
 import { COMPANYEMPLOYEE_TITLE_FIELD } from "../companyEmployee/CompanyEmployeeTitle";
 import { COMMONFACILITY_TITLE_FIELD } from "../commonFacility/CommonFacilityTitle";
@@ -78,6 +79,29 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={PROPERTY_TITLE_FIELD} />
             </ReferenceField>
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="user" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="Notification"
+          target="userID"
+          label="Notifications"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <TextField label="message" source="message" />
+            <ReferenceField
+              label="request"
+              source="request.id"
+              reference="Request"
+            >
+              <TextField source={REQUEST_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="title" source="title" />
             <DateField source="updatedAt" label="Updated At" />
             <ReferenceField label="user" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />

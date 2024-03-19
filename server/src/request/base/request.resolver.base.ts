@@ -26,6 +26,8 @@ import { RequestFindUniqueArgs } from "./RequestFindUniqueArgs";
 import { CreateRequestArgs } from "./CreateRequestArgs";
 import { UpdateRequestArgs } from "./UpdateRequestArgs";
 import { DeleteRequestArgs } from "./DeleteRequestArgs";
+import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
+import { Notification } from "../../notification/base/Notification";
 import { Company } from "../../company/base/Company";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
@@ -209,6 +211,26 @@ export class RequestResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Notification], { name: "notifications" })
+  @nestAccessControl.UseRoles({
+    resource: "Notification",
+    action: "read",
+    possession: "any",
+  })
+  async findNotifications(
+    @graphql.Parent() parent: Request,
+    @graphql.Args() args: NotificationFindManyArgs
+  ): Promise<Notification[]> {
+    const results = await this.service.findNotifications(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

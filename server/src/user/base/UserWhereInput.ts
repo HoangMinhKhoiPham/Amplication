@@ -18,6 +18,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { FileListRelationFilter } from "../../file/base/FileListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IntFilter } from "../../util/IntFilter";
+import { NotificationListRelationFilter } from "../../notification/base/NotificationListRelationFilter";
 import { PostListRelationFilter } from "../../post/base/PostListRelationFilter";
 import { RequestListRelationFilter } from "../../request/base/RequestListRelationFilter";
 import { ReservationListRelationFilter } from "../../reservation/base/ReservationListRelationFilter";
@@ -92,6 +93,18 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => NotificationListRelationFilter)
+  @IsOptional()
+  @Field(() => NotificationListRelationFilter, {
+    nullable: true,
+  })
+  notifications?: NotificationListRelationFilter;
 
   @ApiProperty({
     required: false,

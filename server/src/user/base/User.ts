@@ -21,6 +21,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { File } from "../../file/base/File";
+import { Notification } from "../../notification/base/Notification";
 import { Post } from "../../post/base/Post";
 import { Request } from "../../request/base/Request";
 import { Reservation } from "../../reservation/base/Reservation";
@@ -94,6 +95,15 @@ class User {
     nullable: true,
   })
   lastName!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Notification],
+  })
+  @ValidateNested()
+  @Type(() => Notification)
+  @IsOptional()
+  notifications?: Array<Notification>;
 
   @ApiProperty({
     required: true,

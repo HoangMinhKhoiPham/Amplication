@@ -15,6 +15,7 @@ import { CompanyEmployeeCreateNestedManyWithoutUsersInput } from "./CompanyEmplo
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileCreateNestedManyWithoutUsersInput } from "./FileCreateNestedManyWithoutUsersInput";
+import { NotificationCreateNestedManyWithoutUsersInput } from "./NotificationCreateNestedManyWithoutUsersInput";
 import { PostCreateNestedManyWithoutUsersInput } from "./PostCreateNestedManyWithoutUsersInput";
 import { RequestCreateNestedManyWithoutUsersInput } from "./RequestCreateNestedManyWithoutUsersInput";
 import { ReservationCreateNestedManyWithoutUsersInput } from "./ReservationCreateNestedManyWithoutUsersInput";
@@ -78,6 +79,18 @@ class UserCreateInput {
     nullable: true,
   })
   lastName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => NotificationCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  notifications?: NotificationCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

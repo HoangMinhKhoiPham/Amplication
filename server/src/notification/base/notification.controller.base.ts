@@ -51,13 +51,40 @@ export class NotificationControllerBase {
     @common.Body() data: NotificationCreateInput
   ): Promise<Notification> {
     return await this.service.createNotification({
-      data: data,
+      data: {
+        ...data,
+
+        request: data.request
+          ? {
+              connect: data.request,
+            }
+          : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
         createdAt: true,
         id: true,
         message: true,
+
+        request: {
+          select: {
+            id: true,
+          },
+        },
+
         title: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -82,8 +109,21 @@ export class NotificationControllerBase {
         createdAt: true,
         id: true,
         message: true,
+
+        request: {
+          select: {
+            id: true,
+          },
+        },
+
         title: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -109,8 +149,21 @@ export class NotificationControllerBase {
         createdAt: true,
         id: true,
         message: true,
+
+        request: {
+          select: {
+            id: true,
+          },
+        },
+
         title: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -140,13 +193,40 @@ export class NotificationControllerBase {
     try {
       return await this.service.updateNotification({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          request: data.request
+            ? {
+                connect: data.request,
+              }
+            : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
           createdAt: true,
           id: true,
           message: true,
+
+          request: {
+            select: {
+              id: true,
+            },
+          },
+
           title: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -180,8 +260,21 @@ export class NotificationControllerBase {
           createdAt: true,
           id: true,
           message: true,
+
+          request: {
+            select: {
+              id: true,
+            },
+          },
+
           title: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {

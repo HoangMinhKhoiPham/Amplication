@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional, IsString, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
 import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
+import { NotificationCreateNestedManyWithoutRequestsInput } from "./NotificationCreateNestedManyWithoutRequestsInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
 import { EnumRequestStatus } from "./EnumRequestStatus";
@@ -80,6 +81,18 @@ class RequestCreateInput {
     nullable: true,
   })
   key?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationCreateNestedManyWithoutRequestsInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationCreateNestedManyWithoutRequestsInput)
+  @IsOptional()
+  @Field(() => NotificationCreateNestedManyWithoutRequestsInput, {
+    nullable: true,
+  })
+  notifications?: NotificationCreateNestedManyWithoutRequestsInput;
 
   @ApiProperty({
     required: false,

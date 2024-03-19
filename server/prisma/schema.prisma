@@ -15,6 +15,7 @@ model User {
   firstName        String?
   id               Int               @id @default(autoincrement())
   lastName         String?
+  notifications    Notification[]
   password         String
   phoneNumber      String            @unique
   posts            Post[]
@@ -191,6 +192,7 @@ model Request {
   employeeID    Int?
   id            String                  @id @default(cuid())
   key           String?
+  notifications Notification[]
   property      Property?               @relation(fields: [propertyID], references: [id])
   propertyID    Int?
   question      String?
@@ -207,8 +209,12 @@ model Notification {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   message   String?
+  request   Request? @relation(fields: [requestID], references: [id])
+  requestID String?
   title     String?
   updatedAt DateTime @updatedAt
+  user      User?    @relation(fields: [userID], references: [id])
+  userID    Int?
 }
 
 enum EnumCommonFacilityFacilityType {

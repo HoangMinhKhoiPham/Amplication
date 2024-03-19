@@ -22,6 +22,7 @@ import {
 import { Type } from "class-transformer";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
+import { Notification } from "../../notification/base/Notification";
 import { Property } from "../../property/base/Property";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
 import { EnumRequestStatus } from "./EnumRequestStatus";
@@ -93,6 +94,15 @@ class Request {
     nullable: true,
   })
   key!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Notification],
+  })
+  @ValidateNested()
+  @Type(() => Notification)
+  @IsOptional()
+  notifications?: Array<Notification>;
 
   @ApiProperty({
     required: false,

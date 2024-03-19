@@ -11,8 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional } from "class-validator";
+import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
+import { Request } from "../../request/base/Request";
+import { User } from "../../user/base/User";
 
 @ObjectType()
 class Notification {
@@ -45,6 +47,15 @@ class Notification {
 
   @ApiProperty({
     required: false,
+    type: () => Request,
+  })
+  @ValidateNested()
+  @Type(() => Request)
+  @IsOptional()
+  request?: Request | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -61,6 +72,15 @@ class Notification {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 
 export { Notification as Notification };
