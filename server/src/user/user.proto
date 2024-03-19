@@ -151,17 +151,27 @@ PostWhereUniqueInput postWhereUniqueInput = 2;
 };
 message Request {
 string createdAt = 1;
-string id = 2;
-repeated string requestType = 3;
-repeated string status = 4;
-string updatedAt = 5;
+string elevator = 2;
+string id = 3;
+string key = 4;
+string question = 5;
+string reportMessage = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
 };
 message RequestWhereUniqueInput {
 string createdAt = 1;
-string id = 2;
-repeated string requestType = 3;
-repeated string status = 4;
-string updatedAt = 5;
+string elevator = 2;
+string id = 3;
+string key = 4;
+string question = 5;
+string reportMessage = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
 };
 message RequestParams {
 UserWhereUniqueInput userWhereUniqueInput = 1;

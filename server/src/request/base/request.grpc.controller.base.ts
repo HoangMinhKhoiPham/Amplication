@@ -44,6 +44,24 @@ export class RequestGrpcControllerBase {
             }
           : undefined,
 
+        condoUnit: data.condoUnit
+          ? {
+              connect: data.condoUnit,
+            }
+          : undefined,
+
+        employee: data.employee
+          ? {
+              connect: data.employee,
+            }
+          : undefined,
+
+        property: data.property
+          ? {
+              connect: data.property,
+            }
+          : undefined,
+
         user: data.user
           ? {
               connect: data.user,
@@ -57,9 +75,34 @@ export class RequestGrpcControllerBase {
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        reportMessage: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -87,9 +130,34 @@ export class RequestGrpcControllerBase {
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        reportMessage: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -118,9 +186,34 @@ export class RequestGrpcControllerBase {
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        reportMessage: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 
@@ -159,6 +252,24 @@ export class RequestGrpcControllerBase {
               }
             : undefined,
 
+          condoUnit: data.condoUnit
+            ? {
+                connect: data.condoUnit,
+              }
+            : undefined,
+
+          employee: data.employee
+            ? {
+                connect: data.employee,
+              }
+            : undefined,
+
+          property: data.property
+            ? {
+                connect: data.property,
+              }
+            : undefined,
+
           user: data.user
             ? {
                 connect: data.user,
@@ -172,9 +283,34 @@ export class RequestGrpcControllerBase {
             },
           },
 
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          elevator: true,
+
+          employee: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+          key: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          question: true,
+          reportMessage: true,
           requestType: true,
+          response: true,
           status: true,
           updatedAt: true,
 
@@ -212,9 +348,34 @@ export class RequestGrpcControllerBase {
             },
           },
 
+          condoUnit: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
+          elevator: true,
+
+          employee: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+          key: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          question: true,
+          reportMessage: true,
           requestType: true,
+          response: true,
           status: true,
           updatedAt: true,
 

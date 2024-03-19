@@ -24,6 +24,7 @@ import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput
 import { ParkingSpotUpdateManyWithoutCondoUnitsInput } from "./ParkingSpotUpdateManyWithoutCondoUnitsInput";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
+import { RequestUpdateManyWithoutCondoUnitsInput } from "./RequestUpdateManyWithoutCondoUnitsInput";
 import { UserCondoUpdateManyWithoutCondoUnitsInput } from "./UserCondoUpdateManyWithoutCondoUnitsInput";
 
 @InputType()
@@ -98,6 +99,18 @@ class CondoUnitUpdateInput {
     nullable: true,
   })
   registrationKeys?: RegistrationKeyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestUpdateManyWithoutCondoUnitsInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestUpdateManyWithoutCondoUnitsInput)
+  @IsOptional()
+  @Field(() => RequestUpdateManyWithoutCondoUnitsInput, {
+    nullable: true,
+  })
+  requests?: RequestUpdateManyWithoutCondoUnitsInput;
 
   @ApiProperty({
     required: false,

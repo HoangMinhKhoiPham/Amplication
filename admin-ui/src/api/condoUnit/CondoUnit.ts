@@ -4,6 +4,7 @@ import { Locker } from "../locker/Locker";
 import { ParkingSpot } from "../parkingSpot/ParkingSpot";
 import { Property } from "../property/Property";
 import { RegistrationKey } from "../registrationKey/RegistrationKey";
+import { Request } from "../request/Request";
 import { UserCondo } from "../userCondo/UserCondo";
 
 export type CondoUnit = {
@@ -15,6 +16,7 @@ export type CondoUnit = {
   parkingSpot?: Array<ParkingSpot>;
   propertyID?: Property | null;
   registrationKeys?: RegistrationKey | null;
+  requests?: Array<Request>;
   size: string;
   test: string | null;
   unitNumber: string | null;

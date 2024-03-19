@@ -26,6 +26,7 @@ import { Locker } from "../../locker/base/Locker";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { Property } from "../../property/base/Property";
 import { RegistrationKey } from "../../registrationKey/base/RegistrationKey";
+import { Request } from "../../request/base/Request";
 import { UserCondo } from "../../userCondo/base/UserCondo";
 
 @ObjectType()
@@ -101,6 +102,15 @@ class CondoUnit {
   @Type(() => RegistrationKey)
   @IsOptional()
   registrationKeys?: RegistrationKey | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Request],
+  })
+  @ValidateNested()
+  @Type(() => Request)
+  @IsOptional()
+  requests?: Array<Request>;
 
   @ApiProperty({
     required: true,

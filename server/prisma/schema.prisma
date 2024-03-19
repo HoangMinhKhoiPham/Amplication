@@ -37,6 +37,7 @@ model CondoUnit {
   propertyID       Property?        @relation(fields: [propertyIDId], references: [id])
   propertyIDId     Int?
   registrationKeys RegistrationKey?
+  requests         Request[]
   size             String
   test             String?
   unitNumber       String?
@@ -57,6 +58,7 @@ model Property {
   name         String
   parkingCount Int
   ParkingSpots ParkingSpot[]
+  requests     Request[]
   unitCount    Int
   updatedAt    DateTime      @updatedAt
 }
@@ -123,10 +125,11 @@ model Role {
 }
 
 model CompanyEmployee {
-  company   Company? @relation(fields: [companyID], references: [id])
+  company   Company?  @relation(fields: [companyID], references: [id])
   companyID Int?
-  id        Int      @id @default(autoincrement())
-  user      User?    @relation(fields: [userID], references: [id])
+  id        Int       @id @default(autoincrement())
+  requests  Request[]
+  user      User?     @relation(fields: [userID], references: [id])
   userID    Int?
 }
 
@@ -178,15 +181,26 @@ model Reservation {
 }
 
 model Request {
-  company     Company?                @relation(fields: [companyID], references: [id])
-  companyID   Int?
-  createdAt   DateTime                @default(now())
-  id          String                  @id @default(cuid())
-  requestType EnumRequestRequestType?
-  status      EnumRequestStatus?
-  updatedAt   DateTime                @updatedAt
-  user        User?                   @relation(fields: [userID], references: [id])
-  userID      Int?
+  company       Company?                @relation(fields: [companyID], references: [id])
+  companyID     Int?
+  condoUnit     CondoUnit?              @relation(fields: [condoUnitID], references: [id])
+  condoUnitID   Int?
+  createdAt     DateTime                @default(now())
+  elevator      String?
+  employee      CompanyEmployee?        @relation(fields: [employeeID], references: [id])
+  employeeID    Int?
+  id            String                  @id @default(cuid())
+  key           String?
+  property      Property?               @relation(fields: [propertyID], references: [id])
+  propertyID    Int?
+  question      String?
+  reportMessage String?
+  requestType   EnumRequestRequestType?
+  response      String?
+  status        EnumRequestStatus?
+  updatedAt     DateTime                @updatedAt
+  user          User?                   @relation(fields: [userID], references: [id])
+  userID        Int?
 }
 
 model Notification {

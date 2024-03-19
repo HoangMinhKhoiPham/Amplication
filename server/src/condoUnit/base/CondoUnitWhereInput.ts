@@ -20,6 +20,7 @@ import { LockerWhereUniqueInput } from "../../locker/base/LockerWhereUniqueInput
 import { ParkingSpotListRelationFilter } from "../../parkingSpot/base/ParkingSpotListRelationFilter";
 import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../../registrationKey/base/RegistrationKeyWhereUniqueInput";
+import { RequestListRelationFilter } from "../../request/base/RequestListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { UserCondoListRelationFilter } from "../../userCondo/base/UserCondoListRelationFilter";
@@ -107,6 +108,18 @@ class CondoUnitWhereInput {
     nullable: true,
   })
   registrationKeys?: RegistrationKeyWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RequestListRelationFilter)
+  @IsOptional()
+  @Field(() => RequestListRelationFilter, {
+    nullable: true,
+  })
+  requests?: RequestListRelationFilter;
 
   @ApiProperty({
     required: false,

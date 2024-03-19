@@ -464,9 +464,34 @@ export class CompanyGrpcControllerBase {
           },
         },
 
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        reportMessage: true,
         requestType: true,
+        response: true,
         status: true,
         updatedAt: true,
 

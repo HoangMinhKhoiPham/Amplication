@@ -1,8 +1,18 @@
 import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
+import { CondoUnitWhereUniqueInput } from "../condoUnit/CondoUnitWhereUniqueInput";
+import { CompanyEmployeeWhereUniqueInput } from "../companyEmployee/CompanyEmployeeWhereUniqueInput";
+import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type RequestCreateInput = {
   company?: CompanyWhereUniqueInput | null;
+  condoUnit?: CondoUnitWhereUniqueInput | null;
+  elevator?: string | null;
+  employee?: CompanyEmployeeWhereUniqueInput | null;
+  key?: string | null;
+  property?: PropertyWhereUniqueInput | null;
+  question?: string | null;
+  reportMessage?: string | null;
   requestType?:
     | "moving_in"
     | "moving_out"
@@ -12,6 +22,7 @@ export type RequestCreateInput = {
     | "deficiency_report"
     | "question"
     | null;
+  response?: string | null;
   status?:
     | "New"
     | "In_Progress"

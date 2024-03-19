@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { RequestCreateNestedManyWithoutCompanyEmployeesInput } from "./RequestCreateNestedManyWithoutCompanyEmployeesInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -29,6 +30,18 @@ class CompanyEmployeeCreateInput {
     nullable: true,
   })
   company?: CompanyWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestCreateNestedManyWithoutCompanyEmployeesInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestCreateNestedManyWithoutCompanyEmployeesInput)
+  @IsOptional()
+  @Field(() => RequestCreateNestedManyWithoutCompanyEmployeesInput, {
+    nullable: true,
+  })
+  requests?: RequestCreateNestedManyWithoutCompanyEmployeesInput;
 
   @ApiProperty({
     required: false,

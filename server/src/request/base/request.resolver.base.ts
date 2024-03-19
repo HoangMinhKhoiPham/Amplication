@@ -27,6 +27,9 @@ import { CreateRequestArgs } from "./CreateRequestArgs";
 import { UpdateRequestArgs } from "./UpdateRequestArgs";
 import { DeleteRequestArgs } from "./DeleteRequestArgs";
 import { Company } from "../../company/base/Company";
+import { CondoUnit } from "../../condoUnit/base/CondoUnit";
+import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
+import { Property } from "../../property/base/Property";
 import { User } from "../../user/base/User";
 import { RequestService } from "../request.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -103,6 +106,24 @@ export class RequestResolverBase {
             }
           : undefined,
 
+        condoUnit: args.data.condoUnit
+          ? {
+              connect: args.data.condoUnit,
+            }
+          : undefined,
+
+        employee: args.data.employee
+          ? {
+              connect: args.data.employee,
+            }
+          : undefined,
+
+        property: args.data.property
+          ? {
+              connect: args.data.property,
+            }
+          : undefined,
+
         user: args.data.user
           ? {
               connect: args.data.user,
@@ -131,6 +152,24 @@ export class RequestResolverBase {
           company: args.data.company
             ? {
                 connect: args.data.company,
+              }
+            : undefined,
+
+          condoUnit: args.data.condoUnit
+            ? {
+                connect: args.data.condoUnit,
+              }
+            : undefined,
+
+          employee: args.data.employee
+            ? {
+                connect: args.data.employee,
+              }
+            : undefined,
+
+          property: args.data.property
+            ? {
+                connect: args.data.property,
               }
             : undefined,
 
@@ -184,6 +223,69 @@ export class RequestResolverBase {
   })
   async getCompany(@graphql.Parent() parent: Request): Promise<Company | null> {
     const result = await this.service.getCompany(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => CondoUnit, {
+    nullable: true,
+    name: "condoUnit",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "read",
+    possession: "any",
+  })
+  async getCondoUnit(
+    @graphql.Parent() parent: Request
+  ): Promise<CondoUnit | null> {
+    const result = await this.service.getCondoUnit(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => CompanyEmployee, {
+    nullable: true,
+    name: "employee",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "CompanyEmployee",
+    action: "read",
+    possession: "any",
+  })
+  async getEmployee(
+    @graphql.Parent() parent: Request
+  ): Promise<CompanyEmployee | null> {
+    const result = await this.service.getEmployee(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Property, {
+    nullable: true,
+    name: "property",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "read",
+    possession: "any",
+  })
+  async getProperty(
+    @graphql.Parent() parent: Request
+  ): Promise<Property | null> {
+    const result = await this.service.getProperty(parent.id);
 
     if (!result) {
       return null;

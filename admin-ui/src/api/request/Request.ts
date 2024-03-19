@@ -1,10 +1,20 @@
 import { Company } from "../company/Company";
+import { CondoUnit } from "../condoUnit/CondoUnit";
+import { CompanyEmployee } from "../companyEmployee/CompanyEmployee";
+import { Property } from "../property/Property";
 import { User } from "../user/User";
 
 export type Request = {
   company?: Company | null;
+  condoUnit?: CondoUnit | null;
   createdAt: Date;
+  elevator: string | null;
+  employee?: CompanyEmployee | null;
   id: string;
+  key: string | null;
+  property?: Property | null;
+  question: string | null;
+  reportMessage: string | null;
   requestType?:
     | "moving_in"
     | "moving_out"
@@ -14,6 +24,7 @@ export type Request = {
     | "deficiency_report"
     | "question"
     | null;
+  response: string | null;
   status?:
     | "New"
     | "In_Progress"

@@ -17,6 +17,7 @@ import { LockerTitle } from "../locker/LockerTitle";
 import { ParkingSpotTitle } from "../parkingSpot/ParkingSpotTitle";
 import { PropertyTitle } from "../property/PropertyTitle";
 import { RegistrationKeyTitle } from "../registrationKey/RegistrationKeyTitle";
+import { RequestTitle } from "../request/RequestTitle";
 import { UserCondoTitle } from "../userCondo/UserCondoTitle";
 
 export const CondoUnitCreate = (props: CreateProps): React.ReactElement => {
@@ -57,6 +58,14 @@ export const CondoUnitCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={RegistrationKeyTitle} />
         </ReferenceInput>
+        <ReferenceArrayInput
+          source="requests"
+          reference="Request"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={RequestTitle} />
+        </ReferenceArrayInput>
         <TextInput label="size" source="size" />
         <TextInput label="test" source="test" />
         <TextInput label="unitNumber" source="unitNumber" />

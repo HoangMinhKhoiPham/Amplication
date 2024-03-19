@@ -18,6 +18,7 @@ import { CondoUnitCreateNestedManyWithoutPropertiesInput } from "./CondoUnitCrea
 import { FileCreateNestedManyWithoutPropertiesInput } from "./FileCreateNestedManyWithoutPropertiesInput";
 import { LockerCreateNestedManyWithoutPropertiesInput } from "./LockerCreateNestedManyWithoutPropertiesInput";
 import { ParkingSpotCreateNestedManyWithoutPropertiesInput } from "./ParkingSpotCreateNestedManyWithoutPropertiesInput";
+import { RequestCreateNestedManyWithoutPropertiesInput } from "./RequestCreateNestedManyWithoutPropertiesInput";
 
 @InputType()
 class PropertyCreateInput {
@@ -115,6 +116,18 @@ class PropertyCreateInput {
     nullable: true,
   })
   ParkingSpots?: ParkingSpotCreateNestedManyWithoutPropertiesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestCreateNestedManyWithoutPropertiesInput,
+  })
+  @ValidateNested()
+  @Type(() => RequestCreateNestedManyWithoutPropertiesInput)
+  @IsOptional()
+  @Field(() => RequestCreateNestedManyWithoutPropertiesInput, {
+    nullable: true,
+  })
+  requests?: RequestCreateNestedManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: true,

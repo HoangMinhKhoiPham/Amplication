@@ -34,6 +34,8 @@ import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
 import { ParkingSpotFindManyArgs } from "../../parkingSpot/base/ParkingSpotFindManyArgs";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
 import { ParkingSpotWhereUniqueInput } from "../../parkingSpot/base/ParkingSpotWhereUniqueInput";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { RequestWhereUniqueInput } from "../../request/base/RequestWhereUniqueInput";
 import { UserCondoFindManyArgs } from "../../userCondo/base/UserCondoFindManyArgs";
 import { UserCondo } from "../../userCondo/base/UserCondo";
 import { UserCondoWhereUniqueInput } from "../../userCondo/base/UserCondoWhereUniqueInput";
@@ -569,6 +571,140 @@ export class CondoUnitControllerBase {
   ): Promise<void> {
     const data = {
       parkingSpot: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/requests")
+  @ApiNestedQuery(RequestFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async findRequests(
+    @common.Req() request: Request,
+    @common.Param() params: CondoUnitWhereUniqueInput
+  ): Promise<Request[]> {
+    const query = plainToClass(RequestFindManyArgs, request.query);
+    const results = await this.service.findRequests(params.id, {
+      ...query,
+      select: {
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        reportMessage: true,
+        requestType: true,
+        response: true,
+        status: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async connectRequests(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        connect: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async updateRequests(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        set: body,
+      },
+    };
+    await this.service.updateCondoUnit({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/requests")
+  @nestAccessControl.UseRoles({
+    resource: "CondoUnit",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectRequests(
+    @common.Param() params: CondoUnitWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
         disconnect: body,
       },
     };

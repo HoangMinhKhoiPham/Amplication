@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Company } from "../../company/base/Company";
 import { ValidateNested, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
+import { Request } from "../../request/base/Request";
 import { User } from "../../user/base/User";
 
 @ObjectType()
@@ -34,6 +35,15 @@ class CompanyEmployee {
   @IsInt()
   @Field(() => Number)
   id!: number;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Request],
+  })
+  @ValidateNested()
+  @Type(() => Request)
+  @IsOptional()
+  requests?: Array<Request>;
 
   @ApiProperty({
     required: false,

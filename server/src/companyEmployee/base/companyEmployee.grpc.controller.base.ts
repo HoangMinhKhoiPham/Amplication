@@ -26,6 +26,8 @@ import { CompanyEmployeeFindManyArgs } from "./CompanyEmployeeFindManyArgs";
 import { CompanyEmployeeUpdateInput } from "./CompanyEmployeeUpdateInput";
 import { CompanyEmployee } from "./CompanyEmployee";
 import { Post } from "../../post/base/Post";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { RequestWhereUniqueInput } from "../../request/base/RequestWhereUniqueInput";
 
 export class CompanyEmployeeGrpcControllerBase {
   constructor(protected readonly service: CompanyEmployeeService) {}
@@ -216,5 +218,122 @@ export class CompanyEmployeeGrpcControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.Get("/:id/requests")
+  @ApiNestedQuery(RequestFindManyArgs)
+  @GrpcMethod("CompanyEmployeeService", "findManyRequests")
+  async findManyRequests(
+    @common.Req() request: Request,
+    @common.Param() params: CompanyEmployeeWhereUniqueInput
+  ): Promise<Request[]> {
+    const query = plainToClass(RequestFindManyArgs, request.query);
+    const results = await this.service.findRequests(params.id, {
+      ...query,
+      select: {
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        condoUnit: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        elevator: true,
+
+        employee: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+        key: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        question: true,
+        reportMessage: true,
+        requestType: true,
+        response: true,
+        status: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/requests")
+  @GrpcMethod("CompanyEmployeeService", "connectRequests")
+  async connectRequests(
+    @common.Param() params: CompanyEmployeeWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        connect: body,
+      },
+    };
+    await this.service.updateCompanyEmployee({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/requests")
+  @GrpcMethod("CompanyEmployeeService", "updateRequests")
+  async updateRequests(
+    @common.Param() params: CompanyEmployeeWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        set: body,
+      },
+    };
+    await this.service.updateCompanyEmployee({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/requests")
+  @GrpcMethod("CompanyEmployeeService", "disconnectRequests")
+  async disconnectRequests(
+    @common.Param() params: CompanyEmployeeWhereUniqueInput,
+    @common.Body() body: RequestWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      requests: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCompanyEmployee({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

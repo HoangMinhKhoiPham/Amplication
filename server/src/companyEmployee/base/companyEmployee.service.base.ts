@@ -14,6 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   CompanyEmployee, // @ts-ignore
+  Request, // @ts-ignore
   Company, // @ts-ignore
   User,
 } from "@prisma/client";
@@ -51,6 +52,17 @@ export class CompanyEmployeeServiceBase {
     args: Prisma.SelectSubset<T, Prisma.CompanyEmployeeDeleteArgs>
   ): Promise<CompanyEmployee> {
     return this.prisma.companyEmployee.delete(args);
+  }
+
+  async findRequests(
+    parentId: number,
+    args: Prisma.RequestFindManyArgs
+  ): Promise<Request[]> {
+    return this.prisma.companyEmployee
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .requests(args);
   }
 
   async getCompany(parentId: number): Promise<Company | null> {

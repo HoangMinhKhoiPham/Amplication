@@ -30,6 +30,8 @@ import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
 import { File } from "../../file/base/File";
 import { ParkingSpotFindManyArgs } from "../../parkingSpot/base/ParkingSpotFindManyArgs";
 import { ParkingSpot } from "../../parkingSpot/base/ParkingSpot";
+import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
+import { Request } from "../../request/base/Request";
 import { UserCondoFindManyArgs } from "../../userCondo/base/UserCondoFindManyArgs";
 import { UserCondo } from "../../userCondo/base/UserCondo";
 import { Locker } from "../../locker/base/Locker";
@@ -223,6 +225,26 @@ export class CondoUnitResolverBase {
     @graphql.Args() args: ParkingSpotFindManyArgs
   ): Promise<ParkingSpot[]> {
     const results = await this.service.findParkingSpot(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Request], { name: "requests" })
+  @nestAccessControl.UseRoles({
+    resource: "Request",
+    action: "read",
+    possession: "any",
+  })
+  async findRequests(
+    @graphql.Parent() parent: CondoUnit,
+    @graphql.Args() args: RequestFindManyArgs
+  ): Promise<Request[]> {
+    const results = await this.service.findRequests(parent.id, args);
 
     if (!results) {
       return [];

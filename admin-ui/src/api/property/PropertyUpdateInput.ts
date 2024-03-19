@@ -3,6 +3,7 @@ import { CondoUnitUpdateManyWithoutPropertiesInput } from "./CondoUnitUpdateMany
 import { FileUpdateManyWithoutPropertiesInput } from "./FileUpdateManyWithoutPropertiesInput";
 import { LockerUpdateManyWithoutPropertiesInput } from "./LockerUpdateManyWithoutPropertiesInput";
 import { ParkingSpotUpdateManyWithoutPropertiesInput } from "./ParkingSpotUpdateManyWithoutPropertiesInput";
+import { RequestUpdateManyWithoutPropertiesInput } from "./RequestUpdateManyWithoutPropertiesInput";
 
 export type PropertyUpdateInput = {
   address?: string;
@@ -14,5 +15,6 @@ export type PropertyUpdateInput = {
   name?: string;
   parkingCount?: number;
   ParkingSpots?: ParkingSpotUpdateManyWithoutPropertiesInput;
+  requests?: RequestUpdateManyWithoutPropertiesInput;
   unitCount?: number;
 };

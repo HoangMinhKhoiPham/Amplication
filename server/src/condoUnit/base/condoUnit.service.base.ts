@@ -16,6 +16,7 @@ import {
   CondoUnit, // @ts-ignore
   File, // @ts-ignore
   ParkingSpot, // @ts-ignore
+  Request, // @ts-ignore
   UserCondo, // @ts-ignore
   Locker, // @ts-ignore
   Property, // @ts-ignore
@@ -77,6 +78,17 @@ export class CondoUnitServiceBase {
         where: { id: parentId },
       })
       .parkingSpot(args);
+  }
+
+  async findRequests(
+    parentId: number,
+    args: Prisma.RequestFindManyArgs
+  ): Promise<Request[]> {
+    return this.prisma.condoUnit
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .requests(args);
   }
 
   async findUserCondos(

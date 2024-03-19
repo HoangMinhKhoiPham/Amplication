@@ -4,6 +4,7 @@ import { LockerWhereUniqueInput } from "../locker/LockerWhereUniqueInput";
 import { ParkingSpotUpdateManyWithoutCondoUnitsInput } from "./ParkingSpotUpdateManyWithoutCondoUnitsInput";
 import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
 import { RegistrationKeyWhereUniqueInput } from "../registrationKey/RegistrationKeyWhereUniqueInput";
+import { RequestUpdateManyWithoutCondoUnitsInput } from "./RequestUpdateManyWithoutCondoUnitsInput";
 import { UserCondoUpdateManyWithoutCondoUnitsInput } from "./UserCondoUpdateManyWithoutCondoUnitsInput";
 
 export type CondoUnitUpdateInput = {
@@ -13,6 +14,7 @@ export type CondoUnitUpdateInput = {
   parkingSpot?: ParkingSpotUpdateManyWithoutCondoUnitsInput;
   propertyID?: PropertyWhereUniqueInput | null;
   registrationKeys?: RegistrationKeyWhereUniqueInput | null;
+  requests?: RequestUpdateManyWithoutCondoUnitsInput;
   size?: string;
   test?: string | null;
   unitNumber?: string | null;

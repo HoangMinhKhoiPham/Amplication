@@ -15,6 +15,10 @@ rpc findManyCondoUnit (CondoUnitWhereUniqueInput) returns (stream ParkingSpot) {
 rpc updateCondoUnit (ParkingSpotParams) returns (stream ParkingSpot) {}
 rpc connectCondoUnit (ParkingSpotParams) returns (ParkingSpot) {}
 rpc disconnectCondoUnit (ParkingSpotParams) returns (ParkingSpot) {}
+rpc findManyCondoUnit (CondoUnitWhereUniqueInput) returns (stream Request) {}
+rpc updateCondoUnit (RequestParams) returns (stream Request) {}
+rpc connectCondoUnit (RequestParams) returns (Request) {}
+rpc disconnectCondoUnit (RequestParams) returns (Request) {}
 rpc findManyCondo (CondoUnitWhereUniqueInput) returns (stream UserCondo) {}
 rpc updateCondo (UserCondoParams) returns (stream UserCondo) {}
 rpc connectCondo (UserCondoParams) returns (UserCondo) {}
@@ -27,11 +31,12 @@ repeated File file = 3;
 int32 id = 4;
 repeated ParkingSpot parkingSpot = 5;
 RegistrationKey registrationKeys = 6;
-string size = 7;
-string test = 8;
-string unitNumber = 9;
-string updatedAt = 10;
-repeated UserCondo userCondos = 11;
+repeated Request requests = 7;
+string size = 8;
+string test = 9;
+string unitNumber = 10;
+string updatedAt = 11;
+repeated UserCondo userCondos = 12;
 };
 message CondoUnit {
 int32 condoFee = 1;
@@ -40,11 +45,12 @@ repeated File file = 3;
 int32 id = 4;
 repeated ParkingSpot parkingSpot = 5;
 RegistrationKey registrationKeys = 6;
-string size = 7;
-string test = 8;
-string unitNumber = 9;
-string updatedAt = 10;
-repeated UserCondo userCondos = 11;
+repeated Request requests = 7;
+string size = 8;
+string test = 9;
+string unitNumber = 10;
+string updatedAt = 11;
+repeated UserCondo userCondos = 12;
 };
 message CondoUnitWhereUniqueInput {
 int32 condoFee = 1;
@@ -53,11 +59,12 @@ repeated File file = 3;
 int32 id = 4;
 repeated ParkingSpot parkingSpot = 5;
 RegistrationKey registrationKeys = 6;
-string size = 7;
-string test = 8;
-string unitNumber = 9;
-string updatedAt = 10;
-repeated UserCondo userCondos = 11;
+repeated Request requests = 7;
+string size = 8;
+string test = 9;
+string unitNumber = 10;
+string updatedAt = 11;
+repeated UserCondo userCondos = 12;
 };
 message CondoUnitUpdateInput {
 int32 condoFee = 1;
@@ -66,11 +73,12 @@ repeated File file = 3;
 int32 id = 4;
 repeated ParkingSpot parkingSpot = 5;
 RegistrationKey registrationKeys = 6;
-string size = 7;
-string test = 8;
-string unitNumber = 9;
-string updatedAt = 10;
-repeated UserCondo userCondos = 11;
+repeated Request requests = 7;
+string size = 8;
+string test = 9;
+string unitNumber = 10;
+string updatedAt = 11;
+repeated UserCondo userCondos = 12;
 };
 message findManyParams {
 
@@ -106,6 +114,34 @@ string updatedAt = 3;
 message ParkingSpotParams {
 CondoUnitWhereUniqueInput condoUnitWhereUniqueInput = 1;
 ParkingSpotWhereUniqueInput parkingspotWhereUniqueInput = 2;
+};
+message Request {
+string createdAt = 1;
+string elevator = 2;
+string id = 3;
+string key = 4;
+string question = 5;
+string reportMessage = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
+};
+message RequestWhereUniqueInput {
+string createdAt = 1;
+string elevator = 2;
+string id = 3;
+string key = 4;
+string question = 5;
+string reportMessage = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
+};
+message RequestParams {
+CondoUnitWhereUniqueInput condoUnitWhereUniqueInput = 1;
+RequestWhereUniqueInput requestWhereUniqueInput = 2;
 };
 message UserCondo {
 string createdAt = 1;

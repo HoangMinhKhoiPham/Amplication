@@ -20,6 +20,9 @@ import {
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { CondoUnit } from "../../condoUnit/base/CondoUnit";
+import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
+import { Property } from "../../property/base/Property";
 import { EnumRequestRequestType } from "./EnumRequestRequestType";
 import { EnumRequestStatus } from "./EnumRequestStatus";
 import { User } from "../../user/base/User";
@@ -36,6 +39,15 @@ class Request {
   company?: Company | null;
 
   @ApiProperty({
+    required: false,
+    type: () => CondoUnit,
+  })
+  @ValidateNested()
+  @Type(() => CondoUnit)
+  @IsOptional()
+  condoUnit?: CondoUnit | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
@@ -44,12 +56,74 @@ class Request {
   createdAt!: Date;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  elevator!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => CompanyEmployee,
+  })
+  @ValidateNested()
+  @Type(() => CompanyEmployee)
+  @IsOptional()
+  employee?: CompanyEmployee | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  key!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Property,
+  })
+  @ValidateNested()
+  @Type(() => Property)
+  @IsOptional()
+  property?: Property | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  question!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  reportMessage!: string | null;
 
   @ApiProperty({
     required: false,
@@ -69,6 +143,17 @@ class Request {
     | "deficiency_report"
     | "question"
     | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  response!: string | null;
 
   @ApiProperty({
     required: false,

@@ -15,6 +15,7 @@ import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueIn
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { IntFilter } from "../../util/IntFilter";
+import { RequestListRelationFilter } from "../../request/base/RequestListRelationFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -41,6 +42,18 @@ class CompanyEmployeeWhereInput {
     nullable: true,
   })
   id?: IntFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => RequestListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => RequestListRelationFilter)
+  @IsOptional()
+  @Field(() => RequestListRelationFilter, {
+    nullable: true,
+  })
+  requests?: RequestListRelationFilter;
 
   @ApiProperty({
     required: false,

@@ -6,20 +6,56 @@ service CompanyEmployeeService {
 rpc companyEmployees (findManyParams) returns (stream CompanyEmployee) {}
 rpc companyEmployee (CompanyEmployeeWhereUniqueInput) returns (CompanyEmployee) {}
 rpc updateCompanyEmployee (CompanyEmployeeUpdateInput) returns (CompanyEmployee) {}
-rpc deleteCompanyEmployee (CompanyEmployeeWhereUniqueInput) returns (CompanyEmployee) {} 
+rpc deleteCompanyEmployee (CompanyEmployeeWhereUniqueInput) returns (CompanyEmployee) {}
+rpc findManyEmployee (CompanyEmployeeWhereUniqueInput) returns (stream Request) {}
+rpc updateEmployee (RequestParams) returns (stream Request) {}
+rpc connectEmployee (RequestParams) returns (Request) {}
+rpc disconnectEmployee (RequestParams) returns (Request) {} 
  }
 message CompanyEmployeeCreateInput {
 int32 id = 1;
+repeated Request requests = 2;
 };
 message CompanyEmployee {
 int32 id = 1;
+repeated Request requests = 2;
 };
 message CompanyEmployeeWhereUniqueInput {
 int32 id = 1;
+repeated Request requests = 2;
 };
 message CompanyEmployeeUpdateInput {
 int32 id = 1;
+repeated Request requests = 2;
 };
 message findManyParams {
 
+};
+message Request {
+string createdAt = 1;
+string elevator = 2;
+string id = 3;
+string key = 4;
+string question = 5;
+string reportMessage = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
+};
+message RequestWhereUniqueInput {
+string createdAt = 1;
+string elevator = 2;
+string id = 3;
+string key = 4;
+string question = 5;
+string reportMessage = 6;
+repeated string requestType = 7;
+string response = 8;
+repeated string status = 9;
+string updatedAt = 10;
+};
+message RequestParams {
+CompanyEmployeeWhereUniqueInput companyEmployeeWhereUniqueInput = 1;
+RequestWhereUniqueInput requestWhereUniqueInput = 2;
 };
