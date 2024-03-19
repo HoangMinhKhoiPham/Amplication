@@ -15,6 +15,7 @@ import { CompanyEmployeeUpdateManyWithoutUsersInput } from "./CompanyEmployeeUpd
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileUpdateManyWithoutUsersInput } from "./FileUpdateManyWithoutUsersInput";
+import { NotificationUpdateManyWithoutUsersInput } from "./NotificationUpdateManyWithoutUsersInput";
 import { PostUpdateManyWithoutUsersInput } from "./PostUpdateManyWithoutUsersInput";
 import { RequestUpdateManyWithoutUsersInput } from "./RequestUpdateManyWithoutUsersInput";
 import { ReservationUpdateManyWithoutUsersInput } from "./ReservationUpdateManyWithoutUsersInput";
@@ -81,6 +82,18 @@ class UserUpdateInput {
     nullable: true,
   })
   lastName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => NotificationUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => NotificationUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => NotificationUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  notifications?: NotificationUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

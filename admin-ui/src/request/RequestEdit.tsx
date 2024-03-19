@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Edit,
   SimpleForm,
@@ -6,10 +7,14 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
 } from "react-admin";
+
 import { CompanyTitle } from "../company/CompanyTitle";
 import { CondoUnitTitle } from "../condoUnit/CondoUnitTitle";
 import { CompanyEmployeeTitle } from "../companyEmployee/CompanyEmployeeTitle";
+import { NotificationTitle } from "../notification/NotificationTitle";
 import { PropertyTitle } from "../property/PropertyTitle";
 import { UserTitle } from "../user/UserTitle";
 
@@ -36,6 +41,14 @@ export const RequestEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={CompanyEmployeeTitle} />
         </ReferenceInput>
         <TextInput label="key" source="key" />
+        <ReferenceArrayInput
+          source="notifications"
+          reference="Notification"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={NotificationTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput
           source="property.id"
           reference="Property"

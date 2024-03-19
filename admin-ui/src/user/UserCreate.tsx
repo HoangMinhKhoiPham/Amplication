@@ -12,6 +12,7 @@ import {
 
 import { CompanyEmployeeTitle } from "../companyEmployee/CompanyEmployeeTitle";
 import { FileTitle } from "../file/FileTitle";
+import { NotificationTitle } from "../notification/NotificationTitle";
 import { PostTitle } from "../post/PostTitle";
 import { RequestTitle } from "../request/RequestTitle";
 import { ReservationTitle } from "../reservation/ReservationTitle";
@@ -41,6 +42,14 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         </ReferenceArrayInput>
         <TextInput label="firstName" source="firstName" />
         <TextInput label="lastName" source="lastName" />
+        <ReferenceArrayInput
+          source="notifications"
+          reference="Notification"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={NotificationTitle} />
+        </ReferenceArrayInput>
         <PasswordInput label="Password" source="password" />
         <TextInput label="phoneNumber" source="phoneNumber" />
         <ReferenceArrayInput

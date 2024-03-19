@@ -31,6 +31,8 @@ import { CompanyEmployeeFindManyArgs } from "../../companyEmployee/base/CompanyE
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
 import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
 import { File } from "../../file/base/File";
+import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
+import { Notification } from "../../notification/base/Notification";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { Post } from "../../post/base/Post";
 import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
@@ -172,6 +174,26 @@ export class UserResolverBase {
     @graphql.Args() args: FileFindManyArgs
   ): Promise<File[]> {
     const results = await this.service.findFiles(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Notification], { name: "notifications" })
+  @nestAccessControl.UseRoles({
+    resource: "Notification",
+    action: "read",
+    possession: "any",
+  })
+  async findNotifications(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: NotificationFindManyArgs
+  ): Promise<Notification[]> {
+    const results = await this.service.findNotifications(parent.id, args);
 
     if (!results) {
       return [];

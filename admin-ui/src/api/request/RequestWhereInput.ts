@@ -3,6 +3,7 @@ import { CondoUnitWhereUniqueInput } from "../condoUnit/CondoUnitWhereUniqueInpu
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { CompanyEmployeeWhereUniqueInput } from "../companyEmployee/CompanyEmployeeWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { NotificationListRelationFilter } from "../notification/NotificationListRelationFilter";
 import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
@@ -13,6 +14,7 @@ export type RequestWhereInput = {
   employee?: CompanyEmployeeWhereUniqueInput;
   id?: StringFilter;
   key?: StringNullableFilter;
+  notifications?: NotificationListRelationFilter;
   property?: PropertyWhereUniqueInput;
   question?: StringNullableFilter;
   reportMessage?: StringNullableFilter;

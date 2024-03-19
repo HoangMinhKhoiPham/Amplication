@@ -15,6 +15,10 @@ rpc findManyUser (UserWhereUniqueInput) returns (stream File) {}
 rpc updateUser (FileParams) returns (stream File) {}
 rpc connectUser (FileParams) returns (File) {}
 rpc disconnectUser (FileParams) returns (File) {}
+rpc findManyUser (UserWhereUniqueInput) returns (stream Notification) {}
+rpc updateUser (NotificationParams) returns (stream Notification) {}
+rpc connectUser (NotificationParams) returns (Notification) {}
+rpc disconnectUser (NotificationParams) returns (Notification) {}
 rpc findManyUser (UserWhereUniqueInput) returns (stream Post) {}
 rpc updateUser (PostParams) returns (stream Post) {}
 rpc connectUser (PostParams) returns (Post) {}
@@ -40,15 +44,16 @@ repeated File files = 4;
 string firstName = 5;
 int32 id = 6;
 string lastName = 7;
-string password = 8;
-string phoneNumber = 9;
-repeated Post posts = 10;
-repeated Request requests = 11;
-repeated Reservation reservations = 12;
-repeated string roles = 13;
-string updatedAt = 14;
-repeated UserCondo userCondos = 15;
-string username = 16;
+repeated Notification notifications = 8;
+string password = 9;
+string phoneNumber = 10;
+repeated Post posts = 11;
+repeated Request requests = 12;
+repeated Reservation reservations = 13;
+repeated string roles = 14;
+string updatedAt = 15;
+repeated UserCondo userCondos = 16;
+string username = 17;
 };
 message User {
 repeated CompanyEmployee companyEmployees = 1;
@@ -58,15 +63,16 @@ repeated File files = 4;
 string firstName = 5;
 int32 id = 6;
 string lastName = 7;
-string password = 8;
-string phoneNumber = 9;
-repeated Post posts = 10;
-repeated Request requests = 11;
-repeated Reservation reservations = 12;
-repeated string roles = 13;
-string updatedAt = 14;
-repeated UserCondo userCondos = 15;
-string username = 16;
+repeated Notification notifications = 8;
+string password = 9;
+string phoneNumber = 10;
+repeated Post posts = 11;
+repeated Request requests = 12;
+repeated Reservation reservations = 13;
+repeated string roles = 14;
+string updatedAt = 15;
+repeated UserCondo userCondos = 16;
+string username = 17;
 };
 message UserWhereUniqueInput {
 repeated CompanyEmployee companyEmployees = 1;
@@ -76,15 +82,16 @@ repeated File files = 4;
 string firstName = 5;
 int32 id = 6;
 string lastName = 7;
-string password = 8;
-string phoneNumber = 9;
-repeated Post posts = 10;
-repeated Request requests = 11;
-repeated Reservation reservations = 12;
-repeated string roles = 13;
-string updatedAt = 14;
-repeated UserCondo userCondos = 15;
-string username = 16;
+repeated Notification notifications = 8;
+string password = 9;
+string phoneNumber = 10;
+repeated Post posts = 11;
+repeated Request requests = 12;
+repeated Reservation reservations = 13;
+repeated string roles = 14;
+string updatedAt = 15;
+repeated UserCondo userCondos = 16;
+string username = 17;
 };
 message UserUpdateInput {
 repeated CompanyEmployee companyEmployees = 1;
@@ -94,15 +101,16 @@ repeated File files = 4;
 string firstName = 5;
 int32 id = 6;
 string lastName = 7;
-string password = 8;
-string phoneNumber = 9;
-repeated Post posts = 10;
-repeated Request requests = 11;
-repeated Reservation reservations = 12;
-repeated string roles = 13;
-string updatedAt = 14;
-repeated UserCondo userCondos = 15;
-string username = 16;
+repeated Notification notifications = 8;
+string password = 9;
+string phoneNumber = 10;
+repeated Post posts = 11;
+repeated Request requests = 12;
+repeated Reservation reservations = 13;
+repeated string roles = 14;
+string updatedAt = 15;
+repeated UserCondo userCondos = 16;
+string username = 17;
 };
 message findManyParams {
 
@@ -134,6 +142,24 @@ string updatedAt = 5;
 message FileParams {
 UserWhereUniqueInput userWhereUniqueInput = 1;
 FileWhereUniqueInput fileWhereUniqueInput = 2;
+};
+message Notification {
+string createdAt = 1;
+string id = 2;
+string message = 3;
+string title = 4;
+string updatedAt = 5;
+};
+message NotificationWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string message = 3;
+string title = 4;
+string updatedAt = 5;
+};
+message NotificationParams {
+UserWhereUniqueInput userWhereUniqueInput = 1;
+NotificationWhereUniqueInput notificationWhereUniqueInput = 2;
 };
 message Post {
 string createdAt = 1;

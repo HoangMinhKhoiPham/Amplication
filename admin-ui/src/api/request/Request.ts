@@ -1,6 +1,7 @@
 import { Company } from "../company/Company";
 import { CondoUnit } from "../condoUnit/CondoUnit";
 import { CompanyEmployee } from "../companyEmployee/CompanyEmployee";
+import { Notification } from "../notification/Notification";
 import { Property } from "../property/Property";
 import { User } from "../user/User";
 
@@ -12,6 +13,7 @@ export type Request = {
   employee?: CompanyEmployee | null;
   id: string;
   key: string | null;
+  notifications?: Array<Notification>;
   property?: Property | null;
   question: string | null;
   reportMessage: string | null;

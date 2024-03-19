@@ -33,6 +33,9 @@ import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/Comp
 import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
 import { File } from "../../file/base/File";
 import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
+import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
+import { Notification } from "../../notification/base/Notification";
+import { NotificationWhereUniqueInput } from "../../notification/base/NotificationWhereUniqueInput";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { PostWhereUniqueInput } from "../../post/base/PostWhereUniqueInput";
 import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
@@ -368,6 +371,99 @@ export class UserGrpcControllerBase {
   ): Promise<void> {
     const data = {
       files: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/notifications")
+  @ApiNestedQuery(NotificationFindManyArgs)
+  @GrpcMethod("UserService", "findManyNotifications")
+  async findManyNotifications(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Notification[]> {
+    const query = plainToClass(NotificationFindManyArgs, request.query);
+    const results = await this.service.findNotifications(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        id: true,
+        message: true,
+
+        request: {
+          select: {
+            id: true,
+          },
+        },
+
+        title: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/notifications")
+  @GrpcMethod("UserService", "connectNotifications")
+  async connectNotifications(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/notifications")
+  @GrpcMethod("UserService", "updateNotifications")
+  async updateNotifications(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/notifications")
+  @GrpcMethod("UserService", "disconnectNotifications")
+  async disconnectNotifications(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: NotificationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      notifications: {
         disconnect: body,
       },
     };

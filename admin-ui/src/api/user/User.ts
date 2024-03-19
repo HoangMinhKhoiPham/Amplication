@@ -1,5 +1,6 @@
 import { CompanyEmployee } from "../companyEmployee/CompanyEmployee";
 import { File } from "../file/File";
+import { Notification } from "../notification/Notification";
 import { Post } from "../post/Post";
 import { Request } from "../request/Request";
 import { Reservation } from "../reservation/Reservation";
@@ -14,6 +15,7 @@ export type User = {
   firstName: string | null;
   id: number;
   lastName: string | null;
+  notifications?: Array<Notification>;
   phoneNumber: string;
   posts?: Array<Post>;
   requests?: Array<Request>;

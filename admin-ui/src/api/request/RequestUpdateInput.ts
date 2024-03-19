@@ -1,6 +1,7 @@
 import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { CondoUnitWhereUniqueInput } from "../condoUnit/CondoUnitWhereUniqueInput";
 import { CompanyEmployeeWhereUniqueInput } from "../companyEmployee/CompanyEmployeeWhereUniqueInput";
+import { NotificationUpdateManyWithoutRequestsInput } from "./NotificationUpdateManyWithoutRequestsInput";
 import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
@@ -10,6 +11,7 @@ export type RequestUpdateInput = {
   elevator?: string | null;
   employee?: CompanyEmployeeWhereUniqueInput | null;
   key?: string | null;
+  notifications?: NotificationUpdateManyWithoutRequestsInput;
   property?: PropertyWhereUniqueInput | null;
   question?: string | null;
   reportMessage?: string | null;
