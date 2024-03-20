@@ -6,6 +6,6 @@ export type Cost = {
   company?: Company | null;
   costName: string | null;
   createdAt: Date;
-  id: string;
+  id: number;
   updatedAt: Date;
 };

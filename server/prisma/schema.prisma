@@ -227,7 +227,7 @@ model Cost {
   companyID Int?
   costName  String?
   createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  id        Int      @id @default(autoincrement())
   updatedAt DateTime @updatedAt
 }
 

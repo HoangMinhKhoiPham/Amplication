@@ -12,28 +12,28 @@ message CostCreateInput {
 int32 amount = 1;
 string costName = 2;
 string createdAt = 3;
-string id = 4;
+int32 id = 4;
 string updatedAt = 5;
 };
 message Cost {
 int32 amount = 1;
 string costName = 2;
 string createdAt = 3;
-string id = 4;
+int32 id = 4;
 string updatedAt = 5;
 };
 message CostWhereUniqueInput {
 int32 amount = 1;
 string costName = 2;
 string createdAt = 3;
-string id = 4;
+int32 id = 4;
 string updatedAt = 5;
 };
 message CostUpdateInput {
 int32 amount = 1;
 string costName = 2;
 string createdAt = 3;
-string id = 4;
+int32 id = 4;
 string updatedAt = 5;
 };
 message findManyParams {

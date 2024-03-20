@@ -52,7 +52,7 @@ export class CostServiceBase {
     return this.prisma.cost.delete(args);
   }
 
-  async getCompany(parentId: string): Promise<Company | null> {
+  async getCompany(parentId: number): Promise<Company | null> {
     return this.prisma.cost
       .findUnique({
         where: { id: parentId },

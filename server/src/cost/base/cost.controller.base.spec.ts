@@ -21,14 +21,14 @@ const CREATE_INPUT = {
   amount: 42.424242424,
   costName: "exampleCostName",
   createdAt: new Date(),
-  id: "exampleId",
+  id: 42,
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
   amount: 42.424242424,
   costName: "exampleCostName",
   createdAt: new Date(),
-  id: "exampleId",
+  id: 42,
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -36,7 +36,7 @@ const FIND_MANY_RESULT = [
     amount: 42.424242424,
     costName: "exampleCostName",
     createdAt: new Date(),
-    id: "exampleId",
+    id: 42,
     updatedAt: new Date(),
   },
 ];
@@ -44,7 +44,7 @@ const FIND_ONE_RESULT = {
   amount: 42.424242424,
   costName: "exampleCostName",
   createdAt: new Date(),
-  id: "exampleId",
+  id: 42,
   updatedAt: new Date(),
 };
 

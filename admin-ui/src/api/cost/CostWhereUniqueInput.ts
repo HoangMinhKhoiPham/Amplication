@@ -1,3 +1,3 @@
 export type CostWhereUniqueInput = {
-  id: string;
+  id: number;
 };

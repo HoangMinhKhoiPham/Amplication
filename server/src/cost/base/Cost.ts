@@ -17,6 +17,7 @@ import {
   ValidateNested,
   IsString,
   IsDate,
+  IsInt,
 } from "class-validator";
 import { Decimal } from "decimal.js";
 import { Company } from "../../company/base/Company";
@@ -65,11 +66,11 @@ class Cost {
 
   @ApiProperty({
     required: true,
-    type: String,
+    type: Number,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsInt()
+  @Field(() => Number)
+  id!: number;
 
   @ApiProperty({
     required: true,
