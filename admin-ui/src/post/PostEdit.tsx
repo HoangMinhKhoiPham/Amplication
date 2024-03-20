@@ -3,6 +3,7 @@ import {
   Edit,
   SimpleForm,
   EditProps,
+  TextInput,
   ReferenceInput,
   SelectInput,
 } from "react-admin";
@@ -13,6 +14,7 @@ export const PostEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <TextInput label="content" multiline source="content" />
         <ReferenceInput source="forum.id" reference="Forum" label="forum">
           <SelectInput optionText={ForumTitle} />
         </ReferenceInput>

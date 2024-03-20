@@ -71,7 +71,7 @@ class CompanyWhereInput {
   @Field(() => ForumListRelationFilter, {
     nullable: true,
   })
-  Forums?: ForumListRelationFilter;
+  forums?: ForumListRelationFilter;
 
   @ApiProperty({
     required: false,

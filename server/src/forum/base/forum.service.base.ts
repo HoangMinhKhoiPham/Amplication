@@ -64,11 +64,11 @@ export class ForumServiceBase {
       .posts(args);
   }
 
-  async getCompanies(parentId: string): Promise<Company | null> {
+  async getCompany(parentId: string): Promise<Company | null> {
     return this.prisma.forum
       .findUnique({
         where: { id: parentId },
       })
-      .companies();
+      .company();
   }
 }

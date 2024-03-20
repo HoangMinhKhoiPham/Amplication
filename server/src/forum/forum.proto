@@ -15,39 +15,45 @@ rpc disconnectForum (PostParams) returns (Post) {}
 message ForumCreateInput {
 string createdAt = 1;
 string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+string name = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message Forum {
 string createdAt = 1;
 string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+string name = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message ForumWhereUniqueInput {
 string createdAt = 1;
 string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+string name = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message ForumUpdateInput {
 string createdAt = 1;
 string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+string name = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message findManyParams {
 
 };
 message Post {
-string createdAt = 1;
-string id = 2;
-string updatedAt = 3;
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
 };
 message PostWhereUniqueInput {
-string createdAt = 1;
-string id = 2;
-string updatedAt = 3;
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
 };
 message PostParams {
 ForumWhereUniqueInput forumWhereUniqueInput = 1;

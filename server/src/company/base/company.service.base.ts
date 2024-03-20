@@ -98,7 +98,7 @@ export class CompanyServiceBase {
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .Forums(args);
+      .forums(args);
   }
 
   async findProperties(

@@ -68,7 +68,7 @@ class CompanyUpdateInput {
   @Field(() => ForumUpdateManyWithoutCompaniesInput, {
     nullable: true,
   })
-  Forums?: ForumUpdateManyWithoutCompaniesInput;
+  forums?: ForumUpdateManyWithoutCompaniesInput;
 
   @ApiProperty({
     required: false,

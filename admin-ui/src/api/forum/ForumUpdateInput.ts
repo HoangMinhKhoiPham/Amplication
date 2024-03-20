@@ -2,6 +2,7 @@ import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { PostUpdateManyWithoutForumsInput } from "./PostUpdateManyWithoutForumsInput";
 
 export type ForumUpdateInput = {
-  companies?: CompanyWhereUniqueInput | null;
+  company?: CompanyWhereUniqueInput | null;
+  name?: string;
   posts?: PostUpdateManyWithoutForumsInput;
 };

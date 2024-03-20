@@ -29,7 +29,7 @@ class ForumWhereInput {
   @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companies?: CompanyWhereUniqueInput;
+  company?: CompanyWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -41,6 +41,17 @@ class ForumWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  name?: StringFilter;
 
   @ApiProperty({
     required: false,

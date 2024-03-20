@@ -505,7 +505,7 @@ export class CompanyControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/Forums")
+  @common.Get("/:id/forums")
   @ApiNestedQuery(ForumFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "Forum",
@@ -520,7 +520,7 @@ export class CompanyControllerBase {
     const results = await this.service.findForums(params.id, {
       ...query,
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -528,6 +528,7 @@ export class CompanyControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -540,13 +541,13 @@ export class CompanyControllerBase {
   }
 
   @Public()
-  @common.Post("/:id/Forums")
+  @common.Post("/:id/forums")
   async connectForums(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: ForumWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      Forums: {
+      forums: {
         connect: body,
       },
     };
@@ -558,13 +559,13 @@ export class CompanyControllerBase {
   }
 
   @Public()
-  @common.Patch("/:id/Forums")
+  @common.Patch("/:id/forums")
   async updateForums(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: ForumWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      Forums: {
+      forums: {
         set: body,
       },
     };
@@ -575,7 +576,7 @@ export class CompanyControllerBase {
     });
   }
 
-  @common.Delete("/:id/Forums")
+  @common.Delete("/:id/forums")
   @nestAccessControl.UseRoles({
     resource: "Company",
     action: "update",
@@ -586,7 +587,7 @@ export class CompanyControllerBase {
     @common.Body() body: ForumWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      Forums: {
+      forums: {
         disconnect: body,
       },
     };
