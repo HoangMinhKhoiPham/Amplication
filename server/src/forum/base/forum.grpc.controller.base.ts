@@ -36,8 +36,22 @@ export class ForumGrpcControllerBase {
   @GrpcMethod("ForumService", "createForum")
   async createForum(@common.Body() data: ForumCreateInput): Promise<Forum> {
     return await this.service.createForum({
-      data: data,
+      data: {
+        ...data,
+
+        companies: data.companies
+          ? {
+              connect: data.companies,
+            }
+          : undefined,
+      },
       select: {
+        companies: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -54,6 +68,12 @@ export class ForumGrpcControllerBase {
     return this.service.forums({
       ...args,
       select: {
+        companies: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -71,6 +91,12 @@ export class ForumGrpcControllerBase {
     const result = await this.service.forum({
       where: params,
       select: {
+        companies: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -95,8 +121,22 @@ export class ForumGrpcControllerBase {
     try {
       return await this.service.updateForum({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          companies: data.companies
+            ? {
+                connect: data.companies,
+              }
+            : undefined,
+        },
         select: {
+          companies: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
           updatedAt: true,
@@ -123,6 +163,12 @@ export class ForumGrpcControllerBase {
       return await this.service.deleteForum({
         where: params,
         select: {
+          companies: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           id: true,
           updatedAt: true,

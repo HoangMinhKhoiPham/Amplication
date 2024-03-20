@@ -4,20 +4,28 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  DateField,
+  ReferenceField,
   TextField,
+  DateField,
   ReferenceManyField,
   Datagrid,
-  ReferenceField,
 } from "react-admin";
 
 import { FORUM_TITLE_FIELD } from "./ForumTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
+import { COMPANY_TITLE_FIELD } from "../company/CompanyTitle";
 
 export const ForumShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <ReferenceField
+          label="Companies"
+          source="company.id"
+          reference="Company"
+        >
+          <TextField source={COMPANY_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <DateField source="updatedAt" label="Updated At" />
