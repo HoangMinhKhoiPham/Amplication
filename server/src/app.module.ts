@@ -18,6 +18,7 @@ import { CommonFacilityModule } from "./commonFacility/commonFacility.module";
 import { ReservationModule } from "./reservation/reservation.module";
 import { RequestModule } from "./request/request.module";
 import { NotificationModule } from "./notification/notification.module";
+import { CostModule } from "./cost/cost.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -55,6 +56,7 @@ import { AuthModule } from "./auth/auth.module";
     ReservationModule,
     RequestModule,
     NotificationModule,
+    CostModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

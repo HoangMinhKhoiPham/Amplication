@@ -11,6 +11,10 @@ rpc findManyCompany (CompanyWhereUniqueInput) returns (stream CompanyEmployee) {
 rpc updateCompany (CompanyEmployeeParams) returns (stream CompanyEmployee) {}
 rpc connectCompany (CompanyEmployeeParams) returns (CompanyEmployee) {}
 rpc disconnectCompany (CompanyEmployeeParams) returns (CompanyEmployee) {}
+rpc findManyCompany (CompanyWhereUniqueInput) returns (stream Cost) {}
+rpc updateCompany (CostParams) returns (stream Cost) {}
+rpc connectCompany (CostParams) returns (Cost) {}
+rpc disconnectCompany (CostParams) returns (Cost) {}
 rpc findManyCompany (CompanyWhereUniqueInput) returns (stream File) {}
 rpc updateCompany (FileParams) returns (stream File) {}
 rpc connectCompany (FileParams) returns (File) {}
@@ -30,47 +34,51 @@ rpc disconnectCompany (RequestParams) returns (Request) {}
  }
 message CompanyCreateInput {
 repeated CompanyEmployee companyEmployees = 1;
-string createdAt = 2;
-repeated File file = 3;
-repeated Forum Forums = 4;
-int32 id = 5;
-string name = 6;
-repeated Property properties = 7;
-repeated Request requests = 8;
-string updatedAt = 9;
+repeated Cost costs = 2;
+string createdAt = 3;
+repeated File file = 4;
+repeated Forum Forums = 5;
+int32 id = 6;
+string name = 7;
+repeated Property properties = 8;
+repeated Request requests = 9;
+string updatedAt = 10;
 };
 message Company {
 repeated CompanyEmployee companyEmployees = 1;
-string createdAt = 2;
-repeated File file = 3;
-repeated Forum Forums = 4;
-int32 id = 5;
-string name = 6;
-repeated Property properties = 7;
-repeated Request requests = 8;
-string updatedAt = 9;
+repeated Cost costs = 2;
+string createdAt = 3;
+repeated File file = 4;
+repeated Forum Forums = 5;
+int32 id = 6;
+string name = 7;
+repeated Property properties = 8;
+repeated Request requests = 9;
+string updatedAt = 10;
 };
 message CompanyWhereUniqueInput {
 repeated CompanyEmployee companyEmployees = 1;
-string createdAt = 2;
-repeated File file = 3;
-repeated Forum Forums = 4;
-int32 id = 5;
-string name = 6;
-repeated Property properties = 7;
-repeated Request requests = 8;
-string updatedAt = 9;
+repeated Cost costs = 2;
+string createdAt = 3;
+repeated File file = 4;
+repeated Forum Forums = 5;
+int32 id = 6;
+string name = 7;
+repeated Property properties = 8;
+repeated Request requests = 9;
+string updatedAt = 10;
 };
 message CompanyUpdateInput {
 repeated CompanyEmployee companyEmployees = 1;
-string createdAt = 2;
-repeated File file = 3;
-repeated Forum Forums = 4;
-int32 id = 5;
-string name = 6;
-repeated Property properties = 7;
-repeated Request requests = 8;
-string updatedAt = 9;
+repeated Cost costs = 2;
+string createdAt = 3;
+repeated File file = 4;
+repeated Forum Forums = 5;
+int32 id = 6;
+string name = 7;
+repeated Property properties = 8;
+repeated Request requests = 9;
+string updatedAt = 10;
 };
 message findManyParams {
 
@@ -84,6 +92,24 @@ int32 id = 1;
 message CompanyEmployeeParams {
 CompanyWhereUniqueInput companyWhereUniqueInput = 1;
 CompanyEmployeeWhereUniqueInput companyemployeeWhereUniqueInput = 2;
+};
+message Cost {
+int32 amount = 1;
+string costName = 2;
+string createdAt = 3;
+int32 id = 4;
+string updatedAt = 5;
+};
+message CostWhereUniqueInput {
+int32 amount = 1;
+string costName = 2;
+string createdAt = 3;
+int32 id = 4;
+string updatedAt = 5;
+};
+message CostParams {
+CompanyWhereUniqueInput companyWhereUniqueInput = 1;
+CostWhereUniqueInput costWhereUniqueInput = 2;
 };
 message File {
 string bucket = 1;

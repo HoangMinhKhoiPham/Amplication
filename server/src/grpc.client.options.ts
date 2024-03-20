@@ -23,7 +23,8 @@ export const grpcClientOptions: ClientOptions = {
       "commonfacility",
       "reservation",
       "request",
-      "notification"
+      "notification",
+      "cost"
     ],
     protoPath: [
       "src/user/user.proto",
@@ -42,7 +43,8 @@ export const grpcClientOptions: ClientOptions = {
       "src/commonfacility/commonfacility.proto",
       "src/reservation/reservation.proto",
       "src/request/request.proto",
-      "src/notification/notification.proto"
+      "src/notification/notification.proto",
+      "src/cost/cost.proto"
     ],
     url: configService.get<string>("GRPC_CLIENT_URL_PATH"),
   },

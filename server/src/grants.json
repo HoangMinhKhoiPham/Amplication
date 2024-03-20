@@ -3382,5 +3382,245 @@
     "resource": "Notification",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Cost",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Cost",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Cost",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Cost",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "Admin",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "condoOwner",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "financialManager",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "operator",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "PublicUser",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "rental",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "test",
+    "resource": "Cost",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]

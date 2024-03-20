@@ -1,4 +1,5 @@
 import { CompanyEmployeeListRelationFilter } from "../companyEmployee/CompanyEmployeeListRelationFilter";
+import { CostListRelationFilter } from "../cost/CostListRelationFilter";
 import { FileListRelationFilter } from "../file/FileListRelationFilter";
 import { ForumListRelationFilter } from "../forum/ForumListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
@@ -9,6 +10,7 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 export type CompanyWhereInput = {
   companyEmployees?: CompanyEmployeeListRelationFilter;
+  costs?: CostListRelationFilter;
   file?: FileListRelationFilter;
   Forums?: ForumListRelationFilter;
   id?: IntFilter;
