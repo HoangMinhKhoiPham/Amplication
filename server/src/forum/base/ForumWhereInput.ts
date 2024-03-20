@@ -11,13 +11,26 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
+import { CompanyListRelationFilter } from "../../company/base/CompanyListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
 import { PostListRelationFilter } from "../../post/base/PostListRelationFilter";
 
 @InputType()
 class ForumWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => CompanyListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CompanyListRelationFilter)
+  @IsOptional()
+  @Field(() => CompanyListRelationFilter, {
+    nullable: true,
+  })
+  companies?: CompanyListRelationFilter;
+
   @ApiProperty({
     required: false,
     type: StringFilter,

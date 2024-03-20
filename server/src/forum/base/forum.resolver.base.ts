@@ -26,6 +26,8 @@ import { ForumFindUniqueArgs } from "./ForumFindUniqueArgs";
 import { CreateForumArgs } from "./CreateForumArgs";
 import { UpdateForumArgs } from "./UpdateForumArgs";
 import { DeleteForumArgs } from "./DeleteForumArgs";
+import { CompanyFindManyArgs } from "../../company/base/CompanyFindManyArgs";
+import { Company } from "../../company/base/Company";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { Post } from "../../post/base/Post";
 import { ForumService } from "../forum.service";
@@ -138,6 +140,26 @@ export class ForumResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Company], { name: "companies" })
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "read",
+    possession: "any",
+  })
+  async findCompanies(
+    @graphql.Parent() parent: Forum,
+    @graphql.Args() args: CompanyFindManyArgs
+  ): Promise<Company[]> {
+    const results = await this.service.findCompanies(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

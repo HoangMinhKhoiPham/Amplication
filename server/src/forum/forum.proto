@@ -7,37 +7,61 @@ rpc forums (findManyParams) returns (stream Forum) {}
 rpc forum (ForumWhereUniqueInput) returns (Forum) {}
 rpc updateForum (ForumUpdateInput) returns (Forum) {}
 rpc deleteForum (ForumWhereUniqueInput) returns (Forum) {}
+rpc findManyForums (ForumWhereUniqueInput) returns (stream Company) {}
+rpc updateForums (CompanyParams) returns (stream Company) {}
+rpc connectForums (CompanyParams) returns (Company) {}
+rpc disconnectForums (CompanyParams) returns (Company) {}
 rpc findManyForum (ForumWhereUniqueInput) returns (stream Post) {}
 rpc updateForum (PostParams) returns (stream Post) {}
 rpc connectForum (PostParams) returns (Post) {}
 rpc disconnectForum (PostParams) returns (Post) {} 
  }
 message ForumCreateInput {
-string createdAt = 1;
-string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+repeated Company companies = 1;
+string createdAt = 2;
+string id = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message Forum {
-string createdAt = 1;
-string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+repeated Company companies = 1;
+string createdAt = 2;
+string id = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message ForumWhereUniqueInput {
-string createdAt = 1;
-string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+repeated Company companies = 1;
+string createdAt = 2;
+string id = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message ForumUpdateInput {
-string createdAt = 1;
-string id = 2;
-repeated Post posts = 3;
-string updatedAt = 4;
+repeated Company companies = 1;
+string createdAt = 2;
+string id = 3;
+repeated Post posts = 4;
+string updatedAt = 5;
 };
 message findManyParams {
 
+};
+message Company {
+string createdAt = 1;
+int32 id = 2;
+string name = 3;
+string updatedAt = 4;
+};
+message CompanyWhereUniqueInput {
+string createdAt = 1;
+int32 id = 2;
+string name = 3;
+string updatedAt = 4;
+};
+message CompanyParams {
+ForumWhereUniqueInput forumWhereUniqueInput = 1;
+CompanyWhereUniqueInput companyWhereUniqueInput = 2;
 };
 message Post {
 string createdAt = 1;

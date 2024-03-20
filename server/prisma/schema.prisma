@@ -87,6 +87,7 @@ model Company {
   companyEmployees CompanyEmployee[]
   createdAt        DateTime          @default(now())
   file             File[]
+  Forums           Forum[]
   id               Int               @id @default(autoincrement())
   name             String
   properties       Property[]
@@ -145,10 +146,11 @@ model UserCondo {
 }
 
 model Forum {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  companies Company[]
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
   posts     Post[]
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime  @updatedAt
 }
 
 model Post {

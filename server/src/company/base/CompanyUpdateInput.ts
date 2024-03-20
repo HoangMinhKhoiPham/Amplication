@@ -15,6 +15,7 @@ import { CompanyEmployeeUpdateManyWithoutCompaniesInput } from "./CompanyEmploye
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { FileUpdateManyWithoutCompaniesInput } from "./FileUpdateManyWithoutCompaniesInput";
+import { ForumUpdateManyWithoutCompaniesInput } from "./ForumUpdateManyWithoutCompaniesInput";
 import { PropertyUpdateManyWithoutCompaniesInput } from "./PropertyUpdateManyWithoutCompaniesInput";
 import { RequestUpdateManyWithoutCompaniesInput } from "./RequestUpdateManyWithoutCompaniesInput";
 
@@ -43,6 +44,18 @@ class CompanyUpdateInput {
     nullable: true,
   })
   file?: FileUpdateManyWithoutCompaniesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ForumUpdateManyWithoutCompaniesInput,
+  })
+  @ValidateNested()
+  @Type(() => ForumUpdateManyWithoutCompaniesInput)
+  @IsOptional()
+  @Field(() => ForumUpdateManyWithoutCompaniesInput, {
+    nullable: true,
+  })
+  Forums?: ForumUpdateManyWithoutCompaniesInput;
 
   @ApiProperty({
     required: false,

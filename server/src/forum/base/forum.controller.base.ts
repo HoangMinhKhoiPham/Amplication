@@ -28,6 +28,9 @@ import { Post } from "../../post/base/Post";
 import { ForumFindManyArgs } from "./ForumFindManyArgs";
 import { ForumWhereUniqueInput } from "./ForumWhereUniqueInput";
 import { ForumUpdateInput } from "./ForumUpdateInput";
+import { CompanyFindManyArgs } from "../../company/base/CompanyFindManyArgs";
+import { Company } from "../../company/base/Company";
+import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { PostWhereUniqueInput } from "../../post/base/PostWhereUniqueInput";
 
@@ -182,6 +185,102 @@ export class ForumControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/companies")
+  @ApiNestedQuery(CompanyFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "read",
+    possession: "any",
+  })
+  async findCompanies(
+    @common.Req() request: Request,
+    @common.Param() params: ForumWhereUniqueInput
+  ): Promise<Company[]> {
+    const query = plainToClass(CompanyFindManyArgs, request.query);
+    const results = await this.service.findCompanies(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        id: true,
+        name: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/companies")
+  @nestAccessControl.UseRoles({
+    resource: "Forum",
+    action: "update",
+    possession: "any",
+  })
+  async connectCompanies(
+    @common.Param() params: ForumWhereUniqueInput,
+    @common.Body() body: CompanyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      companies: {
+        connect: body,
+      },
+    };
+    await this.service.updateForum({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/companies")
+  @nestAccessControl.UseRoles({
+    resource: "Forum",
+    action: "update",
+    possession: "any",
+  })
+  async updateCompanies(
+    @common.Param() params: ForumWhereUniqueInput,
+    @common.Body() body: CompanyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      companies: {
+        set: body,
+      },
+    };
+    await this.service.updateForum({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/companies")
+  @nestAccessControl.UseRoles({
+    resource: "Forum",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectCompanies(
+    @common.Param() params: ForumWhereUniqueInput,
+    @common.Body() body: CompanyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      companies: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateForum({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

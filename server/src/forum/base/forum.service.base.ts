@@ -14,6 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Forum, // @ts-ignore
+  Company, // @ts-ignore
   Post,
 } from "@prisma/client";
 
@@ -50,6 +51,17 @@ export class ForumServiceBase {
     args: Prisma.SelectSubset<T, Prisma.ForumDeleteArgs>
   ): Promise<Forum> {
     return this.prisma.forum.delete(args);
+  }
+
+  async findCompanies(
+    parentId: string,
+    args: Prisma.CompanyFindManyArgs
+  ): Promise<Company[]> {
+    return this.prisma.forum
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .companies(args);
   }
 
   async findPosts(
