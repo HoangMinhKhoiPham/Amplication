@@ -1,7 +1,7 @@
-import { CompanyUpdateManyWithoutForumsInput } from "./CompanyUpdateManyWithoutForumsInput";
+import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { PostUpdateManyWithoutForumsInput } from "./PostUpdateManyWithoutForumsInput";
 
 export type ForumUpdateInput = {
-  companies?: CompanyUpdateManyWithoutForumsInput;
+  companies?: CompanyWhereUniqueInput | null;
   posts?: PostUpdateManyWithoutForumsInput;
 };

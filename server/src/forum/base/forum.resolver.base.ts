@@ -26,10 +26,9 @@ import { ForumFindUniqueArgs } from "./ForumFindUniqueArgs";
 import { CreateForumArgs } from "./CreateForumArgs";
 import { UpdateForumArgs } from "./UpdateForumArgs";
 import { DeleteForumArgs } from "./DeleteForumArgs";
-import { CompanyFindManyArgs } from "../../company/base/CompanyFindManyArgs";
-import { Company } from "../../company/base/Company";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { Post } from "../../post/base/Post";
+import { Company } from "../../company/base/Company";
 import { ForumService } from "../forum.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Forum)
@@ -92,7 +91,15 @@ export class ForumResolverBase {
   async createForum(@graphql.Args() args: CreateForumArgs): Promise<Forum> {
     return await this.service.createForum({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        companies: args.data.companies
+          ? {
+              connect: args.data.companies,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -109,7 +116,15 @@ export class ForumResolverBase {
     try {
       return await this.service.updateForum({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          companies: args.data.companies
+            ? {
+                connect: args.data.companies,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -143,26 +158,6 @@ export class ForumResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Company], { name: "companies" })
-  @nestAccessControl.UseRoles({
-    resource: "Company",
-    action: "read",
-    possession: "any",
-  })
-  async findCompanies(
-    @graphql.Parent() parent: Forum,
-    @graphql.Args() args: CompanyFindManyArgs
-  ): Promise<Company[]> {
-    const results = await this.service.findCompanies(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => [Post], { name: "posts" })
   @nestAccessControl.UseRoles({
     resource: "Post",
@@ -180,5 +175,24 @@ export class ForumResolverBase {
     }
 
     return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Company, {
+    nullable: true,
+    name: "companies",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "read",
+    possession: "any",
+  })
+  async getCompanies(@graphql.Parent() parent: Forum): Promise<Company | null> {
+    const result = await this.service.getCompanies(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }

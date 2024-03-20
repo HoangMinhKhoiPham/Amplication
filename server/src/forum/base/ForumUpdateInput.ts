@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { CompanyUpdateManyWithoutForumsInput } from "./CompanyUpdateManyWithoutForumsInput";
+import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { PostUpdateManyWithoutForumsInput } from "./PostUpdateManyWithoutForumsInput";
@@ -20,15 +20,15 @@ import { PostUpdateManyWithoutForumsInput } from "./PostUpdateManyWithoutForumsI
 class ForumUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => CompanyUpdateManyWithoutForumsInput,
+    type: () => CompanyWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => CompanyUpdateManyWithoutForumsInput)
+  @Type(() => CompanyWhereUniqueInput)
   @IsOptional()
-  @Field(() => CompanyUpdateManyWithoutForumsInput, {
+  @Field(() => CompanyWhereUniqueInput, {
     nullable: true,
   })
-  companies?: CompanyUpdateManyWithoutForumsInput;
+  companies?: CompanyWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

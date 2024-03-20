@@ -1,9 +1,9 @@
-import { CompanyListRelationFilter } from "../company/CompanyListRelationFilter";
+import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { PostListRelationFilter } from "../post/PostListRelationFilter";
 
 export type ForumWhereInput = {
-  companies?: CompanyListRelationFilter;
+  companies?: CompanyWhereUniqueInput;
   id?: StringFilter;
   posts?: PostListRelationFilter;
 };

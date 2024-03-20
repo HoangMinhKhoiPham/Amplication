@@ -1,7 +1,7 @@
-import { CompanyCreateNestedManyWithoutForumsInput } from "./CompanyCreateNestedManyWithoutForumsInput";
+import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { PostCreateNestedManyWithoutForumsInput } from "./PostCreateNestedManyWithoutForumsInput";
 
 export type ForumCreateInput = {
-  companies?: CompanyCreateNestedManyWithoutForumsInput;
+  companies?: CompanyWhereUniqueInput | null;
   posts?: PostCreateNestedManyWithoutForumsInput;
 };

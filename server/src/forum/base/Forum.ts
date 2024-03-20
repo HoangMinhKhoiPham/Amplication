@@ -20,12 +20,12 @@ import { Post } from "../../post/base/Post";
 class Forum {
   @ApiProperty({
     required: false,
-    type: () => [Company],
+    type: () => Company,
   })
   @ValidateNested()
   @Type(() => Company)
   @IsOptional()
-  companies?: Array<Company>;
+  companies?: Company | null;
 
   @ApiProperty({
     required: true,

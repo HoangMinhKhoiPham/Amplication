@@ -421,6 +421,12 @@ export class CompanyControllerBase {
     const results = await this.service.findForums(params.id, {
       ...query,
       select: {
+        companies: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         id: true,
         updatedAt: true,

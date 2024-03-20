@@ -14,8 +14,8 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Forum, // @ts-ignore
-  Company, // @ts-ignore
-  Post,
+  Post, // @ts-ignore
+  Company,
 } from "@prisma/client";
 
 export class ForumServiceBase {
@@ -53,17 +53,6 @@ export class ForumServiceBase {
     return this.prisma.forum.delete(args);
   }
 
-  async findCompanies(
-    parentId: string,
-    args: Prisma.CompanyFindManyArgs
-  ): Promise<Company[]> {
-    return this.prisma.forum
-      .findUniqueOrThrow({
-        where: { id: parentId },
-      })
-      .companies(args);
-  }
-
   async findPosts(
     parentId: string,
     args: Prisma.PostFindManyArgs
@@ -73,5 +62,13 @@ export class ForumServiceBase {
         where: { id: parentId },
       })
       .posts(args);
+  }
+
+  async getCompanies(parentId: string): Promise<Company | null> {
+    return this.prisma.forum
+      .findUnique({
+        where: { id: parentId },
+      })
+      .companies();
   }
 }

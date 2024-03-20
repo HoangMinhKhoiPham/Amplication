@@ -146,11 +146,12 @@ model UserCondo {
 }
 
 model Forum {
-  companies Company[]
-  createdAt DateTime  @default(now())
-  id        String    @id @default(cuid())
+  companies Company? @relation(fields: [companyID], references: [id])
+  companyID Int?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
   posts     Post[]
-  updatedAt DateTime  @updatedAt
+  updatedAt DateTime @updatedAt
 }
 
 model Post {

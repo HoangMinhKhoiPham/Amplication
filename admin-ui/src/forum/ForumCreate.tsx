@@ -1,11 +1,15 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
   CreateProps,
+  ReferenceInput,
+  SelectInput,
   ReferenceArrayInput,
   SelectArrayInput,
 } from "react-admin";
+
 import { CompanyTitle } from "../company/CompanyTitle";
 import { PostTitle } from "../post/PostTitle";
 
@@ -13,14 +17,13 @@ export const ForumCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <ReferenceArrayInput
-          source="companies"
+        <ReferenceInput
+          source="companies.id"
           reference="Company"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
+          label="Companies"
         >
-          <SelectArrayInput optionText={CompanyTitle} />
-        </ReferenceArrayInput>
+          <SelectInput optionText={CompanyTitle} />
+        </ReferenceInput>
         <ReferenceArrayInput
           source="posts"
           reference="Post"
