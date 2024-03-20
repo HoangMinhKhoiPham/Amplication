@@ -20,6 +20,7 @@ import {
   IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { Cost } from "../../cost/base/Cost";
 import { File } from "../../file/base/File";
 import { Forum } from "../../forum/base/Forum";
 import { Property } from "../../property/base/Property";
@@ -35,6 +36,15 @@ class Company {
   @Type(() => CompanyEmployee)
   @IsOptional()
   companyEmployees?: Array<CompanyEmployee>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Cost],
+  })
+  @ValidateNested()
+  @Type(() => Cost)
+  @IsOptional()
+  costs?: Array<Cost>;
 
   @ApiProperty({
     required: true,

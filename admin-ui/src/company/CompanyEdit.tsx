@@ -10,6 +10,7 @@ import {
 } from "react-admin";
 
 import { CompanyEmployeeTitle } from "../companyEmployee/CompanyEmployeeTitle";
+import { CostTitle } from "../cost/CostTitle";
 import { FileTitle } from "../file/FileTitle";
 import { ForumTitle } from "../forum/ForumTitle";
 import { PropertyTitle } from "../property/PropertyTitle";
@@ -26,6 +27,14 @@ export const CompanyEdit = (props: EditProps): React.ReactElement => {
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
           <SelectArrayInput optionText={CompanyEmployeeTitle} />
+        </ReferenceArrayInput>
+        <ReferenceArrayInput
+          source="costs"
+          reference="Cost"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CostTitle} />
         </ReferenceArrayInput>
         <ReferenceArrayInput
           source="file"

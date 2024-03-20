@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CompanyEmployeeCreateNestedManyWithoutCompaniesInput } from "./CompanyEmployeeCreateNestedManyWithoutCompaniesInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { CostCreateNestedManyWithoutCompaniesInput } from "./CostCreateNestedManyWithoutCompaniesInput";
 import { FileCreateNestedManyWithoutCompaniesInput } from "./FileCreateNestedManyWithoutCompaniesInput";
 import { ForumCreateNestedManyWithoutCompaniesInput } from "./ForumCreateNestedManyWithoutCompaniesInput";
 import { PropertyCreateNestedManyWithoutCompaniesInput } from "./PropertyCreateNestedManyWithoutCompaniesInput";
@@ -32,6 +33,18 @@ class CompanyCreateInput {
     nullable: true,
   })
   companyEmployees?: CompanyEmployeeCreateNestedManyWithoutCompaniesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => CostCreateNestedManyWithoutCompaniesInput,
+  })
+  @ValidateNested()
+  @Type(() => CostCreateNestedManyWithoutCompaniesInput)
+  @IsOptional()
+  @Field(() => CostCreateNestedManyWithoutCompaniesInput, {
+    nullable: true,
+  })
+  costs?: CostCreateNestedManyWithoutCompaniesInput;
 
   @ApiProperty({
     required: false,

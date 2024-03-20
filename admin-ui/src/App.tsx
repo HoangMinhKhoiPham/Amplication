@@ -73,6 +73,10 @@ import { NotificationList } from "./notification/NotificationList";
 import { NotificationCreate } from "./notification/NotificationCreate";
 import { NotificationEdit } from "./notification/NotificationEdit";
 import { NotificationShow } from "./notification/NotificationShow";
+import { CostList } from "./cost/CostList";
+import { CostCreate } from "./cost/CostCreate";
+import { CostEdit } from "./cost/CostEdit";
+import { CostShow } from "./cost/CostShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -217,6 +221,13 @@ const App = (): React.ReactElement => {
           edit={NotificationEdit}
           create={NotificationCreate}
           show={NotificationShow}
+        />
+        <Resource
+          name="Cost"
+          list={CostList}
+          edit={CostEdit}
+          create={CostCreate}
+          show={CostShow}
         />
       </Admin>
     </div>

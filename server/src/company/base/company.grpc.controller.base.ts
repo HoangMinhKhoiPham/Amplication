@@ -30,6 +30,9 @@ import { Post } from "../../post/base/Post";
 import { CompanyEmployeeFindManyArgs } from "../../companyEmployee/base/CompanyEmployeeFindManyArgs";
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
 import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
+import { CostFindManyArgs } from "../../cost/base/CostFindManyArgs";
+import { Cost } from "../../cost/base/Cost";
+import { CostWhereUniqueInput } from "../../cost/base/CostWhereUniqueInput";
 import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
 import { File } from "../../file/base/File";
 import { FileWhereUniqueInput } from "../../file/base/FileWhereUniqueInput";
@@ -240,6 +243,95 @@ export class CompanyGrpcControllerBase {
   ): Promise<void> {
     const data = {
       companyEmployees: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Get("/:id/costs")
+  @ApiNestedQuery(CostFindManyArgs)
+  @GrpcMethod("CompanyService", "findManyCosts")
+  async findManyCosts(
+    @common.Req() request: Request,
+    @common.Param() params: CompanyWhereUniqueInput
+  ): Promise<Cost[]> {
+    const query = plainToClass(CostFindManyArgs, request.query);
+    const results = await this.service.findCosts(params.id, {
+      ...query,
+      select: {
+        amount: true,
+
+        company: {
+          select: {
+            id: true,
+          },
+        },
+
+        costName: true,
+        createdAt: true,
+        id: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @Public()
+  @common.Post("/:id/costs")
+  @GrpcMethod("CompanyService", "connectCosts")
+  async connectCosts(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: CostWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      costs: {
+        connect: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Patch("/:id/costs")
+  @GrpcMethod("CompanyService", "updateCosts")
+  async updateCosts(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: CostWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      costs: {
+        set: body,
+      },
+    };
+    await this.service.updateCompany({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/costs")
+  @GrpcMethod("CompanyService", "disconnectCosts")
+  async disconnectCosts(
+    @common.Param() params: CompanyWhereUniqueInput,
+    @common.Body() body: CostWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      costs: {
         disconnect: body,
       },
     };

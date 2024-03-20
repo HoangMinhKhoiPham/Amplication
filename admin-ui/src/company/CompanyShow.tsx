@@ -44,6 +44,22 @@ export const CompanyShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
+        <ReferenceManyField reference="Cost" target="companyID" label="Costs">
+          <Datagrid rowClick="show">
+            <TextField label="amount" source="amount" />
+            <ReferenceField
+              label="Company"
+              source="company.id"
+              reference="Company"
+            >
+              <TextField source={COMPANY_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="costName" source="costName" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
         <ReferenceManyField reference="File" target="companyID" label="Files">
           <Datagrid rowClick="show">
             <TextField label="bucket" source="bucket" />
