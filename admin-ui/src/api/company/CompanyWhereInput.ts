@@ -12,7 +12,7 @@ export type CompanyWhereInput = {
   companyEmployees?: CompanyEmployeeListRelationFilter;
   costs?: CostListRelationFilter;
   file?: FileListRelationFilter;
-  Forums?: ForumListRelationFilter;
+  forums?: ForumListRelationFilter;
   id?: IntFilter;
   name?: StringFilter;
   properties?: PropertyListRelationFilter;

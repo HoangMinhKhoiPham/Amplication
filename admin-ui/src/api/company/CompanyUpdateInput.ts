@@ -9,7 +9,7 @@ export type CompanyUpdateInput = {
   companyEmployees?: CompanyEmployeeUpdateManyWithoutCompaniesInput;
   costs?: CostUpdateManyWithoutCompaniesInput;
   file?: FileUpdateManyWithoutCompaniesInput;
-  Forums?: ForumUpdateManyWithoutCompaniesInput;
+  forums?: ForumUpdateManyWithoutCompaniesInput;
   name?: string;
   properties?: PropertyUpdateManyWithoutCompaniesInput;
   requests?: RequestUpdateManyWithoutCompaniesInput;

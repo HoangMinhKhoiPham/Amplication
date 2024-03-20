@@ -6,6 +6,7 @@ import {
   EditProps,
   ReferenceInput,
   SelectInput,
+  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
 } from "react-admin";
@@ -17,13 +18,10 @@ export const ForumEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <ReferenceInput
-          source="companies.id"
-          reference="Company"
-          label="Companies"
-        >
+        <ReferenceInput source="company.id" reference="Company" label="Company">
           <SelectInput optionText={CompanyTitle} />
         </ReferenceInput>
+        <TextInput label="name" source="name" />
         <ReferenceArrayInput
           source="posts"
           reference="Post"

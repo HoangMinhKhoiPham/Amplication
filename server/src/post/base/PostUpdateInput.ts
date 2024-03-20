@@ -11,13 +11,24 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsString, IsOptional, ValidateNested } from "class-validator";
 import { ForumWhereUniqueInput } from "../../forum/base/ForumWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class PostUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  content?: string | null;
+
   @ApiProperty({
     required: false,
     type: () => ForumWhereUniqueInput,

@@ -9,7 +9,7 @@ export type CompanyCreateInput = {
   companyEmployees?: CompanyEmployeeCreateNestedManyWithoutCompaniesInput;
   costs?: CostCreateNestedManyWithoutCompaniesInput;
   file?: FileCreateNestedManyWithoutCompaniesInput;
-  Forums?: ForumCreateNestedManyWithoutCompaniesInput;
+  forums?: ForumCreateNestedManyWithoutCompaniesInput;
   name: string;
   properties?: PropertyCreateNestedManyWithoutCompaniesInput;
   requests?: RequestCreateNestedManyWithoutCompaniesInput;

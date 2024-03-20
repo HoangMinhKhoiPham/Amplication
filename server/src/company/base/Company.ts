@@ -70,7 +70,7 @@ class Company {
   @ValidateNested()
   @Type(() => Forum)
   @IsOptional()
-  Forums?: Array<Forum>;
+  forums?: Array<Forum>;
 
   @ApiProperty({
     required: true,

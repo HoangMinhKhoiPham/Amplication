@@ -49,6 +49,7 @@ export class PostGrpcControllerBase {
           : undefined,
       },
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -78,6 +79,7 @@ export class PostGrpcControllerBase {
     return this.service.posts({
       ...args,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -108,6 +110,7 @@ export class PostGrpcControllerBase {
     const result = await this.service.post({
       where: params,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -161,6 +164,7 @@ export class PostGrpcControllerBase {
             : undefined,
         },
         select: {
+          content: true,
           createdAt: true,
 
           forum: {
@@ -200,6 +204,7 @@ export class PostGrpcControllerBase {
       return await this.service.deletePost({
         where: params,
         select: {
+          content: true,
           createdAt: true,
 
           forum: {

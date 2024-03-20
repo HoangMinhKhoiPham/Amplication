@@ -68,7 +68,7 @@ class CompanyCreateInput {
   @Field(() => ForumCreateNestedManyWithoutCompaniesInput, {
     nullable: true,
   })
-  Forums?: ForumCreateNestedManyWithoutCompaniesInput;
+  forums?: ForumCreateNestedManyWithoutCompaniesInput;
 
   @ApiProperty({
     required: true,

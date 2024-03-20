@@ -94,9 +94,9 @@ export class ForumResolverBase {
       data: {
         ...args.data,
 
-        companies: args.data.companies
+        company: args.data.company
           ? {
-              connect: args.data.companies,
+              connect: args.data.company,
             }
           : undefined,
       },
@@ -119,9 +119,9 @@ export class ForumResolverBase {
         data: {
           ...args.data,
 
-          companies: args.data.companies
+          company: args.data.company
             ? {
-                connect: args.data.companies,
+                connect: args.data.company,
               }
             : undefined,
         },
@@ -180,15 +180,15 @@ export class ForumResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Company, {
     nullable: true,
-    name: "companies",
+    name: "company",
   })
   @nestAccessControl.UseRoles({
     resource: "Company",
     action: "read",
     possession: "any",
   })
-  async getCompanies(@graphql.Parent() parent: Forum): Promise<Company | null> {
-    const result = await this.service.getCompanies(parent.id);
+  async getCompany(@graphql.Parent() parent: Forum): Promise<Company | null> {
+    const result = await this.service.getCompany(parent.id);
 
     if (!result) {
       return null;

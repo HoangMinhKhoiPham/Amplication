@@ -88,7 +88,7 @@ model Company {
   costs            Cost[]
   createdAt        DateTime          @default(now())
   file             File[]
-  Forums           Forum[]
+  forums           Forum[]
   id               Int               @id @default(autoincrement())
   name             String
   properties       Property[]
@@ -147,15 +147,17 @@ model UserCondo {
 }
 
 model Forum {
-  companies Company? @relation(fields: [companyID], references: [id])
+  company   Company? @relation(fields: [companyID], references: [id])
   companyID Int?
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
+  name      String
   posts     Post[]
   updatedAt DateTime @updatedAt
 }
 
 model Post {
+  content   String?
   createdAt DateTime @default(now())
   forum     Forum?   @relation(fields: [forumID], references: [id])
   forumID   String?
