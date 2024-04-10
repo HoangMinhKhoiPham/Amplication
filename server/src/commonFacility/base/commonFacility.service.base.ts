@@ -13,53 +13,64 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  CommonFacility, // @ts-ignore
-  Reservation,
+  CommonFacility as PrismaCommonFacility,
+  Reservation as PrismaReservation,
+  Property as PrismaProperty,
 } from "@prisma/client";
 
 export class CommonFacilityServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.CommonFacilityCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.CommonFacilityCountArgs>
+  async count(
+    args: Omit<Prisma.CommonFacilityCountArgs, "select">
   ): Promise<number> {
     return this.prisma.commonFacility.count(args);
   }
 
   async commonFacilities<T extends Prisma.CommonFacilityFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.CommonFacilityFindManyArgs>
-  ): Promise<CommonFacility[]> {
-    return this.prisma.commonFacility.findMany(args);
+  ): Promise<PrismaCommonFacility[]> {
+    return this.prisma.commonFacility.findMany<Prisma.CommonFacilityFindManyArgs>(
+      args
+    );
   }
   async commonFacility<T extends Prisma.CommonFacilityFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.CommonFacilityFindUniqueArgs>
-  ): Promise<CommonFacility | null> {
+  ): Promise<PrismaCommonFacility | null> {
     return this.prisma.commonFacility.findUnique(args);
   }
   async createCommonFacility<T extends Prisma.CommonFacilityCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CommonFacilityCreateArgs>
-  ): Promise<CommonFacility> {
+  ): Promise<PrismaCommonFacility> {
     return this.prisma.commonFacility.create<T>(args);
   }
   async updateCommonFacility<T extends Prisma.CommonFacilityUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CommonFacilityUpdateArgs>
-  ): Promise<CommonFacility> {
+  ): Promise<PrismaCommonFacility> {
     return this.prisma.commonFacility.update<T>(args);
   }
   async deleteCommonFacility<T extends Prisma.CommonFacilityDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.CommonFacilityDeleteArgs>
-  ): Promise<CommonFacility> {
+  ): Promise<PrismaCommonFacility> {
     return this.prisma.commonFacility.delete(args);
   }
 
   async findAvailabilities(
     parentId: string,
     args: Prisma.ReservationFindManyArgs
-  ): Promise<Reservation[]> {
+  ): Promise<PrismaReservation[]> {
     return this.prisma.commonFacility
       .findUniqueOrThrow({
         where: { id: parentId },
       })
       .availabilities(args);
+  }
+
+  async getProperty(parentId: string): Promise<PrismaProperty | null> {
+    return this.prisma.commonFacility
+      .findUnique({
+        where: { id: parentId },
+      })
+      .property();
   }
 }

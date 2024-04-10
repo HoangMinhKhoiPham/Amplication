@@ -16,6 +16,8 @@ import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumCommonFacilityFacilityType } from "./EnumCommonFacilityFacilityType";
 import { StringFilter } from "../../util/StringFilter";
+import { PropertyWhereUniqueInput } from "../../property/base/PropertyWhereUniqueInput";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 
 @InputType()
 class CommonFacilityWhereInput {
@@ -52,6 +54,29 @@ class CommonFacilityWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => PropertyWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => PropertyWhereUniqueInput)
+  @IsOptional()
+  @Field(() => PropertyWhereUniqueInput, {
+    nullable: true,
+  })
+  property?: PropertyWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  status?: StringNullableFilter;
 }
 
 export { CommonFacilityWhereInput as CommonFacilityWhereInput };

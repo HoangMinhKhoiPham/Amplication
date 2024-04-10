@@ -97,9 +97,9 @@ export class ReservationResolverBase {
       data: {
         ...args.data,
 
-        commonFacilityID: args.data.commonFacilityID
+        commonFacility: args.data.commonFacility
           ? {
-              connect: args.data.commonFacilityID,
+              connect: args.data.commonFacility,
             }
           : undefined,
 
@@ -128,9 +128,9 @@ export class ReservationResolverBase {
         data: {
           ...args.data,
 
-          commonFacilityID: args.data.commonFacilityID
+          commonFacility: args.data.commonFacility
             ? {
-                connect: args.data.commonFacilityID,
+                connect: args.data.commonFacility,
               }
             : undefined,
 
@@ -175,17 +175,17 @@ export class ReservationResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => CommonFacility, {
     nullable: true,
-    name: "commonFacilityId",
+    name: "commonFacility",
   })
   @nestAccessControl.UseRoles({
     resource: "CommonFacility",
     action: "read",
     possession: "any",
   })
-  async getCommonFacilityId(
+  async getCommonFacility(
     @graphql.Parent() parent: Reservation
   ): Promise<CommonFacility | null> {
-    const result = await this.service.getCommonFacilityId(parent.id);
+    const result = await this.service.getCommonFacility(parent.id);
 
     if (!result) {
       return null;

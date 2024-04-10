@@ -16,9 +16,9 @@ export const ReservationCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="availablity" source="availablity" />
         <ReferenceInput
-          source="commonFacilityID.id"
+          source="commonFacility.id"
           reference="CommonFacility"
-          label="commonFacilityID"
+          label="commonFacility"
         >
           <SelectInput optionText={CommonFacilityTitle} />
         </ReferenceInput>

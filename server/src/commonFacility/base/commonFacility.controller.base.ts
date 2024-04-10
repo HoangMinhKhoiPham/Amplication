@@ -21,10 +21,10 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { CommonFacilityService } from "../commonFacility.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Request } from "../../request/base/Request";
 import { CommonFacilityCreateInput } from "./CommonFacilityCreateInput";
 import { CommonFacility } from "./CommonFacility";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { CommonFacilityFindManyArgs } from "./CommonFacilityFindManyArgs";
 import { CommonFacilityWhereUniqueInput } from "./CommonFacilityWhereUniqueInput";
 import { CommonFacilityUpdateInput } from "./CommonFacilityUpdateInput";
@@ -54,11 +54,27 @@ export class CommonFacilityControllerBase {
     @common.Body() data: CommonFacilityCreateInput
   ): Promise<CommonFacility> {
     return await this.service.createCommonFacility({
-      data: data,
+      data: {
+        ...data,
+
+        property: data.property
+          ? {
+              connect: data.property,
+            }
+          : undefined,
+      },
       select: {
         createdAt: true,
         facilityType: true,
         id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
         updatedAt: true,
       },
     });
@@ -86,6 +102,14 @@ export class CommonFacilityControllerBase {
         createdAt: true,
         facilityType: true,
         id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
         updatedAt: true,
       },
     });
@@ -112,6 +136,14 @@ export class CommonFacilityControllerBase {
         createdAt: true,
         facilityType: true,
         id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
         updatedAt: true,
       },
     });
@@ -142,11 +174,27 @@ export class CommonFacilityControllerBase {
     try {
       return await this.service.updateCommonFacility({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          property: data.property
+            ? {
+                connect: data.property,
+              }
+            : undefined,
+        },
         select: {
           createdAt: true,
           facilityType: true,
           id: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          status: true,
           updatedAt: true,
         },
       });
@@ -181,6 +229,14 @@ export class CommonFacilityControllerBase {
           createdAt: true,
           facilityType: true,
           id: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          status: true,
           updatedAt: true,
         },
       });
@@ -212,7 +268,7 @@ export class CommonFacilityControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },

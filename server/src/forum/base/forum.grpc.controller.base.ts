@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { ForumService } from "../forum.service";
-import { Request } from "../../request/base/Request";
 import { ForumCreateInput } from "./ForumCreateInput";
 import { ForumWhereInput } from "./ForumWhereInput";
 import { ForumWhereUniqueInput } from "./ForumWhereUniqueInput";
@@ -26,6 +25,7 @@ import { ForumFindManyArgs } from "./ForumFindManyArgs";
 import { ForumUpdateInput } from "./ForumUpdateInput";
 import { Forum } from "./Forum";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { PostWhereUniqueInput } from "../../post/base/PostWhereUniqueInput";
 

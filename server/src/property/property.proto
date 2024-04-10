@@ -7,6 +7,10 @@ rpc properties (findManyParams) returns (stream Property) {}
 rpc property (PropertyWhereUniqueInput) returns (Property) {}
 rpc updateProperty (PropertyUpdateInput) returns (Property) {}
 rpc deleteProperty (PropertyWhereUniqueInput) returns (Property) {}
+rpc findManyProperty (PropertyWhereUniqueInput) returns (stream CommonFacility) {}
+rpc updateProperty (CommonFacilityParams) returns (stream CommonFacility) {}
+rpc connectProperty (CommonFacilityParams) returns (CommonFacility) {}
+rpc disconnectProperty (CommonFacilityParams) returns (CommonFacility) {}
 rpc findManyPropertyId (PropertyWhereUniqueInput) returns (stream CondoUnit) {}
 rpc updatePropertyId (CondoUnitParams) returns (stream CondoUnit) {}
 rpc connectPropertyId (CondoUnitParams) returns (CondoUnit) {}
@@ -30,66 +34,88 @@ rpc disconnectProperty (RequestParams) returns (Request) {}
  }
 message PropertyCreateInput {
 string address = 1;
-repeated CondoUnit condoUnits = 2;
-string createdAt = 3;
-repeated File files = 4;
-int32 id = 5;
-int32 lockerCount = 6;
-repeated Locker Lockers = 7;
-string name = 8;
-int32 parkingCount = 9;
-repeated ParkingSpot ParkingSpots = 10;
-repeated Request requests = 11;
-int32 unitCount = 12;
-string updatedAt = 13;
+repeated CommonFacility commonFacilities = 2;
+repeated CondoUnit condoUnits = 3;
+string createdAt = 4;
+repeated File files = 5;
+int32 id = 6;
+int32 lockerCount = 7;
+repeated Locker Lockers = 8;
+string name = 9;
+int32 parkingCount = 10;
+repeated ParkingSpot ParkingSpots = 11;
+repeated Request requests = 12;
+int32 unitCount = 13;
+string updatedAt = 14;
 };
 message Property {
 string address = 1;
-repeated CondoUnit condoUnits = 2;
-string createdAt = 3;
-repeated File files = 4;
-int32 id = 5;
-int32 lockerCount = 6;
-repeated Locker Lockers = 7;
-string name = 8;
-int32 parkingCount = 9;
-repeated ParkingSpot ParkingSpots = 10;
-repeated Request requests = 11;
-int32 unitCount = 12;
-string updatedAt = 13;
+repeated CommonFacility commonFacilities = 2;
+repeated CondoUnit condoUnits = 3;
+string createdAt = 4;
+repeated File files = 5;
+int32 id = 6;
+int32 lockerCount = 7;
+repeated Locker Lockers = 8;
+string name = 9;
+int32 parkingCount = 10;
+repeated ParkingSpot ParkingSpots = 11;
+repeated Request requests = 12;
+int32 unitCount = 13;
+string updatedAt = 14;
 };
 message PropertyWhereUniqueInput {
 string address = 1;
-repeated CondoUnit condoUnits = 2;
-string createdAt = 3;
-repeated File files = 4;
-int32 id = 5;
-int32 lockerCount = 6;
-repeated Locker Lockers = 7;
-string name = 8;
-int32 parkingCount = 9;
-repeated ParkingSpot ParkingSpots = 10;
-repeated Request requests = 11;
-int32 unitCount = 12;
-string updatedAt = 13;
+repeated CommonFacility commonFacilities = 2;
+repeated CondoUnit condoUnits = 3;
+string createdAt = 4;
+repeated File files = 5;
+int32 id = 6;
+int32 lockerCount = 7;
+repeated Locker Lockers = 8;
+string name = 9;
+int32 parkingCount = 10;
+repeated ParkingSpot ParkingSpots = 11;
+repeated Request requests = 12;
+int32 unitCount = 13;
+string updatedAt = 14;
 };
 message PropertyUpdateInput {
 string address = 1;
-repeated CondoUnit condoUnits = 2;
-string createdAt = 3;
-repeated File files = 4;
-int32 id = 5;
-int32 lockerCount = 6;
-repeated Locker Lockers = 7;
-string name = 8;
-int32 parkingCount = 9;
-repeated ParkingSpot ParkingSpots = 10;
-repeated Request requests = 11;
-int32 unitCount = 12;
-string updatedAt = 13;
+repeated CommonFacility commonFacilities = 2;
+repeated CondoUnit condoUnits = 3;
+string createdAt = 4;
+repeated File files = 5;
+int32 id = 6;
+int32 lockerCount = 7;
+repeated Locker Lockers = 8;
+string name = 9;
+int32 parkingCount = 10;
+repeated ParkingSpot ParkingSpots = 11;
+repeated Request requests = 12;
+int32 unitCount = 13;
+string updatedAt = 14;
 };
 message findManyParams {
 
+};
+message CommonFacility {
+string createdAt = 1;
+repeated string facilityType = 2;
+string id = 3;
+string status = 4;
+string updatedAt = 5;
+};
+message CommonFacilityWhereUniqueInput {
+string createdAt = 1;
+repeated string facilityType = 2;
+string id = 3;
+string status = 4;
+string updatedAt = 5;
+};
+message CommonFacilityParams {
+PropertyWhereUniqueInput propertyWhereUniqueInput = 1;
+CommonFacilityWhereUniqueInput commonfacilityWhereUniqueInput = 2;
 };
 message CondoUnit {
 int32 condoFee = 1;

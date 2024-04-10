@@ -13,54 +13,52 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  Request, // @ts-ignore
-  Notification, // @ts-ignore
-  Company, // @ts-ignore
-  CondoUnit, // @ts-ignore
-  CompanyEmployee, // @ts-ignore
-  Property, // @ts-ignore
-  User,
+  Request as PrismaRequest,
+  Notification as PrismaNotification,
+  Company as PrismaCompany,
+  CondoUnit as PrismaCondoUnit,
+  CompanyEmployee as PrismaCompanyEmployee,
+  Property as PrismaProperty,
+  User as PrismaUser,
 } from "@prisma/client";
 
 export class RequestServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.RequestCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.RequestCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.RequestCountArgs, "select">): Promise<number> {
     return this.prisma.request.count(args);
   }
 
   async requests<T extends Prisma.RequestFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.RequestFindManyArgs>
-  ): Promise<Request[]> {
-    return this.prisma.request.findMany(args);
+  ): Promise<PrismaRequest[]> {
+    return this.prisma.request.findMany<Prisma.RequestFindManyArgs>(args);
   }
   async request<T extends Prisma.RequestFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.RequestFindUniqueArgs>
-  ): Promise<Request | null> {
+  ): Promise<PrismaRequest | null> {
     return this.prisma.request.findUnique(args);
   }
   async createRequest<T extends Prisma.RequestCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.RequestCreateArgs>
-  ): Promise<Request> {
+  ): Promise<PrismaRequest> {
     return this.prisma.request.create<T>(args);
   }
   async updateRequest<T extends Prisma.RequestUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.RequestUpdateArgs>
-  ): Promise<Request> {
+  ): Promise<PrismaRequest> {
     return this.prisma.request.update<T>(args);
   }
   async deleteRequest<T extends Prisma.RequestDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.RequestDeleteArgs>
-  ): Promise<Request> {
+  ): Promise<PrismaRequest> {
     return this.prisma.request.delete(args);
   }
 
   async findNotifications(
     parentId: string,
     args: Prisma.NotificationFindManyArgs
-  ): Promise<Notification[]> {
+  ): Promise<PrismaNotification[]> {
     return this.prisma.request
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -68,7 +66,7 @@ export class RequestServiceBase {
       .notifications(args);
   }
 
-  async getCompany(parentId: string): Promise<Company | null> {
+  async getCompany(parentId: string): Promise<PrismaCompany | null> {
     return this.prisma.request
       .findUnique({
         where: { id: parentId },
@@ -76,7 +74,7 @@ export class RequestServiceBase {
       .company();
   }
 
-  async getCondoUnit(parentId: string): Promise<CondoUnit | null> {
+  async getCondoUnit(parentId: string): Promise<PrismaCondoUnit | null> {
     return this.prisma.request
       .findUnique({
         where: { id: parentId },
@@ -84,7 +82,7 @@ export class RequestServiceBase {
       .condoUnit();
   }
 
-  async getEmployee(parentId: string): Promise<CompanyEmployee | null> {
+  async getEmployee(parentId: string): Promise<PrismaCompanyEmployee | null> {
     return this.prisma.request
       .findUnique({
         where: { id: parentId },
@@ -92,7 +90,7 @@ export class RequestServiceBase {
       .employee();
   }
 
-  async getProperty(parentId: string): Promise<Property | null> {
+  async getProperty(parentId: string): Promise<PrismaProperty | null> {
     return this.prisma.request
       .findUnique({
         where: { id: parentId },
@@ -100,7 +98,7 @@ export class RequestServiceBase {
       .property();
   }
 
-  async getUser(parentId: string): Promise<User | null> {
+  async getUser(parentId: string): Promise<PrismaUser | null> {
     return this.prisma.request
       .findUnique({
         where: { id: parentId },

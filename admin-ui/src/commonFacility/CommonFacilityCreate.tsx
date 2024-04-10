@@ -7,9 +7,12 @@ import {
   ReferenceArrayInput,
   SelectArrayInput,
   SelectInput,
+  ReferenceInput,
+  TextInput,
 } from "react-admin";
 
 import { ReservationTitle } from "../reservation/ReservationTitle";
+import { PropertyTitle } from "../property/PropertyTitle";
 
 export const CommonFacilityCreate = (
   props: CreateProps
@@ -37,6 +40,14 @@ export const CommonFacilityCreate = (
           allowEmpty
           optionValue="value"
         />
+        <ReferenceInput
+          source="property.id"
+          reference="Property"
+          label="Property"
+        >
+          <SelectInput optionText={PropertyTitle} />
+        </ReferenceInput>
+        <TextInput label="status" source="status" />
       </SimpleForm>
     </Create>
   );

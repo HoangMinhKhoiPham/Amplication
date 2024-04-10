@@ -18,13 +18,13 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { PostService } from "../post.service";
-import { Request } from "../../request/base/Request";
 import { PostCreateInput } from "./PostCreateInput";
 import { PostWhereInput } from "./PostWhereInput";
 import { PostWhereUniqueInput } from "./PostWhereUniqueInput";
 import { PostFindManyArgs } from "./PostFindManyArgs";
 import { PostUpdateInput } from "./PostUpdateInput";
 import { Post } from "./Post";
+import { Request } from "../../request/base/Request";
 
 export class PostGrpcControllerBase {
   constructor(protected readonly service: PostService) {}

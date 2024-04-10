@@ -36,7 +36,7 @@ class Reservation {
   @ValidateNested()
   @Type(() => CommonFacility)
   @IsOptional()
-  commonFacilityID?: CommonFacility | null;
+  commonFacility?: CommonFacility | null;
 
   @ApiProperty({
     required: true,

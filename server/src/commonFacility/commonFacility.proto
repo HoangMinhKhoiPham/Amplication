@@ -7,38 +7,42 @@ rpc commonFacilities (findManyParams) returns (stream CommonFacility) {}
 rpc commonFacility (CommonFacilityWhereUniqueInput) returns (CommonFacility) {}
 rpc updateCommonFacility (CommonFacilityUpdateInput) returns (CommonFacility) {}
 rpc deleteCommonFacility (CommonFacilityWhereUniqueInput) returns (CommonFacility) {}
-rpc findManyCommonFacilityId (CommonFacilityWhereUniqueInput) returns (stream Reservation) {}
-rpc updateCommonFacilityId (ReservationParams) returns (stream Reservation) {}
-rpc connectCommonFacilityId (ReservationParams) returns (Reservation) {}
-rpc disconnectCommonFacilityId (ReservationParams) returns (Reservation) {} 
+rpc findManyCommonFacility (CommonFacilityWhereUniqueInput) returns (stream Reservation) {}
+rpc updateCommonFacility (ReservationParams) returns (stream Reservation) {}
+rpc connectCommonFacility (ReservationParams) returns (Reservation) {}
+rpc disconnectCommonFacility (ReservationParams) returns (Reservation) {} 
  }
 message CommonFacilityCreateInput {
 repeated Reservation availabilities = 1;
 string createdAt = 2;
 repeated string facilityType = 3;
 string id = 4;
-string updatedAt = 5;
+string status = 5;
+string updatedAt = 6;
 };
 message CommonFacility {
 repeated Reservation availabilities = 1;
 string createdAt = 2;
 repeated string facilityType = 3;
 string id = 4;
-string updatedAt = 5;
+string status = 5;
+string updatedAt = 6;
 };
 message CommonFacilityWhereUniqueInput {
 repeated Reservation availabilities = 1;
 string createdAt = 2;
 repeated string facilityType = 3;
 string id = 4;
-string updatedAt = 5;
+string status = 5;
+string updatedAt = 6;
 };
 message CommonFacilityUpdateInput {
 repeated Reservation availabilities = 1;
 string createdAt = 2;
 repeated string facilityType = 3;
 string id = 4;
-string updatedAt = 5;
+string status = 5;
+string updatedAt = 6;
 };
 message findManyParams {
 

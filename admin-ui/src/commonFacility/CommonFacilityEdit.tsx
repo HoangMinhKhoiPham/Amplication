@@ -7,9 +7,12 @@ import {
   ReferenceArrayInput,
   SelectArrayInput,
   SelectInput,
+  ReferenceInput,
+  TextInput,
 } from "react-admin";
 
 import { ReservationTitle } from "../reservation/ReservationTitle";
+import { PropertyTitle } from "../property/PropertyTitle";
 
 export const CommonFacilityEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -35,6 +38,14 @@ export const CommonFacilityEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
+        <ReferenceInput
+          source="property.id"
+          reference="Property"
+          label="Property"
+        >
+          <SelectInput optionText={PropertyTitle} />
+        </ReferenceInput>
+        <TextInput label="status" source="status" />
       </SimpleForm>
     </Edit>
   );

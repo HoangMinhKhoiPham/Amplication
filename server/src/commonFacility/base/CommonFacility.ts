@@ -21,6 +21,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumCommonFacilityFacilityType } from "./EnumCommonFacilityFacilityType";
+import { Property } from "../../property/base/Property";
 
 @ObjectType()
 class CommonFacility {
@@ -59,6 +60,26 @@ class CommonFacility {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => Property,
+  })
+  @ValidateNested()
+  @Type(() => Property)
+  @IsOptional()
+  property?: Property | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status!: string | null;
 
   @ApiProperty({
     required: true,

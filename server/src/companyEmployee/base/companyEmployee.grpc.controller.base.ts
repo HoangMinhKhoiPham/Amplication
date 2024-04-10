@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { CompanyEmployeeService } from "../companyEmployee.service";
-import { Request } from "../../request/base/Request";
 import { CompanyEmployeeCreateInput } from "./CompanyEmployeeCreateInput";
 import { CompanyEmployeeWhereInput } from "./CompanyEmployeeWhereInput";
 import { CompanyEmployeeWhereUniqueInput } from "./CompanyEmployeeWhereUniqueInput";
@@ -26,6 +25,7 @@ import { CompanyEmployeeFindManyArgs } from "./CompanyEmployeeFindManyArgs";
 import { CompanyEmployeeUpdateInput } from "./CompanyEmployeeUpdateInput";
 import { CompanyEmployee } from "./CompanyEmployee";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { RequestFindManyArgs } from "../../request/base/RequestFindManyArgs";
 import { RequestWhereUniqueInput } from "../../request/base/RequestWhereUniqueInput";
 

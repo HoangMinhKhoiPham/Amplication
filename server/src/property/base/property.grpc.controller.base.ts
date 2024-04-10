@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { PropertyService } from "../property.service";
-import { Request } from "../../request/base/Request";
 import { PropertyCreateInput } from "./PropertyCreateInput";
 import { PropertyWhereInput } from "./PropertyWhereInput";
 import { PropertyWhereUniqueInput } from "./PropertyWhereUniqueInput";
@@ -26,6 +25,10 @@ import { PropertyFindManyArgs } from "./PropertyFindManyArgs";
 import { PropertyUpdateInput } from "./PropertyUpdateInput";
 import { Property } from "./Property";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
+import { CommonFacilityFindManyArgs } from "../../commonFacility/base/CommonFacilityFindManyArgs";
+import { CommonFacility } from "../../commonFacility/base/CommonFacility";
+import { CommonFacilityWhereUniqueInput } from "../../commonFacility/base/CommonFacilityWhereUniqueInput";
 import { CondoUnitFindManyArgs } from "../../condoUnit/base/CondoUnitFindManyArgs";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
@@ -226,6 +229,93 @@ export class PropertyGrpcControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.Get("/:id/commonFacilities")
+  @ApiNestedQuery(CommonFacilityFindManyArgs)
+  @GrpcMethod("PropertyService", "findManyCommonFacilities")
+  async findManyCommonFacilities(
+    @common.Req() request: Request,
+    @common.Param() params: PropertyWhereUniqueInput
+  ): Promise<CommonFacility[]> {
+    const query = plainToClass(CommonFacilityFindManyArgs, request.query);
+    const results = await this.service.findCommonFacilities(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        facilityType: true,
+        id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/commonFacilities")
+  @GrpcMethod("PropertyService", "connectCommonFacilities")
+  async connectCommonFacilities(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: CommonFacilityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      commonFacilities: {
+        connect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/commonFacilities")
+  @GrpcMethod("PropertyService", "updateCommonFacilities")
+  async updateCommonFacilities(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: CommonFacilityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      commonFacilities: {
+        set: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/commonFacilities")
+  @GrpcMethod("PropertyService", "disconnectCommonFacilities")
+  async disconnectCommonFacilities(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: CommonFacilityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      commonFacilities: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 
   @common.Get("/:id/condoUnits")

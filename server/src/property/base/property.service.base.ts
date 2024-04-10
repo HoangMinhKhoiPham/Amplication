@@ -13,54 +13,64 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  Property, // @ts-ignore
-  CondoUnit, // @ts-ignore
-  File, // @ts-ignore
-  Locker, // @ts-ignore
-  ParkingSpot, // @ts-ignore
-  Request, // @ts-ignore
-  Company,
+  Property as PrismaProperty,
+  CommonFacility as PrismaCommonFacility,
+  CondoUnit as PrismaCondoUnit,
+  File as PrismaFile,
+  Locker as PrismaLocker,
+  ParkingSpot as PrismaParkingSpot,
+  Request as PrismaRequest,
+  Company as PrismaCompany,
 } from "@prisma/client";
 
 export class PropertyServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.PropertyCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.PropertyCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.PropertyCountArgs, "select">): Promise<number> {
     return this.prisma.property.count(args);
   }
 
   async properties<T extends Prisma.PropertyFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.PropertyFindManyArgs>
-  ): Promise<Property[]> {
-    return this.prisma.property.findMany(args);
+  ): Promise<PrismaProperty[]> {
+    return this.prisma.property.findMany<Prisma.PropertyFindManyArgs>(args);
   }
   async property<T extends Prisma.PropertyFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.PropertyFindUniqueArgs>
-  ): Promise<Property | null> {
+  ): Promise<PrismaProperty | null> {
     return this.prisma.property.findUnique(args);
   }
   async createProperty<T extends Prisma.PropertyCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PropertyCreateArgs>
-  ): Promise<Property> {
+  ): Promise<PrismaProperty> {
     return this.prisma.property.create<T>(args);
   }
   async updateProperty<T extends Prisma.PropertyUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PropertyUpdateArgs>
-  ): Promise<Property> {
+  ): Promise<PrismaProperty> {
     return this.prisma.property.update<T>(args);
   }
   async deleteProperty<T extends Prisma.PropertyDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.PropertyDeleteArgs>
-  ): Promise<Property> {
+  ): Promise<PrismaProperty> {
     return this.prisma.property.delete(args);
+  }
+
+  async findCommonFacilities(
+    parentId: number,
+    args: Prisma.CommonFacilityFindManyArgs
+  ): Promise<PrismaCommonFacility[]> {
+    return this.prisma.property
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .commonFacilities(args);
   }
 
   async findCondoUnits(
     parentId: number,
     args: Prisma.CondoUnitFindManyArgs
-  ): Promise<CondoUnit[]> {
+  ): Promise<PrismaCondoUnit[]> {
     return this.prisma.property
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -71,7 +81,7 @@ export class PropertyServiceBase {
   async findFiles(
     parentId: number,
     args: Prisma.FileFindManyArgs
-  ): Promise<File[]> {
+  ): Promise<PrismaFile[]> {
     return this.prisma.property
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -82,7 +92,7 @@ export class PropertyServiceBase {
   async findLockers(
     parentId: number,
     args: Prisma.LockerFindManyArgs
-  ): Promise<Locker[]> {
+  ): Promise<PrismaLocker[]> {
     return this.prisma.property
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -93,7 +103,7 @@ export class PropertyServiceBase {
   async findParkingSpots(
     parentId: number,
     args: Prisma.ParkingSpotFindManyArgs
-  ): Promise<ParkingSpot[]> {
+  ): Promise<PrismaParkingSpot[]> {
     return this.prisma.property
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -104,7 +114,7 @@ export class PropertyServiceBase {
   async findRequests(
     parentId: number,
     args: Prisma.RequestFindManyArgs
-  ): Promise<Request[]> {
+  ): Promise<PrismaRequest[]> {
     return this.prisma.property
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -112,7 +122,7 @@ export class PropertyServiceBase {
       .requests(args);
   }
 
-  async getCompany(parentId: number): Promise<Company | null> {
+  async getCompany(parentId: number): Promise<PrismaCompany | null> {
     return this.prisma.property
       .findUnique({
         where: { id: parentId },

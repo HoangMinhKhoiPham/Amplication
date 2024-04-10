@@ -16,7 +16,7 @@ export const ReservationShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <TextField label="availablity" source="availablity" />
         <ReferenceField
-          label="commonFacilityID"
+          label="commonFacility"
           source="commonfacility.id"
           reference="CommonFacility"
         >

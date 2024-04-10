@@ -1,3 +1,4 @@
+import { CommonFacilityUpdateManyWithoutPropertiesInput } from "./CommonFacilityUpdateManyWithoutPropertiesInput";
 import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { CondoUnitUpdateManyWithoutPropertiesInput } from "./CondoUnitUpdateManyWithoutPropertiesInput";
 import { FileUpdateManyWithoutPropertiesInput } from "./FileUpdateManyWithoutPropertiesInput";
@@ -7,6 +8,7 @@ import { RequestUpdateManyWithoutPropertiesInput } from "./RequestUpdateManyWith
 
 export type PropertyUpdateInput = {
   address?: string;
+  commonFacilities?: CommonFacilityUpdateManyWithoutPropertiesInput;
   company?: CompanyWhereUniqueInput | null;
   condoUnits?: CondoUnitUpdateManyWithoutPropertiesInput;
   files?: FileUpdateManyWithoutPropertiesInput;

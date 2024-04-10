@@ -5,7 +5,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type ReservationWhereInput = {
   availablity?: StringNullableFilter;
-  commonFacilityID?: CommonFacilityWhereUniqueInput;
+  commonFacility?: CommonFacilityWhereUniqueInput;
   id?: StringFilter;
   notes?: StringNullableFilter;
   user?: UserWhereUniqueInput;

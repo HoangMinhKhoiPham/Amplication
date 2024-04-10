@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { ParkingSpotService } from "../parkingSpot.service";
-import { Request } from "../../request/base/Request";
 import { ParkingSpotCreateInput } from "./ParkingSpotCreateInput";
 import { ParkingSpotWhereInput } from "./ParkingSpotWhereInput";
 import { ParkingSpotWhereUniqueInput } from "./ParkingSpotWhereUniqueInput";
@@ -26,6 +25,7 @@ import { ParkingSpotFindManyArgs } from "./ParkingSpotFindManyArgs";
 import { ParkingSpotUpdateInput } from "./ParkingSpotUpdateInput";
 import { ParkingSpot } from "./ParkingSpot";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class ParkingSpotGrpcControllerBase {
   constructor(protected readonly service: ParkingSpotService) {}

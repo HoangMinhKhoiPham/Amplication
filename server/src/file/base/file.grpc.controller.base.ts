@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { FileService } from "../file.service";
-import { Request } from "../../request/base/Request";
 import { FileCreateInput } from "./FileCreateInput";
 import { FileWhereInput } from "./FileWhereInput";
 import { FileWhereUniqueInput } from "./FileWhereUniqueInput";
@@ -26,6 +25,7 @@ import { FileFindManyArgs } from "./FileFindManyArgs";
 import { FileUpdateInput } from "./FileUpdateInput";
 import { File } from "./File";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class FileGrpcControllerBase {
   constructor(protected readonly service: FileService) {}

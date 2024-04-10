@@ -13,46 +13,48 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  RegistrationKey, // @ts-ignore
-  CondoUnit,
+  RegistrationKey as PrismaRegistrationKey,
+  CondoUnit as PrismaCondoUnit,
 } from "@prisma/client";
 
 export class RegistrationKeyServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.RegistrationKeyCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.RegistrationKeyCountArgs>
+  async count(
+    args: Omit<Prisma.RegistrationKeyCountArgs, "select">
   ): Promise<number> {
     return this.prisma.registrationKey.count(args);
   }
 
   async registrationKeys<T extends Prisma.RegistrationKeyFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyFindManyArgs>
-  ): Promise<RegistrationKey[]> {
-    return this.prisma.registrationKey.findMany(args);
+  ): Promise<PrismaRegistrationKey[]> {
+    return this.prisma.registrationKey.findMany<Prisma.RegistrationKeyFindManyArgs>(
+      args
+    );
   }
   async registrationKey<T extends Prisma.RegistrationKeyFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyFindUniqueArgs>
-  ): Promise<RegistrationKey | null> {
+  ): Promise<PrismaRegistrationKey | null> {
     return this.prisma.registrationKey.findUnique(args);
   }
   async createRegistrationKey<T extends Prisma.RegistrationKeyCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyCreateArgs>
-  ): Promise<RegistrationKey> {
+  ): Promise<PrismaRegistrationKey> {
     return this.prisma.registrationKey.create<T>(args);
   }
   async updateRegistrationKey<T extends Prisma.RegistrationKeyUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyUpdateArgs>
-  ): Promise<RegistrationKey> {
+  ): Promise<PrismaRegistrationKey> {
     return this.prisma.registrationKey.update<T>(args);
   }
   async deleteRegistrationKey<T extends Prisma.RegistrationKeyDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.RegistrationKeyDeleteArgs>
-  ): Promise<RegistrationKey> {
+  ): Promise<PrismaRegistrationKey> {
     return this.prisma.registrationKey.delete(args);
   }
 
-  async getCondoUnit(parentId: number): Promise<CondoUnit | null> {
+  async getCondoUnit(parentId: number): Promise<PrismaCondoUnit | null> {
     return this.prisma.registrationKey
       .findUnique({
         where: { id: parentId },

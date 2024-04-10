@@ -13,54 +13,52 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  Company, // @ts-ignore
-  CompanyEmployee, // @ts-ignore
-  Cost, // @ts-ignore
-  File, // @ts-ignore
-  Forum, // @ts-ignore
-  Property, // @ts-ignore
-  Request,
+  Company as PrismaCompany,
+  CompanyEmployee as PrismaCompanyEmployee,
+  Cost as PrismaCost,
+  File as PrismaFile,
+  Forum as PrismaForum,
+  Property as PrismaProperty,
+  Request as PrismaRequest,
 } from "@prisma/client";
 
 export class CompanyServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.CompanyCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.CompanyCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.CompanyCountArgs, "select">): Promise<number> {
     return this.prisma.company.count(args);
   }
 
   async companies<T extends Prisma.CompanyFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.CompanyFindManyArgs>
-  ): Promise<Company[]> {
-    return this.prisma.company.findMany(args);
+  ): Promise<PrismaCompany[]> {
+    return this.prisma.company.findMany<Prisma.CompanyFindManyArgs>(args);
   }
   async company<T extends Prisma.CompanyFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.CompanyFindUniqueArgs>
-  ): Promise<Company | null> {
+  ): Promise<PrismaCompany | null> {
     return this.prisma.company.findUnique(args);
   }
   async createCompany<T extends Prisma.CompanyCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CompanyCreateArgs>
-  ): Promise<Company> {
+  ): Promise<PrismaCompany> {
     return this.prisma.company.create<T>(args);
   }
   async updateCompany<T extends Prisma.CompanyUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CompanyUpdateArgs>
-  ): Promise<Company> {
+  ): Promise<PrismaCompany> {
     return this.prisma.company.update<T>(args);
   }
   async deleteCompany<T extends Prisma.CompanyDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.CompanyDeleteArgs>
-  ): Promise<Company> {
+  ): Promise<PrismaCompany> {
     return this.prisma.company.delete(args);
   }
 
   async findCompanyEmployees(
     parentId: number,
     args: Prisma.CompanyEmployeeFindManyArgs
-  ): Promise<CompanyEmployee[]> {
+  ): Promise<PrismaCompanyEmployee[]> {
     return this.prisma.company
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -71,7 +69,7 @@ export class CompanyServiceBase {
   async findCosts(
     parentId: number,
     args: Prisma.CostFindManyArgs
-  ): Promise<Cost[]> {
+  ): Promise<PrismaCost[]> {
     return this.prisma.company
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -82,7 +80,7 @@ export class CompanyServiceBase {
   async findFile(
     parentId: number,
     args: Prisma.FileFindManyArgs
-  ): Promise<File[]> {
+  ): Promise<PrismaFile[]> {
     return this.prisma.company
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -93,7 +91,7 @@ export class CompanyServiceBase {
   async findForums(
     parentId: number,
     args: Prisma.ForumFindManyArgs
-  ): Promise<Forum[]> {
+  ): Promise<PrismaForum[]> {
     return this.prisma.company
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -104,7 +102,7 @@ export class CompanyServiceBase {
   async findProperties(
     parentId: number,
     args: Prisma.PropertyFindManyArgs
-  ): Promise<Property[]> {
+  ): Promise<PrismaProperty[]> {
     return this.prisma.company
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -115,7 +113,7 @@ export class CompanyServiceBase {
   async findRequests(
     parentId: number,
     args: Prisma.RequestFindManyArgs
-  ): Promise<Request[]> {
+  ): Promise<PrismaRequest[]> {
     return this.prisma.company
       .findUniqueOrThrow({
         where: { id: parentId },

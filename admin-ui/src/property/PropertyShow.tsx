@@ -11,8 +11,8 @@ import {
   Datagrid,
 } from "react-admin";
 
-import { LOCKER_TITLE_FIELD } from "../locker/LockerTitle";
 import { PROPERTY_TITLE_FIELD } from "./PropertyTitle";
+import { LOCKER_TITLE_FIELD } from "../locker/LockerTitle";
 import { REGISTRATIONKEY_TITLE_FIELD } from "../registrationKey/RegistrationKeyTitle";
 import { COMPANY_TITLE_FIELD } from "../company/CompanyTitle";
 import { CONDOUNIT_TITLE_FIELD } from "../condoUnit/CondoUnitTitle";
@@ -34,6 +34,26 @@ export const PropertyShow = (props: ShowProps): React.ReactElement => {
         <TextField label="parkingCount" source="parkingCount" />
         <TextField label="unitCount" source="unitCount" />
         <DateField source="updatedAt" label="Updated At" />
+        <ReferenceManyField
+          reference="CommonFacility"
+          target="propertyId"
+          label="CommonFacilities"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="facilityType" source="facilityType" />
+            <TextField label="ID" source="id" />
+            <ReferenceField
+              label="Property"
+              source="property.id"
+              reference="Property"
+            >
+              <TextField source={PROPERTY_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="status" source="status" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
         <ReferenceManyField
           reference="CondoUnit"
           target="propertyIDId"
