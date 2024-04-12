@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { CostService } from "../cost.service";
-import { Request } from "../../request/base/Request";
 import { CostCreateInput } from "./CostCreateInput";
 import { CostWhereInput } from "./CostWhereInput";
 import { CostWhereUniqueInput } from "./CostWhereUniqueInput";
@@ -26,6 +25,7 @@ import { CostFindManyArgs } from "./CostFindManyArgs";
 import { CostUpdateInput } from "./CostUpdateInput";
 import { Cost } from "./Cost";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class CostGrpcControllerBase {
   constructor(protected readonly service: CostService) {}

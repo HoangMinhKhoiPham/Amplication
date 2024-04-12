@@ -1,3 +1,4 @@
+import { CommonFacility } from "../commonFacility/CommonFacility";
 import { Company } from "../company/Company";
 import { CondoUnit } from "../condoUnit/CondoUnit";
 import { File } from "../file/File";
@@ -7,6 +8,7 @@ import { Request } from "../request/Request";
 
 export type Property = {
   address: string;
+  commonFacilities?: Array<CommonFacility>;
   company?: Company | null;
   condoUnits?: Array<CondoUnit>;
   createdAt: Date;

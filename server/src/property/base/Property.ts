@@ -18,8 +18,9 @@ import {
   IsDate,
   IsInt,
 } from "class-validator";
-import { Company } from "../../company/base/Company";
+import { CommonFacility } from "../../commonFacility/base/CommonFacility";
 import { Type } from "class-transformer";
+import { Company } from "../../company/base/Company";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { File } from "../../file/base/File";
 import { Locker } from "../../locker/base/Locker";
@@ -35,6 +36,15 @@ class Property {
   @IsString()
   @Field(() => String)
   address!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [CommonFacility],
+  })
+  @ValidateNested()
+  @Type(() => CommonFacility)
+  @IsOptional()
+  commonFacilities?: Array<CommonFacility>;
 
   @ApiProperty({
     required: false,

@@ -1,3 +1,4 @@
+import { CommonFacilityCreateNestedManyWithoutPropertiesInput } from "./CommonFacilityCreateNestedManyWithoutPropertiesInput";
 import { CompanyWhereUniqueInput } from "../company/CompanyWhereUniqueInput";
 import { CondoUnitCreateNestedManyWithoutPropertiesInput } from "./CondoUnitCreateNestedManyWithoutPropertiesInput";
 import { FileCreateNestedManyWithoutPropertiesInput } from "./FileCreateNestedManyWithoutPropertiesInput";
@@ -7,6 +8,7 @@ import { RequestCreateNestedManyWithoutPropertiesInput } from "./RequestCreateNe
 
 export type PropertyCreateInput = {
   address: string;
+  commonFacilities?: CommonFacilityCreateNestedManyWithoutPropertiesInput;
   company?: CompanyWhereUniqueInput | null;
   condoUnits?: CondoUnitCreateNestedManyWithoutPropertiesInput;
   files?: FileCreateNestedManyWithoutPropertiesInput;

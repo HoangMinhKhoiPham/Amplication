@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { RoleService } from "../role.service";
-import { Request } from "../../request/base/Request";
 import { RoleCreateInput } from "./RoleCreateInput";
 import { RoleWhereInput } from "./RoleWhereInput";
 import { RoleWhereUniqueInput } from "./RoleWhereUniqueInput";
@@ -26,6 +25,7 @@ import { RoleFindManyArgs } from "./RoleFindManyArgs";
 import { RoleUpdateInput } from "./RoleUpdateInput";
 import { Role } from "./Role";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class RoleGrpcControllerBase {
   constructor(protected readonly service: RoleService) {}

@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { UserCondoService } from "../userCondo.service";
-import { Request } from "../../request/base/Request";
 import { UserCondoCreateInput } from "./UserCondoCreateInput";
 import { UserCondoWhereInput } from "./UserCondoWhereInput";
 import { UserCondoWhereUniqueInput } from "./UserCondoWhereUniqueInput";
@@ -26,6 +25,7 @@ import { UserCondoFindManyArgs } from "./UserCondoFindManyArgs";
 import { UserCondoUpdateInput } from "./UserCondoUpdateInput";
 import { UserCondo } from "./UserCondo";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class UserCondoGrpcControllerBase {
   constructor(protected readonly service: UserCondoService) {}

@@ -19,7 +19,6 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { UserService } from "../user.service";
 import { Public } from "../../decorators/public.decorator";
-import { Request } from "../../request/base/Request";
 import { UserCreateInput } from "./UserCreateInput";
 import { UserWhereInput } from "./UserWhereInput";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
@@ -27,6 +26,7 @@ import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserUpdateInput } from "./UserUpdateInput";
 import { User } from "./User";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { CompanyEmployeeFindManyArgs } from "../../companyEmployee/base/CompanyEmployeeFindManyArgs";
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
 import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
@@ -485,6 +485,7 @@ export class UserGrpcControllerBase {
     const results = await this.service.findPosts(params.id, {
       ...query,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -695,7 +696,7 @@ export class UserGrpcControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },

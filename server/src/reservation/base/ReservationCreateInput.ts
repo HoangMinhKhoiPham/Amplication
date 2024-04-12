@@ -39,7 +39,7 @@ class ReservationCreateInput {
   @Field(() => CommonFacilityWhereUniqueInput, {
     nullable: true,
   })
-  commonFacilityID?: CommonFacilityWhereUniqueInput | null;
+  commonFacility?: CommonFacilityWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

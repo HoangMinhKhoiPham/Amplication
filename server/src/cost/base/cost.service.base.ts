@@ -10,49 +10,46 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
 import {
   Prisma,
-  Cost, // @ts-ignore
-  Company,
+  Cost as PrismaCost,
+  Company as PrismaCompany,
 } from "@prisma/client";
 
 export class CostServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.CostCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.CostCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.CostCountArgs, "select">): Promise<number> {
     return this.prisma.cost.count(args);
   }
 
   async costs<T extends Prisma.CostFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.CostFindManyArgs>
-  ): Promise<Cost[]> {
-    return this.prisma.cost.findMany(args);
+  ): Promise<PrismaCost[]> {
+    return this.prisma.cost.findMany<Prisma.CostFindManyArgs>(args);
   }
   async cost<T extends Prisma.CostFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.CostFindUniqueArgs>
-  ): Promise<Cost | null> {
+  ): Promise<PrismaCost | null> {
     return this.prisma.cost.findUnique(args);
   }
   async createCost<T extends Prisma.CostCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CostCreateArgs>
-  ): Promise<Cost> {
+  ): Promise<PrismaCost> {
     return this.prisma.cost.create<T>(args);
   }
   async updateCost<T extends Prisma.CostUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CostUpdateArgs>
-  ): Promise<Cost> {
+  ): Promise<PrismaCost> {
     return this.prisma.cost.update<T>(args);
   }
   async deleteCost<T extends Prisma.CostDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.CostDeleteArgs>
-  ): Promise<Cost> {
+  ): Promise<PrismaCost> {
     return this.prisma.cost.delete(args);
   }
 
-  async getCompany(parentId: number): Promise<Company | null> {
+  async getCompany(parentId: number): Promise<PrismaCompany | null> {
     return this.prisma.cost
       .findUnique({
         where: { id: parentId },

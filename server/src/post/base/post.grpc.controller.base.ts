@@ -18,13 +18,13 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { PostService } from "../post.service";
-import { Request } from "../../request/base/Request";
 import { PostCreateInput } from "./PostCreateInput";
 import { PostWhereInput } from "./PostWhereInput";
 import { PostWhereUniqueInput } from "./PostWhereUniqueInput";
 import { PostFindManyArgs } from "./PostFindManyArgs";
 import { PostUpdateInput } from "./PostUpdateInput";
 import { Post } from "./Post";
+import { Request } from "../../request/base/Request";
 
 export class PostGrpcControllerBase {
   constructor(protected readonly service: PostService) {}
@@ -49,6 +49,7 @@ export class PostGrpcControllerBase {
           : undefined,
       },
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -78,6 +79,7 @@ export class PostGrpcControllerBase {
     return this.service.posts({
       ...args,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -108,6 +110,7 @@ export class PostGrpcControllerBase {
     const result = await this.service.post({
       where: params,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -161,6 +164,7 @@ export class PostGrpcControllerBase {
             : undefined,
         },
         select: {
+          content: true,
           createdAt: true,
 
           forum: {
@@ -200,6 +204,7 @@ export class PostGrpcControllerBase {
       return await this.service.deletePost({
         where: params,
         select: {
+          content: true,
           createdAt: true,
 
           forum: {

@@ -19,7 +19,6 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { CompanyService } from "../company.service";
 import { Public } from "../../decorators/public.decorator";
-import { Request } from "../../request/base/Request";
 import { CompanyCreateInput } from "./CompanyCreateInput";
 import { CompanyWhereInput } from "./CompanyWhereInput";
 import { CompanyWhereUniqueInput } from "./CompanyWhereUniqueInput";
@@ -27,6 +26,7 @@ import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
 import { CompanyUpdateInput } from "./CompanyUpdateInput";
 import { Company } from "./Company";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { CompanyEmployeeFindManyArgs } from "../../companyEmployee/base/CompanyEmployeeFindManyArgs";
 import { CompanyEmployee } from "../../companyEmployee/base/CompanyEmployee";
 import { CompanyEmployeeWhereUniqueInput } from "../../companyEmployee/base/CompanyEmployeeWhereUniqueInput";
@@ -450,7 +450,7 @@ export class CompanyGrpcControllerBase {
     });
   }
 
-  @common.Get("/:id/Forums")
+  @common.Get("/:id/forums")
   @ApiNestedQuery(ForumFindManyArgs)
   @GrpcMethod("CompanyService", "findManyForums")
   async findManyForums(
@@ -461,7 +461,7 @@ export class CompanyGrpcControllerBase {
     const results = await this.service.findForums(params.id, {
       ...query,
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -469,6 +469,7 @@ export class CompanyGrpcControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -481,14 +482,14 @@ export class CompanyGrpcControllerBase {
   }
 
   @Public()
-  @common.Post("/:id/Forums")
+  @common.Post("/:id/forums")
   @GrpcMethod("CompanyService", "connectForums")
   async connectForums(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: ForumWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      Forums: {
+      forums: {
         connect: body,
       },
     };
@@ -500,14 +501,14 @@ export class CompanyGrpcControllerBase {
   }
 
   @Public()
-  @common.Patch("/:id/Forums")
+  @common.Patch("/:id/forums")
   @GrpcMethod("CompanyService", "updateForums")
   async updateForums(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: ForumWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      Forums: {
+      forums: {
         set: body,
       },
     };
@@ -518,14 +519,14 @@ export class CompanyGrpcControllerBase {
     });
   }
 
-  @common.Delete("/:id/Forums")
+  @common.Delete("/:id/forums")
   @GrpcMethod("CompanyService", "disconnectForums")
   async disconnectForums(
     @common.Param() params: CompanyWhereUniqueInput,
     @common.Body() body: ForumWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      Forums: {
+      forums: {
         disconnect: body,
       },
     };

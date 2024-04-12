@@ -19,18 +19,16 @@ export const ForumShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <ReferenceField
-          label="Companies"
-          source="company.id"
-          reference="Company"
-        >
+        <ReferenceField label="Company" source="company.id" reference="Company">
           <TextField source={COMPANY_TITLE_FIELD} />
         </ReferenceField>
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <TextField label="name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
         <ReferenceManyField reference="Post" target="forumID" label="Posts">
           <Datagrid rowClick="show">
+            <TextField label="content" source="content" />
             <DateField source="createdAt" label="Created At" />
             <ReferenceField label="forum" source="forum.id" reference="Forum">
               <TextField source={FORUM_TITLE_FIELD} />

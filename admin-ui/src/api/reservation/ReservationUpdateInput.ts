@@ -3,7 +3,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type ReservationUpdateInput = {
   availablity?: string | null;
-  commonFacilityID?: CommonFacilityWhereUniqueInput | null;
+  commonFacility?: CommonFacilityWhereUniqueInput | null;
   notes?: string | null;
   user?: UserWhereUniqueInput | null;
 };

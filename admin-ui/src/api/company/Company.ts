@@ -10,7 +10,7 @@ export type Company = {
   costs?: Array<Cost>;
   createdAt: Date;
   file?: Array<File>;
-  Forums?: Array<Forum>;
+  forums?: Array<Forum>;
   id: number;
   name: string;
   properties?: Array<Property>;

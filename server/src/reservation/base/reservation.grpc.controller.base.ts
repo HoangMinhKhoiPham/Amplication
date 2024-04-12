@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { ReservationService } from "../reservation.service";
-import { Request } from "../../request/base/Request";
 import { ReservationCreateInput } from "./ReservationCreateInput";
 import { ReservationWhereInput } from "./ReservationWhereInput";
 import { ReservationWhereUniqueInput } from "./ReservationWhereUniqueInput";
@@ -26,6 +25,7 @@ import { ReservationFindManyArgs } from "./ReservationFindManyArgs";
 import { ReservationUpdateInput } from "./ReservationUpdateInput";
 import { Reservation } from "./Reservation";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class ReservationGrpcControllerBase {
   constructor(protected readonly service: ReservationService) {}
@@ -39,9 +39,9 @@ export class ReservationGrpcControllerBase {
       data: {
         ...data,
 
-        commonFacilityID: data.commonFacilityID
+        commonFacility: data.commonFacility
           ? {
-              connect: data.commonFacilityID,
+              connect: data.commonFacility,
             }
           : undefined,
 
@@ -54,7 +54,7 @@ export class ReservationGrpcControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },
@@ -85,7 +85,7 @@ export class ReservationGrpcControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },
@@ -117,7 +117,7 @@ export class ReservationGrpcControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },
@@ -157,9 +157,9 @@ export class ReservationGrpcControllerBase {
         data: {
           ...data,
 
-          commonFacilityID: data.commonFacilityID
+          commonFacility: data.commonFacility
             ? {
-                connect: data.commonFacilityID,
+                connect: data.commonFacility,
               }
             : undefined,
 
@@ -172,7 +172,7 @@ export class ReservationGrpcControllerBase {
         select: {
           availablity: true,
 
-          commonFacilityID: {
+          commonFacility: {
             select: {
               id: true,
             },
@@ -213,7 +213,7 @@ export class ReservationGrpcControllerBase {
         select: {
           availablity: true,
 
-          commonFacilityID: {
+          commonFacility: {
             select: {
               id: true,
             },

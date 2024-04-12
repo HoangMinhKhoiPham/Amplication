@@ -13,55 +13,55 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  CondoUnit, // @ts-ignore
-  File, // @ts-ignore
-  ParkingSpot, // @ts-ignore
-  Request, // @ts-ignore
-  UserCondo, // @ts-ignore
-  Locker, // @ts-ignore
-  Property, // @ts-ignore
-  RegistrationKey,
+  CondoUnit as PrismaCondoUnit,
+  File as PrismaFile,
+  ParkingSpot as PrismaParkingSpot,
+  Request as PrismaRequest,
+  UserCondo as PrismaUserCondo,
+  Locker as PrismaLocker,
+  Property as PrismaProperty,
+  RegistrationKey as PrismaRegistrationKey,
 } from "@prisma/client";
 
 export class CondoUnitServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.CondoUnitCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.CondoUnitCountArgs>
+  async count(
+    args: Omit<Prisma.CondoUnitCountArgs, "select">
   ): Promise<number> {
     return this.prisma.condoUnit.count(args);
   }
 
   async condoUnits<T extends Prisma.CondoUnitFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.CondoUnitFindManyArgs>
-  ): Promise<CondoUnit[]> {
-    return this.prisma.condoUnit.findMany(args);
+  ): Promise<PrismaCondoUnit[]> {
+    return this.prisma.condoUnit.findMany<Prisma.CondoUnitFindManyArgs>(args);
   }
   async condoUnit<T extends Prisma.CondoUnitFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.CondoUnitFindUniqueArgs>
-  ): Promise<CondoUnit | null> {
+  ): Promise<PrismaCondoUnit | null> {
     return this.prisma.condoUnit.findUnique(args);
   }
   async createCondoUnit<T extends Prisma.CondoUnitCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CondoUnitCreateArgs>
-  ): Promise<CondoUnit> {
+  ): Promise<PrismaCondoUnit> {
     return this.prisma.condoUnit.create<T>(args);
   }
   async updateCondoUnit<T extends Prisma.CondoUnitUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.CondoUnitUpdateArgs>
-  ): Promise<CondoUnit> {
+  ): Promise<PrismaCondoUnit> {
     return this.prisma.condoUnit.update<T>(args);
   }
   async deleteCondoUnit<T extends Prisma.CondoUnitDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.CondoUnitDeleteArgs>
-  ): Promise<CondoUnit> {
+  ): Promise<PrismaCondoUnit> {
     return this.prisma.condoUnit.delete(args);
   }
 
   async findFile(
     parentId: number,
     args: Prisma.FileFindManyArgs
-  ): Promise<File[]> {
+  ): Promise<PrismaFile[]> {
     return this.prisma.condoUnit
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -72,7 +72,7 @@ export class CondoUnitServiceBase {
   async findParkingSpot(
     parentId: number,
     args: Prisma.ParkingSpotFindManyArgs
-  ): Promise<ParkingSpot[]> {
+  ): Promise<PrismaParkingSpot[]> {
     return this.prisma.condoUnit
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -83,7 +83,7 @@ export class CondoUnitServiceBase {
   async findRequests(
     parentId: number,
     args: Prisma.RequestFindManyArgs
-  ): Promise<Request[]> {
+  ): Promise<PrismaRequest[]> {
     return this.prisma.condoUnit
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -94,7 +94,7 @@ export class CondoUnitServiceBase {
   async findUserCondos(
     parentId: number,
     args: Prisma.UserCondoFindManyArgs
-  ): Promise<UserCondo[]> {
+  ): Promise<PrismaUserCondo[]> {
     return this.prisma.condoUnit
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -102,7 +102,7 @@ export class CondoUnitServiceBase {
       .userCondos(args);
   }
 
-  async getLocker(parentId: number): Promise<Locker | null> {
+  async getLocker(parentId: number): Promise<PrismaLocker | null> {
     return this.prisma.condoUnit
       .findUnique({
         where: { id: parentId },
@@ -110,7 +110,7 @@ export class CondoUnitServiceBase {
       .locker();
   }
 
-  async getPropertyId(parentId: number): Promise<Property | null> {
+  async getPropertyId(parentId: number): Promise<PrismaProperty | null> {
     return this.prisma.condoUnit
       .findUnique({
         where: { id: parentId },
@@ -118,7 +118,9 @@ export class CondoUnitServiceBase {
       .propertyID();
   }
 
-  async getRegistrationKeys(parentId: number): Promise<RegistrationKey | null> {
+  async getRegistrationKeys(
+    parentId: number
+  ): Promise<PrismaRegistrationKey | null> {
     return this.prisma.condoUnit
       .findUnique({
         where: { id: parentId },

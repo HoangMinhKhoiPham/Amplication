@@ -96,7 +96,7 @@ export const CompanyShow = (props: ShowProps): React.ReactElement => {
         <ReferenceManyField reference="Forum" target="companyID" label="Forums">
           <Datagrid rowClick="show">
             <ReferenceField
-              label="Companies"
+              label="Company"
               source="company.id"
               reference="Company"
             >
@@ -104,6 +104,7 @@ export const CompanyShow = (props: ShowProps): React.ReactElement => {
             </ReferenceField>
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
+            <TextField label="name" source="name" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>

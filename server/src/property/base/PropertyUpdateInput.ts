@@ -12,8 +12,9 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested, IsInt } from "class-validator";
-import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
+import { CommonFacilityUpdateManyWithoutPropertiesInput } from "./CommonFacilityUpdateManyWithoutPropertiesInput";
 import { Type } from "class-transformer";
+import { CompanyWhereUniqueInput } from "../../company/base/CompanyWhereUniqueInput";
 import { CondoUnitUpdateManyWithoutPropertiesInput } from "./CondoUnitUpdateManyWithoutPropertiesInput";
 import { FileUpdateManyWithoutPropertiesInput } from "./FileUpdateManyWithoutPropertiesInput";
 import { LockerUpdateManyWithoutPropertiesInput } from "./LockerUpdateManyWithoutPropertiesInput";
@@ -32,6 +33,18 @@ class PropertyUpdateInput {
     nullable: true,
   })
   address?: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => CommonFacilityUpdateManyWithoutPropertiesInput,
+  })
+  @ValidateNested()
+  @Type(() => CommonFacilityUpdateManyWithoutPropertiesInput)
+  @IsOptional()
+  @Field(() => CommonFacilityUpdateManyWithoutPropertiesInput, {
+    nullable: true,
+  })
+  commonFacilities?: CommonFacilityUpdateManyWithoutPropertiesInput;
 
   @ApiProperty({
     required: false,

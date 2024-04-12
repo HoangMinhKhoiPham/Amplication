@@ -3,9 +3,9 @@ import {
   List,
   Datagrid,
   ListProps,
+  TextField,
   DateField,
   ReferenceField,
-  TextField,
 } from "react-admin";
 import Pagination from "../Components/Pagination";
 import { FORUM_TITLE_FIELD } from "../forum/ForumTitle";
@@ -21,6 +21,7 @@ export const PostList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
+        <TextField label="content" source="content" />
         <DateField source="createdAt" label="Created At" />
         <ReferenceField label="forum" source="forum.id" reference="Forum">
           <TextField source={FORUM_TITLE_FIELD} />

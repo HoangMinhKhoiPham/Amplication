@@ -5,13 +5,14 @@ import {
   SimpleForm,
   CreateProps,
   TextInput,
-  ReferenceInput,
-  SelectInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  ReferenceInput,
+  SelectInput,
   NumberInput,
 } from "react-admin";
 
+import { CommonFacilityTitle } from "../commonFacility/CommonFacilityTitle";
 import { CompanyTitle } from "../company/CompanyTitle";
 import { CondoUnitTitle } from "../condoUnit/CondoUnitTitle";
 import { FileTitle } from "../file/FileTitle";
@@ -24,6 +25,14 @@ export const PropertyCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="address" source="address" />
+        <ReferenceArrayInput
+          source="commonFacilities"
+          reference="CommonFacility"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CommonFacilityTitle} />
+        </ReferenceArrayInput>
         <ReferenceInput source="company.id" reference="Company" label="Company">
           <SelectInput optionText={CompanyTitle} />
         </ReferenceInput>

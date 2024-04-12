@@ -162,14 +162,16 @@ UserWhereUniqueInput userWhereUniqueInput = 1;
 NotificationWhereUniqueInput notificationWhereUniqueInput = 2;
 };
 message Post {
-string createdAt = 1;
-string id = 2;
-string updatedAt = 3;
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
 };
 message PostWhereUniqueInput {
-string createdAt = 1;
-string id = 2;
-string updatedAt = 3;
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
 };
 message PostParams {
 UserWhereUniqueInput userWhereUniqueInput = 1;

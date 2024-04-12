@@ -25,7 +25,7 @@ class Forum {
   @ValidateNested()
   @Type(() => Company)
   @IsOptional()
-  companies?: Company | null;
+  company?: Company | null;
 
   @ApiProperty({
     required: true,
@@ -42,6 +42,14 @@ class Forum {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  name!: string;
 
   @ApiProperty({
     required: false,

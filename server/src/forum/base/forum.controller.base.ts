@@ -21,10 +21,10 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { ForumService } from "../forum.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Request } from "../../request/base/Request";
 import { ForumCreateInput } from "./ForumCreateInput";
 import { Forum } from "./Forum";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { ForumFindManyArgs } from "./ForumFindManyArgs";
 import { ForumWhereUniqueInput } from "./ForumWhereUniqueInput";
 import { ForumUpdateInput } from "./ForumUpdateInput";
@@ -54,14 +54,14 @@ export class ForumControllerBase {
       data: {
         ...data,
 
-        companies: data.companies
+        company: data.company
           ? {
-              connect: data.companies,
+              connect: data.company,
             }
           : undefined,
       },
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -69,6 +69,7 @@ export class ForumControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -91,7 +92,7 @@ export class ForumControllerBase {
     return this.service.forums({
       ...args,
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -99,6 +100,7 @@ export class ForumControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -122,7 +124,7 @@ export class ForumControllerBase {
     const result = await this.service.forum({
       where: params,
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -130,6 +132,7 @@ export class ForumControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -163,14 +166,14 @@ export class ForumControllerBase {
         data: {
           ...data,
 
-          companies: data.companies
+          company: data.company
             ? {
-                connect: data.companies,
+                connect: data.company,
               }
             : undefined,
         },
         select: {
-          companies: {
+          company: {
             select: {
               id: true,
             },
@@ -178,6 +181,7 @@ export class ForumControllerBase {
 
           createdAt: true,
           id: true,
+          name: true,
           updatedAt: true,
         },
       });
@@ -209,7 +213,7 @@ export class ForumControllerBase {
       return await this.service.deleteForum({
         where: params,
         select: {
-          companies: {
+          company: {
             select: {
               id: true,
             },
@@ -217,6 +221,7 @@ export class ForumControllerBase {
 
           createdAt: true,
           id: true,
+          name: true,
           updatedAt: true,
         },
       });
@@ -246,6 +251,7 @@ export class ForumControllerBase {
     const results = await this.service.findPosts(params.id, {
       ...query,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {

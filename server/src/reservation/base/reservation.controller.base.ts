@@ -21,10 +21,10 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { ReservationService } from "../reservation.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Request } from "../../request/base/Request";
 import { ReservationCreateInput } from "./ReservationCreateInput";
 import { Reservation } from "./Reservation";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { ReservationFindManyArgs } from "./ReservationFindManyArgs";
 import { ReservationWhereUniqueInput } from "./ReservationWhereUniqueInput";
 import { ReservationUpdateInput } from "./ReservationUpdateInput";
@@ -54,9 +54,9 @@ export class ReservationControllerBase {
       data: {
         ...data,
 
-        commonFacilityID: data.commonFacilityID
+        commonFacility: data.commonFacility
           ? {
-              connect: data.commonFacilityID,
+              connect: data.commonFacility,
             }
           : undefined,
 
@@ -69,7 +69,7 @@ export class ReservationControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },
@@ -108,7 +108,7 @@ export class ReservationControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },
@@ -148,7 +148,7 @@ export class ReservationControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },
@@ -196,9 +196,9 @@ export class ReservationControllerBase {
         data: {
           ...data,
 
-          commonFacilityID: data.commonFacilityID
+          commonFacility: data.commonFacility
             ? {
-                connect: data.commonFacilityID,
+                connect: data.commonFacility,
               }
             : undefined,
 
@@ -211,7 +211,7 @@ export class ReservationControllerBase {
         select: {
           availablity: true,
 
-          commonFacilityID: {
+          commonFacility: {
             select: {
               id: true,
             },
@@ -259,7 +259,7 @@ export class ReservationControllerBase {
         select: {
           availablity: true,
 
-          commonFacilityID: {
+          commonFacility: {
             select: {
               id: true,
             },

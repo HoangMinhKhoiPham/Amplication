@@ -21,13 +21,16 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { PropertyService } from "../property.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Request } from "../../request/base/Request";
 import { PropertyCreateInput } from "./PropertyCreateInput";
 import { Property } from "./Property";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { PropertyFindManyArgs } from "./PropertyFindManyArgs";
 import { PropertyWhereUniqueInput } from "./PropertyWhereUniqueInput";
 import { PropertyUpdateInput } from "./PropertyUpdateInput";
+import { CommonFacilityFindManyArgs } from "../../commonFacility/base/CommonFacilityFindManyArgs";
+import { CommonFacility } from "../../commonFacility/base/CommonFacility";
+import { CommonFacilityWhereUniqueInput } from "../../commonFacility/base/CommonFacilityWhereUniqueInput";
 import { CondoUnitFindManyArgs } from "../../condoUnit/base/CondoUnitFindManyArgs";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { CondoUnitWhereUniqueInput } from "../../condoUnit/base/CondoUnitWhereUniqueInput";
@@ -272,6 +275,110 @@ export class PropertyControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/commonFacilities")
+  @ApiNestedQuery(CommonFacilityFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "CommonFacility",
+    action: "read",
+    possession: "any",
+  })
+  async findCommonFacilities(
+    @common.Req() request: Request,
+    @common.Param() params: PropertyWhereUniqueInput
+  ): Promise<CommonFacility[]> {
+    const query = plainToClass(CommonFacilityFindManyArgs, request.query);
+    const results = await this.service.findCommonFacilities(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        facilityType: true,
+        id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/commonFacilities")
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "update",
+    possession: "any",
+  })
+  async connectCommonFacilities(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: CommonFacilityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      commonFacilities: {
+        connect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/commonFacilities")
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "update",
+    possession: "any",
+  })
+  async updateCommonFacilities(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: CommonFacilityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      commonFacilities: {
+        set: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/commonFacilities")
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectCommonFacilities(
+    @common.Param() params: PropertyWhereUniqueInput,
+    @common.Body() body: CommonFacilityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      commonFacilities: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateProperty({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

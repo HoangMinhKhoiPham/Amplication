@@ -23,7 +23,7 @@ export const ReservationList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <TextField label="availablity" source="availablity" />
         <ReferenceField
-          label="commonFacilityID"
+          label="commonFacility"
           source="commonfacility.id"
           reference="CommonFacility"
         >

@@ -26,6 +26,8 @@ import { PropertyFindUniqueArgs } from "./PropertyFindUniqueArgs";
 import { CreatePropertyArgs } from "./CreatePropertyArgs";
 import { UpdatePropertyArgs } from "./UpdatePropertyArgs";
 import { DeletePropertyArgs } from "./DeletePropertyArgs";
+import { CommonFacilityFindManyArgs } from "../../commonFacility/base/CommonFacilityFindManyArgs";
+import { CommonFacility } from "../../commonFacility/base/CommonFacility";
 import { CondoUnitFindManyArgs } from "../../condoUnit/base/CondoUnitFindManyArgs";
 import { CondoUnit } from "../../condoUnit/base/CondoUnit";
 import { FileFindManyArgs } from "../../file/base/FileFindManyArgs";
@@ -167,6 +169,26 @@ export class PropertyResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [CommonFacility], { name: "commonFacilities" })
+  @nestAccessControl.UseRoles({
+    resource: "CommonFacility",
+    action: "read",
+    possession: "any",
+  })
+  async findCommonFacilities(
+    @graphql.Parent() parent: Property,
+    @graphql.Args() args: CommonFacilityFindManyArgs
+  ): Promise<CommonFacility[]> {
+    const results = await this.service.findCommonFacilities(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

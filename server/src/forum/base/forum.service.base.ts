@@ -10,53 +10,50 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
 import {
   Prisma,
-  Forum, // @ts-ignore
-  Post, // @ts-ignore
-  Company,
+  Forum as PrismaForum,
+  Post as PrismaPost,
+  Company as PrismaCompany,
 } from "@prisma/client";
 
 export class ForumServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.ForumCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.ForumCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.ForumCountArgs, "select">): Promise<number> {
     return this.prisma.forum.count(args);
   }
 
   async forums<T extends Prisma.ForumFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.ForumFindManyArgs>
-  ): Promise<Forum[]> {
-    return this.prisma.forum.findMany(args);
+  ): Promise<PrismaForum[]> {
+    return this.prisma.forum.findMany<Prisma.ForumFindManyArgs>(args);
   }
   async forum<T extends Prisma.ForumFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.ForumFindUniqueArgs>
-  ): Promise<Forum | null> {
+  ): Promise<PrismaForum | null> {
     return this.prisma.forum.findUnique(args);
   }
   async createForum<T extends Prisma.ForumCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.ForumCreateArgs>
-  ): Promise<Forum> {
+  ): Promise<PrismaForum> {
     return this.prisma.forum.create<T>(args);
   }
   async updateForum<T extends Prisma.ForumUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.ForumUpdateArgs>
-  ): Promise<Forum> {
+  ): Promise<PrismaForum> {
     return this.prisma.forum.update<T>(args);
   }
   async deleteForum<T extends Prisma.ForumDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.ForumDeleteArgs>
-  ): Promise<Forum> {
+  ): Promise<PrismaForum> {
     return this.prisma.forum.delete(args);
   }
 
   async findPosts(
     parentId: string,
     args: Prisma.PostFindManyArgs
-  ): Promise<Post[]> {
+  ): Promise<PrismaPost[]> {
     return this.prisma.forum
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -64,11 +61,11 @@ export class ForumServiceBase {
       .posts(args);
   }
 
-  async getCompanies(parentId: string): Promise<Company | null> {
+  async getCompany(parentId: string): Promise<PrismaCompany | null> {
     return this.prisma.forum
       .findUnique({
         where: { id: parentId },
       })
-      .companies();
+      .company();
   }
 }

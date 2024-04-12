@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { ForumService } from "../forum.service";
-import { Request } from "../../request/base/Request";
 import { ForumCreateInput } from "./ForumCreateInput";
 import { ForumWhereInput } from "./ForumWhereInput";
 import { ForumWhereUniqueInput } from "./ForumWhereUniqueInput";
@@ -26,6 +25,7 @@ import { ForumFindManyArgs } from "./ForumFindManyArgs";
 import { ForumUpdateInput } from "./ForumUpdateInput";
 import { Forum } from "./Forum";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { PostFindManyArgs } from "../../post/base/PostFindManyArgs";
 import { PostWhereUniqueInput } from "../../post/base/PostWhereUniqueInput";
 
@@ -39,14 +39,14 @@ export class ForumGrpcControllerBase {
       data: {
         ...data,
 
-        companies: data.companies
+        company: data.company
           ? {
-              connect: data.companies,
+              connect: data.company,
             }
           : undefined,
       },
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -54,6 +54,7 @@ export class ForumGrpcControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -68,7 +69,7 @@ export class ForumGrpcControllerBase {
     return this.service.forums({
       ...args,
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -76,6 +77,7 @@ export class ForumGrpcControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -91,7 +93,7 @@ export class ForumGrpcControllerBase {
     const result = await this.service.forum({
       where: params,
       select: {
-        companies: {
+        company: {
           select: {
             id: true,
           },
@@ -99,6 +101,7 @@ export class ForumGrpcControllerBase {
 
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });
@@ -124,14 +127,14 @@ export class ForumGrpcControllerBase {
         data: {
           ...data,
 
-          companies: data.companies
+          company: data.company
             ? {
-                connect: data.companies,
+                connect: data.company,
               }
             : undefined,
         },
         select: {
-          companies: {
+          company: {
             select: {
               id: true,
             },
@@ -139,6 +142,7 @@ export class ForumGrpcControllerBase {
 
           createdAt: true,
           id: true,
+          name: true,
           updatedAt: true,
         },
       });
@@ -163,7 +167,7 @@ export class ForumGrpcControllerBase {
       return await this.service.deleteForum({
         where: params,
         select: {
-          companies: {
+          company: {
             select: {
               id: true,
             },
@@ -171,6 +175,7 @@ export class ForumGrpcControllerBase {
 
           createdAt: true,
           id: true,
+          name: true,
           updatedAt: true,
         },
       });
@@ -195,6 +200,7 @@ export class ForumGrpcControllerBase {
     const results = await this.service.findPosts(params.id, {
       ...query,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {

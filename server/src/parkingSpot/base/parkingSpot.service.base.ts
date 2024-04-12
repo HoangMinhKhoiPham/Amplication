@@ -13,47 +13,49 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  ParkingSpot, // @ts-ignore
-  CondoUnit, // @ts-ignore
-  Property,
+  ParkingSpot as PrismaParkingSpot,
+  CondoUnit as PrismaCondoUnit,
+  Property as PrismaProperty,
 } from "@prisma/client";
 
 export class ParkingSpotServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.ParkingSpotCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.ParkingSpotCountArgs>
+  async count(
+    args: Omit<Prisma.ParkingSpotCountArgs, "select">
   ): Promise<number> {
     return this.prisma.parkingSpot.count(args);
   }
 
   async parkingSpots<T extends Prisma.ParkingSpotFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.ParkingSpotFindManyArgs>
-  ): Promise<ParkingSpot[]> {
-    return this.prisma.parkingSpot.findMany(args);
+  ): Promise<PrismaParkingSpot[]> {
+    return this.prisma.parkingSpot.findMany<Prisma.ParkingSpotFindManyArgs>(
+      args
+    );
   }
   async parkingSpot<T extends Prisma.ParkingSpotFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.ParkingSpotFindUniqueArgs>
-  ): Promise<ParkingSpot | null> {
+  ): Promise<PrismaParkingSpot | null> {
     return this.prisma.parkingSpot.findUnique(args);
   }
   async createParkingSpot<T extends Prisma.ParkingSpotCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.ParkingSpotCreateArgs>
-  ): Promise<ParkingSpot> {
+  ): Promise<PrismaParkingSpot> {
     return this.prisma.parkingSpot.create<T>(args);
   }
   async updateParkingSpot<T extends Prisma.ParkingSpotUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.ParkingSpotUpdateArgs>
-  ): Promise<ParkingSpot> {
+  ): Promise<PrismaParkingSpot> {
     return this.prisma.parkingSpot.update<T>(args);
   }
   async deleteParkingSpot<T extends Prisma.ParkingSpotDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.ParkingSpotDeleteArgs>
-  ): Promise<ParkingSpot> {
+  ): Promise<PrismaParkingSpot> {
     return this.prisma.parkingSpot.delete(args);
   }
 
-  async getCondoUnit(parentId: number): Promise<CondoUnit | null> {
+  async getCondoUnit(parentId: number): Promise<PrismaCondoUnit | null> {
     return this.prisma.parkingSpot
       .findUnique({
         where: { id: parentId },
@@ -61,7 +63,7 @@ export class ParkingSpotServiceBase {
       .condoUnit();
   }
 
-  async getProperty(parentId: number): Promise<Property | null> {
+  async getProperty(parentId: number): Promise<PrismaProperty | null> {
     return this.prisma.parkingSpot
       .findUnique({
         where: { id: parentId },

@@ -21,9 +21,9 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { PostService } from "../post.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Request } from "../../request/base/Request";
 import { PostCreateInput } from "./PostCreateInput";
 import { Post } from "./Post";
+import { Request } from "../../request/base/Request";
 import { PostFindManyArgs } from "./PostFindManyArgs";
 import { PostWhereUniqueInput } from "./PostWhereUniqueInput";
 import { PostUpdateInput } from "./PostUpdateInput";
@@ -64,6 +64,7 @@ export class PostControllerBase {
           : undefined,
       },
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -101,6 +102,7 @@ export class PostControllerBase {
     return this.service.posts({
       ...args,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -139,6 +141,7 @@ export class PostControllerBase {
     const result = await this.service.post({
       where: params,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -200,6 +203,7 @@ export class PostControllerBase {
             : undefined,
         },
         select: {
+          content: true,
           createdAt: true,
 
           forum: {
@@ -246,6 +250,7 @@ export class PostControllerBase {
       return await this.service.deletePost({
         where: params,
         select: {
+          content: true,
           createdAt: true,
 
           forum: {

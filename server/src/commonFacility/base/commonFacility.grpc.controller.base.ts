@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { CommonFacilityService } from "../commonFacility.service";
-import { Request } from "../../request/base/Request";
 import { CommonFacilityCreateInput } from "./CommonFacilityCreateInput";
 import { CommonFacilityWhereInput } from "./CommonFacilityWhereInput";
 import { CommonFacilityWhereUniqueInput } from "./CommonFacilityWhereUniqueInput";
@@ -26,6 +25,7 @@ import { CommonFacilityFindManyArgs } from "./CommonFacilityFindManyArgs";
 import { CommonFacilityUpdateInput } from "./CommonFacilityUpdateInput";
 import { CommonFacility } from "./CommonFacility";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { ReservationFindManyArgs } from "../../reservation/base/ReservationFindManyArgs";
 import { Reservation } from "../../reservation/base/Reservation";
 import { ReservationWhereUniqueInput } from "../../reservation/base/ReservationWhereUniqueInput";
@@ -39,11 +39,27 @@ export class CommonFacilityGrpcControllerBase {
     @common.Body() data: CommonFacilityCreateInput
   ): Promise<CommonFacility> {
     return await this.service.createCommonFacility({
-      data: data,
+      data: {
+        ...data,
+
+        property: data.property
+          ? {
+              connect: data.property,
+            }
+          : undefined,
+      },
       select: {
         createdAt: true,
         facilityType: true,
         id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
         updatedAt: true,
       },
     });
@@ -63,6 +79,14 @@ export class CommonFacilityGrpcControllerBase {
         createdAt: true,
         facilityType: true,
         id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
         updatedAt: true,
       },
     });
@@ -81,6 +105,14 @@ export class CommonFacilityGrpcControllerBase {
         createdAt: true,
         facilityType: true,
         id: true,
+
+        property: {
+          select: {
+            id: true,
+          },
+        },
+
+        status: true,
         updatedAt: true,
       },
     });
@@ -103,11 +135,27 @@ export class CommonFacilityGrpcControllerBase {
     try {
       return await this.service.updateCommonFacility({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          property: data.property
+            ? {
+                connect: data.property,
+              }
+            : undefined,
+        },
         select: {
           createdAt: true,
           facilityType: true,
           id: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          status: true,
           updatedAt: true,
         },
       });
@@ -135,6 +183,14 @@ export class CommonFacilityGrpcControllerBase {
           createdAt: true,
           facilityType: true,
           id: true,
+
+          property: {
+            select: {
+              id: true,
+            },
+          },
+
+          status: true,
           updatedAt: true,
         },
       });
@@ -161,7 +217,7 @@ export class CommonFacilityGrpcControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },

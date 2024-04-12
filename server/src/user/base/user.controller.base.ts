@@ -22,10 +22,10 @@ import { UserService } from "../user.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { Request } from "../../request/base/Request";
 import { UserCreateInput } from "./UserCreateInput";
 import { User } from "./User";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
@@ -581,6 +581,7 @@ export class UserControllerBase {
     const results = await this.service.findPosts(params.id, {
       ...query,
       select: {
+        content: true,
         createdAt: true,
 
         forum: {
@@ -825,7 +826,7 @@ export class UserControllerBase {
       select: {
         availablity: true,
 
-        commonFacilityID: {
+        commonFacility: {
           select: {
             id: true,
           },

@@ -13,49 +13,47 @@ import { PrismaService } from "../../prisma/prisma.service";
 
 import {
   Prisma,
-  File, // @ts-ignore
-  Company, // @ts-ignore
-  CondoUnit, // @ts-ignore
-  Property, // @ts-ignore
-  User,
+  File as PrismaFile,
+  Company as PrismaCompany,
+  CondoUnit as PrismaCondoUnit,
+  Property as PrismaProperty,
+  User as PrismaUser,
 } from "@prisma/client";
 
 export class FileServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.FileCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.FileCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.FileCountArgs, "select">): Promise<number> {
     return this.prisma.file.count(args);
   }
 
   async files<T extends Prisma.FileFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.FileFindManyArgs>
-  ): Promise<File[]> {
-    return this.prisma.file.findMany(args);
+  ): Promise<PrismaFile[]> {
+    return this.prisma.file.findMany<Prisma.FileFindManyArgs>(args);
   }
   async file<T extends Prisma.FileFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.FileFindUniqueArgs>
-  ): Promise<File | null> {
+  ): Promise<PrismaFile | null> {
     return this.prisma.file.findUnique(args);
   }
   async createFile<T extends Prisma.FileCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.FileCreateArgs>
-  ): Promise<File> {
+  ): Promise<PrismaFile> {
     return this.prisma.file.create<T>(args);
   }
   async updateFile<T extends Prisma.FileUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.FileUpdateArgs>
-  ): Promise<File> {
+  ): Promise<PrismaFile> {
     return this.prisma.file.update<T>(args);
   }
   async deleteFile<T extends Prisma.FileDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.FileDeleteArgs>
-  ): Promise<File> {
+  ): Promise<PrismaFile> {
     return this.prisma.file.delete(args);
   }
 
-  async getCompany(parentId: number): Promise<Company | null> {
+  async getCompany(parentId: number): Promise<PrismaCompany | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
@@ -63,7 +61,7 @@ export class FileServiceBase {
       .company();
   }
 
-  async getCondoUnit(parentId: number): Promise<CondoUnit | null> {
+  async getCondoUnit(parentId: number): Promise<PrismaCondoUnit | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
@@ -71,7 +69,7 @@ export class FileServiceBase {
       .condoUnit();
   }
 
-  async getProperty(parentId: number): Promise<Property | null> {
+  async getProperty(parentId: number): Promise<PrismaProperty | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },
@@ -79,7 +77,7 @@ export class FileServiceBase {
       .property();
   }
 
-  async getUser(parentId: number): Promise<User | null> {
+  async getUser(parentId: number): Promise<PrismaUser | null> {
     return this.prisma.file
       .findUnique({
         where: { id: parentId },

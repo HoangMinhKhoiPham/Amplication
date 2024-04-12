@@ -19,10 +19,10 @@ rpc findManyCompany (CompanyWhereUniqueInput) returns (stream File) {}
 rpc updateCompany (FileParams) returns (stream File) {}
 rpc connectCompany (FileParams) returns (File) {}
 rpc disconnectCompany (FileParams) returns (File) {}
-rpc findManyCompanies (CompanyWhereUniqueInput) returns (stream Forum) {}
-rpc updateCompanies (ForumParams) returns (stream Forum) {}
-rpc connectCompanies (ForumParams) returns (Forum) {}
-rpc disconnectCompanies (ForumParams) returns (Forum) {}
+rpc findManyCompany (CompanyWhereUniqueInput) returns (stream Forum) {}
+rpc updateCompany (ForumParams) returns (stream Forum) {}
+rpc connectCompany (ForumParams) returns (Forum) {}
+rpc disconnectCompany (ForumParams) returns (Forum) {}
 rpc findManyCompany (CompanyWhereUniqueInput) returns (stream Property) {}
 rpc updateCompany (PropertyParams) returns (stream Property) {}
 rpc connectCompany (PropertyParams) returns (Property) {}
@@ -37,7 +37,7 @@ repeated CompanyEmployee companyEmployees = 1;
 repeated Cost costs = 2;
 string createdAt = 3;
 repeated File file = 4;
-repeated Forum Forums = 5;
+repeated Forum forums = 5;
 int32 id = 6;
 string name = 7;
 repeated Property properties = 8;
@@ -49,7 +49,7 @@ repeated CompanyEmployee companyEmployees = 1;
 repeated Cost costs = 2;
 string createdAt = 3;
 repeated File file = 4;
-repeated Forum Forums = 5;
+repeated Forum forums = 5;
 int32 id = 6;
 string name = 7;
 repeated Property properties = 8;
@@ -61,7 +61,7 @@ repeated CompanyEmployee companyEmployees = 1;
 repeated Cost costs = 2;
 string createdAt = 3;
 repeated File file = 4;
-repeated Forum Forums = 5;
+repeated Forum forums = 5;
 int32 id = 6;
 string name = 7;
 repeated Property properties = 8;
@@ -73,7 +73,7 @@ repeated CompanyEmployee companyEmployees = 1;
 repeated Cost costs = 2;
 string createdAt = 3;
 repeated File file = 4;
-repeated Forum Forums = 5;
+repeated Forum forums = 5;
 int32 id = 6;
 string name = 7;
 repeated Property properties = 8;
@@ -132,12 +132,14 @@ FileWhereUniqueInput fileWhereUniqueInput = 2;
 message Forum {
 string createdAt = 1;
 string id = 2;
-string updatedAt = 3;
+string name = 3;
+string updatedAt = 4;
 };
 message ForumWhereUniqueInput {
 string createdAt = 1;
 string id = 2;
-string updatedAt = 3;
+string name = 3;
+string updatedAt = 4;
 };
 message ForumParams {
 CompanyWhereUniqueInput companyWhereUniqueInput = 1;

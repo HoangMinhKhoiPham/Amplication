@@ -28,6 +28,7 @@ import { UpdateCommonFacilityArgs } from "./UpdateCommonFacilityArgs";
 import { DeleteCommonFacilityArgs } from "./DeleteCommonFacilityArgs";
 import { ReservationFindManyArgs } from "../../reservation/base/ReservationFindManyArgs";
 import { Reservation } from "../../reservation/base/Reservation";
+import { Property } from "../../property/base/Property";
 import { CommonFacilityService } from "../commonFacility.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => CommonFacility)
@@ -94,7 +95,15 @@ export class CommonFacilityResolverBase {
   ): Promise<CommonFacility> {
     return await this.service.createCommonFacility({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        property: args.data.property
+          ? {
+              connect: args.data.property,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -111,7 +120,15 @@ export class CommonFacilityResolverBase {
     try {
       return await this.service.updateCommonFacility({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          property: args.data.property
+            ? {
+                connect: args.data.property,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -162,5 +179,26 @@ export class CommonFacilityResolverBase {
     }
 
     return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Property, {
+    nullable: true,
+    name: "property",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Property",
+    action: "read",
+    possession: "any",
+  })
+  async getProperty(
+    @graphql.Parent() parent: CommonFacility
+  ): Promise<Property | null> {
+    const result = await this.service.getProperty(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }

@@ -120,6 +120,12 @@
     "attributes": "*"
   },
   {
+    "role": "PublicUser",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "Admin",
     "resource": "CondoUnit",
     "action": "read:own",

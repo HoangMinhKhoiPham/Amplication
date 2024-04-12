@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { NotificationService } from "../notification.service";
-import { Request } from "../../request/base/Request";
 import { NotificationCreateInput } from "./NotificationCreateInput";
 import { NotificationWhereInput } from "./NotificationWhereInput";
 import { NotificationWhereUniqueInput } from "./NotificationWhereUniqueInput";
@@ -26,6 +25,7 @@ import { NotificationFindManyArgs } from "./NotificationFindManyArgs";
 import { NotificationUpdateInput } from "./NotificationUpdateInput";
 import { Notification } from "./Notification";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class NotificationGrpcControllerBase {
   constructor(protected readonly service: NotificationService) {}

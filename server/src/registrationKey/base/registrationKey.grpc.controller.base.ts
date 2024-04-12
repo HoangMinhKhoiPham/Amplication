@@ -19,7 +19,6 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { RegistrationKeyService } from "../registrationKey.service";
 import { Public } from "../../decorators/public.decorator";
-import { Request } from "../../request/base/Request";
 import { RegistrationKeyCreateInput } from "./RegistrationKeyCreateInput";
 import { RegistrationKeyWhereInput } from "./RegistrationKeyWhereInput";
 import { RegistrationKeyWhereUniqueInput } from "./RegistrationKeyWhereUniqueInput";
@@ -27,6 +26,7 @@ import { RegistrationKeyFindManyArgs } from "./RegistrationKeyFindManyArgs";
 import { RegistrationKeyUpdateInput } from "./RegistrationKeyUpdateInput";
 import { RegistrationKey } from "./RegistrationKey";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class RegistrationKeyGrpcControllerBase {
   constructor(protected readonly service: RegistrationKeyService) {}

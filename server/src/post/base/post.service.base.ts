@@ -10,50 +10,47 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-
 import {
   Prisma,
-  Post, // @ts-ignore
-  Forum, // @ts-ignore
-  User,
+  Post as PrismaPost,
+  Forum as PrismaForum,
+  User as PrismaUser,
 } from "@prisma/client";
 
 export class PostServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.PostCountArgs>(
-    args: Prisma.SelectSubset<T, Prisma.PostCountArgs>
-  ): Promise<number> {
+  async count(args: Omit<Prisma.PostCountArgs, "select">): Promise<number> {
     return this.prisma.post.count(args);
   }
 
   async posts<T extends Prisma.PostFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.PostFindManyArgs>
-  ): Promise<Post[]> {
-    return this.prisma.post.findMany(args);
+  ): Promise<PrismaPost[]> {
+    return this.prisma.post.findMany<Prisma.PostFindManyArgs>(args);
   }
   async post<T extends Prisma.PostFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.PostFindUniqueArgs>
-  ): Promise<Post | null> {
+  ): Promise<PrismaPost | null> {
     return this.prisma.post.findUnique(args);
   }
   async createPost<T extends Prisma.PostCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PostCreateArgs>
-  ): Promise<Post> {
+  ): Promise<PrismaPost> {
     return this.prisma.post.create<T>(args);
   }
   async updatePost<T extends Prisma.PostUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.PostUpdateArgs>
-  ): Promise<Post> {
+  ): Promise<PrismaPost> {
     return this.prisma.post.update<T>(args);
   }
   async deletePost<T extends Prisma.PostDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.PostDeleteArgs>
-  ): Promise<Post> {
+  ): Promise<PrismaPost> {
     return this.prisma.post.delete(args);
   }
 
-  async getForum(parentId: string): Promise<Forum | null> {
+  async getForum(parentId: string): Promise<PrismaForum | null> {
     return this.prisma.post
       .findUnique({
         where: { id: parentId },
@@ -61,7 +58,7 @@ export class PostServiceBase {
       .forum();
   }
 
-  async getUser(parentId: string): Promise<User | null> {
+  async getUser(parentId: string): Promise<PrismaUser | null> {
     return this.prisma.post
       .findUnique({
         where: { id: parentId },

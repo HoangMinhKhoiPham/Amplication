@@ -18,7 +18,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { GrpcMethod } from "@nestjs/microservices";
 import { LockerService } from "../locker.service";
-import { Request } from "../../request/base/Request";
 import { LockerCreateInput } from "./LockerCreateInput";
 import { LockerWhereInput } from "./LockerWhereInput";
 import { LockerWhereUniqueInput } from "./LockerWhereUniqueInput";
@@ -26,6 +25,7 @@ import { LockerFindManyArgs } from "./LockerFindManyArgs";
 import { LockerUpdateInput } from "./LockerUpdateInput";
 import { Locker } from "./Locker";
 import { Post } from "../../post/base/Post";
+import { Request } from "../../request/base/Request";
 
 export class LockerGrpcControllerBase {
   constructor(protected readonly service: LockerService) {}
