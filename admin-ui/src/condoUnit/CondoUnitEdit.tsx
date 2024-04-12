@@ -7,6 +7,7 @@ import {
   NumberInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  BooleanInput,
   ReferenceInput,
   SelectInput,
   TextInput,
@@ -33,6 +34,7 @@ export const CondoUnitEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={FileTitle} />
         </ReferenceArrayInput>
+        <BooleanInput label="isPaid" source="isPaid" />
         <ReferenceInput source="locker.id" reference="Locker" label="locker">
           <SelectInput optionText={LockerTitle} />
         </ReferenceInput>

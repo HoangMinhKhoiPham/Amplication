@@ -1,6 +1,7 @@
 import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
 import { FileListRelationFilter } from "../file/FileListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { LockerWhereUniqueInput } from "../locker/LockerWhereUniqueInput";
 import { ParkingSpotListRelationFilter } from "../parkingSpot/ParkingSpotListRelationFilter";
 import { PropertyWhereUniqueInput } from "../property/PropertyWhereUniqueInput";
@@ -14,6 +15,7 @@ export type CondoUnitWhereInput = {
   condoFee?: DecimalNullableFilter;
   file?: FileListRelationFilter;
   id?: IntFilter;
+  isPaid?: BooleanNullableFilter;
   locker?: LockerWhereUniqueInput;
   parkingSpot?: ParkingSpotListRelationFilter;
   propertyID?: PropertyWhereUniqueInput;

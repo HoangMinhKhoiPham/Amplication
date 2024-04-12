@@ -17,6 +17,7 @@ import {
   IsDate,
   ValidateNested,
   IsInt,
+  IsBoolean,
   IsString,
 } from "class-validator";
 import { Decimal } from "decimal.js";
@@ -66,6 +67,17 @@ class CondoUnit {
   @IsInt()
   @Field(() => Number)
   id!: number;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isPaid!: boolean | null;
 
   @ApiProperty({
     required: false,

@@ -12,6 +12,7 @@ export type CondoUnit = {
   createdAt: Date;
   file?: Array<File>;
   id: number;
+  isPaid: boolean | null;
   locker?: Locker | null;
   parkingSpot?: Array<ParkingSpot>;
   propertyID?: Property | null;

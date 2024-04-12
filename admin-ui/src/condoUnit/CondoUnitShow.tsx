@@ -6,6 +6,7 @@ import {
   ShowProps,
   TextField,
   DateField,
+  BooleanField,
   ReferenceField,
   ReferenceManyField,
   Datagrid,
@@ -26,6 +27,7 @@ export const CondoUnitShow = (props: ShowProps): React.ReactElement => {
         <TextField label="condoFee" source="condoFee" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isPaid" source="isPaid" />
         <ReferenceField label="locker" source="locker.id" reference="Locker">
           <TextField source={LOCKER_TITLE_FIELD} />
         </ReferenceField>
