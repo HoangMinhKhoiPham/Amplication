@@ -251,7 +251,7 @@ export class PostGrpcControllerBase {
         createdAt: true,
         id: true,
 
-        posts: {
+        post: {
           select: {
             id: true,
           },

@@ -49,11 +49,11 @@ export class ReplyServiceBase {
     return this.prisma.reply.delete(args);
   }
 
-  async getPosts(parentId: string): Promise<PrismaPost | null> {
+  async getPost(parentId: string): Promise<PrismaPost | null> {
     return this.prisma.reply
       .findUnique({
         where: { id: parentId },
       })
-      .posts();
+      .post();
   }
 }

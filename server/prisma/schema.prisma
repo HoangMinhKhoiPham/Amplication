@@ -243,8 +243,8 @@ model Reply {
   content   String?
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
-  posts     Post?    @relation(fields: [postID], references: [id])
-  postID    String?
+  post      Post     @relation(fields: [postID], references: [id])
+  postID    String
   updatedAt DateTime @updatedAt
 }
 

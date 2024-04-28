@@ -7,10 +7,10 @@ rpc posts (findManyParams) returns (stream Post) {}
 rpc post (PostWhereUniqueInput) returns (Post) {}
 rpc updatePost (PostUpdateInput) returns (Post) {}
 rpc deletePost (PostWhereUniqueInput) returns (Post) {}
-rpc findManyPosts (PostWhereUniqueInput) returns (stream Reply) {}
-rpc updatePosts (ReplyParams) returns (stream Reply) {}
-rpc connectPosts (ReplyParams) returns (Reply) {}
-rpc disconnectPosts (ReplyParams) returns (Reply) {} 
+rpc findManyPost (PostWhereUniqueInput) returns (stream Reply) {}
+rpc updatePost (ReplyParams) returns (stream Reply) {}
+rpc connectPost (ReplyParams) returns (Reply) {}
+rpc disconnectPost (ReplyParams) returns (Reply) {} 
  }
 message PostCreateInput {
 string content = 1;

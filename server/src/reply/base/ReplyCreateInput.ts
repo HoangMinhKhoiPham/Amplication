@@ -29,16 +29,13 @@ class ReplyCreateInput {
   content?: string | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => PostWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => PostWhereUniqueInput)
-  @IsOptional()
-  @Field(() => PostWhereUniqueInput, {
-    nullable: true,
-  })
-  posts?: PostWhereUniqueInput | null;
+  @Field(() => PostWhereUniqueInput)
+  post!: PostWhereUniqueInput;
 }
 
 export { ReplyCreateInput as ReplyCreateInput };

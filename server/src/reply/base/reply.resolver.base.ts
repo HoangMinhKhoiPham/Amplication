@@ -92,11 +92,9 @@ export class ReplyResolverBase {
       data: {
         ...args.data,
 
-        posts: args.data.posts
-          ? {
-              connect: args.data.posts,
-            }
-          : undefined,
+        post: {
+          connect: args.data.post,
+        },
       },
     });
   }
@@ -117,11 +115,9 @@ export class ReplyResolverBase {
         data: {
           ...args.data,
 
-          posts: args.data.posts
-            ? {
-                connect: args.data.posts,
-              }
-            : undefined,
+          post: {
+            connect: args.data.post,
+          },
         },
       });
     } catch (error) {
@@ -158,15 +154,15 @@ export class ReplyResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Post, {
     nullable: true,
-    name: "posts",
+    name: "post",
   })
   @nestAccessControl.UseRoles({
     resource: "Post",
     action: "read",
     possession: "any",
   })
-  async getPosts(@graphql.Parent() parent: Reply): Promise<Post | null> {
-    const result = await this.service.getPosts(parent.id);
+  async getPost(@graphql.Parent() parent: Reply): Promise<Post | null> {
+    const result = await this.service.getPost(parent.id);
 
     if (!result) {
       return null;

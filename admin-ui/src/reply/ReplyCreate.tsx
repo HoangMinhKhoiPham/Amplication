@@ -14,7 +14,7 @@ export const ReplyCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="content" source="content" />
-        <ReferenceInput source="posts.id" reference="Post" label="post">
+        <ReferenceInput source="post.id" reference="Post" label="post">
           <SelectInput optionText={PostTitle} />
         </ReferenceInput>
       </SimpleForm>

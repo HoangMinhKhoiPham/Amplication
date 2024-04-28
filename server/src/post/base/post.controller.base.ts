@@ -302,7 +302,7 @@ export class PostControllerBase {
         createdAt: true,
         id: true,
 
-        posts: {
+        post: {
           select: {
             id: true,
           },

@@ -51,7 +51,7 @@ class ReplyWhereInput {
   @Field(() => PostWhereUniqueInput, {
     nullable: true,
   })
-  posts?: PostWhereUniqueInput;
+  post?: PostWhereUniqueInput;
 }
 
 export { ReplyWhereInput as ReplyWhereInput };

@@ -37,18 +37,16 @@ export class ReplyGrpcControllerBase {
       data: {
         ...data,
 
-        posts: data.posts
-          ? {
-              connect: data.posts,
-            }
-          : undefined,
+        post: {
+          connect: data.post,
+        },
       },
       select: {
         content: true,
         createdAt: true,
         id: true,
 
-        posts: {
+        post: {
           select: {
             id: true,
           },
@@ -72,7 +70,7 @@ export class ReplyGrpcControllerBase {
         createdAt: true,
         id: true,
 
-        posts: {
+        post: {
           select: {
             id: true,
           },
@@ -97,7 +95,7 @@ export class ReplyGrpcControllerBase {
         createdAt: true,
         id: true,
 
-        posts: {
+        post: {
           select: {
             id: true,
           },
@@ -128,18 +126,16 @@ export class ReplyGrpcControllerBase {
         data: {
           ...data,
 
-          posts: data.posts
-            ? {
-                connect: data.posts,
-              }
-            : undefined,
+          post: {
+            connect: data.post,
+          },
         },
         select: {
           content: true,
           createdAt: true,
           id: true,
 
-          posts: {
+          post: {
             select: {
               id: true,
             },
@@ -173,7 +169,7 @@ export class ReplyGrpcControllerBase {
           createdAt: true,
           id: true,
 
-          posts: {
+          post: {
             select: {
               id: true,
             },

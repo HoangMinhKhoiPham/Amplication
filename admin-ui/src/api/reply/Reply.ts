@@ -4,6 +4,6 @@ export type Reply = {
   content: string | null;
   createdAt: Date;
   id: string;
-  posts?: Post | null;
+  post?: Post;
   updatedAt: Date;
 };

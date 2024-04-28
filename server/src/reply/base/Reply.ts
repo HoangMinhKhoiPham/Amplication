@@ -45,13 +45,12 @@ class Reply {
   id!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => Post,
   })
   @ValidateNested()
   @Type(() => Post)
-  @IsOptional()
-  posts?: Post | null;
+  post?: Post;
 
   @ApiProperty({
     required: true,

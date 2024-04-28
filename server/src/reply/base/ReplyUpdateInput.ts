@@ -38,7 +38,7 @@ class ReplyUpdateInput {
   @Field(() => PostWhereUniqueInput, {
     nullable: true,
   })
-  posts?: PostWhereUniqueInput | null;
+  post?: PostWhereUniqueInput;
 }
 
 export { ReplyUpdateInput as ReplyUpdateInput };
