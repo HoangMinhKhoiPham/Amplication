@@ -121,19 +121,21 @@ message CondoUnit {
 int32 condoFee = 1;
 string createdAt = 2;
 int32 id = 3;
-string size = 4;
-string test = 5;
-string unitNumber = 6;
-string updatedAt = 7;
+bool isPaid = 4;
+string size = 5;
+string test = 6;
+string unitNumber = 7;
+string updatedAt = 8;
 };
 message CondoUnitWhereUniqueInput {
 int32 condoFee = 1;
 string createdAt = 2;
 int32 id = 3;
-string size = 4;
-string test = 5;
-string unitNumber = 6;
-string updatedAt = 7;
+bool isPaid = 4;
+string size = 5;
+string test = 6;
+string unitNumber = 7;
+string updatedAt = 8;
 };
 message CondoUnitParams {
 PropertyWhereUniqueInput propertyWhereUniqueInput = 1;

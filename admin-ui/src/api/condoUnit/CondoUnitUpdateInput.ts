@@ -10,6 +10,7 @@ import { UserCondoUpdateManyWithoutCondoUnitsInput } from "./UserCondoUpdateMany
 export type CondoUnitUpdateInput = {
   condoFee?: Decimal | null;
   file?: FileUpdateManyWithoutCondoUnitsInput;
+  isPaid?: boolean | null;
   locker?: LockerWhereUniqueInput | null;
   parkingSpot?: ParkingSpotUpdateManyWithoutCondoUnitsInput;
   propertyID?: PropertyWhereUniqueInput | null;

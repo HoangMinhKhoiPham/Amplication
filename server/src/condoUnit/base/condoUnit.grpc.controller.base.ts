@@ -72,6 +72,7 @@ export class CondoUnitGrpcControllerBase {
         condoFee: true,
         createdAt: true,
         id: true,
+        isPaid: true,
 
         locker: {
           select: {
@@ -111,6 +112,7 @@ export class CondoUnitGrpcControllerBase {
         condoFee: true,
         createdAt: true,
         id: true,
+        isPaid: true,
 
         locker: {
           select: {
@@ -151,6 +153,7 @@ export class CondoUnitGrpcControllerBase {
         condoFee: true,
         createdAt: true,
         id: true,
+        isPaid: true,
 
         locker: {
           select: {
@@ -220,6 +223,7 @@ export class CondoUnitGrpcControllerBase {
           condoFee: true,
           createdAt: true,
           id: true,
+          isPaid: true,
 
           locker: {
             select: {
@@ -269,6 +273,7 @@ export class CondoUnitGrpcControllerBase {
           condoFee: true,
           createdAt: true,
           id: true,
+          isPaid: true,
 
           locker: {
             select: {

@@ -26,6 +26,8 @@ import { PostFindUniqueArgs } from "./PostFindUniqueArgs";
 import { CreatePostArgs } from "./CreatePostArgs";
 import { UpdatePostArgs } from "./UpdatePostArgs";
 import { DeletePostArgs } from "./DeletePostArgs";
+import { ReplyFindManyArgs } from "../../reply/base/ReplyFindManyArgs";
+import { Reply } from "../../reply/base/Reply";
 import { Forum } from "../../forum/base/Forum";
 import { User } from "../../user/base/User";
 import { PostService } from "../post.service";
@@ -160,6 +162,26 @@ export class PostResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Reply], { name: "replies" })
+  @nestAccessControl.UseRoles({
+    resource: "Reply",
+    action: "read",
+    possession: "any",
+  })
+  async findReplies(
+    @graphql.Parent() parent: Post,
+    @graphql.Args() args: ReplyFindManyArgs
+  ): Promise<Reply[]> {
+    const results = await this.service.findReplies(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

@@ -332,6 +332,7 @@ export class PropertyGrpcControllerBase {
         condoFee: true,
         createdAt: true,
         id: true,
+        isPaid: true,
 
         locker: {
           select: {

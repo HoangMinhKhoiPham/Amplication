@@ -6,32 +6,56 @@ service PostService {
 rpc posts (findManyParams) returns (stream Post) {}
 rpc post (PostWhereUniqueInput) returns (Post) {}
 rpc updatePost (PostUpdateInput) returns (Post) {}
-rpc deletePost (PostWhereUniqueInput) returns (Post) {} 
+rpc deletePost (PostWhereUniqueInput) returns (Post) {}
+rpc findManyPost (PostWhereUniqueInput) returns (stream Reply) {}
+rpc updatePost (ReplyParams) returns (stream Reply) {}
+rpc connectPost (ReplyParams) returns (Reply) {}
+rpc disconnectPost (ReplyParams) returns (Reply) {} 
  }
 message PostCreateInput {
 string content = 1;
 string createdAt = 2;
 string id = 3;
-string updatedAt = 4;
+repeated Reply replies = 4;
+string updatedAt = 5;
 };
 message Post {
 string content = 1;
 string createdAt = 2;
 string id = 3;
-string updatedAt = 4;
+repeated Reply replies = 4;
+string updatedAt = 5;
 };
 message PostWhereUniqueInput {
 string content = 1;
 string createdAt = 2;
 string id = 3;
-string updatedAt = 4;
+repeated Reply replies = 4;
+string updatedAt = 5;
 };
 message PostUpdateInput {
 string content = 1;
 string createdAt = 2;
 string id = 3;
-string updatedAt = 4;
+repeated Reply replies = 4;
+string updatedAt = 5;
 };
 message findManyParams {
 
+};
+message Reply {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message ReplyWhereUniqueInput {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message ReplyParams {
+PostWhereUniqueInput postWhereUniqueInput = 1;
+ReplyWhereUniqueInput replyWhereUniqueInput = 2;
 };

@@ -24,7 +24,8 @@ export const grpcClientOptions: ClientOptions = {
       "reservation",
       "request",
       "notification",
-      "cost"
+      "cost",
+      "reply"
     ],
     protoPath: [
       "src/user/user.proto",
@@ -44,7 +45,8 @@ export const grpcClientOptions: ClientOptions = {
       "src/reservation/reservation.proto",
       "src/request/request.proto",
       "src/notification/notification.proto",
-      "src/cost/cost.proto"
+      "src/cost/cost.proto",
+      "src/reply/reply.proto"
     ],
     url: configService.get<string>("GRPC_CLIENT_URL_PATH"),
   },

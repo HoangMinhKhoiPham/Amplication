@@ -10,6 +10,7 @@ import { UserCondoCreateNestedManyWithoutCondoUnitsInput } from "./UserCondoCrea
 export type CondoUnitCreateInput = {
   condoFee?: Decimal | null;
   file?: FileCreateNestedManyWithoutCondoUnitsInput;
+  isPaid?: boolean | null;
   locker?: LockerWhereUniqueInput | null;
   parkingSpot?: ParkingSpotCreateNestedManyWithoutCondoUnitsInput;
   propertyID?: PropertyWhereUniqueInput | null;

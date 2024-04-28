@@ -19,6 +19,7 @@ import { ReservationModule } from "./reservation/reservation.module";
 import { RequestModule } from "./request/request.module";
 import { NotificationModule } from "./notification/notification.module";
 import { CostModule } from "./cost/cost.module";
+import { ReplyModule } from "./reply/reply.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -57,6 +58,7 @@ import { AuthModule } from "./auth/auth.module";
     RequestModule,
     NotificationModule,
     CostModule,
+    ReplyModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

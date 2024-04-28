@@ -10,9 +10,11 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
+
 import {
   Prisma,
   Post as PrismaPost,
+  Reply as PrismaReply,
   Forum as PrismaForum,
   User as PrismaUser,
 } from "@prisma/client";
@@ -48,6 +50,17 @@ export class PostServiceBase {
     args: Prisma.SelectSubset<T, Prisma.PostDeleteArgs>
   ): Promise<PrismaPost> {
     return this.prisma.post.delete(args);
+  }
+
+  async findReplies(
+    parentId: string,
+    args: Prisma.ReplyFindManyArgs
+  ): Promise<PrismaReply[]> {
+    return this.prisma.post
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .replies(args);
   }
 
   async getForum(parentId: string): Promise<PrismaForum | null> {

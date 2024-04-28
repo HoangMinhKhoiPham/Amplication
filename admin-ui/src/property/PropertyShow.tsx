@@ -9,6 +9,7 @@ import {
   DateField,
   ReferenceManyField,
   Datagrid,
+  BooleanField,
 } from "react-admin";
 
 import { PROPERTY_TITLE_FIELD } from "./PropertyTitle";
@@ -63,6 +64,7 @@ export const PropertyShow = (props: ShowProps): React.ReactElement => {
             <TextField label="condoFee" source="condoFee" />
             <DateField source="createdAt" label="Created At" />
             <TextField label="ID" source="id" />
+            <BooleanField label="isPaid" source="isPaid" />
             <ReferenceField
               label="locker"
               source="locker.id"

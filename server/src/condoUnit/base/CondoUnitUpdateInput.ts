@@ -15,6 +15,7 @@ import {
   IsNumber,
   IsOptional,
   ValidateNested,
+  IsBoolean,
   IsString,
 } from "class-validator";
 import { Decimal } from "decimal.js";
@@ -51,6 +52,17 @@ class CondoUnitUpdateInput {
     nullable: true,
   })
   file?: FileUpdateManyWithoutCondoUnitsInput;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isPaid?: boolean | null;
 
   @ApiProperty({
     required: false,
