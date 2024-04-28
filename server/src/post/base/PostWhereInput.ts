@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { ForumWhereUniqueInput } from "../../forum/base/ForumWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { ReplyListRelationFilter } from "../../reply/base/ReplyListRelationFilter";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -53,6 +54,18 @@ class PostWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => ReplyListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => ReplyListRelationFilter)
+  @IsOptional()
+  @Field(() => ReplyListRelationFilter, {
+    nullable: true,
+  })
+  replies?: ReplyListRelationFilter;
 
   @ApiProperty({
     required: false,

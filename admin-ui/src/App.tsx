@@ -77,6 +77,10 @@ import { CostList } from "./cost/CostList";
 import { CostCreate } from "./cost/CostCreate";
 import { CostEdit } from "./cost/CostEdit";
 import { CostShow } from "./cost/CostShow";
+import { ReplyList } from "./reply/ReplyList";
+import { ReplyCreate } from "./reply/ReplyCreate";
+import { ReplyEdit } from "./reply/ReplyEdit";
+import { ReplyShow } from "./reply/ReplyShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -228,6 +232,13 @@ const App = (): React.ReactElement => {
           edit={CostEdit}
           create={CostCreate}
           show={CostShow}
+        />
+        <Resource
+          name="Reply"
+          list={ReplyList}
+          edit={ReplyEdit}
+          create={ReplyCreate}
+          show={ReplyShow}
         />
       </Admin>
     </div>

@@ -25,6 +25,9 @@ import { PostFindManyArgs } from "./PostFindManyArgs";
 import { PostUpdateInput } from "./PostUpdateInput";
 import { Post } from "./Post";
 import { Request } from "../../request/base/Request";
+import { ReplyFindManyArgs } from "../../reply/base/ReplyFindManyArgs";
+import { Reply } from "../../reply/base/Reply";
+import { ReplyWhereUniqueInput } from "../../reply/base/ReplyWhereUniqueInput";
 
 export class PostGrpcControllerBase {
   constructor(protected readonly service: PostService) {}
@@ -231,5 +234,91 @@ export class PostGrpcControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.Get("/:id/replies")
+  @ApiNestedQuery(ReplyFindManyArgs)
+  @GrpcMethod("PostService", "findManyReplies")
+  async findManyReplies(
+    @common.Req() request: Request,
+    @common.Param() params: PostWhereUniqueInput
+  ): Promise<Reply[]> {
+    const query = plainToClass(ReplyFindManyArgs, request.query);
+    const results = await this.service.findReplies(params.id, {
+      ...query,
+      select: {
+        content: true,
+        createdAt: true,
+        id: true,
+
+        posts: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/replies")
+  @GrpcMethod("PostService", "connectReplies")
+  async connectReplies(
+    @common.Param() params: PostWhereUniqueInput,
+    @common.Body() body: ReplyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      replies: {
+        connect: body,
+      },
+    };
+    await this.service.updatePost({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/replies")
+  @GrpcMethod("PostService", "updateReplies")
+  async updateReplies(
+    @common.Param() params: PostWhereUniqueInput,
+    @common.Body() body: ReplyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      replies: {
+        set: body,
+      },
+    };
+    await this.service.updatePost({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/replies")
+  @GrpcMethod("PostService", "disconnectReplies")
+  async disconnectReplies(
+    @common.Param() params: PostWhereUniqueInput,
+    @common.Body() body: ReplyWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      replies: {
+        disconnect: body,
+      },
+    };
+    await this.service.updatePost({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

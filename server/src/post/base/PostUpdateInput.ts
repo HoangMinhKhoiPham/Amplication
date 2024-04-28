@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested } from "class-validator";
 import { ForumWhereUniqueInput } from "../../forum/base/ForumWhereUniqueInput";
 import { Type } from "class-transformer";
+import { ReplyUpdateManyWithoutPostsInput } from "./ReplyUpdateManyWithoutPostsInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -40,6 +41,18 @@ class PostUpdateInput {
     nullable: true,
   })
   forum?: ForumWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ReplyUpdateManyWithoutPostsInput,
+  })
+  @ValidateNested()
+  @Type(() => ReplyUpdateManyWithoutPostsInput)
+  @IsOptional()
+  @Field(() => ReplyUpdateManyWithoutPostsInput, {
+    nullable: true,
+  })
+  replies?: ReplyUpdateManyWithoutPostsInput;
 
   @ApiProperty({
     required: false,
